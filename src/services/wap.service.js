@@ -22,39 +22,39 @@ const wap =
             id: 'cmp10',
             type: 'app-header',
             info: {
-                subType: 'light-and-shiny / dark-and-magic',
+                subClass: 'light-and-shiny / dark-and-magic',
                 title: 'We Sell Corona',
                 subTitle: 'and alcojel',
                 callToAction: 'Try it now!'
             }
         },
-        // {
-        //     id: 'cmp102',
-        //     type: 'app-map',
-        //     info: {
-        //         title: 'We Sell Corona',
-        //         subType: 'sattelite',
-        //         center: { lat: 12.98, lng: 98.76 }
-        //     }
-        // },
-        // {
-        //     id: 'cmp103',
-        //     type: 'app-layout-2',
-        //     info: {
-        //         children: [
-        //             {}, {}
-        //         ]
-        //     }
-        // },
-        // {
-        //     id: 'cmp104',
-        //     type: 'app-card',
-        //     info: {
-        //         title: 'Do it now',
-        //         subType: 'or later',
-        //         icon: 'success'
-        //     }
-        // },
+        {
+            id: 'cmp102',
+            type: 'app-map',
+            info: {
+                title: 'We Sell Corona',
+                subType: 'sattelite',
+                center: { lat: 12.98, lng: 98.76 }
+            }
+        },
+        {
+            id: 'cmp103',
+            type: 'app-layout-2',
+            info: {
+                children: [
+                    {}, {}
+                ]
+            }
+        },
+        {
+            id: 'cmp104',
+            type: 'app-card',
+            info: {
+                title: 'Do it now',
+                subType: 'or later',
+                icon: 'success'
+            }
+        },
     ]
 }
 
@@ -78,12 +78,3 @@ function query() {
 // app-social-links
 // app-chat
 // app-bot
-
-
-// const layoutColumnsCmp = {
-//     template: `
-//       <section class="flex">
-//           <component v-for="child in info.children" :is="child.type" :info="child.info"></component>
-//      </section>
-//     `
-// }
