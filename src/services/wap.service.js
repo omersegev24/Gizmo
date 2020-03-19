@@ -64,6 +64,32 @@ const wap =
                 subClass: 'light-and-shiny',
             }
         },
+        {
+            id: 'cmp106',
+            type: 'app-contact',
+            info: {
+                title: 'Get in touch',
+                address:'Tel Aviv Bacher 4',
+                phone: '123-456-7890',
+                subClass: 'light-and-shiny',
+            }
+        },
+        {
+            id: 'cmp107',
+            type: 'app-chat',
+            info: {
+                title: 'Chat',
+            }
+        },
+        {
+            id: 'cmp108',
+            type: 'app-social-links',
+            info: {
+                links:[
+                    {to: 'facebook', url: 'www.facebook.com'}
+                ]
+            }
+        }
     ]
 }
 
@@ -94,6 +120,3 @@ function _makeId(length = 5) {
 }
 
 // app-social-links
-
-
-// app-bot

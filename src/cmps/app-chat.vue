@@ -1,12 +1,12 @@
 <template>
   <section class="chat-app">
-    <div @click.prevent="toggleChat">Chat</div>
+    <div @click.prevent="toggleChat" v-if="!chatOpen">Chat</div>
     <div v-if="chatOpen" class="chat-container">
-      <a @click="close">X</a>
+      <a @click="toggleChat">X</a>
       <ul>
-        <li v-for="msg in msgs" :key="msg"></li>
+        <li v-for="(msg, index) in msgs" :key="index">{{msg.username}}: {{msg.text}}</li>
       </ul>
-      <input v-model="msg" type="text" />
+      <input v-model="msg.text" type="text" />
       <button @click="sendMsg">Send</button>
     </div>
   </section>
@@ -19,7 +19,8 @@ export default {
   },
   data() {
     return {
-      msg: "",
+      msg: {username: 'Guest', text: ''},
+      autoMsg: { username: "Support", text: "Sure thing honey" },
       msgs: [],
       chatOpen: false
     };
@@ -28,6 +29,10 @@ export default {
     sendMsg() {
       this.msgs.push(this.msg);
       this.msg = "";
+      
+      setTimeout(() => {
+        this.msgs.push(this.autoMsg);
+      }, 1500);
     },
     close() {},
     toggleChat(){
