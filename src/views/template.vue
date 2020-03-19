@@ -14,8 +14,7 @@ import layoutColumns from '../cmps/app-nav.vue';
 import appMap from '../cmps/app-map.vue';
 import appContact from '../cmps/app-contact-us.vue';
 import appChat from '../cmps/app-chat.vue';
-
-
+import appSocialLinks from '../cmps/app-social-links.vue';
 
 export default {
   data() {
@@ -35,7 +34,8 @@ export default {
     appMap,
     appContact,
     layoutColumns,
-    appChat
+    appChat,
+    appSocialLinks
   }
 };
 </script>

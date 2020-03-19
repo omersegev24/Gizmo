@@ -1,6 +1,5 @@
 import { wapService } from '../services/wap.service.js'
 
-
 export default ({
     state: {
         wap: {},
