@@ -1,12 +1,10 @@
 <template>
   <section class="template-container">
-
     <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info"></component>
   </section>
 </template>
 
 <script>
-import { wapService } from "../services/wap.service.js";
 import appNav from "../cmps/wap-cmps/app-nav.vue";
 import appCard from "../cmps/wap-cmps/app-card.vue";
 import appHeader from "../cmps/wap-cmps/app-header.vue";
@@ -17,16 +15,9 @@ import appContact from '../cmps/wap-cmps/app-contact-us.vue';
 import appChat from '../cmps/wap-cmps/app-chat.vue';
 import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 
-
 export default {
-  data() {
-    return {
-      wap: {}
-    };
-  },
-  async created() {
-    let wap = await wapService.query();
-    this.wap = wap;
+  props:{
+    wap: Object
   },
   components: {
     appNav,

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <template-page></template-page>
+    
       <div v-for="cmp in cmps" :key="cmp.id"> -->
         {{cmp.type}}
         <button @click="addCmp(cmp)">Add</button>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import templatePage from './template.vue'
+
 import {cmpService} from '../services/cmp.service.js'
 
 export default {
@@ -30,8 +30,6 @@ export default {
       this.$store.dispatch({ type: 'addCmp', cmp })
     }
   },
-  components: {
-    templatePage
-  }
+  
 }
 </script>
