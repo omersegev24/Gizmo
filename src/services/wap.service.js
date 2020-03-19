@@ -51,8 +51,8 @@ const wap =
             type: 'app-card',
             info: {
                 title: 'Do it now',
-                subType: 'or later',
-                icon: 'success'
+                subClass: 'or later',
+                imgUrl: ''
             }
         },
         {
@@ -106,7 +106,9 @@ function _makeId(length = 5) {
 // app-row-2
 // app-card
 // app-contact-us
-// app-nav
+
 // app-social-links
+
 // app-chat
+
 // app-bot
