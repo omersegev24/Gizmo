@@ -34,7 +34,8 @@ const wap =
             info: {
                 title: 'We Sell Corona',
                 subType: 'sattelite',
-                center: { lat: 12.98, lng: 98.76 }
+                center: {lat: 32.519, lng: 34.9045 },
+                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
             }
         },
         {
@@ -83,13 +84,6 @@ function addCmp(cmp) {
 }
 
 
-
-
-
-
-
-
-
 function _makeId(length = 5) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -98,17 +92,8 @@ function _makeId(length = 5) {
     }
     return txt;
 }
-// LAYOUT
-// Cmp Types:
-// app-header,
-// app-footer
-// app-map
-// app-row-2
-// app-card
-// app-contact-us
 
 // app-social-links
 
-// app-chat
 
 // app-bot

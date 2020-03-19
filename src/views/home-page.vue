@@ -2,7 +2,6 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <template-page></template-page>
-    
       <div  v-for="cmp in cmps" :key="cmp.id"> -->
         {{cmp.type}}
         <button @click="addCmp(cmp)">Add</button>
@@ -32,7 +31,7 @@ export default {
     }
   },
   components: {
-  templatePage
+    templatePage
   }
 }
 </script>
