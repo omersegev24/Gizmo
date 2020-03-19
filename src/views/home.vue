@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    
+    <router-link to='/templates'>Get Started</router-link>
       <div v-for="cmp in cmps" :key="cmp.id"> -->
         {{cmp.type}}
         <button @click="addCmp(cmp)">Add</button>
