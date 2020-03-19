@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <template-page></template-page>
+    <default-wap></default-wap>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import templatePage from './template.vue'
+import defaultWap from '@/cmps/default-wap.vue';
 
 export default {
   name: 'Home',
   components: {
-  templatePage
+    defaultWap
   }
 }
 </script>
