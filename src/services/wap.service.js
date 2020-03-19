@@ -84,13 +84,6 @@ function addCmp(cmp) {
 }
 
 
-
-
-
-
-
-
-
 function _makeId(length = 5) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -99,17 +92,8 @@ function _makeId(length = 5) {
     }
     return txt;
 }
-// LAYOUT
-// Cmp Types:
-// app-header,
-// app-footer
-// app-map
-// app-row-2
-// app-card
-// app-contact-us
 
 // app-social-links
 
-// app-chat
 
 // app-bot
