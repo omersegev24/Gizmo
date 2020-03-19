@@ -5,8 +5,18 @@ import router from './router'
 import store from './store'
 
 import './styles/global.scss'
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.config.productionTip = false
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDgE4Y-tyaTRAD-6hQW-nTSO547pkald3c',
+    libraries: 'places', 
+    region: 'IL',
+    language: 'he',
+  },
+});
 
 new Vue({
   router,
