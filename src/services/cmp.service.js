@@ -24,6 +24,17 @@ const cmps = [
         }
     },
     {
+        id: 'cmp112',
+        type: 'app-article',
+        info: {
+            subClass: 'light-and-shiny',
+            title: 'Article title',
+            subTitle: 'Article title',
+            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+        }
+    },
+
+    {
         id: 'cmp103',
         type: 'layout-columns',
         info: {
@@ -41,7 +52,6 @@ const cmps = [
             imgUrl: 'Youre image here'
         }
     },
-
     {
         id: 'cmp105',
         type: 'app-footer',

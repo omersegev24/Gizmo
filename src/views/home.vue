@@ -11,9 +11,9 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import templatePage from './template.vue'
 import {cmpService} from '../services/cmp.service.js'
+
 export default {
   name: 'Home',
   data(){
