@@ -34,7 +34,8 @@ const wap =
             info: {
                 title: 'We Sell Corona',
                 subType: 'sattelite',
-                center: { lat: 12.98, lng: 98.76 }
+                center: {lat: 32.519, lng: 34.9045 },
+                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
             }
         },
         {
@@ -63,6 +64,32 @@ const wap =
                 subClass: 'light-and-shiny',
             }
         },
+        {
+            id: 'cmp106',
+            type: 'app-contact',
+            info: {
+                title: 'Get in touch',
+                address:'Tel Aviv Bacher 4',
+                phone: '123-456-7890',
+                subClass: 'light-and-shiny',
+            }
+        },
+        {
+            id: 'cmp107',
+            type: 'app-chat',
+            info: {
+                title: 'Chat',
+            }
+        },
+        {
+            id: 'cmp108',
+            type: 'app-social-links',
+            info: {
+                links:[
+                    {to: 'facebook', url: 'www.facebook.com'}
+                ]
+            }
+        }
     ]
 }
 
@@ -83,13 +110,6 @@ function addCmp(cmp) {
 }
 
 
-
-
-
-
-
-
-
 function _makeId(length = 5) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -98,17 +118,5 @@ function _makeId(length = 5) {
     }
     return txt;
 }
-// LAYOUT
-// Cmp Types:
-// app-header,
-// app-footer
-// app-map
-// app-row-2
-// app-card
-// app-contact-us
 
 // app-social-links
-
-// app-chat
-
-// app-bot

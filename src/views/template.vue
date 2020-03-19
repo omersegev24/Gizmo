@@ -12,6 +12,8 @@ import appHeader from "../cmps/app-header.vue";
 import appFooter from "../cmps/app-footer.vue";
 import layoutColumns from '../cmps/app-nav.vue';
 import appMap from '../cmps/app-map.vue';
+import appContact from '../cmps/app-contact-us.vue';
+import appChat from '../cmps/app-chat.vue';
 
 export default {
   data() {
@@ -28,7 +30,10 @@ export default {
     appCard,
     appHeader,
     appFooter,
-    appMap
+    appMap,
+    appContact,
+    layoutColumns,
+    appChat
   }
 };
 </script>
