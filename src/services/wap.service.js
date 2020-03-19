@@ -6,6 +6,20 @@ const wap =
     cmps: [
         {
             id: 'cmp101',
+            type: 'app-nav',
+            info: {
+                subClass: 'light-and-shiny / dark-and-magic',
+                logo: 'gizmo',
+                links: [
+                    {
+                        to: 'footer Id',
+                        txt: 'go down'
+                    }
+                ]
+            }
+        },
+        {
+            id: 'cmp10',
             type: 'app-header',
             info: {
                 subType: 'light-and-shiny / dark-and-magic',
@@ -14,34 +28,33 @@ const wap =
                 callToAction: 'Try it now!'
             }
         },
-        {
-            id: 'cmp102',
-            type: 'app-map',
-            info: {
-                title: 'We Sell Corona',
-                subType: 'sattelite',
-                center: { lat: 12.98, lng: 98.76 }
-            }
-        },
-        {
-            id: 'cmp103',
-            type: 'app-layout-2',
-            info: {
-                children: [
-                    {}, {}
-                ]
-            }
-        },
-        {
-            id: 'cmp104',
-            type: 'app-card',
-            info: {
-                title: 'Do it now',
-                subType: 'or later',
-                icon: 'success'
-            }
-        },
-
+        // {
+        //     id: 'cmp102',
+        //     type: 'app-map',
+        //     info: {
+        //         title: 'We Sell Corona',
+        //         subType: 'sattelite',
+        //         center: { lat: 12.98, lng: 98.76 }
+        //     }
+        // },
+        // {
+        //     id: 'cmp103',
+        //     type: 'app-layout-2',
+        //     info: {
+        //         children: [
+        //             {}, {}
+        //         ]
+        //     }
+        // },
+        // {
+        //     id: 'cmp104',
+        //     type: 'app-card',
+        //     info: {
+        //         title: 'Do it now',
+        //         subType: 'or later',
+        //         icon: 'success'
+        //     }
+        // },
     ]
 }
 
@@ -52,3 +65,25 @@ export const wapService = {
 function query() {
     return Promise.resolve(wap);
 }
+
+// LAYOUT
+// Cmp Types:
+// app-header,
+// app-footer
+// app-map
+// app-row-2
+// app-card
+// app-contact-us
+// app-nav
+// app-social-links
+// app-chat
+// app-bot
+
+
+// const layoutColumnsCmp = {
+//     template: `
+//       <section class="flex">
+//           <component v-for="child in info.children" :is="child.type" :info="child.info"></component>
+//      </section>
+//     `
+// }
