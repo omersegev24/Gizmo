@@ -1,5 +1,5 @@
 <template>
-  <section class="app-map">
+  <section class="app-map" :class="info.subClass">
     <GmapMap :center="center" :zoom="12" map-type-id="terrain" style="width: 500px; height: 300px">
       <GmapMarker
         :key="index"

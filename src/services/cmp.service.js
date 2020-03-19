@@ -66,7 +66,17 @@ const cmps = [
         info: {
             title: 'Chat',
         }
+    },
+    {
+        id: 'cmp108',
+        type: 'app-social-links',
+        info: {
+            links:[
+                {to: 'facebook', url: 'www.facebook.com'}
+            ]
+        }
     }
+
 ]
 
 export const cmpService = {

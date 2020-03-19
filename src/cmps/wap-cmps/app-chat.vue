@@ -1,5 +1,5 @@
 <template>
-  <section class="chat-app">
+  <section class="chat-app" :class="info.subClass">
     <div @click.prevent="toggleChat" v-if="!chatOpen">Chat</div>
     <div v-if="chatOpen" class="chat-container">
       <a @click="toggleChat">X</a>

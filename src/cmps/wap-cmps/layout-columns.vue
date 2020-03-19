@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-columns">
+  <section class="layout-columns" :class="info.subClass">
     <component v-for="child in info.children" :is="child.type" :info="child.info" :key="child.id"></component>
   </section>
 </template>

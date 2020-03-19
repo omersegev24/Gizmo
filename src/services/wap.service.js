@@ -8,7 +8,7 @@ const wap =
             id: 'cmp100',
             type: 'app-nav',
             info: {
-                subClass: 'light-and-shiny / dark-and-magic',
+                subClass: 'light-and-shiny',
                 logo: 'gizmo',
                 links: [
                     {
@@ -22,7 +22,7 @@ const wap =
             id: 'cmp101',
             type: 'app-header',
             info: {
-                subClass: 'light-and-shiny / dark-and-magic',
+                subClass: 'light-and-shiny',
                 title: 'We Sell Corona',
                 subTitle: 'and alcojel',
                 callToAction: 'Try it now!'
@@ -33,7 +33,7 @@ const wap =
             type: 'app-map',
             info: {
                 title: 'We Sell Corona',
-                subType: 'sattelite',
+                subClass: 'light-and-shiny',
                 center: {lat: 32.519, lng: 34.9045 },
                 markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
             }
@@ -42,6 +42,7 @@ const wap =
             id: 'cmp103',
             type: 'layout-columns',
             info: {
+                subClass: 'light-and-shiny',
                 children: [
                     {}, {}
                 ]
@@ -52,7 +53,7 @@ const wap =
             type: 'app-card',
             info: {
                 title: 'Do it now',
-                subClass: 'or later',
+                subClass: 'light-and-shiny',
                 imgUrl: ''
             }
         },
@@ -68,6 +69,7 @@ const wap =
             id: 'cmp106',
             type: 'app-contact',
             info: {
+                subClass: 'light-and-shiny',
                 title: 'Get in touch',
                 address:'Tel Aviv Bacher 4',
                 phone: '123-456-7890',
@@ -78,6 +80,7 @@ const wap =
             id: 'cmp107',
             type: 'app-chat',
             info: {
+                subClass: 'light-and-shiny',
                 title: 'Chat',
             }
         },
@@ -85,6 +88,7 @@ const wap =
             id: 'cmp108',
             type: 'app-social-links',
             info: {
+                subClass: 'light-and-shiny',
                 links:[
                     {to: 'facebook', url: 'www.facebook.com'}
                 ]
