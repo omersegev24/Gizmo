@@ -11,14 +11,11 @@
 </template>
 
 <script>
-
-import {cmpService} from '../services/cmp.service.js'
-
 export default {
   name: 'Home',
   data(){
     return{
-      cmps:[]
+      
     }
   },
   async created() {
