@@ -6,23 +6,31 @@
 
 <script>
 import { wapService } from "../services/wap.service.js";
-import appNav from '../cmps/app-nav.vue';
+import appNav from "../cmps/app-nav.vue";
+import appCard from "../cmps/app-card.vue";
+import appHeader from "../cmps/app-header.vue";
+import appFooter from "../cmps/app-footer.vue";
+import layoutColumns from '../cmps/app-nav.vue';
+import appMap from '../cmps/app-map.vue';
+
+
 
 export default {
   data() {
     return {
-        wap: {}
+      wap: {}
     };
   },
   async created() {
-    var wap = await wapService.query();
+    let wap = await wapService.query();
     this.wap = wap;
   },
-  components:{
-      appNav,
+  components: {
+    appNav,
+    appCard,
+    appHeader,
+    appFooter,
+    appMap
   }
 };
 </script>
-
-<style>
-</style>

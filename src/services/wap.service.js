@@ -5,7 +5,7 @@ const wap =
     style: {},
     cmps: [
         {
-            id: 'cmp101',
+            id: 'cmp100',
             type: 'app-nav',
             info: {
                 subClass: 'light-and-shiny / dark-and-magic',
@@ -19,7 +19,7 @@ const wap =
             }
         },
         {
-            id: 'cmp10',
+            id: 'cmp101',
             type: 'app-header',
             info: {
                 subClass: 'light-and-shiny / dark-and-magic',
@@ -38,21 +38,12 @@ const wap =
             }
         },
         {
-            id: 'cmp103',
-            type: 'app-layout-2',
-            info: {
-                children: [
-                    {}, {}
-                ]
-            }
-        },
-        {
             id: 'cmp104',
             type: 'app-card',
             info: {
                 title: 'Do it now',
-                subType: 'or later',
-                icon: 'success'
+                subClass: 'or later',
+                imgUrl: ''
             }
         },
     ]
@@ -66,15 +57,12 @@ function query() {
     return Promise.resolve(wap);
 }
 
-// LAYOUT
-// Cmp Types:
-// app-header,
-// app-footer
-// app-map
-// app-row-2
-// app-card
+
+
 // app-contact-us
-// app-nav
+
 // app-social-links
+
 // app-chat
+
 // app-bot
