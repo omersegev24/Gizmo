@@ -13,8 +13,6 @@ import appFooter from "../cmps/app-footer.vue";
 import layoutColumns from '../cmps/app-nav.vue';
 import appMap from '../cmps/app-map.vue';
 
-
-
 export default {
   data() {
     return {
