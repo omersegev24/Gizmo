@@ -1,8 +1,6 @@
 <template>
   <section class="editor-page flex">
-    <editor-sidebar
-    @addCmp="addCmp"
-     :cmps="cmps"/>
+    <editor-sidebar @addCmp="addCmp" :cmps="cmps"/>
     <wap-preview  :wap="wap"></wap-preview>
   </section>
 </template>
@@ -10,7 +8,7 @@
 <script>
 import { wapService } from "../services/wap.service.js";
 import {cmpService} from '../services/cmp.service.js'
-import wapPreview from "./wap-preview.vue";
+import wapPreview from "../cmps/wap-preview.vue";
 import editorSidebar from "../cmps/editor-sidebar.vue"
 export default {
   data() {
