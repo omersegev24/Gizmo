@@ -34,7 +34,8 @@ const wap =
             info: {
                 title: 'We Sell Corona',
                 subType: 'sattelite',
-                center: { lat: 12.98, lng: 98.76 }
+                center: {lat: 32.519, lng: 34.9045 },
+                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
             }
         },
         {
@@ -57,9 +58,6 @@ function query() {
     return Promise.resolve(wap);
 }
 
-
-
-// app-contact-us
 
 // app-social-links
 

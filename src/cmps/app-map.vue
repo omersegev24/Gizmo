@@ -15,10 +15,13 @@
 
 <script>
 export default {
+  props: {
+    info: Object
+  },
   data() {
     return {
-      center: { lat: 32.519, lng: 34.9045 },
-      markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
+      center: this.info.center,
+      markers: this.info.markers
     };
   }
 };
