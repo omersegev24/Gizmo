@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+import './styles/global.scss'
 import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.config.productionTip = false

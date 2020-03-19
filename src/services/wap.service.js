@@ -39,6 +39,15 @@ const wap =
             }
         },
         {
+            id: 'cmp103',
+            type: 'layout-columns',
+            info: {
+                children: [
+                    {}, {}
+                ]
+            }
+        },
+        {
             id: 'cmp104',
             type: 'app-card',
             info: {
@@ -47,17 +56,57 @@ const wap =
                 imgUrl: ''
             }
         },
+        {
+            id: 'cmp105',
+            type: 'app-footer',
+            info: {
+                title: 'Cofferights',
+                subClass: 'light-and-shiny',
+            }
+        },
     ]
 }
 
 export const wapService = {
     query,
+    addCmp
 }
 
 function query() {
     return Promise.resolve(wap);
 }
 
+
+function addCmp(cmp) {
+    cmp.id = _makeId()
+    wap.cmps.push(cmp);
+    return Promise.resolve(cmp)
+}
+
+
+
+
+
+
+
+
+
+function _makeId(length = 5) {
+    var txt = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return txt;
+}
+// LAYOUT
+// Cmp Types:
+// app-header,
+// app-footer
+// app-map
+// app-row-2
+// app-card
+// app-contact-us
 
 // app-social-links
 
