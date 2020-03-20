@@ -1,6 +1,6 @@
 <template>
   <section class="wap-preview">
-    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click="EditMode(cmp)"></component>
+    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click="edit(cmp)"></component>
   </section>
 </template>
 
@@ -20,6 +20,11 @@ import appArticle from '../cmps/wap-cmps/app-article.vue';
 export default {
   props:{
     wap: Object
+  },
+  methods:{
+    edit(cmp){
+      eventBus.$emit('edit',cmp)
+    }
   },
   components: {
     appNav,
