@@ -89,10 +89,11 @@ const gWap =
             info: {
                 style: {},
                 subClass: 'light-and-shiny',
-                title: 'Get in touch',
+                title: 'CONTACT',
+                country: 'Israel',
                 address: 'Tel Aviv Bacher 4',
                 phone: '123-456-7890',
-                subClass: 'light-and-shiny',
+                email: 'gizmo@gizmo.com'
             }
         },
  
@@ -103,7 +104,9 @@ const gWap =
                 style: {},
                 subClass: 'light-and-shiny',
                 links: [
-                    { to: 'facebook', url: 'www.facebook.com' }
+                    { to: 'facebook', url: 'www.facebook.com' },
+                    { to: 'github', url: 'www.github.com' },
+                    { to: 'instagram', url: 'www.instagram.com' },
                 ]
             }
         },
@@ -161,7 +164,6 @@ const gWap =
                 ]
             }
         },
-
         {
             id: 'cmp107',
             type: 'app-chat',
@@ -175,9 +177,24 @@ const gWap =
             id: 'cmp105',
             type: 'app-footer',
             info: {
+                style:{},
                 title: 'Cofferights',
                 subClass: 'light-and-shiny',
-                style:{}
+                children: [
+                    {
+                        id: 'cmp108',
+                        type: 'app-social-links',
+                        info: {
+                            style: {},
+                            subClass: 'light-and-shiny',
+                            links: [
+                                { to: 'facebook-square', url: 'www.facebook.com' },
+                                { to: 'github-square', url: 'www.github.com' },
+                                { to: 'instagram', url: 'www.instagram.com' },
+                            ]
+                        }
+                    }
+                ]
             }
         },
     ]
