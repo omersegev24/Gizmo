@@ -168,7 +168,8 @@ const gWap =
 export const wapService = {
     query,
     addCmp,
-    updateWap
+    updateWap,
+    removeCmp
 }
 
 
@@ -197,6 +198,13 @@ function updateWap(cmp) {
     return Promise.resolve(wap)
 }
 
+function removeCmp(cmp){
+    let wap = storageService.load(WAP_KEY)
+    const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
+    wap.cmps.splice(idx, 1)
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(idx)
+}
 function _makeId(length = 5) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

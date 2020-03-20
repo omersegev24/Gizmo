@@ -22,6 +22,7 @@ const cmps = [
             subTitle: 'Description',
             callToAction: 'Try it now!'
         }
+
     },
     {
         id: 'cmp112',
@@ -76,7 +77,7 @@ const cmps = [
         type: 'app-contact',
         info: {
             title: 'Get in touch',
-            address:'Tel Aviv Bacher 4',
+            address: 'Tel Aviv Bacher 4',
             phone: '123-456-7890',
             subClass: 'light-and-shiny',
         }
@@ -94,8 +95,8 @@ const cmps = [
         type: 'app-social-links',
         info: {
             subClass: 'light-and-shiny',
-            links:[
-                {to: 'facebook', url: 'www.facebook.com'}
+            links: [
+                { to: 'facebook', url: 'www.facebook.com' }
             ]
         }
     },
