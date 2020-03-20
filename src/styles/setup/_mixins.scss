@@ -1,3 +1,22 @@
+/* Lign and shiny mixins */
+
+@mixin for-light-button {
+  color: $clr1;
+  background-color: $clr2;
+  border: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid $clr2;
+  transition: .3s;
+
+  &:hover {
+    color: $clr2;
+    background-color: $clr1;
+    border: 2px solid $clr2;
+  }
+}
+
+
 /* Media queries Breakpoint mixins */
 
 @mixin for-narrow-layout {

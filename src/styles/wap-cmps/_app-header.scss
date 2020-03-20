@@ -1,0 +1,33 @@
+.app-header.light-and-shiny {
+    // background-color: crimson;
+    // padding: 20px;
+    // height: 55vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("~@/assets/img/hero-photographer.jpg");
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-bottom: rem(50px);
+    color: #fff;
+    
+    >* {
+        font-family: Lato;
+        font-family: AlegreyaSans;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 6rem;
+        margin-bottom: 10px;
+            
+    }
+
+    .sub-title {
+        margin: 0;
+    }
+
+    button {
+        @include for-light-button;
+    }
+}

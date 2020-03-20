@@ -2,11 +2,12 @@
     background-color: $clr2;
     color: $clr1;
     width: 20vw;
-    position: fixed;
+    z-index: 2;
+    position: absolute;
     bottom: 0;
-    right: 1%;
+    right: 0;
     text-align: start;
-    filter: drop-shadow(0 0 0.75rem rgb(184, 184, 184));
+    filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
 
     .unopened-chat-container {
         .unopened-chat-titles {
@@ -43,6 +44,7 @@
     }
 
     .msgs-container {
+        overflow-y: auto;
         background-color: $clr1;
         color: $clr2;
         padding: 5px;
@@ -70,7 +72,7 @@
         background-color: #ffffff;
         padding: 5px;
         input {
-            width: 85%;
+            width: 92%;
             padding: 5px;
             padding: top;
             border: none;
@@ -78,7 +80,6 @@
         }
 
         .msg-send {
-            margin-left: 10px;
             color: $clr2;
 
             &:hover {
