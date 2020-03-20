@@ -1,6 +1,6 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :info="cmp.info" :style="cmp.info.style"></component>
+    <component :is="cmp.type" :info="cmp.info" :style="cmp.style"></component>
     <actions-panel :cmp="cmp"></actions-panel>
   </div>
 </template>
@@ -22,11 +22,6 @@ import actionsPanel from '../cmps/actions-panel.vue'
 export default {
   props: {
     cmp: Object
-  },
-  methods: {
-    // edit(cmp) {
-    //   eventBus.$emit('edit', cmp)
-    // }
   },
   components: {
     appNav,
