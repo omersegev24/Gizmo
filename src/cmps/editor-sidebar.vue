@@ -1,13 +1,12 @@
 <template>
   <section class="editor-sidebar">
-    
     <div class="top-sidebar flex">
       <div class="add" @click="editMode = false">Elements</div>
       <div class="edit" @click="editMode = true">Edit</div>
     </div>
 
     <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
-    
+
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
@@ -75,7 +74,7 @@ export default {
       this.currCmp = JSON.parse(JSON.stringify(cmp))
     })
   },
-  computed:{
+  computed: {
 
   },
   methods: {

@@ -1,7 +1,9 @@
 <template>
   <div class="edit-panel flex flex-column">
-  
-    <div v-if="currCmp.info.title">
+    <div v-for="(item, idx) in currCmp.info" :key="idx">
+      <input type="text" v-model="currCmp.info[idx]"/>
+    </div>
+    <!-- <div v-if="currCmp.info.title">
       <span>Title</span>
       <input type="text" v-model="currCmp.info.title" />
     </div>
@@ -47,7 +49,7 @@
         <input type="text" v-model="currCmp.info.links.to" />
         <input type="text" v-model="currCmp.info.links.url" />
       </div>
-    </div>
+    </div> -->
 
     <div class="flex flex-column">
       <span>Color</span>
@@ -58,7 +60,7 @@
         <option value="left">Left</option>
         <option value="center">Lenter</option>
         <option value="right">Right</option>
-      </select>
+      </select> 
 
       <span>Text Size</span>
       <input type="range" v-model="currCmp.info.style.fontSize" min="5" max="100" />
@@ -68,17 +70,15 @@
 
       <span>Font</span>
       <select v-model="currCmp.info.style.fontFamily">
-       <option value=""></option>
+        <option value></option>
       </select>
 
       <span>Font Weight</span>
       <select v-model="currCmp.info.style.fontWeight">
-       <option value="normal">Normal</option>
-       <option value="bold">Bold</option>
+        <option value="normal">Normal</option>
+        <option value="bold">Bold</option>
       </select>
-
-
-    </div>
+    </div> 
   </div>
 </template>
 
