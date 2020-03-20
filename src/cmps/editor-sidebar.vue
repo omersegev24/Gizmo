@@ -1,12 +1,12 @@
 <template>
   <section class="editor-sidebar">
     <div class="top-sidebar flex space-evenly">
-        <div class="add">Elements</div>
-        <div class="edit">Edit</div>
+      <div class="add">Elements</div>
+      <div class="edit">Edit</div>
     </div>
 
-    <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
-   
+    <edit-panel v-if="currCmp" :currCmp="currCmp"></edit-panel>
+    
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
@@ -65,19 +65,18 @@ export default {
         }
       ],
       editMode: false,
-      currCmp:null
+      currCmp: null
     };
   },
-  created(){
-    eventBus.$on('edit', cmp=>{
-      this.edit(cmp)
+  created() {
+    eventBus.$on('edit', cmp => {
+      console.log('edit bus', cmp);
+      
+      this.editMode = true;
+      this.currCmp = cmp
     })
   },
   methods: {
-    edit(cmp){
-      this.editMode = true;
-      this.currCmp= JSON.parse(JSON.stringify(cmp))
-    },
     toggle(currItem) {
       this.items.forEach((item, index) => {
         if (item.id === currItem.id) item.active = !item.active;
@@ -85,7 +84,7 @@ export default {
       });
     }
   },
-  components:{
+  components: {
     editPanel
   }
 };

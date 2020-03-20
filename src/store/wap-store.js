@@ -5,7 +5,9 @@ export default ({
         wap: {},
     },
     getters: {
-
+        getWap(state){
+            return state.wap;
+        }
     },
     mutations: {
 
@@ -15,8 +17,17 @@ export default ({
         addCmp(state, { cmp }) {
             console.log('Adding new cmp!')
         },
+        updateWap(state, { updatedCmp }) {
+            const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
+            state.wap.cmps.splice(idx, 1, updatedCmp)
+        }
     },
     actions: {
+        async loadWap(context) {
+            const wap = await wapService.query()
+            context.commit({ type: 'setWap', wap })
+            return wap
+        },
         async addCmp(context, { cmp }) {
             var cmpCopy = JSON.parse(JSON.stringify(cmp))
             var addedCmp = await wapService.addCmp(cmpCopy)
@@ -26,5 +37,13 @@ export default ({
             })
             return addedCmp
         },
+        async updateCmp(contect, { cmp }) {
+            console.log('store', cmp)
+            var updatedCmp = await wapService.updateCmp(cmp)
+            contect.commit({
+                type: 'updateWap',
+                updatedCmp
+            })
+        }
     },
 })
