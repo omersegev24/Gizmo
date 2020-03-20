@@ -5,7 +5,7 @@ export default ({
         wap: {},
     },
     getters: {
-        getWap(state){
+        getWap(state) {
             return state.wap;
         }
     },
@@ -14,13 +14,18 @@ export default ({
         setWap(state, { wap }) {
             state.wap = wap
         },
-        addCmp(state, { cmp }) {
-            console.log('Adding new cmp!')
+        addCmp(state, { addedCmp }) {
+            state.wap.cmps.push(addedCmp)
         },
         updateWap(state, { updatedCmp }) {
             const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
             state.wap.cmps.splice(idx, 1, updatedCmp)
-        }
+        },
+
+        removeCmp(state, { cmpIdx }) {
+            state.wap.cmps.splice(cmpIdx, 1)
+        },
+
     },
     actions: {
         async loadWap(context) {
@@ -29,6 +34,7 @@ export default ({
             return wap
         },
         async addCmp(context, { cmp }) {
+            console.log('aaa', cmp)
             var cmpCopy = JSON.parse(JSON.stringify(cmp))
             var addedCmp = await wapService.addCmp(cmpCopy)
             context.commit({
@@ -38,12 +44,19 @@ export default ({
             return addedCmp
         },
         async updateCmp(context, { cmp }) {
-            var wap = await wapService.updateWap(cmp)
+            const wap = await wapService.updateWap(cmp)
             context.commit({
                 type: 'setWap',
                 wap
             })
-            
+
+        },
+        async removeCmp(context, { cmp }) {
+            const cmpIdx = await wapService.removeCmp(cmp)
+            context.commit({
+                type: 'removeCmp',
+                cmpIdx
+            })
         }
     },
 })

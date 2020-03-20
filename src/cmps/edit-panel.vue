@@ -51,8 +51,8 @@
         <input type="text" v-model="currCmp.info.links.url" />
       </div>
     </div>
-    
-    <div>
+
+    <div class="flex flex-column">
       <span>Color</span>
       <input type="color" v-model="currCmp.info.style.color" />
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="contact-us" :class="info.subClass">
+  <section class="app-contact-us" id="app-contact-us" :class="info.subClass">
     <h3>{{info.title}}</h3>
     <p>{{info.address}}</p>
     <p>{{info.phone}}</p>
