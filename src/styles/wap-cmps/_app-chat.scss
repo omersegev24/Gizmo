@@ -2,10 +2,10 @@
     background-color: $clr2;
     color: $clr1;
     width: 20vw;
-    z-index: 2;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+
+    // position: absolute;
+
+    float: right;
     text-align: start;
     filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
 

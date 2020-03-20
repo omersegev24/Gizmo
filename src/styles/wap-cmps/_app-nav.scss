@@ -1,3 +1,23 @@
-.app-nav .light-and-shiny {
+.app-nav.light-and-shiny {
+    font-family: AlegreyaSans;
+    margin: 0;
+    .logo {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: Lobster, cursive;
+    }
 
+    >* {
+        color: $clr2;
+    }
+
+    li {
+        a {
+            color: $clr2;
+            margin-left: rem(50px);
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

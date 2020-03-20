@@ -1,6 +1,6 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :info="cmp.info"></component>
+    <component class="hi" :is="cmp.type" :info="cmp.info"></component>
     <actions-panel :cmp="cmp"></actions-panel>
   </div>
 </template>

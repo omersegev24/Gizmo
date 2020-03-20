@@ -1,0 +1,23 @@
+.app-contact-us {
+    background-color: $clr1;
+
+    label {
+        text-align: start;
+        font-size: rem(14px);
+
+        input {
+            padding: 5px;
+
+            &::placeholder {
+                font-size: rem(12px);
+            }
+        }
+    }
+
+    button {
+        @include for-light-button;
+        margin-left: auto;
+        width: fit-content;
+        padding: 5px 20px;
+    }
+}
