@@ -1,6 +1,6 @@
 <template>
   <section class="wap-preview">
-    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info"></component>
+    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click="EditMode(cmp)"></component>
   </section>
 </template>
 
