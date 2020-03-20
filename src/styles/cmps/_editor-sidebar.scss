@@ -26,6 +26,12 @@
         color: $clr2;
       }
     }
+
+    .active-tab {
+      transition: .3s;
+      background-color: #fff;
+      color: $clr2;
+    }
   }
 }
 
