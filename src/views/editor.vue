@@ -9,7 +9,6 @@
 import { eventBus } from '../services/eventBus.service.js';
 import { wapService } from '../services/wap.service.js';
 import { cmpService } from '../services/cmp.service.js';
-// import wapPreview from '../cmps/wap-preview.vue';
 import editorSidebar from '../cmps/editor-sidebar.vue';
 import wapContainer from '../cmps/wap-container.vue'
 export default {
@@ -30,7 +29,6 @@ export default {
   },
   computed: {
     wap() {
-      console.log('yes')
       return this.$store.getters.getWap;
     }
   },

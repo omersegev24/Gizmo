@@ -10,6 +10,7 @@ const gWap =
             id: 'cmp100',
             type: 'app-nav',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 logo: 'Gizmo',
                 links: [
@@ -32,6 +33,7 @@ const gWap =
             id: 'cmp101',
             type: 'app-header',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 title: 'We Sell Corona',
                 subTitle: 'and alcojel',
@@ -42,12 +44,14 @@ const gWap =
             id: 'cmp103',
             type: 'layout-2-columns',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 children: [
                     {
                         id: 'cmp11',
                         type: 'app-article',
                         info: {
+                            style: {},
                             subClass: 'light-and-shiny',
                             title: 'Article title',
                             subTitle: 'Article title',
@@ -58,6 +62,7 @@ const gWap =
                         id: 'cmp12',
                         type: 'app-article',
                         info: {
+                            style: {},
                             subClass: 'light-and-shiny',
                             title: 'Article title',
                             subTitle: 'Article title',
@@ -71,6 +76,7 @@ const gWap =
             id: 'cmp104',
             type: 'app-card',
             info: {
+                style: {},
                 title: 'Do it now',
                 subClass: 'light-and-shiny',
                 imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
@@ -80,6 +86,7 @@ const gWap =
             id: 'cmp105',
             type: 'app-footer',
             info: {
+                style: {},
                 title: 'Cofferights',
                 subClass: 'light-and-shiny',
             }
@@ -88,6 +95,7 @@ const gWap =
             id: 'cmp106',
             type: 'app-contact',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 title: 'Get in touch',
                 address: 'Tel Aviv Bacher 4',
@@ -99,6 +107,7 @@ const gWap =
             id: 'cmp107',
             type: 'app-chat',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 title: 'Chat',
             }
@@ -107,6 +116,7 @@ const gWap =
             id: 'cmp108',
             type: 'app-social-links',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 links: [
                     { to: 'facebook', url: 'www.facebook.com' }
@@ -117,6 +127,7 @@ const gWap =
             id: 'cmp102',
             type: 'app-map',
             info: {
+                style: {},
                 title: 'We Sell Corona',
                 subClass: 'light-and-shiny',
                 center: { lat: 32.519, lng: 34.9045 },
@@ -127,12 +138,14 @@ const gWap =
             id: 'cmp109',
             type: 'layout-3-columns',
             info: {
+                style: {},
                 subClass: 'light-and-shiny',
                 children: [
                     {
                         id: 'cmp1091',
                         type: 'app-article',
                         info: {
+                            style: {},
                             subClass: 'light-and-shiny',
                             title: 'Article title',
                             subTitle: 'Article title',
@@ -143,6 +156,7 @@ const gWap =
                         id: 'cmp1092',
                         type: 'app-article',
                         info: {
+                            style: {},
                             subClass: 'light-and-shiny',
                             title: 'Article title',
                             subTitle: 'Article title',
@@ -153,6 +167,7 @@ const gWap =
                         id: 'cmp1093',
                         type: 'app-article',
                         info: {
+                            style: {},
                             subClass: 'light-and-shiny',
                             title: 'Article title',
                             subTitle: 'Article title',
