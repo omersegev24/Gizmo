@@ -1,5 +1,6 @@
 <template>
   <section class="editor-sidebar">
+    
     <div class="top-sidebar flex space-evenly">
       <div class="add">Elements</div>
       <div class="edit">Edit</div>
