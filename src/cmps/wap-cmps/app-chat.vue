@@ -1,13 +1,38 @@
 <template>
-  <section class="chat-app" :class="info.subClass">
-    <div @click.prevent="toggleChat" v-if="!chatOpen">Chat</div>
+  <section class="app-chat light-and-shiny" :class="info.subClass">
+    <div class="unopened-chat-container flex space-between" @click.prevent="toggleChat" v-if="!chatOpen">
+      <section class="unopened-chat-titles">
+        <p>Let's Chat!</p>
+        <p class="chat-sm-txt">
+          <span class="fas fa-bolt"></span>
+          We'll reply as soon as we can
+        </p>
+      </section>
+      <span class="arrow-icon fas fa-angle-up flex justify-center align-center"></span>
+    </div>
     <div v-if="chatOpen" class="chat-container">
-      <a @click="toggleChat">X</a>
-      <ul>
-        <li v-for="(msg, index) in msgs" :key="index">{{msg.username}}: {{msg.text}}</li>
+      <div class="unopened-chat-container flex space-between" @click.prevent="toggleChat">
+        <section class="unopened-chat-titles">
+          <p>Let's Chat!</p>
+          <p class="chat-sm-txt">
+            <span class="fas fa-bolt"></span>
+            We'll reply as soon as we can
+          </p>
+        </section>
+        <span class="arrow-icon fas fa-angle-down flex justify-center align-center"></span>
+      </div>
+      <ul class="msgs-container">
+        <li 
+          v-for="(msg, index) in msgs" 
+          :key="index"
+          :class="[msg.username === 'Support' ? 'support' : '']">
+          {{msg.username}}: {{msg.text}}
+        </li>
       </ul>
-      <input v-model="msg.text" type="text" />
-      <button @click="sendMsg">Send</button>
+      <div class="msg-send-container">
+        <input v-model="msg.text" type="text" placeholder="Type your message..." />
+        <span class="msg-send fa fa-send-o" @click="sendMsg" title="Send"></span>
+      </div>
     </div>
   </section>
 </template>
@@ -20,15 +45,22 @@ export default {
   data() {
     return {
       msg: {username: 'Guest', text: ''},
-      autoMsg: { username: "Support", text: "Sure thing honey" },
+      autoMsg: { username: 'Support', text: 'Sure thing honey' },
       msgs: [],
       chatOpen: false
     };
   },
+
+  computed: {
+    isSupport() {
+      return msg.username === 'Support'
+    }
+  },
+
   methods: {
     sendMsg() {
       this.msgs.push(this.msg);
-      this.msg = "";
+      this.msg = '';
       
       setTimeout(() => {
         this.msgs.push(this.autoMsg);

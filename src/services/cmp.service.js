@@ -86,7 +86,6 @@ const cmps = [
             ]
         }
     }
-
 ]
 
 export const cmpService = {
