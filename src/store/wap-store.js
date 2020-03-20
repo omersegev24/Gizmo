@@ -20,6 +20,7 @@ export default ({
         updateWap(state, { updatedCmp }) {
             const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
             state.wap.cmps.splice(idx, 1, updatedCmp)
+            state.wap.cmps.splice(idx, 1, updatedCmp)
         }
     },
     actions: {
