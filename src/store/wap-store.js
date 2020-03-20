@@ -20,6 +20,7 @@ export default ({
         updateWap(state, { updatedCmp }) {
             const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
             state.wap.cmps.splice(idx, 1, updatedCmp)
+            state.wap.cmps.splice(idx, 1, updatedCmp)
         }
     },
     actions: {
@@ -37,10 +38,10 @@ export default ({
             })
             return addedCmp
         },
-        async updateCmp(contect, { cmp }) {
+        async updateCmp(context, { cmp }) {
             console.log('store', cmp)
             var updatedCmp = await wapService.updateCmp(cmp)
-            contect.commit({
+            context.commit({
                 type: 'updateWap',
                 updatedCmp
             })
