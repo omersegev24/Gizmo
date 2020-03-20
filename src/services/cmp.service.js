@@ -20,7 +20,8 @@ const cmps = [
             subClass: 'light-and-shiny',
             title: 'Header title',
             subTitle: 'Description',
-            callToAction: 'Try it now!'
+            callToAction: 'Try it now!',
+            style: { textAlign: 'left' }
         }
 
     },
