@@ -1,6 +1,7 @@
 <template>
   <section class="editor-page flex">
-    <editor-sidebar @addCmp="addCmp" :cmps="cmps"/>
+    
+    <editor-sidebar  @addCmp="addCmp" :cmps="cmps"/>
     <wap-preview  :wap="wap"></wap-preview>
   </section>
 </template>

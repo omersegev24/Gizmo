@@ -1,6 +1,14 @@
 <template>
-  <section class="editor-sidbar">
-    <div class="accordion" role="presentation">
+  <section class="editor-sidebar">
+    <div class="top-sidebar flex space-evenly">
+        <div class="add">Elements</div>
+        <div class="edit">Edit</div>
+    </div>
+
+    <div class="edit-panel">
+      
+    </div>
+    <div v-if="toggleMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
           <div class="accordion-item-title">
@@ -54,10 +62,21 @@ export default {
           title: "Widgets",
           details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`
         }
-      ]
+      ],
+      toggleMode:true,
+      currCmp:{}
     };
   },
+  created(){
+    eventBus.$on('edit', cmp=>{
+      this.edit(cmp)
+    })
+  },
   methods: {
+    edit(cmp){
+      this.editMode = true;
+      this.currCmp= JSON.parse(JSON.stringify(cmp))
+    },
     toggle(currItem) {
       this.items.forEach((item, index) => {
         if (item.id === currItem.id) item.active = !item.active;
