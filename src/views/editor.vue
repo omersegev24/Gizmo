@@ -29,8 +29,8 @@ export default {
   },
   computed: {
     wap(){
-      const wapCopy = this.$store.getters.getWap;
-      return wapCopy;
+      console.log('yes')
+      return this.$store.getters.getWap;
     }
   },
   methods: {

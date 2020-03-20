@@ -5,8 +5,7 @@
       <div class="edit">Edit</div>
     </div>
 
-    <edit-panel v-if="currCmp" :currCmp="currCmp"></edit-panel>
-    
+    <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
@@ -71,8 +70,7 @@ export default {
   created() {
     eventBus.$on('edit', cmp => {
       this.editMode = true;
-      const cmpCopy = JSON.parse(JSON.stringify(cmp))
-      this.currCmp = cmpCopy
+      this.currCmp = JSON.parse(JSON.stringify(cmp))
     })
   },
   methods: {
