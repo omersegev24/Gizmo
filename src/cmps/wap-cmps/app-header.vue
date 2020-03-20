@@ -1,6 +1,7 @@
 <template>
   <header
     class="app-header light-and-shiny flex justify-center align-center flex-column"
+    id="app-header"
     :class="info.subClass"
   >
     <h1

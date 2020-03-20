@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer" id="footer" :class="info.subClass">
+  <footer class="app-footer" id="app-footer" :class="info.subClass">
     <p>{{info.title}}</p>
   </footer>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card light-and-shiny" :class="info.subClass">
+  <div class="app-card light-and-shiny" id="card" :class="info.subClass">
     <img :src="info.imgUrl" alt="Card Image" />
     <h3 class="card-text">{{info.title}}</h3>
     <p>Check out our team</p>
