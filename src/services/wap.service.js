@@ -72,6 +72,7 @@ const gWap =
                 ]
             }
         },
+
         {
             id: 'cmp104',
             type: 'app-card',
@@ -80,15 +81,6 @@ const gWap =
                 title: 'Do it now',
                 subClass: 'light-and-shiny',
                 imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-            }
-        },
-        {
-            id: 'cmp105',
-            type: 'app-footer',
-            info: {
-                style: {},
-                title: 'Cofferights',
-                subClass: 'light-and-shiny',
             }
         },
         {
@@ -103,15 +95,7 @@ const gWap =
                 subClass: 'light-and-shiny',
             }
         },
-        {
-            id: 'cmp107',
-            type: 'app-chat',
-            info: {
-                style: {},
-                subClass: 'light-and-shiny',
-                title: 'Chat',
-            }
-        },
+ 
         {
             id: 'cmp108',
             type: 'app-social-links',
@@ -175,6 +159,23 @@ const gWap =
                         }
                     }
                 ]
+            }
+        },
+
+        {
+            id: 'cmp107',
+            type: 'app-chat',
+            info: {
+                subClass: 'light-and-shiny',
+                title: 'Chat',
+            }
+        },
+        {
+            id: 'cmp105',
+            type: 'app-footer',
+            info: {
+                title: 'Cofferights',
+                subClass: 'light-and-shiny',
             }
         },
     ]
