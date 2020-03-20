@@ -37,13 +37,14 @@ export default ({
             })
             return addedCmp
         },
-        async updateCmp(contect, { cmp }) {
+        async updateCmp(context, { cmp }) {
             console.log('store', cmp)
-            var updatedCmp = await wapService.updateCmp(cmp)
-            contect.commit({
-                type: 'updateWap',
-                updatedCmp
+            var wap = await wapService.updateWap(cmp)
+            context.commit({
+                type: 'setWap',
+                wap
             })
+            
         }
     },
 })

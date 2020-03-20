@@ -25,8 +25,7 @@ export default {
   },
   methods:{
     edit(cmp){
-      const cmpCopy= JSON.parse(JSON.stringify(cmp))
-      eventBus.$emit('edit',cmpCopy)
+      eventBus.$emit('edit',cmp)
     }
   },
   components: {

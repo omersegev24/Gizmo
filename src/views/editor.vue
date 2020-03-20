@@ -30,6 +30,7 @@ export default {
   },
   computed: {
     wap(){
+      console.log('yes')
       return this.$store.getters.getWap;
     }
   },
