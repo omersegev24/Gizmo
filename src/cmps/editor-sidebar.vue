@@ -5,10 +5,9 @@
         <div class="edit">Edit</div>
     </div>
 
-    <div class="edit-panel">
-      
-    </div>
-    <div v-if="toggleMode" class="add-cmp accordion" role="presentation">
+    <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
+   
+    <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
           <div class="accordion-item-title">
@@ -37,6 +36,8 @@
 </template>
 
 <script>
+import { eventBus } from "../services/eventBus.service.js";
+import editPanel from '../cmps/edit-panel.vue'
 export default {
   props: {
     cmps: Array
@@ -63,8 +64,8 @@ export default {
           details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`
         }
       ],
-      toggleMode:true,
-      currCmp:{}
+      editMode: false,
+      currCmp:null
     };
   },
   created(){
@@ -84,11 +85,8 @@ export default {
       });
     }
   },
-  startTransition(el) {
-    el.style.height = el.scrollHeight + "px";
-  },
-  endTransition(el) {
-    el.style.height = "";
+  components:{
+    editPanel
   }
 };
 </script>
