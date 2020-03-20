@@ -1,9 +1,11 @@
 .editor-sidebar {
-  // margin: 0 auto;
   width: rem(400px);
   border-right: 1px solid rgba(10, 10, 10, 0.1);
-  position: absolute;
-  left: 0;
+
+  position: sticky;
+  height: 100vh;
+  top: 10px;
+  bottom: auto;
 }
 
 .accordion {
@@ -82,13 +84,12 @@
   height: 0 !important;
 }
 
-
 .cmp-btn {
   background-color: #fff;
   padding: 0.5rem;
   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
   cursor: pointer;
   &:hover {
-    opacity: .5;
+    opacity: 0.5;
   }
 }

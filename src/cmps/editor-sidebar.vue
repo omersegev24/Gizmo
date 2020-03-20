@@ -7,6 +7,7 @@
     </div>
 
     <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
+    
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
