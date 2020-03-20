@@ -1,32 +1,25 @@
 <template>
-  <section class="template-container">
-
+  <section class="wap-preview">
     <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info"></component>
   </section>
 </template>
 
 <script>
-import { wapService } from "../services/wap.service.js";
 import appNav from "../cmps/wap-cmps/app-nav.vue";
 import appCard from "../cmps/wap-cmps/app-card.vue";
 import appHeader from "../cmps/wap-cmps/app-header.vue";
 import appFooter from "../cmps/wap-cmps/app-footer.vue";
-import layoutColumns from '../cmps/wap-cmps/app-nav.vue';
+import layout2Columns from '../cmps/wap-cmps/layout-2-columns.vue';
+import layout3Columns from '../cmps/wap-cmps/layout-3-columns.vue';
 import appMap from '../cmps/wap-cmps/app-map.vue';
 import appContact from '../cmps/wap-cmps/app-contact-us.vue';
 import appChat from '../cmps/wap-cmps/app-chat.vue';
 import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
-
+import appArticle from '../cmps/wap-cmps/app-article.vue';
 
 export default {
-  data() {
-    return {
-      wap: {}
-    };
-  },
-  async created() {
-    let wap = await wapService.query();
-    this.wap = wap;
+  props:{
+    wap: Object
   },
   components: {
     appNav,
@@ -35,9 +28,11 @@ export default {
     appFooter,
     appMap,
     appContact,
-    layoutColumns,
+    layout2Columns,
+    layout3Columns,
     appChat,
-    appSocialLinks
+    appSocialLinks,
+    appArticle
   }
 };
 </script>

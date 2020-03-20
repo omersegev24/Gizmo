@@ -36,10 +36,19 @@ const cmps = [
 
     {
         id: 'cmp103',
-        type: 'layout-columns',
+        type: 'layout-2-columns',
         info: {
             children: [
                 {}, {}
+            ]
+        }
+    },
+    {
+        id: 'cmp109',
+        type: 'layout-3-columns',
+        info: {
+            children: [
+                {}, {}, {}
             ]
         }
     },
@@ -85,7 +94,7 @@ const cmps = [
                 {to: 'facebook', url: 'www.facebook.com'}
             ]
         }
-    }
+    },
 ]
 
 export const cmpService = {
