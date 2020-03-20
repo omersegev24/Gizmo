@@ -27,6 +27,9 @@ export default {
     eventBus.$on('updateCmp', updatedCmp => {
       this.updateCmp(updatedCmp)
     })
+    eventBus.$on('remove', cmp => {
+      this.$store.dispatch({ type: 'removeCmp', cmp })
+    })
   },
   computed: {
     wap() {

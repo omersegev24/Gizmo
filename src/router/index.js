@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import homePage from '../views/home.vue'
 import aboutPage from '../views/about.vue'
 import editorPage from '../views/editor.vue'
+import explorePage from '../views/explore.vue'
+
 
 
 Vue.use(VueRouter)
@@ -23,6 +25,12 @@ const routes = [
     name: 'Editor',
     component: editorPage
   },
+  {
+    path: '/explore',
+    name: 'Explore',
+    component: explorePage
+  },
+
 ]
 
 const router = new VueRouter({

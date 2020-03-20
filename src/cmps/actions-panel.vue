@@ -1,6 +1,6 @@
 <template>
   <div class="actions-panel">
-    <button>Delete</button>
+    <button @click="remove()">Delete</button>
     <button @click="edit()">Edit</button>
   </div>
 </template>
@@ -12,8 +12,11 @@ export default {
     cmp: Object
   },
   methods: {
-    edit(cmp) {
+    edit() {
       eventBus.$emit('edit', this.cmp)
+    },
+    remove() {
+      eventBus.$emit('remove', this.cmp)
     }
   }
 }
