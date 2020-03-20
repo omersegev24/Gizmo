@@ -9,12 +9,20 @@ const wap =
             type: 'app-nav',
             info: {
                 subClass: 'light-and-shiny',
-                logo: 'gizmo',
+                logo: 'Gizmo',
                 links: [
                     {
-                        to: 'footer',
+                        to: 'app-header',
+                        txt: 'Home'
+                    },
+                    {
+                        to: 'app-contact',
+                        txt: 'Contact'
+                    },
+                    {
+                        to: 'app-footer',
                         txt: 'go down'
-                    }
+                    },
                 ]
             }
         },

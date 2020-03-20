@@ -1,0 +1,18 @@
+.app-nav.light-and-shiny {
+    background-color: crimson;
+    font-family: AlegreyaSans;
+    position:absolute; 
+    top:0;
+    
+    .logo {
+        font-size: 2rem;
+    }
+
+    >* {
+        color: $clr2;
+    }
+
+    li a {
+        color: $clr2;
+    }
+}
