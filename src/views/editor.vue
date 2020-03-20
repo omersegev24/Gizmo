@@ -1,7 +1,7 @@
 <template>
   <section class="editor-page flex">
     <editor-sidebar @addCmp="addCmp" :cmps="cmps" />
-    <wap-preview :wap="wap"></wap-preview>
+    <wap-container :wap="wap"></wap-container>
   </section>
 </template>
 
@@ -9,8 +9,9 @@
 import { eventBus } from '../services/eventBus.service.js';
 import { wapService } from '../services/wap.service.js';
 import { cmpService } from '../services/cmp.service.js';
-import wapPreview from '../cmps/wap-preview.vue';
+// import wapPreview from '../cmps/wap-preview.vue';
 import editorSidebar from '../cmps/editor-sidebar.vue';
+import wapContainer from '../cmps/wap-container.vue'
 export default {
   data() {
     return {
@@ -18,8 +19,8 @@ export default {
     };
   },
   async created() {
-    this.$store.dispatch({type:'loadWap'})
-    
+    this.$store.dispatch({ type: 'loadWap' })
+
     let cmps = await cmpService.query();
     this.cmps = cmps;
 
@@ -28,7 +29,7 @@ export default {
     })
   },
   computed: {
-    wap(){
+    wap() {
       console.log('yes')
       return this.$store.getters.getWap;
     }
@@ -38,12 +39,13 @@ export default {
       this.$store.dispatch({ type: 'addCmp', cmp })
     },
     updateCmp(cmp) {
-      this.$store.dispatch({type:'updateCmp', cmp})
+      this.$store.dispatch({ type: 'updateCmp', cmp })
     }
   },
   components: {
-    wapPreview,
-    editorSidebar
+    // wapPreview,
+    editorSidebar,
+    wapContainer
   }
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
-  <section class="wap-preview" v-if="wap">
-    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click.native="edit(cmp)"></component>
-  </section>
+  <div class="wap-preview">
+    <component :is="cmp.type" :info="cmp.info"></component>
+    <actions-panel :cmp="cmp"></actions-panel>
+  </div>
 </template>
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
-
 import appNav from "../cmps/wap-cmps/app-nav.vue";
 import appCard from "../cmps/wap-cmps/app-card.vue";
 import appHeader from "../cmps/wap-cmps/app-header.vue";
@@ -18,15 +18,15 @@ import appContact from '../cmps/wap-cmps/app-contact-us.vue';
 import appChat from '../cmps/wap-cmps/app-chat.vue';
 import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 import appArticle from '../cmps/wap-cmps/app-article.vue';
-
+import actionsPanel from '../cmps/actions-panel.vue'
 export default {
-  props:{
-    wap: Object
+  props: {
+    cmp: Object
   },
-  methods:{
-    edit(cmp){
-      eventBus.$emit('edit',cmp)
-    }
+  methods: {
+    // edit(cmp) {
+    //   eventBus.$emit('edit', cmp)
+    // }
   },
   components: {
     appNav,
@@ -39,7 +39,8 @@ export default {
     layout3Columns,
     appChat,
     appSocialLinks,
-    appArticle
+    appArticle,
+    actionsPanel
   }
 };
 </script>

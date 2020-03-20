@@ -1,21 +1,22 @@
 // SETUP
-@import 'setup/typography';
-@import 'setup/variables';
-@import 'setup/mixins';
-@import 'setup/functions';
+@import "setup/typography";
+@import "setup/variables";
+@import "setup/mixins";
+@import "setup/functions";
 
 // BASICS
-@import 'basics/helpers';
-@import 'basics/base';
-@import 'basics/layout';
+@import "basics/helpers";
+@import "basics/base";
+@import "basics/layout";
 
 // CMPS
-@import 'cmps/default-wap';
-@import 'cmps/wap-preview';
-@import 'cmps/editor-sidebar';
+@import "cmps/default-wap";
+@import "cmps/wap-container";
+@import "cmps/editor-sidebar";
+@import "cmps/wap-preview";
 
 //WAP CMPS
-@import 'wap-cmps/app-card';
-@import 'wap-cmps/app-chat';
-@import 'wap-cmps/app-footer';
-@import 'wap-cmps/app-header';
+@import "wap-cmps/app-card";
+@import "wap-cmps/app-chat";
+@import "wap-cmps/app-footer";
+@import "wap-cmps/app-header";

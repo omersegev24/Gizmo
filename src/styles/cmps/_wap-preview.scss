@@ -1,22 +1,7 @@
-.wap-preview {
-  background-color: #fff;
-  margin: 0 auto;
-  position: absolute;
-  left: 33%;
-  
+.actions-panel {
+  visibility: hidden;
+}
 
-  @include for-narrow-layout {
-    width: $break-narrow;
-  }
-  @include for-normal-layout {
-    width: $break-normal;
-  }
-  @include for-wide-layout {
-    width: $break-wide;
-  }
-  // & > *:hover {
-  //   opacity: 0.7;
-  //   transition: all 0.3s;
-  //   background: rgba(69, 159, 237, 0.3);
-  // }
+.wap-preview:hover .actions-panel {
+  visibility: visible;
 }
