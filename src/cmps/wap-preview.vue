@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-preview">
+  <section class="wap-preview" v-if="wap">
     <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click.native="edit(cmp)"></component>
   </section>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
   methods:{
     edit(cmp){
-       const cmpCopy= JSON.parse(JSON.stringify(cmp))
+      const cmpCopy= JSON.parse(JSON.stringify(cmp))
       eventBus.$emit('edit',cmpCopy)
     }
   },

@@ -5,7 +5,9 @@ export default ({
         wap: {},
     },
     getters: {
-
+        getWap(state){
+            return state.wap;
+        }
     },
     mutations: {
 

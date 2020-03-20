@@ -19,18 +19,11 @@
 import { eventBus } from "../services/eventBus.service.js";
 export default {
   props: {
-    cmp: Object
+    currCmp: Object
   },
-  data() {
-    return {
-      currCmp: this.cmp
-    }
-  },
-  
   methods: {
     updateCmp() {
       const cmpCopy = JSON.parse(JSON.stringify(this.currCmp))
-
       eventBus.$emit('updateCmp', cmpCopy)
     }
   }

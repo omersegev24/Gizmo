@@ -14,14 +14,12 @@ import editorSidebar from '../cmps/editor-sidebar.vue';
 export default {
   data() {
     return {
-      wap: {},
       cmps: []
     };
   },
   async created() {
-    const wap = await this.$store.dispatch({type:'loadWap'})
-    this.wap = wap;
-
+    this.$store.dispatch({type:'loadWap'})
+    
     let cmps = await cmpService.query();
     this.cmps = cmps;
 
@@ -29,6 +27,11 @@ export default {
     
       this.updateCmp(updatedCmp)
     })
+  },
+  computed: {
+    wap(){
+      return this.$store.getters.getWap;
+    }
   },
   methods: {
     addCmp(cmp) {
