@@ -1,9 +1,9 @@
 <template>
   <section class="editor-sidebar">
     
-    <div class="top-sidebar flex space-evenly">
-      <div class="add">Elements</div>
-      <div class="edit">Edit</div>
+    <div class="top-sidebar flex">
+      <div class="add" @click="editMode = false">Elements</div>
+      <div class="edit" @click="editMode = true">Edit</div>
     </div>
 
     <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
@@ -74,6 +74,9 @@ export default {
       this.editMode = true;
       this.currCmp = JSON.parse(JSON.stringify(cmp))
     })
+  },
+  computed:{
+
   },
   methods: {
     toggle(currItem) {
