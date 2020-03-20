@@ -18,12 +18,12 @@ const gWap =
                         txt: 'Home'
                     },
                     {
-                        to: 'app-contact',
+                        to: 'app-contact-us',
                         txt: 'Contact'
                     },
                     {
-                        to: 'app-footer',
-                        txt: 'go down'
+                        to: 'app-article',
+                        txt: 'About'
                     },
                 ]
             }

@@ -1,18 +1,28 @@
 .app-nav.light-and-shiny {
     background-color: crimson;
     font-family: AlegreyaSans;
-    position:absolute; 
-    top:0;
     
+    // nav {
+
+    // }
     .logo {
-        font-size: 2rem;
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: Lobster, cursive;
     }
 
     >* {
+
         color: $clr2;
     }
 
-    li a {
-        color: $clr2;
+    li {
+        a {
+            color: $clr2;
+            margin-left: rem(50px);
+        }
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
