@@ -1,9 +1,6 @@
 <template>
   <div class="edit-panel flex flex-column">
-    <!-- <div v-for="elem in currCmp.info">
-      <input type="text" v-model="">
-    </div>-->
-
+  
     <div v-if="currCmp.info.title">
       <span>Title</span>
       <input type="text" v-model="currCmp.info.title" />
