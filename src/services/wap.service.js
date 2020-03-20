@@ -43,7 +43,7 @@ const wap =
                             subTitle: 'Article title',
                             txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                         }
-                    }, 
+                    },
                     {
                         id: 'cmp12',
                         type: 'app-article',
@@ -80,7 +80,7 @@ const wap =
             info: {
                 subClass: 'light-and-shiny',
                 title: 'Get in touch',
-                address:'Tel Aviv Bacher 4',
+                address: 'Tel Aviv Bacher 4',
                 phone: '123-456-7890',
                 subClass: 'light-and-shiny',
             }
@@ -98,8 +98,8 @@ const wap =
             type: 'app-social-links',
             info: {
                 subClass: 'light-and-shiny',
-                links:[
-                    {to: 'facebook', url: 'www.facebook.com'}
+                links: [
+                    { to: 'facebook', url: 'www.facebook.com' }
                 ]
             }
         },
@@ -109,8 +109,8 @@ const wap =
             info: {
                 title: 'We Sell Corona',
                 subClass: 'light-and-shiny',
-                center: {lat: 32.519, lng: 34.9045 },
-                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
+                center: { lat: 32.519, lng: 34.9045 },
+                markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
             }
         },
         {
@@ -128,7 +128,7 @@ const wap =
                             subTitle: 'Article title',
                             txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                         }
-                    }, 
+                    },
                     {
                         id: 'cmp1092',
                         type: 'app-article',
@@ -157,7 +157,8 @@ const wap =
 
 export const wapService = {
     query,
-    addCmp
+    addCmp,
+    updateCmp
 }
 
 function query() {
@@ -171,6 +172,12 @@ function addCmp(cmp) {
     return Promise.resolve(cmp)
 }
 
+function updateCmp(cmp) {
+    console.log('wapservice', cmp)
+    const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
+    wap.cmps.splice(idx, 1, cmp)
+    return Promise.resolve(cmp)
+}
 
 function _makeId(length = 5) {
     var txt = '';

@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-panel">
+  <div class="edit-panel" @input="updateCmp">
     <input v-if="currCmp.info.title" type="text" v-model="currCmp.info.title" />
     <input v-if="currCmp.info.logo" type="text" v-model="currCmp.info.logo" />
     <input v-if="currCmp.info.subTitle" type="text" v-model="currCmp.info.subTitle" />
@@ -16,9 +16,23 @@
 </template>
 
 <script>
+import { eventBus } from "../services/eventBus.service.js";
 export default {
   props: {
-    currCmp: Object
+    cmp: Object
+  },
+  data() {
+    return {
+      currCmp: this.cmp
+    }
+  },
+  
+  methods: {
+    updateCmp() {
+      const cmpCopy = JSON.parse(JSON.stringify(this.currCmp))
+
+      eventBus.$emit('updateCmp', cmpCopy)
+    }
   }
 };
 </script>

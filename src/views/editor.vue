@@ -1,33 +1,43 @@
 <template>
   <section class="editor-page flex">
-    
-    <editor-sidebar  @addCmp="addCmp" :cmps="cmps"/>
-    <wap-preview  :wap="wap"></wap-preview>
+    <editor-sidebar @addCmp="addCmp" :cmps="cmps" />
+    <wap-preview :wap="wap"></wap-preview>
   </section>
 </template>
 
 <script>
-import { wapService } from "../services/wap.service.js";
-import {cmpService} from '../services/cmp.service.js'
-import wapPreview from "../cmps/wap-preview.vue";
-import editorSidebar from "../cmps/editor-sidebar.vue"
+import { eventBus } from '../services/eventBus.service.js';
+import { wapService } from '../services/wap.service.js';
+import { cmpService } from '../services/cmp.service.js';
+import wapPreview from '../cmps/wap-preview.vue';
+import editorSidebar from '../cmps/editor-sidebar.vue';
 export default {
   data() {
     return {
       wap: {},
-      cmps:[]
+      cmps: []
     };
   },
   async created() {
-    let wap = await wapService.query();
+    const wap = await this.$store.dispatch({type:'loadWap'})
     this.wap = wap;
-     let cmps = await cmpService.query();
+
+    let cmps = await cmpService.query();
     this.cmps = cmps;
+
+    eventBus.$on('updateCmp', updatedCmp => {
+    
+      this.updateCmp(updatedCmp)
+    })
   },
-  methods:{
-    addCmp(cmp){
-        this.$store.dispatch({ type: 'addCmp', cmp })
-     }
+  methods: {
+    addCmp(cmp) {
+      this.$store.dispatch({ type: 'addCmp', cmp })
+    },
+    updateCmp(cmp) {
+      console.log('dispatch editor', cmp)
+      this.$store.dispatch({type:'updateCmp', cmp})
+    }
   },
   components: {
     wapPreview,
@@ -36,7 +46,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.editor-page{
+.editor-page {
   background-color: #f8f8f8dc;
 }
 </style>
