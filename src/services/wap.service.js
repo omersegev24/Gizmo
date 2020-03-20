@@ -1,4 +1,6 @@
-const wap =
+import { storageService } from './storage.service.js'
+const WAP_KEY = 'wap'
+const gWap =
 {
     _id: 'wap92829',
     title: 'My First Wap',
@@ -169,21 +171,29 @@ export const wapService = {
     updateWap
 }
 
+
 function query() {
+    let wap = storageService.load(WAP_KEY)
+    if (wap) return Promise.resolve(wap)
+    wap = gWap
+    storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap);
 }
 
 
 function addCmp(cmp) {
+    let wap = storageService.load(WAP_KEY)
     cmp.id = _makeId()
     wap.cmps.push(cmp);
+    storageService.store(WAP_KEY, wap)
     return Promise.resolve(cmp)
 }
 
 function updateWap(cmp) {
-    console.log('wapservice', cmp)
+    let wap = storageService.load(WAP_KEY)
     const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
     wap.cmps.splice(idx, 1, cmp)
+    storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
 }
 
