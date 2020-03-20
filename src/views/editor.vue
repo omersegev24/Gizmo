@@ -37,10 +37,5 @@ export default {
 <style lang="scss" scoped>
 .editor-page{
   background-color: #f8f8f8dc;
-  .wap-preview{
-    background-color: #fff;
-    width: 700px;
-    margin: 0 auto;
-  }
 }
 </style>

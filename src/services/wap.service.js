@@ -12,7 +12,7 @@ const wap =
                 logo: 'gizmo',
                 links: [
                     {
-                        to: 'footer Id',
+                        to: 'footer',
                         txt: 'go down'
                     }
                 ]
@@ -29,22 +29,31 @@ const wap =
             }
         },
         {
-            id: 'cmp102',
-            type: 'app-map',
-            info: {
-                title: 'We Sell Corona',
-                subClass: 'light-and-shiny',
-                center: {lat: 32.519, lng: 34.9045 },
-                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
-            }
-        },
-        {
             id: 'cmp103',
-            type: 'layout-columns',
+            type: 'layout-2-columns',
             info: {
                 subClass: 'light-and-shiny',
                 children: [
-                    {}, {}
+                    {
+                        id: 'cmp11',
+                        type: 'app-article',
+                        info: {
+                            subClass: 'light-and-shiny',
+                            title: 'Article title',
+                            subTitle: 'Article title',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                        }
+                    }, 
+                    {
+                        id: 'cmp12',
+                        type: 'app-article',
+                        info: {
+                            subClass: 'light-and-shiny',
+                            title: 'Article title',
+                            subTitle: 'Article title',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                        }
+                    }
                 ]
             }
         },
@@ -93,7 +102,56 @@ const wap =
                     {to: 'facebook', url: 'www.facebook.com'}
                 ]
             }
-        }
+        },
+        {
+            id: 'cmp102',
+            type: 'app-map',
+            info: {
+                title: 'We Sell Corona',
+                subClass: 'light-and-shiny',
+                center: {lat: 32.519, lng: 34.9045 },
+                markers: [{ position: {lat: 32.519, lng: 34.9045 } }]
+            }
+        },
+        {
+            id: 'cmp109',
+            type: 'layout-2-columns',
+            info: {
+                subClass: 'light-and-shiny',
+                children: [
+                    {
+                        id: 'cmp1091',
+                        type: 'app-article',
+                        info: {
+                            subClass: 'light-and-shiny',
+                            title: 'Article title',
+                            subTitle: 'Article title',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                        }
+                    }, 
+                    {
+                        id: 'cmp1092',
+                        type: 'app-article',
+                        info: {
+                            subClass: 'light-and-shiny',
+                            title: 'Article title',
+                            subTitle: 'Article title',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                        }
+                    },
+                    {
+                        id: 'cmp1093',
+                        type: 'app-article',
+                        info: {
+                            subClass: 'light-and-shiny',
+                            title: 'Article title',
+                            subTitle: 'Article title',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                        }
+                    }
+                ]
+            }
+        },
     ]
 }
 
@@ -122,5 +180,3 @@ function _makeId(length = 5) {
     }
     return txt;
 }
-
-// app-social-links

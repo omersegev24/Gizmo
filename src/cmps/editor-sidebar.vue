@@ -11,7 +11,7 @@
           </div>
           <transition name="fade">
             <div v-if="item.active" class="item-details">
-              <div v-if="item.title === 'Sections'" class="cmp-btns-container">
+              <div v-if="item.title === 'Sections'" class="cmp-btns-container flex flex-column">
                 <div
                   class="cmp-btn"
                   @click="$emit('addCmp',cmp)"
@@ -73,94 +73,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-* {
-  outline: none;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.accordion {
-  padding: 0;
-  width: 300px;
-
-  div {
-    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
-  }
-
-  div:last-child .item-details {
-    border-radius: 5px;
-  }
-
-  .item-details {
-    margin-left: 0;
-  }
-}
-
-.accordion-row,
-.item-details-inner {
-  padding: 0.75rem 1.25rem;
-}
-
-.accordion-item-title {
-  position: relative;
-
-  h4 {
-    margin: 0;
-    font-size: 1.25rem;
-    padding: 10px 1.25rem;
-  }
-}
-
-.accordion-row {
-  width: 100%;
-  text-align: left;
-  background-color: white;
-  border: none;
-}
-
-.accordion-row-icon {
-  $size: 8px;
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 1.25rem;
-  bottom: 0;
-  margin: auto;
-  width: $size;
-  height: $size;
-  border-right: 2px solid #363636;
-  border-bottom: 2px solid #363636;
-  transform: translateY(-$size / 4) rotate(45deg);
-  transition: transform 0.2s ease;
-
-  .is-active & {
-    transform: translateY($size / 4) rotate(225deg);
-  }
-}
-.cmp-btns-container {
-  display: flex;
-  flex-direction: column;
-  
-  .cmp-btn {
-    padding: 15px;
-    cursor: pointer;
-    &:hover{
-      background-color: #fff;
-    }
-  }
-}
-
-.item-details {
-  overflow: hidden;
-  background-color: whitesmoke;
-}
-</style>
