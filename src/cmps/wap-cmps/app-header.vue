@@ -3,7 +3,6 @@
     class="app-header light-and-shiny flex justify-center align-center flex-column"
     id="app-header"
     :class="info.subClass"
-    :style="info.style"
   >
     <h1 class="title" :class="{editable: editMode}" :contenteditable="editMode">{{info.title}}</h1>
     <h3
@@ -11,8 +10,7 @@
       :class="{editable: editMode}"
       :contenteditable="editMode"
     >{{info.subTitle}}</h3>
-    <span :class="{editable: editMode}" :contenteditable="editMode">Hello {{info.title}}</span>
-
+  
     <button @click="editMode = !editMode">{{info.callToAction}}</button>
   </header>
 </template>

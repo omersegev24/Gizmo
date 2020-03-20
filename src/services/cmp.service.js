@@ -67,7 +67,7 @@ const cmps = [
             style: {},
             title: 'Image Title',
             subClass: 'light-and-shiny',
-            imgUrl: 'Youre image here'
+            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
         }
     },
     {
