@@ -1,10 +1,12 @@
 <template>
   <section class="wap-preview">
-    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info"></component>
+    <component v-for="cmp in wap.cmps" :key="cmp.id" :is="cmp.type" :info="cmp.info" @click.native="edit(cmp)"></component>
   </section>
 </template>
 
 <script>
+import { eventBus } from "../services/eventBus.service.js";
+
 import appNav from "../cmps/wap-cmps/app-nav.vue";
 import appCard from "../cmps/wap-cmps/app-card.vue";
 import appHeader from "../cmps/wap-cmps/app-header.vue";
@@ -20,6 +22,11 @@ import appArticle from '../cmps/wap-cmps/app-article.vue';
 export default {
   props:{
     wap: Object
+  },
+  methods:{
+    edit(cmp){
+      eventBus.$emit('edit',cmp)
+    }
   },
   components: {
     appNav,

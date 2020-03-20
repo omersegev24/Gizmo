@@ -115,7 +115,7 @@ const wap =
         },
         {
             id: 'cmp109',
-            type: 'layout-2-columns',
+            type: 'layout-3-columns',
             info: {
                 subClass: 'light-and-shiny',
                 children: [

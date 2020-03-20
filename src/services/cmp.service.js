@@ -38,6 +38,7 @@ const cmps = [
         id: 'cmp103',
         type: 'layout-2-columns',
         info: {
+            subClass: 'light-and-shiny',
             children: [
                 {}, {}
             ]
@@ -47,6 +48,7 @@ const cmps = [
         id: 'cmp109',
         type: 'layout-3-columns',
         info: {
+            subClass: 'light-and-shiny',
             children: [
                 {}, {}, {}
             ]
@@ -83,6 +85,7 @@ const cmps = [
         id: 'cmp107',
         type: 'app-chat',
         info: {
+            subClass: 'light-and-shiny',
             title: 'Chat',
         }
     },
@@ -90,6 +93,7 @@ const cmps = [
         id: 'cmp108',
         type: 'app-social-links',
         info: {
+            subClass: 'light-and-shiny',
             links:[
                 {to: 'facebook', url: 'www.facebook.com'}
             ]
