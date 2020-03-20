@@ -1,9 +1,10 @@
 <template>
   <div class="edit-panel flex flex-column">
-  
+
+    
     <div v-if="currCmp.info.title">
       <span>Title</span>
-      <input type="text" v-model="currCmp.info.title" />
+      <input type="text" v-model="currCmp.info.title" placeholder="enter text" />
     </div>
 
     <div v-if="currCmp.info.logo">
@@ -56,12 +57,12 @@
       <span>Align</span>
       <select v-model="currCmp.info.style.textAlign">
         <option value="left">Left</option>
-        <option value="center">Lenter</option>
+        <option value="center">Center</option>
         <option value="right">Right</option>
       </select>
 
       <span>Text Size</span>
-      <input type="range" v-model="currCmp.info.style.fontSize" min="5" max="100" />
+      <input type="range" v-model="currCmp.info.style.textSize" min="5" max="100" />
 
       <span>Letter Spacing</span>
       <input type="range" v-model="currCmp.info.style.letterSpacing" min="0" max="50" />
@@ -87,6 +88,20 @@ import { eventBus } from "../services/eventBus.service.js";
 export default {
   props: {
     currCmp: Object
+  },
+  data(){
+    return{
+      fontSize: 5,
+      letterSpacing: 2,
+    }
+  },
+  computed:{
+    setTextSize(){
+      this.currCmp.info.style.fontSize = this.fontSize + 'px'
+    },
+    setLetter(){
+      this.currCmp.info.style.fontSize = this.fontSize + 'px'
+    }
   },
   watch: {
     currCmp: {
