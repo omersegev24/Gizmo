@@ -168,6 +168,7 @@ const gWap =
             info: {
                 subClass: 'light-and-shiny',
                 title: 'Chat',
+                style:{}
             }
         },
         {
@@ -176,6 +177,7 @@ const gWap =
             info: {
                 title: 'Cofferights',
                 subClass: 'light-and-shiny',
+                style:{}
             }
         },
     ]
