@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-panel" @input="updateCmp">
+  <div class="edit-panel">
     <input v-if="currCmp.info.title" type="text" v-model="currCmp.info.title" />
     <input v-if="currCmp.info.logo" type="text" v-model="currCmp.info.logo" />
     <input v-if="currCmp.info.subTitle" type="text" v-model="currCmp.info.subTitle" />
@@ -21,10 +21,13 @@ export default {
   props: {
     currCmp: Object
   },
-  methods: {
-    updateCmp() {
-      const cmpCopy = JSON.parse(JSON.stringify(this.currCmp))
-      eventBus.$emit('updateCmp', cmpCopy)
+  watch: {
+    currCmp: {
+      handler() {
+        var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+        eventBus.$emit("updateCmp", cmpCopy);
+      },
+      deep: true
     }
   }
 };

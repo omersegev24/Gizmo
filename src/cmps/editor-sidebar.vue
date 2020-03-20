@@ -70,10 +70,9 @@ export default {
   },
   created() {
     eventBus.$on('edit', cmp => {
-      console.log('edit bus', cmp);
-      
       this.editMode = true;
-      this.currCmp = cmp
+      const cmpCopy = JSON.parse(JSON.stringify(cmp))
+      this.currCmp = cmpCopy
     })
   },
   methods: {

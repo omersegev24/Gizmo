@@ -24,13 +24,13 @@ export default {
     this.cmps = cmps;
 
     eventBus.$on('updateCmp', updatedCmp => {
-    
       this.updateCmp(updatedCmp)
     })
   },
   computed: {
     wap(){
-      return this.$store.getters.getWap;
+      const wapCopy = this.$store.getters.getWap;
+      return wapCopy;
     }
   },
   methods: {
@@ -38,7 +38,6 @@ export default {
       this.$store.dispatch({ type: 'addCmp', cmp })
     },
     updateCmp(cmp) {
-      console.log('dispatch editor', cmp)
       this.$store.dispatch({type:'updateCmp', cmp})
     }
   },

@@ -173,10 +173,10 @@ function addCmp(cmp) {
 }
 
 function updateCmp(cmp) {
-    console.log('wapservice', cmp)
     const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
     wap.cmps.splice(idx, 1, cmp)
-    return Promise.resolve(cmp)
+    
+    return Promise.resolve(wap)
 }
 
 function _makeId(length = 5) {
