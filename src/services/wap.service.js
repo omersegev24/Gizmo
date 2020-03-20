@@ -63,7 +63,7 @@ const wap =
             info: {
                 title: 'Do it now',
                 subClass: 'light-and-shiny',
-                imgUrl: ''
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
             }
         },
         {

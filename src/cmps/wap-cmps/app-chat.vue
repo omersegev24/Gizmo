@@ -26,11 +26,11 @@
           v-for="(msg, index) in msgs" 
           :key="index"
           :class="[msg.username === 'Support' ? 'support' : '']">
-          {{msg.username}}: {{msg.text}}
+          {{msg.username}}: {{msg.txt}}
         </li>
       </ul>
       <div class="msg-send-container">
-        <input v-model="msg.text" type="text" placeholder="Type your message..." />
+        <input ref="msg-input" v-model="userMsg.txt" @keyup="checkKey" type="text" placeholder="Type your message..." />
         <span class="msg-send fa fa-send-o" @click="sendMsg" title="Send"></span>
       </div>
     </div>
@@ -44,8 +44,8 @@ export default {
   },
   data() {
     return {
-      msg: {username: 'Guest', text: ''},
-      autoMsg: { username: 'Support', text: 'Sure thing honey' },
+      userMsg: {username: 'Guest', txt: ''},
+      autoMsg: { username: 'Support', txt: 'Sure thing honey' },
       msgs: [],
       chatOpen: false
     };
@@ -54,19 +54,22 @@ export default {
   computed: {
     isSupport() {
       return msg.username === 'Support'
-    }
+    },
   },
 
   methods: {
     sendMsg() {
-      this.msgs.push(this.msg);
-      this.msg = '';
+      //copy ?
+      this.msgs.push(this.userMsg);
+      this.userMsg.txt = '';
       
       setTimeout(() => {
         this.msgs.push(this.autoMsg);
       }, 1500);
     },
-    close() {},
+    checkKey(e) {
+      if (e.keyCode === 13) this.sendMsg()
+    },
     toggleChat(){
         this.chatOpen = !this.chatOpen;
     }
