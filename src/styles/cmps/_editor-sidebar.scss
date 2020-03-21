@@ -1,11 +1,9 @@
 .editor-sidebar {
   width: rem(400px);
   border-right: 1px solid rgba(10, 10, 10, 0.1);
-
-  position: sticky;
-  height: 100vh;
-  top: rem(5px);
-  bottom: auto;
+  background-color: #fff;
+  // height: 91vh;
+  height: calc(100vh - 71px);
   overflow-y: scroll;
 
   .top-sidebar {

@@ -165,6 +165,16 @@ const gWap = {
         }
     },
     {
+        id: 'cca29',
+        type: 'app-youtube',
+        style: {},
+        subClass: 'light-and-shiny',
+        info: {
+            title: "B.B.King",
+            url: "https://www.youtube.com/embed/Y57kLy1vV1c"
+        }
+    },
+    {
         id: 'cmp105',
         type: 'app-footer',
         style: {},
@@ -208,6 +218,10 @@ function addCmp(cmp) {
 }
 
 function updateWap(cmp) {
+    if (cmp.type === 'app-youtube') {
+        const youtubeId = _getYoutubeVidId(cmp.info.url)
+        cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
+    }
     let wap = storageService.load(WAP_KEY)
     const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
     wap.cmps.splice(idx, 1, cmp)
@@ -223,12 +237,12 @@ function removeCmp(cmp) {
     return Promise.resolve(idx)
 }
 
-function updatePos(updatedPos){
+function updatePos(updatedPos) {
     let wap = storageService.load(WAP_KEY)
     const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
-    if(idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
+    if (idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
     wap.cmps.splice(idx, 1)
-    wap.cmps.splice(idx + updatedPos.diff, 0 , updatedPos.cmp)
+    wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
 }
@@ -240,4 +254,14 @@ function _makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+
+function _getYoutubeVidId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+        ? match[2]
+        : '';
 }

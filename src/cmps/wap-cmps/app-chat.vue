@@ -8,7 +8,7 @@
           We'll reply as soon as we can
         </p>
       </section>
-      <span class="arrow-icon fas fa-angle-up flex justify-center align-center"></span>
+      <span class="flex justify-center align-center"></span>
     </div>
     <div v-if="chatOpen" class="chat-container">
       <div class="unopened-chat-container flex space-between" @click.prevent="toggleChat">

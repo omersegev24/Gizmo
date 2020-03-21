@@ -114,6 +114,16 @@ const cmps = [
         }
     },
     {
+        id: 'cmp12a9',
+        type: 'app-youtube',
+        style: {},
+        subClass: 'light-and-shiny',
+        info: {
+            title: "B.B.King",
+            url: "https://www.youtube.com/embed/Y57kLy1vV1c"
+        }
+    },
+    {
         id: 'cmp110',
         type: 'app-social-links',
         style: {},

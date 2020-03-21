@@ -20,6 +20,7 @@ import appChat from '../cmps/wap-cmps/app-chat.vue';
 import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 import appArticle from '../cmps/wap-cmps/app-article.vue';
 import actionPanel from '../cmps/action-panel.vue'
+import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
 export default {
   props: {
     cmp: Object
@@ -30,6 +31,7 @@ export default {
     appHeader,
     appFooter,
     appMap,
+    appYoutube,
     appContact,
     layout2Columns,
     layout3Columns,
