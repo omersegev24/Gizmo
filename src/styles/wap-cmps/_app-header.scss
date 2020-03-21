@@ -1,15 +1,14 @@
 .app-header.light-and-shiny {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("~@/assets/img/hero-photographer.jpg");
-    height: 50vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    margin-bottom: rem(50px);
     color: #fff;
+    padding: 8rem;
+    word-break:break-all;
     
     >* {
-        font-family: Lato;
         font-family: AlegreyaSans;
     }
 

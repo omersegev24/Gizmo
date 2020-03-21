@@ -1,37 +1,48 @@
 <template>
-  <div class="flex flex-column">
+  <div class="edit-text flex flex-column">
     <div class="color-picker">
-      <p>Font Color: </p>
-      <swatches v-model="currCmp.style.color" colors="text-advanced" inline />
+      <p @click="colorOpen = !colorOpen">Font Color</p>
+      <swatches v-if="colorOpen" v-model="currCmp.style.color" colors="text-advanced" inline />
 
-      <p>Background Color: </p>
-      <swatches v-model="currCmp.style.backgroundColor" colors="text-advanced" inline/>
+      <p @click="bgcOpen = !bgcOpen">Background Color</p>
+      <swatches
+        v-if="bgcOpen"
+        v-model="currCmp.style.backgroundColor"
+        colors="text-advanced"
+        inline
+      />
     </div>
     <span>Align</span>
-    <select v-model="currCmp.style.textAlign">
-      <option value="left">Left</option>
-      <option value="center">Center</option>
-      <option value="right">Right</option>
-    </select>
+    <v-select :options="['left', 'center', 'right']" v-model="currCmp.style.textAlign"></v-select>
 
     <span>Align Vertical</span>
-    <select v-model="currCmp.style.justifyContent">
-      <option value="center">Center</option>
-      <option value="space-around">Space Around</option>
-      <option value="space-between">Space Between</option>
-      <option value="space-evenly">Space Evenly</option>
-    </select>
+    <v-select
+      :options="['center', 'space-between', 'space-evenly']"
+      v-model="currCmp.style.justifyContent"
+    ></v-select>
 
     <span>Text Size</span>
-    <input type="range" v-model="fontSize" @input="setTextSize" min="5" max="100" />
+    <vue-slider
+      v-model="fontSize"
+      :min="0"
+      :max="100"
+      :contained="true"
+      :tooltip="'active'"
+      @change="setTextSize"
+    ></vue-slider>
 
     <span>Letter Spacing</span>
-    <input type="range" v-model="letterSpacing" @input="setLetterSpacing" min="0" max="50" />
+    <vue-slider
+      v-model="letterSpacing"
+      :min="0"
+      :max="100"
+      :contained="true"
+      :tooltip="'active'"
+      @change="setLetterSpacing"
+    ></vue-slider>
 
     <span>Font</span>
-    <select v-model="currCmp.style.fontFamily">
-      <option v-for="font in fontFamily" :key="font" :value="font">{{font}}</option>
-    </select>
+    <v-select :options="fontFamily" v-model="currCmp.style.fontFamily"></v-select>
   </div>
 </template>
 
@@ -39,12 +50,16 @@
 import swatches from "vue-swatches";
 import "vue-swatches/dist/vue-swatches.min.css";
 
+import vueSlider from "vue-slider-component";
+
 export default {
   props: {
     currCmp: Object
   },
   data() {
     return {
+      bgcOpen: false,
+      colorOpen: false,
       fontSize: 5,
       letterSpacing: 2,
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"]
@@ -64,7 +79,8 @@ export default {
     }
   },
   components: {
-    swatches
+    swatches,
+    vueSlider
   }
 };
 </script>

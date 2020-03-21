@@ -7,6 +7,14 @@ import store from './store'
 import './styles/global.scss'
 import * as VueGoogleMaps from 'vue2-google-maps';
 import _ from 'lodash';
+
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+
+import vSelect from "vue-select";
+ 
+Vue.component("v-select", vSelect);
+
 Vue.config.productionTip = false
 
 Vue.use(VueGoogleMaps, {

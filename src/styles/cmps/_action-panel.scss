@@ -1,0 +1,31 @@
+.action-panel {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  visibility: hidden;
+  transition: all 0.1s;
+  border: 2px solid #459fed;
+  background: rgba(69, 159, 237, 0.3);
+
+  .action-container {
+    margin: rem(14px);
+   
+  }
+  button {
+    background-color: #fff;
+    border-radius: rem(4px);
+    align-items: center;
+    padding: 0 rem(12px);
+    color: #20303c;
+    font-size: rem(14px);
+    font-weight: 500;
+    height: rem(36px);
+    margin-right: rem(14px);
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    box-shadow: 0 1px rem(7px) 0 rgba(32,48,60,.4);
+    &:hover{
+        color: #459fed;
+    }
+  }
+}

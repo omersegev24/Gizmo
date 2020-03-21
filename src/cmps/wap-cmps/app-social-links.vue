@@ -1,8 +1,12 @@
 <template>
-  <section class="app-social-links">
+  <!-- <section class="app-social-links">
       <a v-for="link in info.links" :key="link.to" :href="info.url" class="social-link">{{link.to}}</a>
-  </section>
+  </section> -->
+    <section class="social-links">
+      <a v-for="link in info.links" :key="link.to" :href="link.url" :class="'fab fa-' + link.to"></a>
+    </section>
 </template>
+
 
 <script>
 export default {

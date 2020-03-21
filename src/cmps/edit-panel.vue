@@ -30,6 +30,7 @@
 <script>
 import { eventBus } from "../services/eventBus.service.js";
 import editText from "./edit-text.vue";
+
 export default {
   props: {
     currCmp: Object
