@@ -4,14 +4,15 @@
       <edit-map :mapCmp="currCmp"></edit-map>
     </section>
 
-  <div v-if="!currCmp">
-    <p>Pick a section to start editing!</p>
-  </div>
+    <div v-if="!currCmp">
+      <p>Pick a section to start editing!</p>
+    </div>
 
-  <div v-else class="edit-panel flex flex-column">
-    <div v-for="(item, idx) in inputToRender" :key="idx">
-      <p>{{idx}}</p>
-      <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+    <div v-else class="edit-panel flex flex-column">
+      <div v-for="(item, idx) in inputToRender" :key="idx">
+        <p>{{idx}}</p>
+        <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+      </div>
     </div>
 
     <div v-for="(child, index) in childrenInputs" :key="index">
