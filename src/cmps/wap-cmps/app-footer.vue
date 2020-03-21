@@ -5,7 +5,7 @@
       <p>{{info.title}}</p>
     </div>
     <section class="social-links">
-      <a v-for="link in socialLinks" :key="link.to" :href="link.url" :class="'fab fa-' + link.to"></a>
+      <a v-for="link in socialLinks" :key="link.social" :href="link.url" :class="'fab fa-' + link.social"></a>
     </section>
   </footer>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      socialLinks: this.info.children[0].info.links
+      socialLinks: this.info.links
     }
   }
 };

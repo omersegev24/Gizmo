@@ -182,21 +182,11 @@ const gWap =
                 style:{},
                 title: 'Cofferights',
                 subClass: 'light-and-shiny',
-                children: [
-                    {
-                        id: 'cmp108',
-                        type: 'app-social-links',
-                        info: {
-                            style: {},
-                            subClass: 'light-and-shiny',
-                            links: [
-                                { to: 'facebook-square', url: 'www.facebook.com' },
-                                { to: 'github-square', url: 'www.github.com' },
-                                { to: 'instagram', url: 'www.instagram.com' },
-                            ]
-                        }
-                    }
-                ]
+                links: [
+                    { social: 'facebook', url: 'www.facebook.com' },
+                    { social: 'github', url: 'www.github.com' },
+                    { social: 'instagram', url: 'www.instagram.com' },
+                ],
             }
         },
     ]
