@@ -1,10 +1,19 @@
 <template>
   <section class="editor-sidebar">
     <div class="top-sidebar flex">
-      <div class="add" :class="{'active-tab': isElsTabOn}" @click="isElsTabOn = !isElsTabOn">Elements</div>
-      <div class="edit" :class="{'active-tab': isEditTabOn}" @click="isEditTabOn = !isEditTabOn">Edit</div>
+      <div
+        class="add"
+        :class="{'active-tab': isElsTabOn}"
+        @click="isElsTabOn = !isElsTabOn"
+      >Elements</div>
+      <div
+        class="edit"
+        :class="{'active-tab': isEditTabOn}"
+        @click="isEditTabOn = !isEditTabOn"
+      >Edit</div>
     </div>
 
+    <!-- <edit-panel v-if="editMode"></edit-panel> -->
     <edit-panel v-if="currCmp && editMode" :currCmp="currCmp"></edit-panel>
 
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">

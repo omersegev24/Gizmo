@@ -1,8 +1,9 @@
-.wap-preview{
+.wap-preview {
   position: relative;
-  &:hover{
-    .action-panel{
-      visibility: visible;
-    }
+  * {
+    word-break:break-all;
+  }
+  &:hover .action-panel{
+    visibility: visible;
   }
 }

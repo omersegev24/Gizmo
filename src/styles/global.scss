@@ -24,12 +24,13 @@
 @import 'cmps/action-panel';
 
 //WAP CMPS
-@import 'wap-cmps/app-card';
 @import 'wap-cmps/app-header';
 @import 'wap-cmps/app-nav';
-@import "wap-cmps/app-chat";
-@import "wap-cmps/app-footer";
+@import "wap-cmps/layout-2-columns";
+@import 'wap-cmps/app-card';
 @import "wap-cmps/app-article";
 @import "wap-cmps/app-contact-us";
 @import "wap-cmps/layout-2-columns";
 @import 'wap-cmps/app-social-links';
+@import "wap-cmps/app-chat";
+@import "wap-cmps/app-footer";

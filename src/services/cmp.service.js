@@ -6,7 +6,7 @@ const cmps = [
             stlye: {},
             subClass: 'light-and-shiny',
             logo: 'Youre logo here',
-            links: [
+            children: [
                 {
                     to: '#',
                     txt: 'link'
