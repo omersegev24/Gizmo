@@ -31,7 +31,7 @@
       </ul>
       <div class="msg-send-container">
         <input ref="msg-input" v-model="userMsg.txt" @keyup="checkKey" type="text" placeholder="Type your message..." />
-        <span class="msg-send fa fa-send-o" @click="sendMsg" title="Send"></span>
+        <span class="msg-send far fa-paper-plane" @click="sendMsg" title="Send"></span>
       </div>
     </div>
   </section>

@@ -1,10 +1,10 @@
 <template>
   <header
-    class="app-header light-and-shiny flex justify-center align-center flex-column"
+    class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="info.subClass"
   >
-    <h1 class="title" :class="{editable: editMode}" :contenteditable="editMode">{{info.title}}</h1>
+    <h2 class="title" :class="{editable: editMode}" :contenteditable="editMode">{{info.title}}</h2>
     <h3
       class="sub-title"
       :class="{editable: editMode}"
