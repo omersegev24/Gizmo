@@ -8,8 +8,8 @@ const gWap = {
         id: 'cmp100',
         type: 'app-nav',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             logo: 'Gizmo',
             links: [{
                 to: 'app-header',
@@ -30,8 +30,8 @@ const gWap = {
         id: 'cmp101',
         type: 'app-header',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             title: 'We Sell Corona',
             subTitle: 'and alcojel',
             callToAction: 'Try it now!'
@@ -41,8 +41,8 @@ const gWap = {
         id: 'cmp103',
         type: 'layout-2-columns',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             children: [{
                 id: 'cmp12',
                 type: 'app-card',
@@ -71,8 +71,8 @@ const gWap = {
         id: 'cmp104',
         type: 'app-card',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             title: 'Do it now',
             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
         }
@@ -80,10 +80,8 @@ const gWap = {
     {
         id: 'cmp106',
         type: 'app-contact',
-        subClass: 'light-and-shiny',
         style: {},
         info: {
-            style: {},
             subClass: 'light-and-shiny',
             title: 'CONTACT',
             country: 'Israel',
@@ -97,8 +95,8 @@ const gWap = {
         id: 'cmp108',
         type: 'app-social-links',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             links: [
                 { social: 'facebook', url: 'www.facebook.com' },
                 { social: 'github', url: 'www.github.com' },
@@ -119,14 +117,14 @@ const gWap = {
         id: 'cmp109',
         type: 'layout-3-columns',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             children: [{
                 id: 'cmp1091',
                 type: 'app-article',
                 style: {},
-                subClass: 'light-and-shiny',
                 info: {
+                    subClass: 'light-and-shiny',
                     title: 'Article title',
                     subTitle: 'Article title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
@@ -136,8 +134,8 @@ const gWap = {
                 id: 'cmp1092',
                 type: 'app-article',
                 style: {},
-                subClass: 'light-and-shiny',
                 info: {
+                    subClass: 'light-and-shiny',
                     title: 'Article title',
                     subTitle: 'Article title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
@@ -147,8 +145,8 @@ const gWap = {
                 id: 'cmp1093',
                 type: 'app-article',
                 style: {},
-                subClass: 'light-and-shiny',
                 info: {
+                    subClass: 'light-and-shiny',
                     title: 'Article title',
                     subTitle: 'Article title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
@@ -161,17 +159,17 @@ const gWap = {
         id: 'cmp107',
         type: 'app-chat',
         style: {},
-        subClass: 'light-and-shiny',
         info: {
+            subClass: 'light-and-shiny',
             title: 'Chat',
         }
     },
     {
         id: 'cmp105',
         type: 'app-footer',
-        subClass: 'light-and-shiny',
         style: {},
         info: {
+            subClass: 'light-and-shiny',
             title: 'Cofferights',
             links: [
                 { social: 'facebook', url: 'www.facebook.com' },
@@ -187,7 +185,8 @@ export const wapService = {
     query,
     addCmp,
     updateWap,
-    removeCmp
+    removeCmp,
+    updatePos
 }
 
 
@@ -222,6 +221,16 @@ function removeCmp(cmp) {
     wap.cmps.splice(idx, 1)
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(idx)
+}
+
+function updatePos(updatedPos){
+    let wap = storageService.load(WAP_KEY)
+    const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
+    if(idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
+    wap.cmps.splice(idx, 1)
+    wap.cmps.splice(idx + updatedPos.diff, 0 , updatedPos.cmp)
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
 }
 
 function _makeId(length = 5) {

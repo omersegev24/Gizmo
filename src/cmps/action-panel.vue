@@ -1,13 +1,17 @@
 <template>
   <div class="action-panel">
-    <div class="action-container flex space-between">
+    <div class="action-container flex">
       <div>
         <button @click="edit()">Edit</button>
         <button @click="remove()">Delete</button>
       </div>
       <div class="move-cmp">
-        <button><i class="fas fa-arrow-down"></i></button>
-        <button><i class="fas fa-arrow-up"></i></button>
+        <button @click="updatePos(1)">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <button @click="updatePos(-1)">
+          <i class="fas fa-arrow-up"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -25,6 +29,9 @@ export default {
     },
     remove() {
       eventBus.$emit("remove", this.cmp);
+    },
+    updatePos(diff) {
+      eventBus.$emit("updatePos", { diff, cmp: this.cmp });
     }
   }
 };
