@@ -1,10 +1,7 @@
 <template>
   <div class="edit-panel flex flex-column">
     <div v-for="(item, idx) in currCmp.info" :key="idx">
-      <div v-if="Array.isArray(currCmp.info[idx])">
-        {{currCmp.info[idx]}}
-      </div>
-      <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." v-else/>
+      <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..."/>
     </div>
 
     <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
@@ -13,12 +10,12 @@
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
-import editText from './edit-text.vue'
+import editText from "./edit-text.vue";
 export default {
   props: {
     currCmp: Object
   },
-  
+
   watch: {
     currCmp: {
       handler() {
@@ -28,12 +25,12 @@ export default {
       deep: true
     }
   },
-  methods:{
-    updateCmp(cmp){
+  methods: {
+    updateCmp(cmp) {
       eventBus.$emit("updateCmp", cmp);
     }
   },
-  components:{
+  components: {
     editText
   }
 };
