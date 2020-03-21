@@ -57,6 +57,13 @@ export default ({
                 type: 'removeCmp',
                 cmpIdx
             })
+        },
+        async updatePos(context, { updatedPos }) {
+            const wap = await wapService.updatePos(updatedPos)
+            context.commit({
+                type: 'setWap',
+                wap
+            })
         }
     },
 })

@@ -189,7 +189,8 @@ export const wapService = {
     query,
     addCmp,
     updateWap,
-    removeCmp
+    removeCmp,
+    updatePos
 }
 
 
@@ -224,6 +225,16 @@ function removeCmp(cmp) {
     wap.cmps.splice(idx, 1)
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(idx)
+}
+
+function updatePos(updatedPos){
+    let wap = storageService.load(WAP_KEY)
+    const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
+    if(idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
+    wap.cmps.splice(idx, 1)
+    wap.cmps.splice(idx + updatedPos.diff, 0 , updatedPos.cmp)
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
 }
 
 function _makeId(length = 5) {
