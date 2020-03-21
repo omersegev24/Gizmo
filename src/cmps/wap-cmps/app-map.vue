@@ -26,9 +26,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.app-map{
-  width:1000rem;
-}
-</style>
