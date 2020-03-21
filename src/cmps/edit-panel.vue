@@ -11,7 +11,6 @@
       </div>
       <input type="text" v-model="currCmp.info[idx][0].title" placeholder="Enter text..." v-else/>
     </div>
-
     <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
   </div>
 </template>
