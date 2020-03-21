@@ -11,7 +11,6 @@
   .top-sidebar {
     background-color: $clr2;
     color: #fff;
-    
 
     :first-child {
       border-right: 1px solid $clr1;
@@ -23,14 +22,13 @@
       cursor: pointer;
 
       &:hover {
-        transition: 0.3s;
-        background-color: #fff;
-        color: $clr2;
+        transition: 0.2s;
+        color: $clr3;
       }
     }
 
     .active-tab {
-      transition: .3s;
+      transition: 0.3s;
       background-color: #fff;
       color: $clr2;
     }
