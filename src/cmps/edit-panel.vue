@@ -1,5 +1,9 @@
 <template>
-  <div class="edit-panel flex flex-column">
+  <div v-if="!currCmp">
+    <p>Pick a section to start editing!</p>
+  </div>
+
+  <div v-else class="edit-panel flex flex-column">
     <div v-for="(item, idx) in inputToRender" :key="idx">
       <p>{{idx}}</p>
       <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
