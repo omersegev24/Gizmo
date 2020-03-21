@@ -1,0 +1,10 @@
+.edit-text{
+    .color-picker{
+        > * {
+            cursor: pointer;
+            &:hover{
+                color: $clr3;
+            }
+        }
+    }
+}

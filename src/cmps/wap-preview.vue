@@ -1,7 +1,7 @@
 <template>
   <div class="wap-preview">
     <component :is="cmp.type" :info="cmp.info" :style="cmp.style"></component>
-    <actions-panel :cmp="cmp"></actions-panel>
+    <action-panel :cmp="cmp"></action-panel>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import appContact from '../cmps/wap-cmps/app-contact-us.vue';
 import appChat from '../cmps/wap-cmps/app-chat.vue';
 import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 import appArticle from '../cmps/wap-cmps/app-article.vue';
-import actionsPanel from '../cmps/actions-panel.vue'
+import actionPanel from '../cmps/action-panel.vue'
 export default {
   props: {
     cmp: Object
@@ -35,7 +35,7 @@ export default {
     appChat,
     appSocialLinks,
     appArticle,
-    actionsPanel
+    actionPanel
   }
 };
 </script>

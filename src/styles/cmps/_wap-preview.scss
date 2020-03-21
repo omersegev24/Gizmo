@@ -1,7 +1,8 @@
-.actions-panel {
-  visibility: hidden;
-}
-
-.wap-preview:hover .actions-panel {
-  visibility: visible;
+.wap-preview{
+  position: relative;
+  &:hover{
+    .action-panel{
+      visibility: visible;
+    }
+  }
 }
