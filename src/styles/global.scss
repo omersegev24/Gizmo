@@ -4,6 +4,10 @@
 @import "setup/mixins";
 @import "setup/functions";
 
+//LIB
+@import "vue-select/src/scss/vue-select.scss";
+@import '~vue-slider-component/lib/theme/antd.scss';
+
 // BASICS
 @import "basics/helpers";
 @import "basics/base";
@@ -16,6 +20,8 @@
 @import "cmps/wap-preview";
 @import 'cmps/main-nav';
 @import 'cmps/edit-panel';
+@import 'cmps/edit-text';
+@import 'cmps/action-panel';
 
 //WAP CMPS
 @import 'wap-cmps/app-header';
