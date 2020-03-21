@@ -8,7 +8,7 @@
         <li><a href="#">Link</a></li> -->
         <li>
           <a
-            v-for="link in info.children"
+            v-for="link in info.links"
             :href="'#' + link.to"
             :key="link.txt"
           >
