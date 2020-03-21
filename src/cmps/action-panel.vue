@@ -1,6 +1,6 @@
 <template>
   <div class="action-panel">
-    <div class="action-container flex space-between">
+    <div class="action-container flex ">
       <div>
         <button @click="edit()">Edit</button>
         <button @click="remove()">Delete</button>
