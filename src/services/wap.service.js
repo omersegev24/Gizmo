@@ -48,27 +48,25 @@ const gWap =
             info: {
                 children: [
                     {
-                        id: 'cmp11',
-                        type: 'app-article',
+                        id: 'cmp12',
+                        type: 'app-card',
                         style: {},
                         subClass: 'light-and-shiny',
                         info: {
-                            title: 'Article title',
-                            subTitle: 'Article title',
-                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                            title: 'Do it now',
+                            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
                         }
                     },
                     {
-                        id: 'cmp12',
-                        type: 'app-article',
+                        id: 'cmp13',
+                        type: 'app-card',
                         style: {},
                         subClass: 'light-and-shiny',
                         info: {
-                            title: 'Article title',
-                            subTitle: 'Article title',
-                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                            title: 'Do it now',
+                            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
                         }
-                    }
+                    },
                 ]
             }
         },

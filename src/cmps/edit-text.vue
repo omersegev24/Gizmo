@@ -1,11 +1,12 @@
 <template>
   <div class="flex flex-column">
-    <span>Font Color</span>
-    <input type="color" v-model="currCmp.style.color" />
+    <div class="color-picker">
+      <p>Font Color: </p>
+      <swatches v-model="currCmp.style.color" colors="text-advanced" inline />
 
-    <span>Background Color</span>
-    <input type="color" v-model="currCmp.style.backgroundColor" />
-
+      <p>Background Color: </p>
+      <swatches v-model="currCmp.style.backgroundColor" colors="text-advanced" inline/>
+    </div>
     <span>Align</span>
     <select v-model="currCmp.style.textAlign">
       <option value="left">Left</option>
@@ -31,11 +32,13 @@
     <select v-model="currCmp.style.fontFamily">
       <option v-for="font in fontFamily" :key="font" :value="font">{{font}}</option>
     </select>
-
   </div>
 </template>
 
 <script>
+import swatches from "vue-swatches";
+import "vue-swatches/dist/vue-swatches.min.css";
+
 export default {
   props: {
     currCmp: Object
@@ -50,15 +53,18 @@ export default {
   methods: {
     setTextSize() {
       this.currCmp.style.fontSize = this.fontSize + "px";
-      this.update()
+      this.update();
     },
     setLetterSpacing() {
       this.currCmp.style.letterSpacing = this.letterSpacing + "px";
-      this.update()
+      this.update();
     },
-    update(){
-        this.$emit('updateCmp', JSON.parse(JSON.stringify(this.currCmp)))
+    update() {
+      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.currCmp)));
     }
+  },
+  components: {
+    swatches
   }
 };
 </script>
