@@ -1,25 +1,25 @@
 .app-footer.light-and-shiny {
-    height: 100px;
-    background-color: $clr2;
-    text-transform: lowercase;
-    
-    div {
-        span {
-            height: fit-content;
-            margin-right: 5px;
-        }
-    }
+  height: 100px;
+  background-color: $clr2;
+  text-transform: lowercase;
 
-    * {
-        color: $clr1;
+  div {
+    span {
+      height: fit-content;
+      margin-right: 5px;
     }
+  }
 
-    a {
-        margin: 5px;
-        font-size: 1.3rem;
+  * {
+    color: $clr1;
+  }
 
-        :hover {
-            color: darken($clr1, 20%);
-        }
+  a {
+    margin: 5px;
+    font-size: 1.3rem;
+
+    :hover {
+      color: darken($clr1, 20%);
     }
+  }
 }
