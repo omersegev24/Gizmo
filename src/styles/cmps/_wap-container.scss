@@ -1,6 +1,9 @@
 .wap-container {
   background-color: #fff;
-  margin: 0 auto;
+  margin: 10px auto;
+  height: calc(100vh - 90px);
+  overflow-y: scroll;
+  border-radius: 5px;
   
   @include for-narrow-layout {
     width: $break-narrow;

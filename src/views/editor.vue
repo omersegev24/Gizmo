@@ -53,8 +53,3 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.editor-page {
-  background-color: #f8f8f8dc;
-}
-</style>

@@ -16,9 +16,3 @@ export default {
 
 }
 </script>
-<style lang="scss" scoped>
-nav{
-  
-  margin-bottom: 30px;
-}
-</style>
