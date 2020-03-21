@@ -1,0 +1,13 @@
+.edit-map {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+
+  button {
+    @include for-light-button;
+  }
+
+  p {
+    margin: 0;
+  }
+}

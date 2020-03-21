@@ -1,12 +1,13 @@
 <template>
   <div class="edit-panel flex flex-column">
-    <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
-      <edit-map :mapCmp="currCmp"></edit-map>
-    </section>
 
     <div v-if="!currCmp">
       <p>Pick a section to start editing!</p>
     </div>
+    
+    <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
+      <edit-map :mapCmp="currCmp"></edit-map>
+    </section>
 
     <div v-else class="edit-panel flex flex-column">
       <div v-for="(item, idx) in inputToRender" :key="idx">

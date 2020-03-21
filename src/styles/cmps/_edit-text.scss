@@ -2,6 +2,13 @@
     width: 80%;
     margin: 0 auto;
     padding-bottom: 30px;
+
+    input[type=search],.vs__open-indicator {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .color-picker{
         > * {
             cursor: pointer;

@@ -1,10 +1,8 @@
 <template>
   <section class="edit-map">
-    <pre>{{mapCmp}}</pre>
-    <input type="number" v-model="newMapPos.lat" placeholder="Enter Location" />
-    <input type="number" v-model="newMapPos.lng" placeholder="Enter Location" />
-    <button @click="updateMap">Update Map</button>
-    <span>Width</span>
+    <input type="text" v-model="locName" placeholder="Enter your location" />
+    <button @click="getLocByName(locName)">Change Location</button>
+    <p>Width</p>
     <vue-slider
       v-model="mapSize.width"
       :min="300"
@@ -13,7 +11,7 @@
       :tooltip="'active'"
       @change="changeMapSize"
     ></vue-slider>
-    <span>Height</span>
+    <p>Height</p>
     <vue-slider
       v-model="mapSize.height"
       :min="300"
@@ -26,8 +24,9 @@
 </template>
 
 <script>
-import { eventBus } from '../services/eventBus.service.js'
+import { eventBus } from "../services/eventBus.service.js";
 import vueSlider from "vue-slider-component";
+import axios from "axios";
 
 export default {
   props: {
@@ -38,6 +37,7 @@ export default {
   },
   data() {
     return {
+      locName: "",
       newMapPos: {
         lat: null,
         lng: null
@@ -49,16 +49,21 @@ export default {
     };
   },
   methods: {
-    updateMap() {
-      this.mapCmp.info.center.lat = +this.newMapPos.lat;
-      this.mapCmp.info.center.lng = +this.newMapPos.lng;
-      this.mapCmp.info.markers[0].position.lat = +this.newMapPos.lat;
-      this.mapCmp.info.markers[0].position.lng = +this.newMapPos.lng;
-      this.updateCmp(this.mapCmp);
-      // this.updateCmp(JSON.parse(JSON.stringify(this.mapCmp)))
+    async getLocByName(locName) {
+      const API_KEY = "AIzaSyCS9KKJZD6rGF93tIgOd3qqW8GNz4oZIBA";
+      let prmLocation = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${locName}&key=${API_KEY}`)
+      let location = prmLocation.data.results[0].geometry.location;
+      this.mapCmp.info.center.lat = location.lat;
+      this.mapCmp.info.center.lng = location.lng;
+      this.mapCmp.info.markers[0].position.lat = location.lat;
+      this.mapCmp.info.markers[0].position.lng = location.lng;
+      this.update(this.mapCmp);
     },
     changeMapSize() {
       eventBus.$emit("resize-map", this.mapSize);
+    },
+    update(updatedMap) {
+      this.$emit("updateCmp", JSON.parse(JSON.stringify(updatedMap)));
     }
   }
 };

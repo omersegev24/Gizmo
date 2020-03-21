@@ -1,12 +1,18 @@
 <template>
   <section class="app-map" :class="info.subClass">
-    <GmapMap :center="center" :zoom="12" map-type-id="terrain" :style="`width: ${width}px; height: ${height}px`">
+    <GmapMap
+      class="map"
+      :center="center"
+      :zoom="12"
+      map-type-id="terrain"
+      :style="`width: ${width}px; height: ${height}px`"
+    >
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
         :position="m.position"
         :clickable="true"
-        :draggable="true"
+        :draggable="false"
         @click="center=m.position"
       />
     </GmapMap>
@@ -28,12 +34,11 @@ export default {
       height: 500,
     };
   },
-
   created() {
     eventBus.$on('resize-map', (mapSize) => {
       this.width = mapSize.width;
       this.height = mapSize.height;
     })
-  }
+  },
 };
 </script>
