@@ -1,4 +1,25 @@
 .app-footer.light-and-shiny {
     height: 100px;
-    background-color: coral;
+    background-color: $clr2;
+    text-transform: lowercase;
+    
+    div {
+        span {
+            height: fit-content;
+            margin-right: 5px;
+        }
+    }
+
+    * {
+        color: $clr1;
+    }
+
+    a {
+        margin: 5px;
+        font-size: 1.3rem;
+
+        :hover {
+            color: darken($clr1, 20%);
+        }
+    }
 }

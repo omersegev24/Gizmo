@@ -1,7 +1,17 @@
 <template>
   <div class="edit-panel flex flex-column">
     <div v-for="(item, idx) in currCmp.info" :key="idx">
-      <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..."/>
+      <!-- <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..."/> -->
+      
+      <div v-if="Array.isArray(currCmp.info[idx])">
+        <pre>{{currCmp.info.children[0].info.txt}}</pre>
+        <!-- <pre>{{currCmp.info[idx]}}</pre> -->
+      </div>
+      <div v-if="currCmp.info.children.length > 0">
+        <input v-for="item in currCmp.info.children" :key="item.id" type="text" v-model="item.info.title">
+        <input v-for="item in currCmp.info.children" :key="item.id" type="text" v-model="item.info.txt">
+      </div>
+      <input type="text" v-model="currCmp.info[idx][0].title" placeholder="Enter text..." v-else/>
     </div>
 
     <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
@@ -15,7 +25,6 @@ export default {
   props: {
     currCmp: Object
   },
-
   watch: {
     currCmp: {
       handler() {
