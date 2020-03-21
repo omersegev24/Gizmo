@@ -109,10 +109,8 @@ const gWap = {
     {
         id: 'cmp102',
         type: 'app-map',
-        subClass: 'light-and-shiny',
         style: {},
         info: {
-            title: 'We Sell Corona',
             center: { lat: 32.519, lng: 34.9045 },
             markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
         }

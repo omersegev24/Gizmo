@@ -85,9 +85,6 @@ export default {
       this.currCmp = JSON.parse(JSON.stringify(cmp))
     })
   },
-  computed: {
-
-  },
   methods: {
     toggle(currItem) {
       this.items.forEach((item, index) => {
