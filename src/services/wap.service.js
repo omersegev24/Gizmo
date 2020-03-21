@@ -190,8 +190,8 @@ const gWap =
                             style: {},
                             subClass: 'light-and-shiny',
                             links: [
-                                { to: 'facebook-square', url: 'www.facebook.com' },
-                                { to: 'github-square', url: 'www.github.com' },
+                                { to: 'facebook', url: 'www.facebook.com' },
+                                { to: 'github', url: 'www.github.com' },
                                 { to: 'instagram', url: 'www.instagram.com' },
                             ]
                         }

@@ -1,6 +1,6 @@
 <template>
   <section class="app-social-links">
-      <a v-for="link in info.links" :key="link.to" :href="info.url" class="social-link">{{link.to}}</a>
+      <a v-for="link in info.links" :key="link.to" :href="info.url" class="social-link"><i :class="'fab fa-'+ link.to +'-square fa-2x'"></i></a>
   </section>
 </template>
 
@@ -11,7 +11,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
