@@ -1,8 +1,8 @@
 <template>
   <section class="editor-sidebar">
     <div class="top-sidebar flex">
-      <div :class="{'active-tab': !editMode}" @click="editMode = false">Elements</div>
-      <div :class="{'active-tab': editMode}" @click="editMode = true">Edit</div>
+      <div :class="{'active-tab': !editMode}" @click="editMode = false"><span class="fas fa-plus"></span> Elements</div>
+      <div :class="{'active-tab': editMode}" @click="editMode = true"><span class="far fa-edit"></span> Edit</div>
     </div>
 
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
@@ -24,7 +24,7 @@
                   @click="$emit('addCmp',cmp)"
                   v-for="cmp in cmps"
                   :key="cmp.id"
-                >{{cmp.type}}</div>
+                ><span class="fas fa-plus"></span>{{cmp.type}}</div>
               </div>
               <div else>{{item.details}}</div>
             </div>
