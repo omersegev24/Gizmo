@@ -1,12 +1,19 @@
 <template>
-  <div v-if="!currCmp">
-    <p>Pick a section to start editing!</p>
-  </div>
+  <div class="edit-panel flex flex-column">
 
-  <div v-else class="edit-panel flex flex-column">
-    <div v-for="(item, idx) in inputToRender" :key="idx">
-      <p>{{idx}}</p>
-      <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+    <div v-if="!currCmp">
+      <p>Pick a section to start editing!</p>
+    </div>
+    
+    <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
+      <edit-map :mapCmp="currCmp"></edit-map>
+    </section>
+
+    <div v-else class="edit-panel flex flex-column">
+      <div v-for="(item, idx) in inputToRender" :key="idx">
+        <p>{{idx}}</p>
+        <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+      </div>
     </div>
 
     <div v-for="(child, index) in childrenInputs" :key="index">
@@ -32,8 +39,10 @@
 </template>
 
 <script>
-import { eventBus } from "../services/eventBus.service.js";
-import editText from "./edit-text.vue";
+import { eventBus } from '../services/eventBus.service.js';
+import editText from './edit-text.vue';
+import editMap from './edit-map.vue'
+
 
 export default {
   props: {
@@ -41,9 +50,9 @@ export default {
   },
   computed: {
     inputToRender() {
-      return _.pickBy(this.currCmp.info, (item) => {
-        return typeof (item) === 'string'
-      })
+      return _.pickBy(this.currCmp.info, item => {
+        return typeof item === "string";
+      });
     },
     linkInputs() {
       if (this.currCmp.info.links) {
@@ -54,9 +63,8 @@ export default {
       if (this.currCmp.info.children) {
         return this.currCmp.info.children
       }
-    }
+    },
   },
-
   watch: {
     currCmp: {
       handler() {
@@ -69,10 +77,11 @@ export default {
   methods: {
     updateCmp(cmp) {
       eventBus.$emit("updateCmp", cmp);
-    }
+    },
   },
   components: {
-    editText
+    editText,
+    editMap
   }
 };
 </script>

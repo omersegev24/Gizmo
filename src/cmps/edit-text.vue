@@ -49,7 +49,6 @@
 <script>
 import swatches from "vue-swatches";
 import "vue-swatches/dist/vue-swatches.min.css";
-
 import vueSlider from "vue-slider-component";
 
 export default {

@@ -115,7 +115,6 @@ const gWap = {
         type: 'app-map',
         style: {},
         info: {
-            subClass: 'light-and-shiny',
             center: { lat: 32.519, lng: 34.9045 },
             markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
         }
