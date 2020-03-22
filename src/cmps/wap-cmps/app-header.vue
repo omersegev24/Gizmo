@@ -10,7 +10,7 @@
       :class="{editable: editMode}"
       :contenteditable="editMode"
     >{{info.subTitle}}</h3>
-  
+
     <button @click="editMode = !editMode">{{info.callToAction}}</button>
   </header>
 </template>
