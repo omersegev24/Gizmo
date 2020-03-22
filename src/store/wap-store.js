@@ -43,6 +43,7 @@ export default ({
             return addedCmp
         },
         async updateCmp(context, { cmp }) {
+            console.log('store', cmp)
             const cmpCopy = JSON.parse(JSON.stringify(cmp))
             const wap = await wapService.updateWap(cmpCopy)
             context.commit({

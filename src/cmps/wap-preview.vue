@@ -1,7 +1,7 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :cmp="cmp" :style="cmp.style"></component>
-    
+    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" @click.native="cmpClicked(cmp)"></component>
+
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
   </div>
@@ -25,6 +25,11 @@ import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
 export default {
   props: {
     cmp: Object
+  },
+  methods: {
+    cmpClicked(cmp) {
+      eventBus.$emit("edit", cmp);
+    }
   },
   components: {
     appNav,

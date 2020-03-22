@@ -1,8 +1,12 @@
 <template>
   <section class="editor-sidebar">
     <div class="top-sidebar flex">
-      <div :class="{'active-tab': !editMode}" @click="editMode = false"><span class="fas fa-plus"></span> Elements</div>
-      <div :class="{'active-tab': editMode}" @click="editMode = true"><span class="far fa-edit"></span> Edit</div>
+      <div :class="{'active-tab': !editMode}" @click="editMode = false">
+        <span class="fas fa-plus"></span> Elements
+      </div>
+      <div :class="{'active-tab': editMode}" @click="editMode = true">
+        <span class="far fa-edit"></span> Edit
+      </div>
     </div>
 
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
@@ -19,12 +23,10 @@
           <transition name="fade">
             <div v-if="item.active" class="item-details">
               <div v-if="item.title === 'Sections'" class="cmp-btns-container flex flex-column">
-                <div
-                  class="cmp-btn"
-                  @click="$emit('addCmp',cmp)"
-                  v-for="cmp in cmps"
-                  :key="cmp.id"
-                ><span class="fas fa-plus"></span>{{cmp.type}}</div>
+                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in cmps" :key="cmp.id">
+                  <span class="fas fa-plus"></span>
+                  {{cmp.type}}
+                </div>
               </div>
               <div else>{{item.details}}</div>
             </div>
@@ -70,6 +72,7 @@ export default {
   },
   created() {
     eventBus.$on('edit', cmp => {
+      console.log(cmp)
       this.editMode = true;
       this.currCmp = JSON.parse(JSON.stringify(cmp))
     })

@@ -26,52 +26,10 @@ const gWap = {
             ]
         }
     },
-    {
-        id: 'cmp101',
-        type: 'app-header',
-        style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            title: 'We Sell Corona',
-            subTitle: 'and alcojel',
-            callToAction: 'Try it now!'
-        }
-    },
     // {
-    //     id: 'cmp10111',
+    //     id: 'cmp101',
     //     type: 'app-header',
-    //     style: {
-    //         backgroundColor:'red'
-    //     },
-    //     subClass:'light-and-shiny',
-    //     children: [
-    //         {
-    //             htmlTagName: 'h2',
-    //             prefs: {
-    //                 style: {
-    //                     fontSize: 80,
-    //                     color: 'blue',
-    //                     textAlign: 'center'
-    //                 },
-    //             },
-    //             children: [
-    //                 'Your Brand Comes Here'
-    //             ]
-    //         },
-    //         {
-    //             htmlTagName: 'button',
-    //             prefs: {
-    //                 style: {
-    //                     fontSize: 15,
-    //                     color: 'black',
-    //                     textAlign: 'center'
-    //                 },
-    //             },
-    //             children: [
-    //                 'Try it now'
-    //             ]
-    //         },
-    //     ],
+    //     style: {},
     //     info: {
     //         subClass: 'light-and-shiny',
     //         title: 'We Sell Corona',
@@ -79,6 +37,48 @@ const gWap = {
     //         callToAction: 'Try it now!'
     //     }
     // },
+    {
+        id: 'cmp10111',
+        type: 'app-header',
+        style: {
+            backgroundColor:'red'
+        },
+        subClass:'light-and-shiny',
+        children: [
+            {
+                htmlTagName: 'h2',
+                prefs: {
+                    style: {
+                        fontSize: 80,
+                        color: 'blue',
+                        textAlign: 'center'
+                    },
+                },
+                children: [
+                    'Your Brand Comes Here'
+                ]
+            },
+            {
+                htmlTagName: 'button',
+                prefs: {
+                    style: {
+                        fontSize: 15,
+                        color: 'black',
+                        textAlign: 'center'
+                    },
+                },
+                children: [
+                    'Try it now'
+                ]
+            },
+        ],
+        info: {
+            subClass: 'light-and-shiny',
+            title: 'We Sell Corona',
+            subTitle: 'and alcojel',
+            callToAction: 'Try it now!'
+        }
+    },
     {
         id: 'cmp103',
         type: 'layout-2-columns',
@@ -88,7 +88,7 @@ const gWap = {
             children: [{
                 id: 'cmp12',
                 type: 'app-card',
-                style: {color:'red'},
+                style: {},
                 info: {
                     subClass: 'light-and-shiny',
                     title: 'Do it now',

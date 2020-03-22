@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card light-and-shiny" id="card" :class="currCmp.info.subClass">
+  <div class="app-card light-and-shiny" id="card"  :style="currCmp.style">
     <img :src="currCmp.info.imgUrl" alt="Card Image" />
     <h3
       class="card-text"
@@ -25,13 +25,19 @@
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
-    cmp: Object
+    cmp: Object,
+    isEditing: Boolean
   },
   data() {
     return {
       currCmp: {},
       editMode: false
     };
+  },
+  computed: {
+    markCmp() {
+      return { 'mark-cmp': this.isEditing  }
+    }
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
