@@ -1,5 +1,5 @@
 <template>
-  <section class="app-contact-us flex space-evenly" id="app-contact-us" :class="info.subClass">
+  <section class="app-contact-us flex space-evenly light-and-shiny" id="app-contact-us" :class="info.subClass">
     <section class="info">
       <hr/>
       <h3>{{info.title}}</h3>

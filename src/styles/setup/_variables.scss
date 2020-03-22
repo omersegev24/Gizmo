@@ -1,17 +1,18 @@
 //MAX_WIDTH
 $max-width: 1500px;
-// COLOR PALETTE
 
-// $clr1: #0e153a;
-// $clr2: #22d1ee;
-
+//LIGHT THEME COLOR PALETTE
 $clr1: #f5f5f5;
 $clr2: #0c3866;
 $clr3: #3353f5;
 $clr4: #e2f3f5;
 
-// LAYOUT BREAKPOINTS
+//DARK THEME COLOR PALETTE
+$clr5: #21e6c1;
+$clr6: #112537;
+$clr7: #e4f0fb;
 
+// LAYOUT BREAKPOINTS
 $break-narrow: 460px;
 $break-normal: 740px;
 $break-wide: 960px;

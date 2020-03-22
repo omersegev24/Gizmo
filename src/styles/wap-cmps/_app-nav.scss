@@ -1,23 +1,46 @@
-.app-nav.light-and-shiny {
+.app-nav {
     font-family: AlegreyaSans;
     margin: 0;
     .logo {
         font-size: 3rem;
         font-weight: bold;
         font-family: Lobster, cursive;
+        margin-left: rem(50px);
     }
-
+    
     >* {
         color: $clr2;
     }
-
+    
     li {
         a {
-            color: $clr2;
-            margin-left: rem(50px);
+            margin-right: rem(50px);
         }
         &:hover {
             cursor: pointer;
+        }
+    }
+}
+
+.app-nav.light-and-shiny {
+    >* {
+        color: $clr2;
+    }
+    li {
+        a {
+            color: $clr2;
+        }
+    }
+}
+
+.app-nav.dark-theme {
+    background-color: $clr6;
+    >* {
+        color: $clr5;
+    }
+    li {
+        a {
+            color: $clr5;
         }
     }
 }

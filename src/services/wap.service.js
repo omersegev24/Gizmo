@@ -39,7 +39,7 @@ const gWap = {
     },
     {
         id: 'cmp103',
-        type: 'layout-2-columns',
+        type: 'layout-3-columns',
         style: {},
         info: {
             subClass: 'light-and-shiny',
@@ -63,20 +63,30 @@ const gWap = {
                     imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
                 }
             },
+            {
+                id: 'cmp14',
+                type: 'app-card',
+                style: {},
+                subClass: 'light-and-shiny',
+                info: {
+                    title: 'Do it now',
+                    imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
+                }
+            },
             ]
         }
     },
 
-    {
-        id: 'cmp104',
-        type: 'app-card',
-        style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            title: 'Do it now',
-            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-        }
-    },
+    // {
+    //     id: 'cmp104',
+    //     type: 'app-card',
+    //     style: {},
+    //     info: {
+    //         subClass: 'light-and-shiny',
+    //         title: 'Do it now',
+    //         imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
+    //     }
+    // },
     {
         id: 'cmp106',
         type: 'app-contact',

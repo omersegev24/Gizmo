@@ -1,25 +1,47 @@
-.app-footer.light-and-shiny {
+.app-footer {
   height: 100px;
-  background-color: $clr2;
   text-transform: lowercase;
-
   div {
     span {
       height: fit-content;
       margin-right: 5px;
     }
   }
+  
+  .social-links {
+    * {
+      margin: 5px;
+      font-size: 1.3rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
 
+.app-footer.light-and-shiny {
+  background-color: $clr2;
+  
   * {
     color: $clr1;
   }
-
+  
   a {
-    margin: 5px;
-    font-size: 1.3rem;
-
     :hover {
       color: darken($clr1, 20%);
+    }
+    
+  }
+}
+
+.app-footer.dark-theme {
+  background-color: $clr6;
+  * {
+    color: $clr5;
+  }
+  a {
+    :hover {
+      color: darken($clr5, 20%);
     }
   }
 }

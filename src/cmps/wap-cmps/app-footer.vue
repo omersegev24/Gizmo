@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer flex justify-center align-center flex-column" id="app-footer" :class="info.subClass">
+  <footer class="app-footer light-and-shiny flex justify-center align-center flex-column" id="app-footer" :class="info.subClass">
     <div class="flex justify-content align-center">
       <span class="far fa-copyright"></span>
       <p>{{info.title}}</p>

@@ -1,10 +1,9 @@
-.app-header.light-and-shiny {
+.app-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("~@/assets/img/hero-photographer.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    color: #fff;
     padding: 8rem;
     word-break:break-all;
     
@@ -24,5 +23,19 @@
 
     button {
         @include for-light-button;
+    }
+}
+
+.app-header.light-and-shiny {
+    color: #fff;
+}
+
+.app-header.dark-theme {
+    color: darken($clr5, 20%);
+    button {
+        @include for-dark-button;
+        font-weight: bold;
+        background-color: darken($clr5, 20%);
+        border-color: darken($clr5, 20%);
     }
 }

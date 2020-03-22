@@ -1,5 +1,5 @@
 <template>
-  <section class="app-map" :class="info.subClass">
+  <section class="app-map light-and-shiny" :class="info.subClass">
     <GmapMap
       class="map"
       :center="center"

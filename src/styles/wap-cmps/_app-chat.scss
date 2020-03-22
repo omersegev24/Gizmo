@@ -1,16 +1,12 @@
-.app-chat.light-and-shiny{
-    background-color: $clr2;
-    color: $clr1;
+.app-chat{
     width: 20vw;
     text-align: start;
-    filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
 
     .unopened-chat-container {
         .unopened-chat-titles {
             >* {
                 margin-left: 1rem;
             }
-            
             .chat-sm-txt {
                 font-size: rem(11px);
                 margin-bottom: 3px;
@@ -26,13 +22,11 @@
             margin-right: 1rem;
             border-radius: 999px;
             transition: .3s;
-
             &:hover {
                 cursor: pointer;
                 transform: scale(1.5);
             }
         }
-
         &:hover {
             cursor: pointer;
         }
@@ -41,31 +35,23 @@
 
     .msgs-container {
         overflow-y: auto;
-        background-color: $clr1;
-        color: $clr2;
         padding: 5px;
         margin: 0;
         min-height: 200px;
         font-size: 0.8rem;
-        
         li {
             padding: 5px;
             margin: 10px;
             width: fit-content;
-            background-color: lighten($clr2, $amount: 50%);
             margin-left: auto;
         }
-        
         .support {
             margin-left: 10px;
             margin-right: auto;
-            background-color: lighten($clr2, $amount: 65%);
         }
     }
     
-
     .msg-send-container {
-        background-color: #ffffff;
         padding: 5px;
         input {
             width: 92%;
@@ -74,13 +60,67 @@
             border: none;
             outline: none;
         }
-
         .msg-send {
-            color: $clr2;
-
             &:hover {
                 cursor: pointer;
             }
+        } 
+    }
+}
+
+.app-chat.light-and-shiny {
+    background-color: $clr1;
+    color: $clr2;
+    filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
+
+    .unopened-chat-container {
+        background-color: $clr2;
+        color: $clr1;
+    }
+
+    .msgs-container {
+        background-color: $clr1;
+        color: $clr2;
+        li {
+            background-color: lighten($clr1, $amount: 50%);
+        }
+        .support {
+            background-color: lighten($clr1, $amount: 65%);
+        }
+    }
+    .msg-send-container {
+        background-color: $clr1;
+        .msg-send {
+            color: $clr2;
+        } 
+    }
+}
+
+.app-chat.dark-theme {
+    background-color: $clr6;
+    color: $clr5;
+    filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
+    
+    .unopened-chat-container {
+        background-color: $clr6;
+        color: $clr5;
+    }
+
+    .msgs-container {
+        background-color: lighten($clr6, 5%);
+        color: $clr5;
+        li {
+            background-color: lighten($clr6, $amount: 10%);
+        }
+        .support {
+            background-color: lighten($clr6, $amount: 15%);
+        }
+    }
+    .msg-send-container {
+        background-color: $clr6;
+        .msg-send {
+            color: $clr5;
+            margin-left: 5px;
         } 
     }
 }

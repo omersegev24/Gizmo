@@ -23,4 +23,8 @@
   a:hover:not(:first-child) {
     color: $clr3;
   }
+
+  :last-child {
+    padding-right: 20px;
+  }
 }
