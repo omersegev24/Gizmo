@@ -47,13 +47,11 @@ export default {
     },
     linkInputs() {
       if (this.currCmp.info.links) {
-        console.log('linksss', this.currCmp.info.links)
         return this.currCmp.info.links
       }
     },
     childrenInputs() {
       if (this.currCmp.info.children) {
-        console.log('childrenn')
         return this.currCmp.info.children
       }
     }

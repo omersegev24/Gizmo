@@ -1,5 +1,5 @@
 <template>
-  <section class="app-map" :class="info.subClass">
+  <section class="app-map" :class="cmp.info.subClass">
     <GmapMap :center="center" :zoom="12" map-type-id="terrain" style="width: 500px; height: 300px">
       <GmapMarker
         :key="index"
@@ -16,12 +16,12 @@
 <script>
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   data() {
     return {
-      center: this.info.center,
-      markers: this.info.markers
+      center: this.cmp.info.center,
+      markers: this.cmp.info.markers
     };
   }
 };
