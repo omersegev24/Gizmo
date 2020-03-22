@@ -1,10 +1,9 @@
 <template>
   <div class="edit-panel flex flex-column">
-
     <div v-if="!currCmp">
       <p>Pick a section to start editing!</p>
     </div>
-    
+
     <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
       <edit-map :mapCmp="currCmp"></edit-map>
     </section>
@@ -47,6 +46,11 @@ import editMap from './edit-map.vue'
 export default {
   props: {
     currCmp: Object
+  },
+  data() {
+    return {
+
+    }
   },
   computed: {
     inputToRender() {

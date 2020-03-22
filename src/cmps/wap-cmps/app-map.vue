@@ -1,11 +1,11 @@
 <template>
-  <section class="app-map" :class="currCmp.info.subClass">
+  <section class="app-map" :class="cmp.info.subClass">
     <GmapMap
       class="map"
       :center="center"
       :zoom="12"
       map-type-id="terrain"
-      :style="`width: ${currCmp.style.width}px; height: ${currCmp.style.height}px`"
+      :style="`width: ${cmp.style.width}px; height: ${cmp.style.height}px`"
     >
       <GmapMarker
         :key="index"
@@ -36,15 +36,15 @@ export default {
     };
   },
   created() {
-    console.log('mapcreated')
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on('resize-map', (mapSize) => {
-      this.width = mapSize.width;
-      this.height = mapSize.height;
-    })
-    eventBus.$on('updateLoc', loc => {
-      console.log(loc.lat)
-    })
+    // this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    // // eventBus.$on('updateMap', mapCmp => this.currCmp = mapCmp)
+    // eventBus.$on('resize-map', (mapSize) => {
+    //   this.width = mapSize.width;
+    //   this.height = mapSize.height;
+    // })
+    // eventBus.$on('updateLoc', loc => {
+    //   console.log(loc.lat)
+    // })
   },
 };
 </script>

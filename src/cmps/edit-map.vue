@@ -1,25 +1,23 @@
 <template>
   <section class="edit-map">
-    <!-- <input type="text" v-model="locName" placeholder="Enter your location" /> -->
-    <!-- <button @click="panToLoc">Change Location</button> -->
     <gmap-autocomplete @place_changed="getAddressData"></gmap-autocomplete>
     <p>Width</p>
     <vue-slider
-      v-model="mapSize.width"
+      v-model="mapData.style.width"
       :min="300"
       :max="960"
       :contained="true"
       :tooltip="'active'"
-      @change="changeMapSize"
+      @change="update"
     ></vue-slider>
     <p>Height</p>
     <vue-slider
-      v-model="mapSize.height"
+      v-model="mapData.style.height"
       :min="300"
       :max="960"
       :contained="true"
       :tooltip="'active'"
-      @change="changeMapSize"
+      @change="update"
     ></vue-slider>
   </section>
 </template>
@@ -37,31 +35,28 @@ export default {
   },
   data() {
     return {
-      mapSize: {
-        width: null,
-        height: null
+      mapData: {
+        style: {
+          width: 500,
+          height: 500,
+        },
+        pos: {}
       },
-      pos: {}
     };
   },
   methods: {
     getAddressData(place) {
-      console.log(place.geometry.location.lat())
-      console.log(place.geometry.location.lng())
-      this.pos = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
-      this.mapCmp.info.center = this.pos
-      this.mapCmp.info.markers[0].position = this.pos
-      eventBus.
+      this.mapData.pos = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+
       this.update()
     },
-    changeMapSize() {
-      this.mapCmp.style.height = this.mapSize.height
-      this.mapCmp.style.width = this.mapSize.width
-      this.update();
-    },
     update() {
-      console.log('map updated')
-      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.mapCmp)));
+      const mapCopy = JSON.parse(JSON.stringify(this.mapCmp))
+      mapCopy.style = this.mapData.style
+      mapCopy.info.center = this.mapData.pos
+      mapCopy.info.markers[0].position = this.mapData.pos
+      
+      eventBus.$emit('updateCmp', mapCopy)
     }
   }
 };

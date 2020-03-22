@@ -30,8 +30,9 @@ export default {
       this.$store.dispatch({ type: 'removeCmp', cmp })
     })
     eventBus.$on("updatePos", updatedPos => {
-      this.$store.dispatch({type: 'updatePos', updatedPos})
+      this.$store.dispatch({ type: 'updatePos', updatedPos })
     });
+
   },
   computed: {
     wap() {
