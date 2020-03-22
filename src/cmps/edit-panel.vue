@@ -46,6 +46,11 @@ export default {
   props: {
     currCmp: Object
   },
+  data() {
+    return {
+
+    }
+  },
   computed: {
     inputToRender() {
       return _.pickBy(this.currCmp.info, item => {

@@ -113,7 +113,7 @@ const gWap = {
     {
         id: 'cmp102',
         type: 'app-map',
-        style: {},
+        style: { width: '500', height: '500' },
         info: {
             center: { lat: 32.519, lng: 34.9045 },
             markers: [{ position: { lat: 32.519, lng: 34.9045 } }]

@@ -1,33 +1,31 @@
 <template>
   <section class="edit-map">
-    <input type="text" v-model="locName" placeholder="Enter your location" />
-    <button @click="getLocByName(locName)">Change Location</button>
+    <gmap-autocomplete @place_changed="getAddressData"></gmap-autocomplete>
     <p>Width</p>
     <vue-slider
-      v-model="mapSize.width"
+      v-model="mapData.style.width"
       :min="300"
       :max="960"
       :contained="true"
       :tooltip="'active'"
-      @change="changeMapSize"
+      @change="update"
     ></vue-slider>
     <p>Height</p>
     <vue-slider
-      v-model="mapSize.height"
+      v-model="mapData.style.height"
       :min="300"
       :max="960"
       :contained="true"
       :tooltip="'active'"
-      @change="changeMapSize"
+      @change="update"
     ></vue-slider>
   </section>
 </template>
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
+import { mapService } from "../services/map.service.js"
 import vueSlider from "vue-slider-component";
-import axios from "axios";
-
 export default {
   props: {
     mapCmp: Object
@@ -37,36 +35,28 @@ export default {
   },
   data() {
     return {
-      locName: "",
-      newMapPos: {
-        lat: null,
-        lng: null
+      mapData: {
+        style: {
+          width: 500,
+          height: 500,
+        },
+        pos: {}
       },
-      mapSize: {
-        width: null,
-        height: null
-      }
     };
   },
   methods: {
-    async getLocByName(locName) {
-      const API_KEY = "AIzaSyCS9KKJZD6rGF93tIgOd3qqW8GNz4oZIBA";
-      let prmLocation = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${locName}&key=${API_KEY}`
-      );
-      let location = prmLocation.data.results[0].geometry.location;
-      this.mapCmp.info.center.lat = location.lat;
-      this.mapCmp.info.center.lng = location.lng;
-      this.mapCmp.info.markers[0].position.lat = location.lat;
-      this.mapCmp.info.markers[0].position.lng = location.lng;
-      this.update();
-    },
-    changeMapSize() {
-      eventBus.$emit("resize-map", this.mapSize);
-      this.update();
+    getAddressData(place) {
+      this.mapData.pos = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+
+      this.update()
     },
     update() {
-      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.mapCmp)));
+      const mapCopy = JSON.parse(JSON.stringify(this.mapCmp))
+      mapCopy.style = this.mapData.style
+      mapCopy.info.center = this.mapData.pos
+      mapCopy.info.markers[0].position = this.mapData.pos
+      
+      eventBus.$emit('updateCmp', mapCopy)
     }
   }
 };
