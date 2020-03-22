@@ -1,13 +1,16 @@
 <template>
-  <div class="home">
-    <h1>Create a Website You’re Proud Of</h1>
-    <h3>Discover the platform that gives you the freedom to create, design,
-       manage and develop your web presence exactly the way you want.</h3>
-    <router-link to='/templates'>Get Started</router-link>
+  <div class="home-page main-layout">
+    <span class="title">Create a Website You’re Proud Of</span>
+    <div>
+      <p class="sub-title">
+        Discover the platform that gives you the freedom to create, design,
+        manage and develop your web presence exactly the way you want.
+      </p>
+      <router-link to="/templates">Get Started</router-link>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
