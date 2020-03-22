@@ -1,52 +1,55 @@
 <template>
   <div class="edit-panel flex flex-column">
-
     <div v-if="!currCmp">
       <p>Pick a section to start editing!</p>
     </div>
-    
-    <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
-      <edit-map :mapCmp="currCmp"></edit-map>
-    </section>
-
-    <div v-else class="edit-panel flex flex-column">
-      <div v-for="(item, idx) in inputToRender" :key="idx">
-        <p>{{idx}}</p>
-        <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+    <div v-else>
+      <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
+        <edit-map :mapCmp="currCmp"></edit-map>
+      </section>
+      <div class="edit-panel flex flex-column" v-else>
+        <div v-for="(item, idx) in inputToRender" :key="idx">
+          <p>{{idx}}</p>
+          <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+        </div>
       </div>
-    </div>
 
-    <div v-for="(child, index) in childrenInputs" :key="index">
-      <div v-for="(item, idx) in child.info" :key="idx">
-        <p>{{idx}}</p>
-        <input
-          type="text"
-          v-model="currCmp.info.children[index].info[idx]"
-          placeholder="Enter text..."
-        />
+      <div v-for="(child, index) in childrenInputs" :key="index">
+        <div v-for="(item, idx) in child.info" :key="idx">
+          <p>{{idx}}</p>
+          <input
+            type="text"
+            v-model="currCmp.info.children[index].info[idx]"
+            placeholder="Enter text..."
+          />
+        </div>
       </div>
-    </div>
 
-    <div v-for="(child, index) in linkInputs" :key="child.id">
-      <div v-for="(item, key) in child" :key="key">
-        <p>{{key}}</p>
-        <input type="text" v-model="currCmp.info.links[index][key]" placeholder="Enter text..." />
+      <div v-for="(child, index) in linkInputs" :key="child.id">
+        <div v-for="(item, key) in child" :key="key">
+          <p>{{key}}</p>
+          <input type="text" v-model="currCmp.info.links[index][key]" placeholder="Enter text..." />
+        </div>
       </div>
-    </div>
 
-    <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
+      <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
+    </div>
   </div>
 </template>
 
 <script>
-import { eventBus } from '../services/eventBus.service.js';
-import editText from './edit-text.vue';
-import editMap from './edit-map.vue'
-
+import { eventBus } from "../services/eventBus.service.js";
+import editText from "./edit-text.vue";
+import editMap from "./edit-map.vue";
 
 export default {
   props: {
     currCmp: Object
+  },
+  data() {
+    return {
+
+    }
   },
   computed: {
     inputToRender() {
@@ -56,16 +59,14 @@ export default {
     },
     linkInputs() {
       if (this.currCmp.info.links) {
-        console.log("linksss", this.currCmp.info.links);
         return this.currCmp.info.links;
       }
     },
     childrenInputs() {
       if (this.currCmp.info.children) {
-        console.log("childrenn");
         return this.currCmp.info.children;
       }
-    },
+    }
   },
   watch: {
     currCmp: {
@@ -79,7 +80,7 @@ export default {
   methods: {
     updateCmp(cmp) {
       eventBus.$emit("updateCmp", cmp);
-    },
+    }
   },
   components: {
     editText,

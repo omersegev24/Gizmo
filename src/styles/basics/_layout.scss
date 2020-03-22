@@ -4,7 +4,7 @@
         minmax(0.6rem, auto) 
         minmax(auto, $break-narrow) 
         minmax(0.6rem, auto);
-    grid-template-rows: 96vh 1fr auto;
+    grid-template-rows: 1fr 2fr auto;
 
     min-height: 100vh;
     

@@ -13,7 +13,10 @@
 @import "basics/base";
 @import "basics/layout";
 
+//VIEWS
+@import 'views/home';
 @import 'views/editor';
+
 
 // CMPS
 @import "cmps/default-wap";

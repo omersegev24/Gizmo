@@ -1,6 +1,6 @@
 <template>
-  <section class="layout-3-columns light-and-shiny flex justify-center" :class="info.subClass">
-    <component v-for="child in info.children" :is="child.type" :info="child.info" :key="child.id"></component>
+  <section class="layout-3-columns light-and-shiny flex justify-center" :class="cmp.info.subClass">
+    <component v-for="child in cmp.info.children" :is="child.type" :cmp="child" :key="child.id"></component>
   </section>
 </template>
 
@@ -10,7 +10,7 @@ import appArticle from './app-article.vue';
 
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   components:{
     appCard,

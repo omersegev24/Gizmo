@@ -1,11 +1,11 @@
 <template>
-  <section class="app-map light-and-shiny" :class="info.subClass">
+  <section class="app-map light-and-shiny" :class="cmp.info.subClass">
     <GmapMap
       class="map"
       :center="center"
       :zoom="12"
       map-type-id="terrain"
-      :style="`width: ${width}px; height: ${height}px`"
+      :style="`width: ${cmp.style.width}px; height: ${cmp.style.height}px`"
     >
       <GmapMarker
         :key="index"
@@ -24,21 +24,27 @@ import { eventBus } from '../../services/eventBus.service'
 
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   data() {
     return {
-      center: this.info.center,
-      markers: this.info.markers,
+      currCmp: {},
+      center: this.cmp.info.center,
+      markers: this.cmp.info.markers,
       width: 500,
       height: 500,
     };
   },
   created() {
-    eventBus.$on('resize-map', (mapSize) => {
-      this.width = mapSize.width;
-      this.height = mapSize.height;
-    })
+    // this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    // // eventBus.$on('updateMap', mapCmp => this.currCmp = mapCmp)
+    // eventBus.$on('resize-map', (mapSize) => {
+    //   this.width = mapSize.width;
+    //   this.height = mapSize.height;
+    // })
+    // eventBus.$on('updateLoc', loc => {
+    //   console.log(loc.lat)
+    // })
   },
 };
 </script>
