@@ -1,19 +1,17 @@
 <template>
-  <nav class="app-nav light-and-shiny" :class="info.subClass">
+  <nav class="app-nav light-and-shiny" :class="currCmp.info.subClass">
     <nav class="flex">
-      <p class="logo" id="Home">{{info.logo}}</p>
+      <p
+        class="logo"
+        id="Home"
+        :class="{editable: editMode}"
+        :contenteditable="editMode"
+        @blur="editLogo"
+      >{{currCmp.info.logo}}</p>
+
       <ul class="nav-links flex justify-end align-center">
-        <!-- <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li> -->
         <li>
-          <a
-            v-for="link in info.links"
-            :href="'#' + link.to"
-            :key="link.txt"
-          >
-            {{link.txt}}
-          </a>
+          <a v-for="link in currCmp.info.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
         </li>
       </ul>
     </nav>
@@ -21,12 +19,33 @@
 </template>
 
 <script>
+import { eventBus } from "../../services/eventBus.service.js";
+
 export default {
   props: {
-    info: Object
+    cmp: Object
+  },
+  data() {
+    return {
+      currCmp: {},
+      editMode: false
+    };
   },
   created() {
-    console.log(this.info)
+    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    eventBus.$on("editMode", isEditMode => {
+      this.editMode = isEditMode;
+    });
+  },
+  methods: {
+    editLogo(ev) {
+      this.currCmp.info.logo = ev.target.innerText;
+      this.update();
+    },
+    update() {
+      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      eventBus.$emit("updateCmp", cmpCopy);
+    }
   }
 };
 </script>

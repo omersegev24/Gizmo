@@ -34,7 +34,6 @@ export default ({
             return wap
         },
         async addCmp(context, { cmp }) {
-            console.log('aaa', cmp)
             var cmpCopy = JSON.parse(JSON.stringify(cmp))
             var addedCmp = await wapService.addCmp(cmpCopy)
             context.commit({

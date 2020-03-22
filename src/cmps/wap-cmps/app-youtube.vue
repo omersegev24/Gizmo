@@ -1,15 +1,15 @@
 <template>
   <div class="video-container">
-    <h3 class="title">{{info.title}}</h3>
-    <iframe :src="info.url"></iframe>
+    <h3 class="title">{{cmp.info.title}}</h3>
+    <iframe :src="cmp.info.url"></iframe>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    info: Object
-  }
+    cmp: Object
+  },
 }
 </script>
 

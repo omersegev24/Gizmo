@@ -1,6 +1,12 @@
 <template>
-  <section class="app-map" :class="info.subClass">
-    <GmapMap :center="center" :zoom="12" map-type-id="terrain" style="width: 500px; height: 300px">
+  <section class="app-map" :class="currCmp.info.subClass">
+    <GmapMap
+      class="map"
+      :center="center"
+      :zoom="12"
+      map-type-id="terrain"
+      :style="`width: ${currCmp.style.width}px; height: ${currCmp.style.height}px`"
+    >
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
@@ -14,15 +20,31 @@
 </template>
 
 <script>
+import { eventBus } from '../../services/eventBus.service'
+
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   data() {
     return {
-      center: this.info.center,
-      markers: this.info.markers
+      currCmp: {},
+      center: this.cmp.info.center,
+      markers: this.cmp.info.markers,
+      width: 500,
+      height: 500,
     };
-  }
+  },
+  created() {
+    console.log('mapcreated')
+    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    eventBus.$on('resize-map', (mapSize) => {
+      this.width = mapSize.width;
+      this.height = mapSize.height;
+    })
+    eventBus.$on('updateLoc', loc => {
+      console.log(loc.lat)
+    })
+  },
 };
 </script>

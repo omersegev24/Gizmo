@@ -47,9 +47,11 @@ const gWap = {
                 id: 'cmp12',
                 type: 'app-card',
                 style: {},
-                subClass: 'light-and-shiny',
                 info: {
+                    subClass: 'light-and-shiny',
                     title: 'Do it now',
+                    subTitle: 'Check out our team',
+                    callToAction: 'Check it out',
                     imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
                 }
             },
@@ -57,9 +59,11 @@ const gWap = {
                 id: 'cmp13',
                 type: 'app-card',
                 style: {},
-                subClass: 'light-and-shiny',
                 info: {
+                    subClass: 'light-and-shiny',
                     title: 'Do it now',
+                    subTitle: 'Check out our team',
+                    callToAction: 'Check it out',
                     imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
                 }
             },
@@ -74,6 +78,8 @@ const gWap = {
         info: {
             subClass: 'light-and-shiny',
             title: 'Do it now',
+            subTitle: 'Check out our team',
+            callToAction: 'Check it out',
             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
         }
     },
@@ -107,9 +113,8 @@ const gWap = {
     {
         id: 'cmp102',
         type: 'app-map',
-        style: {},
+        style: { width: '500', height: '500' },
         info: {
-            subClass: 'light-and-shiny',
             center: { lat: 32.519, lng: 34.9045 },
             markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
         }
@@ -127,7 +132,7 @@ const gWap = {
                 info: {
                     subClass: 'light-and-shiny',
                     title: 'Article title',
-                    subTitle: 'Article title',
+                    subTitle: 'Article sub title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                 }
             },
@@ -138,7 +143,7 @@ const gWap = {
                 info: {
                     subClass: 'light-and-shiny',
                     title: 'Article title',
-                    subTitle: 'Article title',
+                    subTitle: 'Article sub title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                 }
             },
@@ -149,7 +154,7 @@ const gWap = {
                 info: {
                     subClass: 'light-and-shiny',
                     title: 'Article title',
-                    subTitle: 'Article title',
+                    subTitle: 'Article sub title',
                     txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                 }
             }

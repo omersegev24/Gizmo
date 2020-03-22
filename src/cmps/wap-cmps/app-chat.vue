@@ -1,5 +1,5 @@
 <template>
-  <section class="app-chat light-and-shiny" :class="info.subClass">
+  <section class="app-chat light-and-shiny" :class="cmp.info.subClass">
     <div class="unopened-chat-container flex space-between" @click.prevent="toggleChat" v-if="!chatOpen">
       <section class="unopened-chat-titles">
         <p>Let's Chat!</p>
@@ -40,7 +40,7 @@
 <script>
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   data() {
     return {
@@ -59,8 +59,8 @@ export default {
 
   methods: {
     sendMsg() {
-      //copy ?
-      this.msgs.push(this.userMsg);
+      let copyMsg = JSON.parse(JSON.stringify(this.userMsg))
+      this.msgs.push(copyMsg);
       this.userMsg.txt = '';
       
       setTimeout(() => {

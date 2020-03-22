@@ -1,23 +1,52 @@
 <template>
-  <footer class="app-footer flex justify-center align-center flex-column" id="app-footer" :class="info.subClass">
-    <div class="flex justify-content align-center">
+  <footer
+    class="app-footer flex justify-center align-center flex-column"
+    id="app-footer"
+    :class="currCmp.info.subClass"
+  >
+    <p :class="{editable: editMode}" :contenteditable="editMode" @blur="editTitle">
       <span class="far fa-copyright"></span>
-      <p>{{info.title}}</p>
-    </div>
+      {{currCmp.info.title}}
+    </p>
+
     <section class="social-links">
-      <a v-for="link in socialLinks" :key="link.social" :href="link.url" :class="'fab fa-' + link.social"></a>
+      <a
+        v-for="link in socialLinks"
+        :key="link.social"
+        :href="link.url"
+        :class="'fab fa-' + link.social"
+      ></a>
     </section>
   </footer>
 </template>
 
 <script>
+import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
-    info: Object
+    cmp: Object
   },
   data() {
     return {
-      socialLinks: this.info.links
+      currCmp: {},
+      editMode: false,
+      socialLinks: this.cmp.info.links
+    };
+  },
+  created() {
+    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    eventBus.$on("editMode", isEditMode => {
+      this.editMode = isEditMode;
+    });
+  },
+  methods: {
+    editTitle(ev) {
+      this.currCmp.info.title = ev.target.innerText;
+      this.update();
+    },
+    update() {
+      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      eventBus.$emit("updateCmp", cmpCopy);
     }
   }
 };
