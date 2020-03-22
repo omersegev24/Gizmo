@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="app-footer flex justify-center align-center flex-column"
+    class="app-footer light-and-shiny flex justify-center align-center flex-column"
     id="app-footer"
     :class="currCmp.info.subClass"
   >

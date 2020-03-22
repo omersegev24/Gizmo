@@ -1,6 +1,6 @@
 <template>
   <header
-    class="app-header flex justify-center align-center flex-column"
+    class="app-header light-and-shiny flex justify-center align-center flex-column"
     id="app-header"
     :class="currCmp.info.subClass"
   >

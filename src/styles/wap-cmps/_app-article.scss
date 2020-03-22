@@ -1,8 +1,18 @@
-.app-article.light-and-shiny {
+.app-article {
     line-height: 1.9;
     margin: 10px;
-
     p {
         font-size: .8rem;
+        padding: 10px;
     }
+}
+
+.app-article.light-and-shiny {
+    color: $clr1;
+    background-color: $clr2;
+}
+
+.app-article.dark-theme {
+    color: $clr5;
+    background-color: $clr6;
 }

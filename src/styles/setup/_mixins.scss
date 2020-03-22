@@ -16,6 +16,22 @@
   }
 }
 
+@mixin for-dark-button {
+  color: $clr6;
+  background-color: $clr5;
+  border: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid $clr5;
+  transition: .3s;
+
+  &:hover {
+    color: $clr5;
+    background-color: $clr6;
+    border: 2px solid $clr5;
+  }
+}
+
 
 /* Media queries Breakpoint mixins */
 

@@ -1,13 +1,13 @@
-.app-card.light-and-shiny {
+.app-card {
     margin: 0 auto;
-    background-color: $clr1;
+    margin-top: 20px;
     width: 30%;
     filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
-
+    
     h3 {
         margin: 0;
     }
-
+    
     p {
         margin-bottom: 10px;
     }
@@ -15,8 +15,24 @@
     img {
         width: 100%;
     }
-
+    
     button {
-       @include for-light-button;
+        @include for-light-button;
     }
 }
+
+.app-card.light-and-shiny {
+    background-color: $clr1;
+    color: $clr2;
+}
+
+.app-card.dark-theme {
+    color: $clr5;
+    background-color: darken($clr6, 10%);
+    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+    button {
+        @include for-dark-button;
+        font-weight: bold;
+    }
+}
+

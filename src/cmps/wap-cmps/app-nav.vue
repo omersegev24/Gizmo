@@ -1,6 +1,6 @@
 <template>
   <nav class="app-nav light-and-shiny" :class="currCmp.info.subClass">
-    <nav class="flex">
+    <section class="flex space-between align-center">
       <p
         class="logo"
         id="Home"
@@ -14,7 +14,7 @@
           <a v-for="link in currCmp.info.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
         </li>
       </ul>
-    </nav>
+    </section>
   </nav>
 </template>
 

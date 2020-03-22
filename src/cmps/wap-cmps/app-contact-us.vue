@@ -1,6 +1,6 @@
 <template>
   <section
-    class="app-contact-us flex space-evenly"
+    class="app-contact-us flex space-evenly light-and-shiny"
     id="app-contact-us"
     :class="currCmp.info.subClass"
   >

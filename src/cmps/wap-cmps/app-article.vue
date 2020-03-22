@@ -1,5 +1,5 @@
 <template>
-  <section class="app-article" id="app-article" :class="currCmp.info.subClass">
+  <section class="app-article light-and-shiny" id="app-article" :class="currCmp.info.subClass">
     <h3
       :class="{editable: editMode}"
       :contenteditable="editMode"
