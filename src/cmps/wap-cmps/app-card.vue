@@ -1,11 +1,10 @@
 <template>
-  <div class="app-card" :style="currCmp.style" :class="currCmp.subClass" :contenteditable="false">
+  <div class="app-card" :style="currCmp.style" :class="currCmp.subClass">
     <component
       v-for="child in cmp.children"
       :is="child.type"
       :cmp="child"
       :key="child.id"
-      :contenteditable="true"
     ></component>
     <!-- <img :src="currCmp.info.imgUrl" alt="Card Image" />
     <h3
@@ -59,6 +58,9 @@ export default {
     editTitle(ev) {
       this.currCmp.info.title = ev.target.innerText;
       this.update();
+    },
+    cmpClicked(child) {
+      eventBus.$emit("edit", child);
     },
     editSubTitle(ev) {
       this.currCmp.info.subTitle = ev.target.innerText;

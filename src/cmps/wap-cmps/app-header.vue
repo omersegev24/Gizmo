@@ -4,12 +4,15 @@
     id="app-header"
     :class="currCmp.subClass"
   >
-    <component v-for="child in cmp.children"
-       :is="child.type"
-       :cmp="child"
-       :key="child.id"
-       :contenteditable="true"
-       ></component>
+    <component
+      v-for="child in cmp.children"
+      :is="child.type"
+      :key="child.id"
+      :style="child.style"
+      :contenteditable="true"
+      @blur="editTxt($event,child)"
+    >{{child.txt}}</component>
+
     <!-- <h2
       class="title"
       :class="{editable: editMode}"
@@ -52,9 +55,10 @@ export default {
     });
   },
   methods: {
-    editTxt(ev) {
-      this.currCmp.info.title = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
     },
     editSubTitle(ev) {
       this.currCmp.info.subTitle = ev.target.innerText;
