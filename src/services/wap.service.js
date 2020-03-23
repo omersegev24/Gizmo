@@ -16,19 +16,22 @@ const gWap = {
                     id: 'lin12az',
                     type: 'a',
                     to: 'app-header',
-                    txt: 'Home'
+                    txt: 'Home',
+                    style:{}
                 },
                 {
                     id: 'lin16aq',
                     type: 'a',
                     to: 'app-contact-us',
-                    txt: 'Contact'
+                    txt: 'Contact',
+                    style:{}
                 },
                 {
                     id: 'lin1vraz',
                     type: 'a',
                     to: 'app-article',
-                    txt: 'About'
+                    txt: 'About',
+                    style:{}
                 },
             ]
         },
