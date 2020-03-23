@@ -332,11 +332,9 @@ function updateWap(cmp) {
     
     wap.cmps.forEach(currCmp => {
         var res = _findNode(cmp.id, currCmp)
-        console.log(res)
+        if(res) console.log('its good', res)
     })
-    // const res = _findItemNested(wap, cmp.id, "children");
-    // console.log(res);
-
+   
     // wap.cmps.splice(idx, 1, cmp)
     // storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
@@ -348,12 +346,12 @@ function _findNode(id, currentNode) {
 
     if (id == currentNode.id) {
         return currentNode;
-    } else if (currentNode.info.children) {
+    } else if (currentNode.children) {
 
         // Use a for loop instead of forEach to avoid nested functions
         // Otherwise "return" will not work properly
-        for (i = 0; i < currentNode.info.children.length; i += 1) {
-            currentChild = currentNode.info.children[i];
+        for (i = 0; i < currentNode.children.length; i += 1) {
+            currentChild = currentNode.children[i];
 
             // Search in the current child
             result = _findNode(id, currentChild);
@@ -368,17 +366,6 @@ function _findNode(id, currentNode) {
         return false;
     }
 }
-
-// function  _findItemNested(arr, itemId, nestingKey){
-//     return arr.reduce((a, item) => {
-//         if (a) return a;
-//         if (item.id === itemId) return item;
-//         if (item[nestingKey]) return findItemNested(item[nestingKey], itemId, nestingKey)
-//     }, null)
-// };
-
-
-
 
 
 
