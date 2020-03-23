@@ -1,6 +1,6 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" :contenteditable="true" :class="getWapTheme"></component>
+    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" :class="getWapTheme"></component>
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
   </div>

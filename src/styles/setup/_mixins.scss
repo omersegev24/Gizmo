@@ -34,11 +34,8 @@
 }
 
 @mixin for-responsive-btn {
-  @include for-narrow-layout {
-    padding: 5px;
-    margin: 5px 0 10px;
-    font-size: 0.9rem;
-  }
+  margin: 5px 0 10px;
+  font-size: 0.8rem;
 }
 
 
@@ -51,7 +48,7 @@
 }
 
 @mixin for-normal-layout {
-  @media (min-width: $break-narrow) and (max-width: $break-normal) {
+  @media (max-width: $break-normal) {
     @content;
   }
 }

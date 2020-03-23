@@ -1,14 +1,11 @@
 .layout-3-columns {
-  @include for-narrow-layout {
+  @include for-wide-layout {
     flex-direction: column;
-    * {
-      margin: 0 auto;
-    }
   }
   @include for-normal-layout {
     flex-direction: column;
   }
-  @include for-wide-layout {
+  @include for-narrow-layout {
     flex-direction: column;
   }
 }

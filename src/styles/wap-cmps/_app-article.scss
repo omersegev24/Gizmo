@@ -6,15 +6,7 @@
     }
     p {
         font-size: .8rem;
-        padding: 10px;
-    }
-
-    @include for-normal-layout {
-        margin: 10px auto;
-    }
-
-    @include for-wide-layout {
-        margin: 10px auto;
+        padding: 5px;
     }
 }
 
@@ -26,4 +18,25 @@
 .app-article.dark-theme {
     color: $clr5;
     background-color: $clr6;
+}
+
+// MEDIA QUERIES
+
+@include for-wide-layout {
+    .app-article {
+        margin: 10px auto;
+    }
+}
+
+@include for-normal-layout {
+    .app-article {
+        margin: 10px auto;
+    }
+}
+
+@include for-narrow-layout {
+    .app-article {
+        margin: 10px auto;
+        width: 90%;
+    }
 }

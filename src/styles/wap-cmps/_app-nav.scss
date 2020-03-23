@@ -3,54 +3,33 @@
   margin: 0;
 
   section {
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      font-family: Lobster, cursive;
+      margin-left: rem(50px);
+    }
+
+    .nav-links {
+      margin-left: auto;
+    }
+
     .hamburger-menu {
       position: absolute;
       visibility: hidden;
-      @include for-narrow-layout {
-        background-color: transparent;
-        z-index: 2;
-        position: absolute;
-        left: 86%;
-        visibility: visible;
-        width: 40px;
-        transition: 0.5s;
+    }
+
+    > * {
+      color: $clr2;
+    }
+
+    li {
+      a {
+        margin-right: rem(50px);
       }
-    }
-
-    // @include for-narrow-layout {
-    //   .hamburger-menu {
-    //     background-color: transparent;
-    //     z-index: 2;
-    //     position: absolute;
-    //     left: 86%;
-    //     visibility: visible;
-    //     width: 40px;
-    //     transition: 0.5s;
-    //   }
-
-    //   .hamburger-menu:hover {
-    //     cursor: pointer;
-    //     transform: rotate(360deg);
-    //   }
-    // }
-  }
-  .logo {
-    font-size: 3rem;
-    font-weight: bold;
-    font-family: Lobster, cursive;
-    margin-left: rem(50px);
-  }
-
-  > * {
-    color: $clr2;
-  }
-
-  li {
-    a {
-      margin-right: rem(50px);
-    }
-    &:hover {
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -68,12 +47,111 @@
 
 .app-nav.dark-theme {
   background-color: $clr6;
+  .logo {
+    color: $clr5;
+  }
   > * {
     color: $clr5;
   }
   li {
     a {
       color: $clr5;
+    }
+  }
+}
+
+//MEDIA QUERIES
+
+@include for-normal-layout {
+  .app-nav {
+    section {
+      .logo {
+        margin-left: rem(20px);
+      }
+
+      .nav-links {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        transform: translate(100%, 0);
+        width: 80%;
+        height: 100vh;
+        transition: 0.3s;
+        justify-content: center;
+
+        li {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 10%;
+          left: 35%;
+          padding: 10px;
+
+          a {
+            margin: 0;
+            padding: 20px 0;
+            font-size: 2rem;
+            font-weight: bold;
+            transition: 0.3s;
+          }
+        }
+      }
+
+      .menu-open {
+        transform: translate(0, 0);
+        box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.7);
+      }
+
+      .hamburger-menu {
+        background-color: transparent;
+        z-index: 2;
+        position: absolute;
+        top: 15%;
+        left: 86%;
+        visibility: visible;
+        font-size: 2rem;
+        transition: 0.5s;
+
+        &:hover {
+          cursor: pointer;
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}
+
+@include for-normal-layout {
+  .app-nav.dark-theme {
+    .nav-links {
+      color: $clr5;
+      background-color: $clr6;
+      a {
+        transition: 0.3s;
+        &:hover {
+          color: darken($clr5, 20%);
+        }
+      }
+    }
+
+    .hamburger-menu {
+      color: $clr5;
+    }
+  }
+}
+
+@include for-narrow-layout {
+  .app-nav {
+    section {
+      .nav-links {
+        width: 100%;
+
+        li {
+          left: 30%;
+        }
+      }
     }
   }
 }
