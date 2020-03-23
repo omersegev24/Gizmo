@@ -10,27 +10,9 @@
       :key="child.id"
       :style="child.style"
       :contenteditable="true"
+      :src="child.imgUrl"
       @blur="editTxt($event,child)"
     >{{child.txt}}</component>
-
-    <!-- <h2
-      class="title"
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editTitle"
-    >{{currCmp.info.title}}</h2>
-    <h3
-      class="sub-title"
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editSubTitle"
-    >{{currCmp.info.subTitle}}</h3>
-
-    <button
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editButton"
-    >{{currCmp.info.callToAction}}</button>-->
   </header>
 </template>
 

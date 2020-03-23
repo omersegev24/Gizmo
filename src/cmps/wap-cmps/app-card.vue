@@ -3,9 +3,12 @@
     <component
       v-for="child in cmp.children"
       :is="child.type"
-      :cmp="child"
       :key="child.id"
-    ></component>
+      :style="child.style"
+      :contenteditable="true"
+      @blur="editTxt($event,child)"
+      :src="child.imgUrl"
+    >{{child.txt}}</component>
     <!-- <img :src="currCmp.info.imgUrl" alt="Card Image" />
     <h3
       class="card-text"
@@ -29,7 +32,7 @@
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-import elImg from '../wap-elements-cmp/img.cmp.vue'
+// import elImg from '../wap-elements-cmp/img.cmp.vue'
 import elTitle from '../wap-elements-cmp/title.cmp.vue'
 import elButton from '../wap-elements-cmp/button.cmp.vue'
 export default {
@@ -55,9 +58,10 @@ export default {
     });
   },
   methods: {
-    editTitle(ev) {
-      this.currCmp.info.title = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
     },
     cmpClicked(child) {
       eventBus.$emit("edit", child);
@@ -76,7 +80,7 @@ export default {
     }
   },
   components: {
-    elImg,
+    // elImg,
     elTitle,
     elButton
   }
