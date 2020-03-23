@@ -145,14 +145,28 @@ const cmps = [
         id: 'cmp110',
         type: 'app-social-links',
         style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            links: [
-                { social: 'facebook', url: 'www.facebook.com' },
-                { social: 'github', url: 'www.github.com' },
-                { social: 'instagram', url: 'www.instagram.com' },
-            ]
-        }
+        subClass: 'light-and-shiny',
+        children: [
+            {
+                id: 'soc1az',
+                social: 'facebook',
+                url: 'www.facebook.com',
+                style: {}
+            },
+            {
+                id: 'soc1qzo',
+                social: 'github',
+                url: 'www.github.com',
+                style: {}
+            },
+            {
+                id: 'socrv4q',
+                social: 'instagram',
+                url: 'www.instagram.com',
+                style: {}
+            },
+        ]
+
     },
     {
         id: 'cmp111',

@@ -11,16 +11,22 @@ const gWap = {
             style: {},
             subClass: 'light-and-shiny',
             logo: 'Gizmo',
-            links: [
+            children: [
                 {
+                    id: 'lin12az',
+                    type: 'a',
                     to: 'app-header',
                     txt: 'Home'
                 },
                 {
+                    id: 'lin16aq',
+                    type: 'a',
                     to: 'app-contact-us',
                     txt: 'Contact'
                 },
                 {
+                    id: 'lin1vraz',
+                    type: 'a',
                     to: 'app-article',
                     txt: 'About'
                 },
@@ -35,7 +41,7 @@ const gWap = {
             children: [
                 {
                     id: 'tre12',
-                    type: 'h1',
+                    type: 'h2',
                     txt: 'We sell corona',
                     style: {},
                 },
@@ -151,15 +157,31 @@ const gWap = {
         },
 
         {
-            id: 'cmp108',
+            id: 'cmp11szi',
             type: 'app-social-links',
             style: {},
             subClass: 'light-and-shiny',
-            links: [
-                { social: 'facebook', url: 'www.facebook.com' },
-                { social: 'github', url: 'www.github.com' },
-                { social: 'instagram', url: 'www.instagram.com' },
+            children: [
+                {
+                    id: 'soch7z',
+                    social: 'facebook',
+                    url: 'www.facebook.com',
+                    style: {}
+                },
+                {
+                    id: 'soc1qzo',
+                    social: 'github',
+                    url: 'www.github.com',
+                    style: {}
+                },
+                {
+                    id: 'socro14q',
+                    social: 'instagram',
+                    url: 'www.instagram.com',
+                    style: {}
+                },
             ]
+
         },
         {
             id: 'cmp102',
@@ -183,19 +205,19 @@ const gWap = {
                     children: [
                         {
                             id: 'yldor1a',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Article title',
                             style: {},
                         },
                         {
                             id: 'xr4g2e1p',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Article sub title',
                             style: {},
                         },
                         {
                             id: 'q0aewg2a',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                             style: {},
                         },
@@ -210,19 +232,19 @@ const gWap = {
                     children: [
                         {
                             id: 'yldor1a',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Article title',
                             style: {},
                         },
                         {
                             id: 'xr4g2e1p',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Article sub title',
                             style: {},
                         },
                         {
                             id: 'q0aewg2a',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                             style: {},
                         },
@@ -237,19 +259,19 @@ const gWap = {
                     children: [
                         {
                             id: 'ylkkfa1a',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Article title',
                             style: {},
                         },
                         {
                             id: 'xrzzlp',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Article sub title',
                             style: {},
                         },
                         {
                             id: 'q0poq2a',
-                            type: 'el-text',
+                            type: 'p',
                             txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                             style: {},
                         },
@@ -278,12 +300,41 @@ const gWap = {
             type: 'app-footer',
             style: {},
             subClass: 'light-and-shiny',
-            title: 'Cofferights',
-            links: [
-                { social: 'facebook', url: 'www.facebook.com' },
-                { social: 'github', url: 'www.github.com' },
-                { social: 'instagram', url: 'www.instagram.com' },
-            ],
+            children: [
+                {
+                    id: 'zqers4',
+                    type: 'p',
+                    txt: 'Cofferights',
+                    style: {},
+                },
+                {
+                    id: 'cmp11rzeq0',
+                    type: 'social-links',
+                    style: {},
+                    subClass: 'light-and-shiny',
+                    children: [
+                        {
+                            id: 'socpovdsaz',
+                            social: 'facebook',
+                            url: 'www.facebook.com',
+                            style: {}
+                        },
+                        {
+                            id: 'soc343jzo',
+                            social: 'github',
+                            url: 'www.github.com',
+                            style: {}
+                        },
+                        {
+                            id: 'svnv4q',
+                            social: 'instagram',
+                            url: 'www.instagram.com',
+                            style: {}
+                        },
+                    ]
+
+                },
+            ]
         },
     ]
 }

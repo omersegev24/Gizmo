@@ -3,33 +3,17 @@
     <component
       v-for="child in cmp.children"
       :is="child.type"
-      :cmp="child"
       :key="child.id"
-      :contenteditable="editMode"
-    ></component>
-    <!-- <h3
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editTitle"
-    >{{currCmp.info.title}}</h3>
-
-    <h4
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editSubTitle"
-    >{{currCmp.info.subTitle}}</h4>
-
-    <p :class="{editable: editMode}" :contenteditable="editMode" @blur="editText">{{currCmp.info.txt}}</p>-->
+      :style="child.style"
+      :contenteditable="true"
+      :src="child.imgUrl"
+      @blur="editTxt($event,child)"
+    >{{child.txt}}</component>
   </section>
 </template>
 
 <script>
-
 import { eventBus } from '../../services/eventBus.service.js';
-import elTitle from '../wap-elements-cmp/title.cmp.vue'
-import elText from '../wap-elements-cmp/text.cmp.vue'
-import elImg from '../wap-elements-cmp/img.cmp.vue'
-
 export default {
   props: {
     cmp: Object
@@ -37,37 +21,21 @@ export default {
   data() {
     return {
       currCmp: {},
-      editMode: false
     };
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
   },
   methods: {
-    editTitle(ev) {
-      this.currCmp.info.title = ev.target.innerText;
-      this.update();
-    },
-    editSubTitle(ev) {
-      this.currCmp.info.subTitle = ev.target.innerText;
-      this.update();
-    },
-    editText(ev) {
-      this.currCmp.info.txt = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
     },
     update() {
       var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
       eventBus.$emit("updateCmp", cmpCopy);
     }
   },
-  components: {
-    elTitle,
-    elText,
-    elImg
-  }
 };
 </script>
