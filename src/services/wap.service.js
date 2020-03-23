@@ -49,6 +49,12 @@ const gWap = {
                     style: {},
                 },
                 {
+                    id: 'asd51w',
+                    type: 'img',
+                    imgUrl: '../assets/img/hero-photographer.jpg',
+                    style: {},
+                },
+                {
                     id: 'saw21a',
                     type: 'button',
                     txt: 'Try me',

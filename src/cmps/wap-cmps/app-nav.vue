@@ -1,13 +1,7 @@
 <template>
   <nav class="app-nav light-and-shiny" :class="currCmp.subClass">
     <section class="flex space-between align-center">
-      <p
-        class="logo"
-        id="Home"
-        :class="{editable: editMode}"
-        :contenteditable="editMode"
-        @blur="editLogo"
-      >{{currCmp.logo}}</p>
+      <p class="logo" id="Home" :class="{editable: editMode}" @blur="editLogo">{{currCmp.logo}}</p>
 
       <ul class="nav-links flex justify-end align-center">
         <li v-for="child in currCmp.children" :key="child.id">
@@ -23,9 +17,9 @@
           <!-- <a :href="'#' + link.to">{{link.txt}}</a> -->
         </li>
       </ul>
-      <!-- @click="toggleMenu" -->
-      <span class="hamburger-menu fas fa-bars"></span>
-      <!-- <img class="hamburger-menu" src="././img/hamburger.png" @click="toggleMenu"> -->
+      <span @click="toggleMenu">
+        <i class="hamburger-menu fas fa-bars"></i>
+      </span>
     </section>
   </nav>
 </template>
@@ -40,7 +34,8 @@ export default {
   data() {
     return {
       currCmp: {},
-      editMode: false
+      editMode: false,
+      isMenuOpen: false
     };
   },
   created() {
@@ -64,6 +59,13 @@ export default {
       cmpCopy.logo = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
+    toggleMenu() {
+      console.log("toggling");
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMobileNav() {
+      this.isMenuOpen = false;
+    }
   }
 };
 </script>

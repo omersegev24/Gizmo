@@ -1,52 +1,64 @@
 .app-card {
-    margin: 0 auto;
-    margin-top: rem(20px);
-    width: 25%;
-    font-size: 0.9rem;
-    
-    h3 {
-        margin: 0;
-    }
-    
-    p {
-        margin-bottom: rem(10px);
-    }
-    
-    img {
-        width: 100%;
-    }
-    
-    button {
-        margin-top: 10px;
-        @include for-light-button;
-        @include for-responsive-btn;
-    }
-    
-    @include for-narrow-layout {
-        margin-top: rem(15px);
-        width: 80%;
-    }
-    @include for-normal-layout {
-        width: 50%;
-    }
-    @include for-wide-layout {
-        width: 60%;
-    }
+  margin: 0 auto;
+  margin-top: rem(20px);
+  width: 25%;
+  font-size: 0.9rem;
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: rem(10px);
+  }
+
+  img {
+    width: 100%;
+  }
+
+  button {
+    margin-top: 10px;
+    @include for-light-button;
+  }
 }
 
 .app-card.light-and-shiny {
-    filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
-    background-color: $clr1;
-    color: $clr2;
+  filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
+  background-color: $clr1;
+  color: $clr2;
 }
 
 .app-card.dark-theme {
-    color: $clr5;
-    background-color: darken($clr6, 10%);
-    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
-    button {
-        @include for-dark-button;
-        font-weight: bold;
-    }
+  color: $clr5;
+  background-color: darken($clr6, 10%);
+  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+  button {
+    @include for-dark-button;
+    font-weight: bold;
+  }
 }
 
+// MEDIA QUERIES
+
+@include for-wide-layout {
+  .app-card {
+    width: 33%;
+  }
+}
+@include for-normal-layout {
+  .app-card {
+    width: 60%;
+    button {
+      @include for-responsive-btn;
+    }
+  }
+}
+@include for-narrow-layout {
+  .app-card {
+    margin-top: rem(15px);
+    width: 90%;
+    button {
+      @include for-responsive-btn;
+    }
+  }
+}
