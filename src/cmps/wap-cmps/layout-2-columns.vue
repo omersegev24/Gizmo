@@ -34,9 +34,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.edit-mode {
-  border: 1px solid pink;
-}
-</style>

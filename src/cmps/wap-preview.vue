@@ -26,11 +26,6 @@ export default {
   props: {
     cmp: Object,
   },
-  methods: {
-    cmpClicked(cmp) {
-      eventBus.$emit("edit", cmp);
-    }
-  },
   components: {
     appNav,
     appCard,

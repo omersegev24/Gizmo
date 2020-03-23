@@ -23,10 +23,34 @@ const gWap = {
           txt: 'Contact'
         },
         {
-          id: 'lin1vraz',
-          type: 'a',
-          to: 'app-article',
-          txt: 'About'
+            id: 'cmp100',
+            type: 'app-nav',
+            style: {},
+            subClass: 'light-and-shiny',
+            logo: 'Gizmo',
+            children: [
+                {
+                    id: 'lin12az',
+                    type: 'a',
+                    to: 'app-header',
+                    txt: 'Home',
+                    style:{}
+                },
+                {
+                    id: 'lin16aq',
+                    type: 'a',
+                    to: 'app-contact-us',
+                    txt: 'Contact',
+                    style:{}
+                },
+                {
+                    id: 'lin1vraz',
+                    type: 'a',
+                    to: 'app-article',
+                    txt: 'About',
+                    style:{}
+                },
+            ]
         },
       ]
     },

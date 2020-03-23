@@ -12,7 +12,7 @@
           <p>{{idx}}</p>
           <input type="text" v-model="cmpCopy.info[idx]" placeholder="Enter text..." />
         </div>
-      </div> -->
+      </div>-->
 
       <!-- <div v-for="(child, index) in childrenInputs" :key="index">
         <div v-for="(item, idx) in child.info" :key="idx">
@@ -23,7 +23,7 @@
             placeholder="Enter text..."
           />
         </div>
-      </div> -->
+      </div>-->
 
       <div v-for="(child, index) in linkInputs" :key="child.id">
         <div v-for="(item, key) in child" :key="key">
@@ -77,7 +77,6 @@ export default {
       deep: true
     },
     currCmp() {
-      console.log('currCmp copy watch')
       this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },

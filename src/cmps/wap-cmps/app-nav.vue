@@ -10,6 +10,7 @@
             :style="child.style"
             :contenteditable="true"
             :href="'#' + child.to"
+            @click.stop="edit(child)"
             @blur="editTxt($event,child)"
             :src="child.imgUrl"
           >{{child.txt}}</component>
@@ -44,6 +45,10 @@ export default {
     });
   },
   methods: {
+    edit(cmp) {
+      console.log('c', cmp)
+      eventBus.$emit('edit', cmp)
+    },
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
