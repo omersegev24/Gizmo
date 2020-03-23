@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card light-and-shiny" id="card" :class="currCmp.info.subClass">
+  <div class="app-card" id="card" :class="currCmp.info.subClass">
     <img :src="currCmp.info.imgUrl" alt="Card Image" />
     <h3
       class="card-text"

@@ -13,27 +13,27 @@
       >{{currCmp.info.title}}</h3>
 
       <div class="adress-info">
-        <p
+        <span
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editCountry"
-        >{{currCmp.info.country}}</p>
+        >{{currCmp.info.country}}</span>
 
-        <p
+        <span
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editAddress"
-        >{{currCmp.info.address}}</p>
+        >{{currCmp.info.address}}</span>
       </div>
 
-      <p>
+      <span>
         Tel:
         <span
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editTitle"
         >{{currCmp.info.phone}}</span>
-      </p>
+      </span>
 
       <a
         href="gmail.com"
@@ -41,6 +41,8 @@
         :contenteditable="editMode"
         @blur="editEmail"
       >{{currCmp.info.email}}</a>
+
+      
 
     </section>
     <form @submit.prevent="contactUs" class="flex flex-column">
@@ -87,6 +89,7 @@ export default {
     eventBus.$on("editMode", isEditMode => {
       this.editMode = isEditMode;
     });
+    
   },
   methods: {
     contactUs() {},

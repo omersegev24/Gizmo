@@ -24,11 +24,20 @@
   margin-bottom: 15px;
   border: 2px solid $clr5;
   transition: .3s;
-
+  
   &:hover {
     color: $clr5;
     background-color: $clr6;
     border: 2px solid $clr5;
+  }
+  
+}
+
+@mixin for-responsive-btn {
+  @include for-narrow-layout {
+    padding: 5px;
+    margin: 5px 0 10px;
+    font-size: 0.9rem;
   }
 }
 
@@ -36,19 +45,19 @@
 /* Media queries Breakpoint mixins */
 
 @mixin for-narrow-layout {
-  @media (min-width: $break-narrow) {
+  @media (max-width: $break-narrow) {
     @content;
   }
 }
 
 @mixin for-normal-layout {
-  @media (min-width: $break-normal) {
+  @media (min-width: $break-narrow) and (max-width: $break-normal) {
     @content;
   }
 }
 
 @mixin for-wide-layout {
-  @media (min-width: $break-wide) {
+  @media (min-width: $break-normal) and (max-width: $break-wide) {
     @content;
   }
 }

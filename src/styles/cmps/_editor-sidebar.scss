@@ -6,25 +6,33 @@
   height: calc(100vh - 71px);
   overflow-y: scroll;
 
+  
   .top-sidebar {
     background-color: $clr2;
     color: #fff;
-
+    
     > * {
       width: 50%;
       padding: rem(15px);
       cursor: pointer;
-
+      
       &:hover {
         transition: 0.2s;
         color: $clr3;
       }
     }
-
+    
     .active-tab {
       transition: 0.3s;
       background-color: #fff;
       color: $clr2;
+    }
+  }
+  
+  .themes-btn-container {
+    button {
+      @include for-light-button;
+      margin: 5px;
     }
   }
 }

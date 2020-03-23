@@ -3,10 +3,14 @@ import { wapService } from '../services/wap.service.js'
 export default ({
     state: {
         wap: {},
+        wapTheme: 'dark-theme',
     },
     getters: {
         getWap(state) {
             return state.wap;
+        },
+        getWapTheme(state) {
+            return state.wapTheme;
         }
     },
     mutations: {
@@ -25,6 +29,9 @@ export default ({
         removeCmp(state, { cmpIdx }) {
             state.wap.cmps.splice(cmpIdx, 1)
         },
+        changeWapTheme(state, { themeName }) {
+            state.wapTheme = themeName
+        }
 
     },
     actions: {

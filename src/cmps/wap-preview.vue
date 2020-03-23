@@ -1,6 +1,6 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :cmp="cmp" :style="cmp.style"></component>
+    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" :class="getWapTheme"></component>
     
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
@@ -24,7 +24,7 @@ import actionPanel from '../cmps/action-panel.vue'
 import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
 export default {
   props: {
-    cmp: Object
+    cmp: Object,
   },
   components: {
     appNav,
@@ -40,6 +40,11 @@ export default {
     appSocialLinks,
     appArticle,
     actionPanel
+  },
+  computed: {
+    getWapTheme() {
+      return this.$store.getters.getWapTheme
+    }
   }
 };
 </script>

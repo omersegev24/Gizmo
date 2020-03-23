@@ -14,6 +14,9 @@
           <a v-for="link in currCmp.info.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
         </li>
       </ul>
+      <!-- @click="toggleMenu" -->
+      <span class="hamburger-menu fas fa-bars" ></span>
+      <!-- <img class="hamburger-menu" src="././img/hamburger.png" @click="toggleMenu"> -->
     </section>
   </nav>
 </template>

@@ -164,6 +164,3 @@ function getById(cmpId) {
     let cmpCopy = JSON.parse(JSON.stringify(cmp))
     return Promise.resolve(cmpCopy)
 }
-
-
-
