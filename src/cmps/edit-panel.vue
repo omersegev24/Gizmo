@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
-        <edit-map :mapCmp="currCmp"></edit-map>
+        <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
       <!-- <div class="edit-panel flex flex-column" v-else>
         <div v-for="(item, idx) in inputToRender" :key="idx">
@@ -32,7 +32,7 @@
         </div>
       </div>
 
-      <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
+      <edit-text :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
     </div>
   </div>
 </template>
@@ -77,6 +77,7 @@ export default {
       deep: true
     },
     currCmp() {
+      console.log('currCmp copy watch')
       this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },

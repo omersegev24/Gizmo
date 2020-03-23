@@ -3,35 +3,19 @@
     <component
       v-for="child in cmp.children"
       :is="child.type"
-      :cmp="child"
       :key="child.id"
-    ></component>
-    <!-- <img :src="currCmp.info.imgUrl" alt="Card Image" />
-    <h3
-      class="card-text"
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editTitle"
-    >{{currCmp.info.title}}</h3>
-    <p
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editSubTitle"
-    >{{currCmp.info.subTitle}}</p>
-
-    <button
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editButton"
-    >{{currCmp.info.callToAction}}</button>-->
+      :style="child.style"
+      :contenteditable="true"
+      @blur="editTxt($event,child)"
+      :src="child.imgUrl"
+      @click.stop="openEdit(child)"
+    >{{child.txt}}</component>
+   
   </div>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-import elImg from '../wap-elements-cmp/img.cmp.vue'
-import elTitle from '../wap-elements-cmp/title.cmp.vue'
-import elButton from '../wap-elements-cmp/button.cmp.vue'
 export default {
   props: {
     cmp: Object,
@@ -43,11 +27,6 @@ export default {
       editMode: false
     };
   },
-  computed: {
-    markCmp() {
-      return { 'mark-cmp': this.isEditing }
-    }
-  },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
     eventBus.$on("editMode", isEditMode => {
@@ -55,30 +34,14 @@ export default {
     });
   },
   methods: {
-    editTitle(ev) {
-      this.currCmp.info.title = ev.target.innerText;
-      this.update();
-    },
-    cmpClicked(child) {
-      eventBus.$emit("edit", child);
-    },
-    editSubTitle(ev) {
-      this.currCmp.info.subTitle = ev.target.innerText;
-      this.update();
-    },
-    editButton(ev) {
-      this.currCmp.info.callToAction = ev.target.innerText;
-      this.update();
-    },
-    update() {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
+    },
+    openEdit(cmp){
+      eventBus.$emit('edit', cmp)
     }
   },
-  components: {
-    elImg,
-    elTitle,
-    elButton
-  }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-2-columns light-and-shiny flex justify-center" :class="cmp.subClass">
+  <section class="layout-2-columns flex justify-center" :class="cmp.subClass" :style="cmp.style">
     <component
       v-for="child in cmp.children"
       :is="child.type"
@@ -26,7 +26,7 @@ export default {
   methods: {
     cmpClicked(child) {
       eventBus.$emit("edit", child);
-    }
+    },
   },
   components: {
     appCard,

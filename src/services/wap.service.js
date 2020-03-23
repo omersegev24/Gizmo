@@ -11,18 +11,19 @@ const gWap = {
             style: {},
             subClass: 'light-and-shiny',
             logo: 'Gizmo',
-            links: [{
-                to: 'app-header',
-                txt: 'Home'
-            },
-            {
-                to: 'app-contact-us',
-                txt: 'Contact'
-            },
-            {
-                to: 'app-article',
-                txt: 'About'
-            },
+            links: [
+                {
+                    to: 'app-header',
+                    txt: 'Home'
+                },
+                {
+                    to: 'app-contact-us',
+                    txt: 'Contact'
+                },
+                {
+                    to: 'app-article',
+                    txt: 'About'
+                },
             ]
         },
 
@@ -60,19 +61,19 @@ const gWap = {
                     children: [
                         {
                             id: 'saoomor1a',
-                            type: 'el-img',
+                            type: 'img',
                             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                             style: {},
                         },
                         {
                             id: 'tr31e12',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Do it now',
                             style: {},
                         },
                         {
                             id: 'sao1w21a',
-                            type: 'el-button',
+                            type: 'button',
                             txt: 'Try me',
                             style: {},
                         },
@@ -87,19 +88,19 @@ const gWap = {
                     children: [
                         {
                             id: 'sadani3mor1a',
-                            type: 'el-img',
+                            type: 'img',
                             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                             style: {},
                         },
                         {
                             id: 'tr4gc1e12',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Do it now',
-                            style: { class: 'card-text' },
+                            style: {},
                         },
                         {
                             id: 's0aaqo1w2a',
-                            type: 'el-button',
+                            type: 'button',
                             txt: 'Try me',
                             style: {},
                         },
@@ -124,13 +125,13 @@ const gWap = {
                 },
                 {
                     id: 'tr4vgcpa2',
-                    type: '',
+                    type: 'p',
                     txt: 'Do it now',
-                    style: { class: 'card-text' },
+                    style: {},
                 },
                 {
                     id: 's0apaq1w27',
-                    type: 'el-button',
+                    type: 'button',
                     txt: 'Try me',
                     style: {},
                 },
