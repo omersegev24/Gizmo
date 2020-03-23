@@ -5,7 +5,6 @@
       :is="child.type"
       :cmp="child"
       :key="child.id"
-      @click.stop.native="cmpClicked(child)"
     ></component>
   </section>
 </template>
@@ -26,7 +25,6 @@ export default {
   },
   methods: {
     cmpClicked(child) {
-      this.editTest = true
       eventBus.$emit("edit", child);
     }
   },

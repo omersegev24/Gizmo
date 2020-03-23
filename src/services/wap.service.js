@@ -34,13 +34,13 @@ const gWap = {
             children: [
                 {
                     id: 'tre12',
-                    type: 'el-title',
+                    type: 'h1',
                     txt: 'We sell corona',
                     style: {},
                 },
                 {
                     id: 'saw21a',
-                    type: 'el-button',
+                    type: 'button',
                     txt: 'Try me',
                     style: {},
                 },
@@ -118,13 +118,13 @@ const gWap = {
             children: [
                 {
                     id: 'sa12mqfo',
-                    type: 'el-img',
+                    type: 'img',
                     imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                     style: {},
                 },
                 {
                     id: 'tr4vgcpa2',
-                    type: 'el-title',
+                    type: '',
                     txt: 'Do it now',
                     style: { class: 'card-text' },
                 },
@@ -314,59 +314,28 @@ function addCmp(cmp) {
     return Promise.resolve(cmp)
 }
 
-// function updateWap(cmp) {
-//     if (cmp.type === 'app-youtube') {
-//         const youtubeId = _getYoutubeVidId(cmp.info.url)
-//         cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
-//     }
-//     let wap = storageService.load(WAP_KEY)
-//     const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
-//     if (idx < 0 || idx > wap.cmps.length) return Promise.reject()
-//     wap.cmps.splice(idx, 1, cmp)
-//     storageService.store(WAP_KEY, wap)
-//     return Promise.resolve(wap)
-// }
-
 function updateWap(cmp) {
+    if (cmp.type === 'app-youtube') {
+        const youtubeId = _getYoutubeVidId(cmp.info.url)
+        cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
+    }
     var wap = storageService.load(WAP_KEY)
-    
-    wap.cmps.forEach(currCmp => {
-        var res = _findNode(cmp.id, currCmp)
-        if(res) console.log('its good', res)
-    })
-   
-    // wap.cmps.splice(idx, 1, cmp)
-    // storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap)
-}
-function _findNode(id, currentNode) {
-    var i,
-        currentChild,
-        result;
-
-    if (id == currentNode.id) {
-        return currentNode;
-    } else if (currentNode.children) {
-
-        // Use a for loop instead of forEach to avoid nested functions
-        // Otherwise "return" will not work properly
-        for (i = 0; i < currentNode.children.length; i += 1) {
-            currentChild = currentNode.children[i];
-
-            // Search in the current child
-            result = _findNode(id, currentChild);
-
-            // Return the result if the node has been found
-            if (result !== false) {
-                return result;
+    wap.cmps.forEach((currCmp, idx) => {
+        var res = _findNode(cmp, currCmp)
+        if (res) {
+            if (res.children) {
+                const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
+                res.children.splice(childIdx, 1, cmp)
+            } else {
+                const nodeIdx = currCmp.children.findIndex(nodeCmp => nodeCmp.id === cmp.id)
+                currCmp.children.splice(nodeIdx, 1, cmp)
             }
         }
 
-        // The node has not been found and we have no more options
-        return false;
-    }
+    })
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
 }
-
 
 
 function removeCmp(cmp) {
@@ -396,7 +365,6 @@ function _makeId(length = 5) {
     return txt;
 }
 
-
 function _getYoutubeVidId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
@@ -406,4 +374,25 @@ function _getYoutubeVidId(url) {
         : '';
 }
 
+function _findNode(cmp, currentNode) {
+    var i,
+        currentChild,
+        result;
 
+    if (cmp.id === currentNode.id) {
+        return currentNode;
+    } else if (currentNode.children) {
+
+        for (i = 0; i < currentNode.children.length; i += 1) {
+            currentChild = currentNode.children[i];
+
+            result = _findNode(cmp, currentChild);
+            if (result) {
+                return currentChild;
+            }
+        }
+        return false;
+    } else {
+        return false
+    }
+}
