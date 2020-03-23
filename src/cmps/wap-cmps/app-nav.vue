@@ -10,12 +10,21 @@
       >{{currCmp.logo}}</p>
 
       <ul class="nav-links flex justify-end align-center">
-        <li>
-          <a v-for="link in currCmp.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
+        <li v-for="child in currCmp.children" :key="child.id">
+          <component
+            :is="child.type"
+            :style="child.style"
+            :contenteditable="true"
+            :href="'#' + child.to"
+            @blur="editTxt($event,child)"
+            
+            :src="child.imgUrl"
+          >{{child.txt}}</component>
+          <!-- <a :href="'#' + link.to">{{link.txt}}</a> -->
         </li>
       </ul>
       <!-- @click="toggleMenu" -->
-      <span class="hamburger-menu fas fa-bars" ></span>
+      <span class="hamburger-menu fas fa-bars"></span>
       <!-- <img class="hamburger-menu" src="././img/hamburger.png" @click="toggleMenu"> -->
     </section>
   </nav>
@@ -41,14 +50,16 @@ export default {
     });
   },
   methods: {
-    editLogo(ev) {
-      this.currCmp.info.logo = ev.target.innerText;
-      this.update();
-    },
-    update() {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
-    }
+    },
+    editLogo(ev) {
+      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      cmpCopy.logo = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
+    },
   }
 };
 </script>
