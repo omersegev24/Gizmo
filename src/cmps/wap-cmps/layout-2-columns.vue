@@ -23,20 +23,9 @@ export default {
       isEditing: false
     }
   },
-  methods: {
-    cmpClicked(child) {
-      eventBus.$emit("edit", child);
-    },
-  },
   components: {
     appCard,
     appArticle
   }
 };
 </script>
-
-<style>
-.edit-mode {
-  border: 1px solid pink;
-}
-</style>

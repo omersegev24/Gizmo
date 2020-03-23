@@ -53,8 +53,8 @@ export default {
     update() {
       const mapCopy = JSON.parse(JSON.stringify(this.mapCmp))
       mapCopy.style = this.mapData.style
-      mapCopy.info.center = this.mapData.pos
-      mapCopy.info.markers[0].position = this.mapData.pos
+      mapCopy.center = this.mapData.pos
+      mapCopy.markers[0].position = this.mapData.pos
       
       eventBus.$emit('updateCmp', mapCopy)
     }

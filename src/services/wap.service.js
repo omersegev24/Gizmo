@@ -16,18 +16,21 @@ const gWap = {
                     id: 'lin12az',
                     type: 'a',
                     to: 'app-header',
-                    txt: 'Home'
+                    txt: 'Home',
+                    style: {}
                 },
                 {
                     id: 'lin16aq',
                     type: 'a',
                     to: 'app-contact-us',
+                    style: {},
                     txt: 'Contact'
                 },
                 {
                     id: 'lin1vraz',
                     type: 'a',
                     to: 'app-article',
+                    style: {},
                     txt: 'About'
                 },
             ]
@@ -368,8 +371,8 @@ function addCmp(cmp) {
 
 function updateWap(cmp) {
     if (cmp.type === 'app-youtube') {
-        const youtubeId = _getYoutubeVidId(cmp.info.url)
-        cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
+        const youtubeId = _getYoutubeVidId(cmp.url)
+        cmp.url = 'https://www.youtube.com/embed/' + youtubeId
     }
     var wap = storageService.load(WAP_KEY)
     wap.cmps.forEach((currCmp, idx) => {
@@ -378,9 +381,11 @@ function updateWap(cmp) {
             if (res.children) {
                 const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
                 res.children.splice(childIdx, 1, cmp)
-            } else {
+            } else if (currCmp.children) {
                 const nodeIdx = currCmp.children.findIndex(nodeCmp => nodeCmp.id === cmp.id)
                 currCmp.children.splice(nodeIdx, 1, cmp)
+            } else {
+                wap.cmps.splice(idx, 1, cmp)
             }
         }
 

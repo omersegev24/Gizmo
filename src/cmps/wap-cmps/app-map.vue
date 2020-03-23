@@ -1,5 +1,5 @@
 <template>
-  <section class="app-map light-and-shiny" :class="cmp.subClass">
+  <section class="app-map light-and-shiny" :class="cmp.subClass" @click.stop="openEdit()">
     <GmapMap
       class="map"
       :center="center"
@@ -28,7 +28,6 @@ export default {
   },
   data() {
     return {
-      currCmp: {},
       center: this.cmp.center,
       markers: this.cmp.markers,
       width: 500,
@@ -45,6 +44,12 @@ export default {
     // eventBus.$on('updateLoc', loc => {
     //   console.log(loc.lat)
     // })
+  },
+  methods: {
+    openEdit(){
+      console.log(this.cmp)
+      eventBus.$emit('edit', this.cmp)
+    }
   },
 };
 </script>
