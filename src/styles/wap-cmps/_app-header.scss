@@ -1,59 +1,78 @@
 .app-header {
-    // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("~@/assets/img/hero-photographer.jpg");
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    position: relative;
-    padding: 0.5rem;
-    word-break:break-all;
-    max-width: 100%;
+  position: relative;
+  padding: 0.5rem;
+  word-break: break-all;
+  height: 50vh;
 
-    
-    * {
-        font-family: AlegreyaSans;
-    }
-    
-    .title {
-        font-weight: bold;
-        font-size: 6rem;
-        margin-bottom: 10px;
-        @include for-narrow-layout {
-            font-size: 4rem;
-            white-space: nowrap;
-        }
-    }
-    
-    .sub-title {
-        margin: 0;
-    }
-    
-    button {
-        @include for-light-button;
-    }
-    
+  overflow: hidden;
 
+  img {
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 460px;
+  }
+
+  * {
+    font-family: AlegreyaSans;
+    position: absolute;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 6rem;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 20%;
+    @include for-narrow-layout {
+      font-size: 4rem;
+      white-space: nowrap;
+    }
+  }
+
+  .sub-title {
+    margin: 0;
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    @include for-light-button;
+  }
 }
 
 .app-header.light-and-shiny {
-    color: #fff;
+  color: #fff;
 }
 
 .app-header.dark-theme {
-    color: darken($clr5, 20%);
-    button {
-        @include for-dark-button;
-        font-weight: bold;
-        background-color: darken($clr5, 20%);
-        border-color: darken($clr5, 20%);
-    }
+  color: darken($clr5, 30%);
+  button {
+    @include for-dark-button;
+    font-weight: bold;
+    background-color: darken($clr5, 30%);
+    border-color: darken($clr5, 30%);
+  }
 }
 
-@include for-narrow-layout {
-
+@include for-wide-layout {
 }
 @include for-normal-layout {
-
+  .app-header {
+    .title {
+      font-size: 3rem;
+      top: 34%;
+    }
+  }
 }
-@include for-wide-layout {
-
+@include for-narrow-layout {
+  .app-header {
+    .title {
+      font-size: 2.5rem;
+      top: 35%;
+		}
+		button {
+			@include for-responsive-btn;
+		}
+  }
 }
