@@ -1,9 +1,20 @@
 .app-article {
     line-height: 1.9;
     margin: 10px;
+    h3,h4 {
+        margin: 0;
+    }
     p {
         font-size: .8rem;
         padding: 10px;
+    }
+
+    @include for-normal-layout {
+        margin: 10px auto;
+    }
+
+    @include for-wide-layout {
+        margin: 10px auto;
     }
 }
 

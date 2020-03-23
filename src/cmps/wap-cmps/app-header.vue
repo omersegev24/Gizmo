@@ -2,9 +2,15 @@
   <header
     class="app-header light-and-shiny flex justify-center align-center flex-column"
     id="app-header"
-    :class="currCmp.info.subClass"
+    :class="currCmp.subClass"
   >
-    <h2
+    <component v-for="child in cmp.children"
+       :is="child.type"
+       :cmp="child"
+       :key="child.id"
+       :contenteditable="true"
+       ></component>
+    <!-- <h2
       class="title"
       :class="{editable: editMode}"
       :contenteditable="editMode"
@@ -21,12 +27,14 @@
       :class="{editable: editMode}"
       :contenteditable="editMode"
       @blur="editButton"
-    >{{currCmp.info.callToAction}}</button>
+    >{{currCmp.info.callToAction}}</button>-->
   </header>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
+import elTitle from '../wap-elements-cmp/title.cmp.vue'
+import elButton from '../wap-elements-cmp/button.cmp.vue'
 export default {
   props: {
     cmp: Object
@@ -44,7 +52,7 @@ export default {
     });
   },
   methods: {
-    editTitle(ev) {
+    editTxt(ev) {
       this.currCmp.info.title = ev.target.innerText;
       this.update();
     },
@@ -60,6 +68,10 @@ export default {
       var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
       eventBus.$emit("updateCmp", cmpCopy);
     }
+  },
+  components: {
+    elTitle,
+    elButton
   }
 };
 </script>

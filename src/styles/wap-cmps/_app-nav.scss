@@ -1,46 +1,79 @@
 .app-nav {
-    font-family: AlegreyaSans;
-    margin: 0;
-    .logo {
-        font-size: 3rem;
-        font-weight: bold;
-        font-family: Lobster, cursive;
-        margin-left: rem(50px);
+  font-family: AlegreyaSans;
+  margin: 0;
+
+  section {
+    .hamburger-menu {
+      position: absolute;
+      visibility: hidden;
+      @include for-narrow-layout {
+        background-color: transparent;
+        z-index: 2;
+        position: absolute;
+        left: 86%;
+        visibility: visible;
+        width: 40px;
+        transition: 0.5s;
+      }
     }
-    
-    >* {
-        color: $clr2;
+
+    // @include for-narrow-layout {
+    //   .hamburger-menu {
+    //     background-color: transparent;
+    //     z-index: 2;
+    //     position: absolute;
+    //     left: 86%;
+    //     visibility: visible;
+    //     width: 40px;
+    //     transition: 0.5s;
+    //   }
+
+    //   .hamburger-menu:hover {
+    //     cursor: pointer;
+    //     transform: rotate(360deg);
+    //   }
+    // }
+  }
+  .logo {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: Lobster, cursive;
+    margin-left: rem(50px);
+  }
+
+  > * {
+    color: $clr2;
+  }
+
+  li {
+    a {
+      margin-right: rem(50px);
     }
-    
-    li {
-        a {
-            margin-right: rem(50px);
-        }
-        &:hover {
-            cursor: pointer;
-        }
+    &:hover {
+      cursor: pointer;
     }
+  }
 }
 
 .app-nav.light-and-shiny {
-    >* {
-        color: $clr2;
+  > * {
+    color: $clr2;
+  }
+  li {
+    a {
+      color: $clr2;
     }
-    li {
-        a {
-            color: $clr2;
-        }
-    }
+  }
 }
 
 .app-nav.dark-theme {
-    background-color: $clr6;
-    >* {
-        color: $clr5;
+  background-color: $clr6;
+  > * {
+    color: $clr5;
+  }
+  li {
+    a {
+      color: $clr5;
     }
-    li {
-        a {
-            color: $clr5;
-        }
-    }
+  }
 }

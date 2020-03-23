@@ -1,5 +1,5 @@
 <template>
-  <section class="app-map light-and-shiny" :class="cmp.info.subClass">
+  <section class="app-map light-and-shiny" :class="cmp.subClass">
     <GmapMap
       class="map"
       :center="center"
@@ -29,8 +29,8 @@ export default {
   data() {
     return {
       currCmp: {},
-      center: this.cmp.info.center,
-      markers: this.cmp.info.markers,
+      center: this.cmp.center,
+      markers: this.cmp.markers,
       width: 500,
       height: 500,
     };

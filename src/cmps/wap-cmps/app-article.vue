@@ -1,6 +1,13 @@
 <template>
-  <section class="app-article light-and-shiny" id="app-article" :class="currCmp.info.subClass">
-    <h3
+  <section class="app-article light-and-shiny" id="app-article" :class="currCmp.subClass">
+    <component
+      v-for="child in cmp.children"
+      :is="child.type"
+      :cmp="child"
+      :key="child.id"
+      :contenteditable="editMode"
+    ></component>
+    <!-- <h3
       :class="{editable: editMode}"
       :contenteditable="editMode"
       @blur="editTitle"
@@ -12,18 +19,22 @@
       @blur="editSubTitle"
     >{{currCmp.info.subTitle}}</h4>
 
-    <p :class="{editable: editMode}" :contenteditable="editMode" @blur="editText">{{currCmp.info.txt}}</p>
+    <p :class="{editable: editMode}" :contenteditable="editMode" @blur="editText">{{currCmp.info.txt}}</p>-->
   </section>
 </template>
 
 <script>
-import { eventBus } from "../../services/eventBus.service.js";
+
+import { eventBus } from '../../services/eventBus.service.js';
+import elTitle from '../wap-elements-cmp/title.cmp.vue'
+import elText from '../wap-elements-cmp/text.cmp.vue'
+import elImg from '../wap-elements-cmp/img.cmp.vue'
 
 export default {
   props: {
     cmp: Object
   },
-data() {
+  data() {
     return {
       currCmp: {},
       editMode: false
@@ -52,6 +63,11 @@ data() {
       var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
       eventBus.$emit("updateCmp", cmpCopy);
     }
+  },
+  components: {
+    elTitle,
+    elText,
+    elImg
   }
 };
 </script>

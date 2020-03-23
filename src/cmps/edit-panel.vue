@@ -28,7 +28,7 @@
       <div v-for="(child, index) in linkInputs" :key="child.id">
         <div v-for="(item, key) in child" :key="key">
           <p>{{key}}</p>
-          <input type="text" v-model="cmpCopy.info.links[index][key]" placeholder="Enter text..." />
+          <input type="text" v-model="cmpCopy.links[index][key]" placeholder="Enter text..." />
         </div>
       </div>
 
@@ -53,18 +53,18 @@ export default {
   },
   computed: {
     inputToRender() {
-      return _.pickBy(this.currCmp.info, item => {
+      return _.pickBy(this.currCmp, item => {
         return typeof item === "string";
       });
     },
     linkInputs() {
-      if (this.currCmp.info.links) {
-        return this.currCmp.info.links;
+      if (this.currCmp.links) {
+        return this.currCmp.links;
       }
     },
     childrenInputs() {
-      if (this.currCmp.info.children) {
-        return this.currCmp.info.children;
+      if (this.currCmp.children) {
+        return this.currCmp.children;
       }
     }
   },

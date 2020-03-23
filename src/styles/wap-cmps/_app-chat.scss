@@ -1,11 +1,12 @@
 .app-chat{
-    width: 20vw;
+    width: 30%;
     text-align: start;
 
     .unopened-chat-container {
+        padding: rem(10px);
         .unopened-chat-titles {
             >* {
-                margin-left: 1rem;
+                margin: 0.2rem;
             }
             .chat-sm-txt {
                 font-size: rem(11px);
@@ -65,6 +66,18 @@
                 cursor: pointer;
             }
         } 
+    }
+
+    @include for-wide-layout {
+        width: 50%;
+    }
+
+    @include for-normal-layout {
+        width: 60%
+    }
+
+    @include for-narrow-layout {
+        width: 80%;
     }
 }
 

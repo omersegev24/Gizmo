@@ -28,6 +28,10 @@
                   {{cmp.type}}
                 </div>
               </div>
+              <div class="themes-btn-container" v-if="item.title === 'Themes'">
+                <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
+                <button @click="changeWapTheme('dark-theme')">Dark</button>
+              </div>
               <div else>{{item.details}}</div>
             </div>
           </transition>
@@ -64,6 +68,11 @@ export default {
           active: false,
           title: "Widgets",
           details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`
+        },
+        {
+          id: 4,
+          active: false,
+          title: "Themes",
         }
       ],
       editMode: false,
@@ -83,6 +92,9 @@ export default {
         if (item.id === currItem.id) item.active = !item.active;
         else item.active = false;
       });
+    },
+    changeWapTheme(themeName) {
+      this.$store.commit({ type: 'changeWapTheme', themeName });
     }
   },
   components: {

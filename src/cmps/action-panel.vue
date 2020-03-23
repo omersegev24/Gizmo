@@ -26,7 +26,6 @@ export default {
   methods: {
     edit() {
       eventBus.$emit("edit", this.cmp);
-      eventBus.$emit('editMode', true)
     },
     remove() {
       eventBus.$emit("remove", this.cmp);

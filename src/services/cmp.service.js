@@ -37,12 +37,28 @@ const cmps = [
         id: 'cmp103',
         type: 'app-article',
         style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            title: 'Article title',
-            subTitle: 'Article sub title',
-            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
-        },
+        subClass: 'light-and-shiny',
+        children: [
+            {
+                id: 'yldor1a',
+                type: 'el-title',
+                txt: 'Article title',
+                style: {},
+            },
+            {
+                id: 'xr4g2e1p',
+                type: 'el-text',
+                txt: 'Article sub title',
+                style: {},
+            },
+            {
+                id: 'q0aewg2a',
+                type: 'el-text',
+                txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                style: {},
+            },
+
+        ]
     },
 
     {
@@ -164,6 +180,3 @@ function getById(cmpId) {
     let cmpCopy = JSON.parse(JSON.stringify(cmp))
     return Promise.resolve(cmpCopy)
 }
-
-
-
