@@ -1,7 +1,6 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" @click.native="cmpClicked(cmp)"></component>
-
+    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" :contenteditable="true"></component>
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
   </div>
@@ -22,6 +21,7 @@ import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 import appArticle from '../cmps/wap-cmps/app-article.vue';
 import actionPanel from '../cmps/action-panel.vue'
 import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
+import elTitle from './wap-elements-cmp/title.cmp.vue'
 export default {
   props: {
     cmp: Object
@@ -44,7 +44,8 @@ export default {
     appChat,
     appSocialLinks,
     appArticle,
-    actionPanel
+    actionPanel,
+    elTitle
   }
 };
 </script>

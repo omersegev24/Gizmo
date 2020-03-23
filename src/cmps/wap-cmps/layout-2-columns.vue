@@ -1,13 +1,11 @@
 <template>
-  <section class="layout-2-columns light-and-shiny flex justify-center" :class="cmp.info.subClass">
+  <section class="layout-2-columns light-and-shiny flex justify-center" :class="cmp.subClass">
     <component
-      v-for="child in cmp.info.children"
+      v-for="child in cmp.children"
       :is="child.type"
       :cmp="child"
       :key="child.id"
-      :isEditing="isEditing"
-      :style="child.style"
-      @click.native.stop="cmpClicked(child)"
+      @click.stop.native="cmpClicked(child)"
     ></component>
   </section>
 </template>

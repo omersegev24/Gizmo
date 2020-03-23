@@ -4,11 +4,11 @@ const gWap = {
     _id: 'wap92829',
     title: 'My First Wap',
     style: {},
-    cmps: [{
-        id: 'cmp100',
-        type: 'app-nav',
-        style: {},
-        info: {
+    cmps: [
+        {
+            id: 'cmp100',
+            type: 'app-nav',
+            style: {},
             subClass: 'light-and-shiny',
             logo: 'Gizmo',
             links: [{
@@ -24,219 +24,258 @@ const gWap = {
                 txt: 'About'
             },
             ]
-        }
-    },
-    {
-        id: 'cmp101',
-        type: 'app-header',
-        style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            title: 'We Sell Corona',
-            subTitle: 'and alcojel',
-            callToAction: 'Try it now!'
-        }
-    },
-    // {
-    //     id: 'cmp10111',
-    //     type: 'app-header',
-    //     style: {
-    //         backgroundColor:'red'
-    //     },
-    //     subClass:'light-and-shiny',
-    //     children: [
-    //         {
-    //             htmlTagName: 'h2',
-    //             prefs: {
-    //                 style: {
-    //                     fontSize: 80,
-    //                     color: 'blue',
-    //                     textAlign: 'center'
-    //                 },
-    //             },
-    //             children: [
-    //                 'Your Brand Comes Here'
-    //             ]
-    //         },
-    //         {
-    //             htmlTagName: 'button',
-    //             prefs: {
-    //                 style: {
-    //                     fontSize: 15,
-    //                     color: 'black',
-    //                     textAlign: 'center'
-    //                 },
-    //             },
-    //             children: [
-    //                 'Try it now'
-    //             ]
-    //         },
-    //     ],
-    //     info: {
-    //         subClass: 'light-and-shiny',
-    //         title: 'We Sell Corona',
-    //         subTitle: 'and alcojel',
-    //         callToAction: 'Try it now!'
-    //     }
-    // },
-    {
-        id: 'cmp103',
-        type: 'layout-3-columns',
-        style: {},
-        info: {
-            subClass: 'light-and-shiny',
-            children: [{
-                id: 'cmp12',
-                type: 'app-card',
-                style: {color:'red'},
-                info: {
-                    subClass: 'light-and-shiny',
-                    title: 'Do it now',
-                    subTitle: 'Check out our team',
-                    callToAction: 'Check it out',
-                    imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-                }
-            },
-            {
-                id: 'cmp13',
-                type: 'app-card',
-                style: {},
-                info: {
-                    subClass: 'light-and-shiny',
-                    title: 'Do it now',
-                    subTitle: 'Check out our team',
-                    callToAction: 'Check it out',
-                    imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-                }
-            },
-            {
-                id: 'cmp14',
-                type: 'app-card',
-                style: {},
-                subClass: 'light-and-shiny',
-                info: {
-                    title: 'Do it now',
-                    imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-                }
-            },
-            ]
-        }
-    },
+        },
 
-    {
-        id: 'cmp104',
-        type: 'app-card',
-        style: {},
-        info: {
+        {
+            id: 'cmp10111',
+            type: 'app-header',
+            style: {},
             subClass: 'light-and-shiny',
-            title: 'Do it now',
-            subTitle: 'Check out our team',
-            callToAction: 'Check it out',
-            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1'
-        }
-    },
-    {
-        id: 'cmp106',
-        type: 'app-contact',
-        style: {},
-        info: {
+            children: [
+                {
+                    id: 'tre12',
+                    type: 'el-title',
+                    txt: 'We sell corona',
+                    style: {},
+                },
+                {
+                    id: 'saw21a',
+                    type: 'el-button',
+                    txt: 'Try me',
+                    style: {},
+                },
+            ],
+        },
+        {
+            id: 'cmpa103',
+            type: 'layout-2-columns',
+            style: {},
+            subClass: 'light-and-shiny',
+            children: [
+                {
+                    id: 'cmp12',
+                    type: 'app-card',
+                    style: { color: 'red' },
+                    subClass: 'light-and-shiny',
+                    children: [
+                        {
+                            id: 'saoomor1a',
+                            type: 'el-img',
+                            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                            style: {},
+                        },
+                        {
+                            id: 'tr31e12',
+                            type: 'el-title',
+                            txt: 'Do it now',
+                            style: {},
+                        },
+                        {
+                            id: 'sao1w21a',
+                            type: 'el-button',
+                            txt: 'Try me',
+                            style: {},
+                        },
+
+                    ]
+                },
+                {
+                    id: 'cmp1ad2',
+                    type: 'app-card',
+                    style: {},
+                    subClass: 'light-and-shiny',
+                    children: [
+                        {
+                            id: 'sadani3mor1a',
+                            type: 'el-img',
+                            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                            style: {},
+                        },
+                        {
+                            id: 'tr4gc1e12',
+                            type: 'el-title',
+                            txt: 'Do it now',
+                            style: { class: 'card-text' },
+                        },
+                        {
+                            id: 's0aaqo1w2a',
+                            type: 'el-button',
+                            txt: 'Try me',
+                            style: {},
+                        },
+
+                    ]
+                },
+            ]
+
+        },
+
+        {
+            id: 'cmp104',
+            type: 'app-card',
+            style: {},
+            subClass: 'light-and-shiny',
+            children: [
+                {
+                    id: 'sa12mqfo',
+                    type: 'el-img',
+                    imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                    style: {},
+                },
+                {
+                    id: 'tr4vgcpa2',
+                    type: 'el-title',
+                    txt: 'Do it now',
+                    style: { class: 'card-text' },
+                },
+                {
+                    id: 's0apaq1w27',
+                    type: 'el-button',
+                    txt: 'Try me',
+                    style: {},
+                },
+
+            ]
+        },
+        {
+            id: 'cmp106',
+            type: 'app-contact',
+            style: {},
             subClass: 'light-and-shiny',
             title: 'CONTACT',
             country: 'Israel',
             address: 'Tel Aviv Bacher 4',
             phone: '123-456-7890',
             email: 'gizmo@gizmo.com'
-        }
-    },
+        },
 
-    {
-        id: 'cmp108',
-        type: 'app-social-links',
-        style: {},
-        info: {
+        {
+            id: 'cmp108',
+            type: 'app-social-links',
+            style: {},
             subClass: 'light-and-shiny',
             links: [
                 { social: 'facebook', url: 'www.facebook.com' },
                 { social: 'github', url: 'www.github.com' },
                 { social: 'instagram', url: 'www.instagram.com' },
             ]
-        }
-    },
-    {
-        id: 'cmp102',
-        type: 'app-map',
-        style: { width: '500', height: '500' },
-        info: {
+        },
+        {
+            id: 'cmp102',
+            type: 'app-map',
+            style: { width: '500', height: '500' },
+
             center: { lat: 32.519, lng: 34.9045 },
             markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
-        }
-    },
-    {
-        id: 'cmp109',
-        type: 'layout-3-columns',
-        style: {},
-        info: {
+        },
+        {
+            id: 'cmp109',
+            type: 'layout-3-columns',
+            style: {},
             subClass: 'light-and-shiny',
-            children: [{
-                id: 'cmp1091',
-                type: 'app-article',
-                style: {},
-                info: {
+            children: [
+                {
+                    id: 'cmp103',
+                    type: 'app-article',
+                    style: {},
                     subClass: 'light-and-shiny',
-                    title: 'Article title',
-                    subTitle: 'Article sub title',
-                    txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
-                }
-            },
-            {
-                id: 'cmp1092',
-                type: 'app-article',
-                style: {},
-                info: {
+                    children: [
+                        {
+                            id: 'yldor1a',
+                            type: 'el-title',
+                            txt: 'Article title',
+                            style: {},
+                        },
+                        {
+                            id: 'xr4g2e1p',
+                            type: 'el-text',
+                            txt: 'Article sub title',
+                            style: {},
+                        },
+                        {
+                            id: 'q0aewg2a',
+                            type: 'el-text',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                            style: {},
+                        },
+
+                    ]
+                },
+                {
+                    id: 'cmp1ope3',
+                    type: 'app-article',
+                    style: {},
                     subClass: 'light-and-shiny',
-                    title: 'Article title',
-                    subTitle: 'Article sub title',
-                    txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
-                }
-            },
-            {
-                id: 'cmp1093',
-                type: 'app-article',
-                style: {},
-                info: {
+                    children: [
+                        {
+                            id: 'yldor1a',
+                            type: 'el-title',
+                            txt: 'Article title',
+                            style: {},
+                        },
+                        {
+                            id: 'xr4g2e1p',
+                            type: 'el-text',
+                            txt: 'Article sub title',
+                            style: {},
+                        },
+                        {
+                            id: 'q0aewg2a',
+                            type: 'el-text',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                            style: {},
+                        },
+
+                    ]
+                },
+                {
+                    id: 'cmp13rt3',
+                    type: 'app-article',
+                    style: {},
                     subClass: 'light-and-shiny',
-                    title: 'Article title',
-                    subTitle: 'Article sub title',
-                    txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
-                }
-            }
+                    children: [
+                        {
+                            id: 'ylkkfa1a',
+                            type: 'el-title',
+                            txt: 'Article title',
+                            style: {},
+                        },
+                        {
+                            id: 'xrzzlp',
+                            type: 'el-text',
+                            txt: 'Article sub title',
+                            style: {},
+                        },
+                        {
+                            id: 'q0poq2a',
+                            type: 'el-text',
+                            txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
+                            style: {},
+                        },
+
+                    ]
+                },
             ]
-        }
-    },
-    {
-        id: 'cmp107',
-        type: 'app-chat',
-        style: {},
-        info: {
+        },
+        {
+            id: 'cmp107',
+            type: 'app-chat',
+            style: {},
             subClass: 'light-and-shiny',
             title: 'Chat',
-        }
-    },
-    {
-        id: 'cca29',
-        type: 'app-youtube',
-        style: {},
-        subClass: 'light-and-shiny',
-        info: {
+        },
+        {
+            id: 'cca29',
+            type: 'app-youtube',
+            style: {},
+            subClass: 'light-and-shiny',
             title: "B.B.King",
             url: "https://www.youtube.com/embed/Y57kLy1vV1c"
-        }
-    },
-    {
-        id: 'cmp105',
-        type: 'app-footer',
-        style: {},
-        info: {
+        },
+        {
+            id: 'cmp105',
+            type: 'app-footer',
+            style: {},
             subClass: 'light-and-shiny',
             title: 'Cofferights',
             links: [
@@ -244,8 +283,7 @@ const gWap = {
                 { social: 'github', url: 'www.github.com' },
                 { social: 'instagram', url: 'www.instagram.com' },
             ],
-        }
-    },
+        },
     ]
 }
 
@@ -268,12 +306,14 @@ function query() {
 
 
 function addCmp(cmp) {
+
     let wap = storageService.load(WAP_KEY)
     cmp.id = _makeId()
     wap.cmps.push(cmp);
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(cmp)
 }
+
 
 function updateWap(cmp) {
     if (cmp.type === 'app-youtube') {
@@ -286,6 +326,9 @@ function updateWap(cmp) {
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
 }
+
+
+
 
 function removeCmp(cmp) {
     let wap = storageService.load(WAP_KEY)

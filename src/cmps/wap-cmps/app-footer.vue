@@ -2,11 +2,11 @@
   <footer
     class="app-footer light-and-shiny flex justify-center align-center flex-column"
     id="app-footer"
-    :class="currCmp.info.subClass"
+    :class="currCmp.subClass"
   >
     <p :class="{editable: editMode}" :contenteditable="editMode" @blur="editTitle">
       <span class="far fa-copyright"></span>
-      {{currCmp.info.title}}
+      {{currCmp.title}}
     </p>
 
     <section class="social-links">
@@ -30,7 +30,7 @@ export default {
     return {
       currCmp: {},
       editMode: false,
-      socialLinks: this.cmp.info.links
+      socialLinks: this.cmp.links
     };
   },
   created() {
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     editTitle(ev) {
-      this.currCmp.info.title = ev.target.innerText;
+      this.currCmp.title = ev.target.innerText;
       this.update();
     },
     update() {

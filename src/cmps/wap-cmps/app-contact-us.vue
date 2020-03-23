@@ -2,7 +2,7 @@
   <section
     class="app-contact-us flex space-evenly light-and-shiny"
     id="app-contact-us"
-    :class="currCmp.info.subClass"
+    :class="currCmp.subClass"
   >
     <section class="info">
       <hr />
@@ -10,20 +10,20 @@
         :class="{editable: editMode}"
         :contenteditable="editMode"
         @blur="editTitle"
-      >{{currCmp.info.title}}</h3>
+      >{{currCmp.title}}</h3>
 
       <div class="adress-info">
         <p
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editCountry"
-        >{{currCmp.info.country}}</p>
+        >{{currCmp.country}}</p>
 
         <p
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editAddress"
-        >{{currCmp.info.address}}</p>
+        >{{currCmp.address}}</p>
       </div>
 
       <p>
@@ -32,7 +32,7 @@
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editTitle"
-        >{{currCmp.info.phone}}</span>
+        >{{currCmp.phone}}</span>
       </p>
 
       <a
@@ -40,7 +40,7 @@
         :class="{editable: editMode}"
         :contenteditable="editMode"
         @blur="editEmail"
-      >{{currCmp.info.email}}</a>
+      >{{currCmp.email}}</a>
 
     </section>
     <form @submit.prevent="contactUs" class="flex flex-column">
@@ -91,19 +91,19 @@ export default {
   methods: {
     contactUs() {},
     editTitle(ev) {
-      this.currCmp.info.title = ev.target.innerText;
+      this.currCmp.title = ev.target.innerText;
       this.update();
     },
     editCountry(ev) {
-      this.currCmp.info.country = ev.target.innerText;
+      this.currCmp.country = ev.target.innerText;
       this.update();
     },
     editAddress(ev) {
-      this.currCmp.info.address = ev.target.innerText;
+      this.currCmp.address = ev.target.innerText;
       this.update();
     },
     editEmail(ev) {
-      this.currCmp.info.email = ev.target.innerText;
+      this.currCmp.email = ev.target.innerText;
       this.update();
     },
     update() {
