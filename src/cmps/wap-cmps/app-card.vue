@@ -1,6 +1,13 @@
 <template>
-  <div class="app-card" id="card" :class="currCmp.info.subClass">
-    <img :src="currCmp.info.imgUrl" alt="Card Image" />
+  <div class="app-card" :style="currCmp.style" :class="currCmp.subClass" :contenteditable="false">
+    <component
+      v-for="child in cmp.children"
+      :is="child.type"
+      :cmp="child"
+      :key="child.id"
+      :contenteditable="true"
+    ></component>
+    <!-- <img :src="currCmp.info.imgUrl" alt="Card Image" />
     <h3
       class="card-text"
       :class="{editable: editMode}"
@@ -17,21 +24,30 @@
       :class="{editable: editMode}"
       :contenteditable="editMode"
       @blur="editButton"
-    >{{currCmp.info.callToAction}}</button>
+    >{{currCmp.info.callToAction}}</button>-->
   </div>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
+import elImg from '../wap-elements-cmp/img.cmp.vue'
+import elTitle from '../wap-elements-cmp/title.cmp.vue'
+import elButton from '../wap-elements-cmp/button.cmp.vue'
 export default {
   props: {
-    cmp: Object
+    cmp: Object,
+    isEditing: Boolean
   },
   data() {
     return {
       currCmp: {},
       editMode: false
     };
+  },
+  computed: {
+    markCmp() {
+      return { 'mark-cmp': this.isEditing }
+    }
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
@@ -56,6 +72,11 @@ export default {
       var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
       eventBus.$emit("updateCmp", cmpCopy);
     }
+  },
+  components: {
+    elImg,
+    elTitle,
+    elButton
   }
 };
 </script>

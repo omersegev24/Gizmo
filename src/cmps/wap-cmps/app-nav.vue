@@ -1,5 +1,5 @@
 <template>
-  <nav class="app-nav light-and-shiny" :class="currCmp.info.subClass">
+  <nav class="app-nav light-and-shiny" :class="currCmp.subClass">
     <section class="flex space-between align-center">
       <p
         class="logo"
@@ -7,11 +7,11 @@
         :class="{editable: editMode}"
         :contenteditable="editMode"
         @blur="editLogo"
-      >{{currCmp.info.logo}}</p>
+      >{{currCmp.logo}}</p>
 
       <ul class="nav-links flex justify-end align-center">
         <li>
-          <a v-for="link in currCmp.info.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
+          <a v-for="link in currCmp.links" :href="'#' + link.to" :key="link.txt">{{link.txt}}</a>
         </li>
       </ul>
       <!-- @click="toggleMenu" -->

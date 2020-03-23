@@ -7,28 +7,28 @@
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="currCmp"></edit-map>
       </section>
-      <div class="edit-panel flex flex-column" v-else>
+      <!-- <div class="edit-panel flex flex-column" v-else>
         <div v-for="(item, idx) in inputToRender" :key="idx">
           <p>{{idx}}</p>
-          <input type="text" v-model="currCmp.info[idx]" placeholder="Enter text..." />
+          <input type="text" v-model="cmpCopy.info[idx]" placeholder="Enter text..." />
         </div>
-      </div>
+      </div> -->
 
-      <div v-for="(child, index) in childrenInputs" :key="index">
+      <!-- <div v-for="(child, index) in childrenInputs" :key="index">
         <div v-for="(item, idx) in child.info" :key="idx">
           <p>{{idx}}</p>
           <input
             type="text"
-            v-model="currCmp.info.children[index].info[idx]"
+            v-model="cmpCopy.info.children[index].info[idx]"
             placeholder="Enter text..."
           />
         </div>
-      </div>
+      </div> -->
 
       <div v-for="(child, index) in linkInputs" :key="child.id">
         <div v-for="(item, key) in child" :key="key">
           <p>{{key}}</p>
-          <input type="text" v-model="currCmp.info.links[index][key]" placeholder="Enter text..." />
+          <input type="text" v-model="cmpCopy.links[index][key]" placeholder="Enter text..." />
         </div>
       </div>
 
@@ -48,37 +48,41 @@ export default {
   },
   data() {
     return {
-
+      cmpCopy: JSON.parse(JSON.stringify(this.currCmp))
     }
   },
   computed: {
     inputToRender() {
-      return _.pickBy(this.currCmp.info, item => {
+      return _.pickBy(this.currCmp, item => {
         return typeof item === "string";
       });
     },
     linkInputs() {
-      if (this.currCmp.info.links) {
-        return this.currCmp.info.links;
+      if (this.currCmp.links) {
+        return this.currCmp.links;
       }
     },
     childrenInputs() {
-      if (this.currCmp.info.children) {
-        return this.currCmp.info.children;
+      if (this.currCmp.children) {
+        return this.currCmp.children;
       }
     }
   },
   watch: {
-    currCmp: {
+    cmpCopy: {
       handler() {
-        var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
-        this.updateCmp(cmpCopy);
+        // this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+        this.updateCmp(this.cmpCopy);
       },
       deep: true
+    },
+    currCmp() {
+      this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },
   methods: {
     updateCmp(cmp) {
+      console.log(cmp)
       eventBus.$emit("updateCmp", cmp);
     }
   },
