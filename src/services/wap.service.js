@@ -11,18 +11,19 @@ const gWap = {
             style: {},
             subClass: 'light-and-shiny',
             logo: 'Gizmo',
-            links: [{
-                to: 'app-header',
-                txt: 'Home'
-            },
-            {
-                to: 'app-contact-us',
-                txt: 'Contact'
-            },
-            {
-                to: 'app-article',
-                txt: 'About'
-            },
+            links: [
+                {
+                    to: 'app-header',
+                    txt: 'Home'
+                },
+                {
+                    to: 'app-contact-us',
+                    txt: 'Contact'
+                },
+                {
+                    to: 'app-article',
+                    txt: 'About'
+                },
             ]
         },
 
@@ -34,13 +35,13 @@ const gWap = {
             children: [
                 {
                     id: 'tre12',
-                    type: 'el-title',
+                    type: 'h1',
                     txt: 'We sell corona',
                     style: {},
                 },
                 {
                     id: 'saw21a',
-                    type: 'el-button',
+                    type: 'button',
                     txt: 'Try me',
                     style: {},
                 },
@@ -60,19 +61,19 @@ const gWap = {
                     children: [
                         {
                             id: 'saoomor1a',
-                            type: 'el-img',
+                            type: 'img',
                             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                             style: {},
                         },
                         {
                             id: 'tr31e12',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Do it now',
                             style: {},
                         },
                         {
                             id: 'sao1w21a',
-                            type: 'el-button',
+                            type: 'button',
                             txt: 'Try me',
                             style: {},
                         },
@@ -87,19 +88,19 @@ const gWap = {
                     children: [
                         {
                             id: 'sadani3mor1a',
-                            type: 'el-img',
+                            type: 'img',
                             imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                             style: {},
                         },
                         {
                             id: 'tr4gc1e12',
-                            type: 'el-title',
+                            type: 'p',
                             txt: 'Do it now',
-                            style: { class: 'card-text' },
+                            style: {},
                         },
                         {
                             id: 's0aaqo1w2a',
-                            type: 'el-button',
+                            type: 'button',
                             txt: 'Try me',
                             style: {},
                         },
@@ -118,19 +119,19 @@ const gWap = {
             children: [
                 {
                     id: 'sa12mqfo',
-                    type: 'el-img',
+                    type: 'img',
                     imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
                     style: {},
                 },
                 {
                     id: 'tr4vgcpa2',
-                    type: 'el-title',
+                    type: 'p',
                     txt: 'Do it now',
-                    style: { class: 'card-text' },
+                    style: {},
                 },
                 {
                     id: 's0apaq1w27',
-                    type: 'el-button',
+                    type: 'button',
                     txt: 'Try me',
                     style: {},
                 },
@@ -329,43 +330,51 @@ function addCmp(cmp) {
 
 function updateWap(cmp) {
     var wap = storageService.load(WAP_KEY)
-    
-    wap.cmps.forEach(currCmp => {
-        var res = _findNode(cmp.id, currCmp)
-        console.log(res)
-    })
-    // const res = _findItemNested(wap, cmp.id, "children");
-    // console.log(res);
+    wap.cmps.forEach((currCmp, idx) => {
+        var res = _findNode(cmp, currCmp)
+        if (res) {
+            if (res.children) {
+                const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
+                res.children.splice(childIdx, 1, cmp)
+            } else {
+                const nodeIdx = currCmp.children.findIndex(nodeCmp => nodeCmp.id === cmp.id)
+                currCmp.children.splice(nodeIdx, 1, cmp)
+            }
+        }
 
-    // wap.cmps.splice(idx, 1, cmp)
-    // storageService.store(WAP_KEY, wap)
+    })
+    storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
 }
-function _findNode(id, currentNode) {
+
+function _findNode(cmp, currentNode) {
     var i,
         currentChild,
         result;
 
-    if (id == currentNode.id) {
+    if (cmp.id === currentNode.id) {
         return currentNode;
-    } else if (currentNode.info.children) {
+    } else if (currentNode.children) {
 
         // Use a for loop instead of forEach to avoid nested functions
         // Otherwise "return" will not work properly
-        for (i = 0; i < currentNode.info.children.length; i += 1) {
-            currentChild = currentNode.info.children[i];
-
+        for (i = 0; i < currentNode.children.length; i += 1) {
+            currentChild = currentNode.children[i];
             // Search in the current child
-            result = _findNode(id, currentChild);
+            result = _findNode(cmp, currentChild);
 
             // Return the result if the node has been found
-            if (result !== false) {
-                return result;
+            // console.log('result inside node', result)
+            if (result) {
+                // console.log('inside node', currentChild)
+
+                return currentChild;
             }
         }
-
         // The node has not been found and we have no more options
         return false;
+    } else {
+        return false
     }
 }
 

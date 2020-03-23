@@ -4,30 +4,15 @@
     id="app-header"
     :class="currCmp.subClass"
   >
-    <component v-for="child in cmp.children"
-       :is="child.type"
-       :cmp="child"
-       :key="child.id"
-       :contenteditable="true"
-       ></component>
-    <!-- <h2
-      class="title"
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editTitle"
-    >{{currCmp.info.title}}</h2>
-    <h3
-      class="sub-title"
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editSubTitle"
-    >{{currCmp.info.subTitle}}</h3>
-
-    <button
-      :class="{editable: editMode}"
-      :contenteditable="editMode"
-      @blur="editButton"
-    >{{currCmp.info.callToAction}}</button>-->
+    <component
+      v-for="child in cmp.children"
+      :is="child.type"
+      :key="child.id"
+      :style="child.style"
+      :contenteditable="true"
+      :src="child.imgUrl"
+      @blur="editTxt($event,child)"
+    >{{child.txt}}</component>
   </header>
 </template>
 
@@ -52,9 +37,10 @@ export default {
     });
   },
   methods: {
-    editTxt(ev) {
-      this.currCmp.info.title = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
     },
     editSubTitle(ev) {
       this.currCmp.info.subTitle = ev.target.innerText;
