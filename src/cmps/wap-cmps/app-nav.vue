@@ -3,14 +3,17 @@
     <section class="flex space-between align-center">
       <p class="logo" id="Home" :class="{editable: editMode}" @blur="editLogo">{{currCmp.logo}}</p>
 
-      <ul class="nav-links flex justify-end align-center" :class="{'menu-open' : isMenuOpen}">
-        <li>
-          <a 
-          v-for="link in currCmp.links" 
-          :href="'#' + link.to" 
-          :key="link.txt"
-          @click=closeMobileNav
-          >{{link.txt}}</a>
+      <ul class="nav-links flex justify-end align-center">
+        <li v-for="child in currCmp.children" :key="child.id">
+          <component
+            :is="child.type"
+            :style="child.style"
+            :contenteditable="true"
+            :href="'#' + child.to"
+            @blur="editTxt($event,child)"
+            :src="child.imgUrl"
+          >{{child.txt}}</component>
+          <!-- <a :href="'#' + link.to">{{link.txt}}</a> -->
         </li>
       </ul>
       <span @click="toggleMenu">
@@ -41,12 +44,14 @@ export default {
     });
   },
   methods: {
-    editLogo(ev) {
-      this.currCmp.info.logo = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit("updateCmp", cmpCopy);
     },
-    update() {
+    editLogo(ev) {
       var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      cmpCopy.logo = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
     toggleMenu() {

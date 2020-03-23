@@ -1,8 +1,9 @@
 <template>
   <header
-    class="app-header light-and-shiny flex justify-center align-center flex-column"
+    class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="currCmp.subClass"
+    :style="currCmp.style"
   >
     <component
       v-for="child in cmp.children"
@@ -11,15 +12,17 @@
       :style="child.style"
       :contenteditable="true"
       :src="child.imgUrl"
+      :class="isEditMode"
       @blur="editTxt($event,child)"
+      @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </header>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-import elTitle from '../wap-elements-cmp/title.cmp.vue'
-import elButton from '../wap-elements-cmp/button.cmp.vue'
+import elTitle from "../wap-elements-cmp/title.cmp.vue";
+import elButton from "../wap-elements-cmp/button.cmp.vue";
 export default {
   props: {
     cmp: Object
@@ -32,27 +35,25 @@ export default {
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
+  },
+  computed: {
+    isEditMode(){
+    return (this.editMode)? 'edit-mode': ''
+    }
   },
   methods: {
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
+      this.toggleEditMode()
     },
-    editSubTitle(ev) {
-      this.currCmp.info.subTitle = ev.target.innerText;
-      this.update();
+    openEdit(cmp){
+      eventBus.$emit('edit', cmp)
+      this.toggleEditMode()
     },
-    editButton(ev) {
-      this.currCmp.info.callToAction = ev.target.innerText;
-      this.update();
-    },
-    update() {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
-      eventBus.$emit("updateCmp", cmpCopy);
+    toggleEditMode(){
+      this.editMode = !this.editMode
     }
   },
   components: {

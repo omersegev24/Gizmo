@@ -1,24 +1,35 @@
 <template>
-  <div class="edit-text flex flex-column" >
+  <div class="edit-text flex flex-column">
     <div class="color-picker">
       <p @click="colorOpen = !colorOpen">Font Color</p>
-      <swatches v-if="colorOpen" v-model="currCmp.style.color" colors="text-advanced" inline />
+      <swatches
+        v-if="colorOpen"
+        v-model="cmp.style.color"
+        @click.native="update"
+        colors="material-light"
+        swatchSize="23"
+        borderRadius="0"
+        inline
+      />
 
       <p @click="bgcOpen = !bgcOpen">Background Color</p>
       <swatches
         v-if="bgcOpen"
-        v-model="currCmp.style.backgroundColor"
-        colors="text-advanced"
+        v-model="cmp.style.backgroundColor"
+        @click.native="update"
+        colors="material-light"
+        swatchSize="23"
+        borderRadius="0"
         inline
       />
     </div>
     <span>Align</span>
-    <v-select :options="['left', 'center', 'right']" v-model="currCmp.style.textAlign"></v-select>
+    <v-select :options="['left', 'center', 'right']" v-model="cmp.style.textAlign"></v-select>
 
     <span>Align Vertical</span>
     <v-select
       :options="['center', 'space-between', 'space-evenly']"
-      v-model="currCmp.style.justifyContent"
+      v-model="cmp.style.justifyContent"
     ></v-select>
 
     <span>Text Size</span>
@@ -57,6 +68,7 @@ export default {
   },
   data() {
     return {
+      cmp: JSON.parse(JSON.stringify(this.currCmp)),
       bgcOpen: false,
       colorOpen: false,
       fontSize: 5,
@@ -66,15 +78,20 @@ export default {
   },
   methods: {
     setTextSize() {
-      this.currCmp.style.fontSize = this.fontSize + "px";
+      this.cmp.style.fontSize = this.fontSize + "px";
       this.update();
     },
     setLetterSpacing() {
-      this.currCmp.style.letterSpacing = this.letterSpacing + "px";
+      this.cmp.style.letterSpacing = this.letterSpacing + "px";
       this.update();
     },
     update() {
-      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.currCmp)));
+      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.cmp)));
+    }
+  },
+  watch:{
+    currCmp(){
+      this.cmp = JSON.parse(JSON.stringify(this.currCmp))
     }
   },
   components: {
