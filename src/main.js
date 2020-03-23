@@ -22,7 +22,7 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyCa_A7Pfp8VgZoZsDddRtPEL-tW_MFT7iY',
     libraries: 'places',
     region: 'IL', 
-    language: 'he',
+    language: 'en',
   },
 });
 

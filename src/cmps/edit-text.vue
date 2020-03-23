@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-text flex flex-column">
+  <div class="edit-text flex flex-column" >
     <div class="color-picker">
       <p @click="colorOpen = !colorOpen">Font Color</p>
       <swatches v-if="colorOpen" v-model="currCmp.style.color" colors="text-advanced" inline />

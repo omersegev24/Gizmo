@@ -72,7 +72,7 @@ export default {
   },
   created() {
     eventBus.$on('edit', cmp => {
-      console.log(cmp)
+      console.log('editor side bar',cmp)
       this.editMode = true;
       this.currCmp = JSON.parse(JSON.stringify(cmp))
     })

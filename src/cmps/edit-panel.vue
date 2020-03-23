@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     updateCmp(cmp) {
-      console.log(cmp)
       eventBus.$emit("updateCmp", cmp);
     }
   },

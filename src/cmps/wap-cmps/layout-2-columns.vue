@@ -29,7 +29,6 @@ export default {
   methods: {
     cmpClicked(child) {
       this.editTest = true
-      console.log(child.id)
       eventBus.$emit("edit", child);
     }
   },
