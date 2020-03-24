@@ -1,10 +1,13 @@
 <template>
-  <nav class="app-nav" :class="currCmp.subClass">
+  <nav class="app-nav" :class="currCmp.subClass" @click.stop="edit(cmp)">
     <section class="flex space-between align-center">
-      <p class="logo" id="Home" :class="{editable: editMode}" :contenteditable="editMode" @blur="editLogo">{{currCmp.logo}}</p>
+      <!-- <p
+        class="logo"
+        id="Home"
+      >{{currCmp.logo}}</p> -->
 
       <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
-        <li v-for="child in currCmp.children" :key="child.id">
+        <li v-for="child in cmp.children" :key="child.id">
           <component
             :is="child.type"
             :style="child.style"
@@ -12,8 +15,8 @@
             :href="'#' + child.to"
             @blur="editTxt($event,child)"
             :src="child.imgUrl"
+            @click.stop="edit(child)"
           >{{child.txt}}</component>
-          <!-- <a :href="'#' + link.to">{{link.txt}}</a> -->
         </li>
       </ul>
       <span @click="toggleMenu">
@@ -25,9 +28,8 @@
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-
 export default {
-  name: 'appNav',
+
   props: {
     cmp: Object
   },
@@ -36,14 +38,13 @@ export default {
       currCmp: {},
       editMode: false,
       isMenuOpen: false
-    };
+    }
   },
   created() {
     this.currCmp = this.cmp;
   },
   methods: {
     edit(cmp) {
-      console.log('c', cmp)
       eventBus.$emit('edit', cmp)
     },
     editTxt(ev, cmp) {
@@ -57,7 +58,7 @@ export default {
       cmpCopy.logo = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
-    openEdit(cmp){
+    openEdit(cmp) {
       this.editMode = true
       eventBus.$emit('edit', cmp)
     },

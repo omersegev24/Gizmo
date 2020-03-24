@@ -40,7 +40,7 @@
         <img :src="imgPreview" style="width: 250px, heigth: 250px" />
       </div>
 
-      <edit-text :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
+      <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
   </div>
 </template>
@@ -86,18 +86,19 @@ export default {
     }
   },
   watch: {
-    cmpCopy: {
-      handler() {
-        this.updateCmp(this.cmpCopy);
-      },
-      deep: true
-    },
+    // cmpCopy: {
+    //   handler() {
+    //     this.updateCmp(this.cmpCopy);
+    //   },
+    //   deep: true
+    // },
     currCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },
   methods: {
     updateCmp(cmp) {
+      console.log('yes', cmp)
       eventBus.$emit("updateCmp", cmp);
     },
     async uploadImg(ev) {
