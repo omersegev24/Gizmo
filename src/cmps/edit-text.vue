@@ -23,19 +23,11 @@
         inline
       />
     </div>
-    <span>Align</span>
-    <v-select :options="['left', 'center', 'right']" v-model="cmp.style.textAlign"></v-select>
-
-    <span>Align Vertical</span>
-    <v-select
-      :options="['center', 'space-between', 'space-evenly']"
-      v-model="cmp.style.justifyContent"
-    ></v-select>
 
     <span>Text Size</span>
     <vue-slider
       v-model="fontSize"
-      :min="0"
+      :min="10"
       :max="100"
       :contained="true"
       :tooltip="'active'"
@@ -45,15 +37,19 @@
     <span>Letter Spacing</span>
     <vue-slider
       v-model="letterSpacing"
-      :min="0"
-      :max="100"
+      
+      :max="50"
       :contained="true"
       :tooltip="'active'"
       @change="setLetterSpacing"
     ></vue-slider>
 
+    <span>Align</span>
+    <v-select :options="['left', 'center', 'right']" v-model="cmp.style.textAlign"></v-select>
+
     <span>Font</span>
-    <v-select :options="fontFamily" v-model="currCmp.style.fontFamily"></v-select>
+    <v-select :options="fontFamily" v-model="cmp.style.fontFamily"></v-select>
+
   </div>
 </template>
 

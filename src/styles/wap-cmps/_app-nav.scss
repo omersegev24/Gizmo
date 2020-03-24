@@ -79,15 +79,15 @@
         width: 80%;
         height: 100vh;
         transition: 0.3s;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
 
         li {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          top: 10%;
-          left: 35%;
-          padding: 10px;
+          padding: rem(10px);
+          
+          &:first-child {
+            margin-top: rem(75px);
+          }
 
           a {
             margin: 0;

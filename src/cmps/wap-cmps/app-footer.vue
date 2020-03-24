@@ -13,6 +13,7 @@
       :contenteditable="true"
       :src="child.imgUrl"
       @blur="editTxt($event,child)"
+      @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </footer>
 </template>
@@ -39,10 +40,13 @@ export default {
   },
   methods: {
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
+    openEdit(cmp){
+      eventBus.$emit('edit', cmp)
+    }
   },
   components: {
     socialLinks

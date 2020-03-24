@@ -7,6 +7,7 @@ function uploadImg(ev) {
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
     const formData = new FormData();
+    console.log(ev.target.files[0])
     formData.append('file', ev.target.files[0])
     formData.append('upload_preset', 'erlp8af1');
 

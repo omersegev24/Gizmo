@@ -23,11 +23,6 @@ export default {
       isEditing: false
     }
   },
-  methods: {
-    cmpClicked(child) {
-      eventBus.$emit("edit", child);
-    },
-  },
   components: {
     appCard,
     appArticle

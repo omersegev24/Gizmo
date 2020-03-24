@@ -8,6 +8,7 @@
       :contenteditable="true"
       :src="child.imgUrl"
       @blur="editTxt($event,child)"
+      @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </section>
 </template>
@@ -32,9 +33,8 @@ export default {
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
-    update() {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
-      eventBus.$emit("updateCmp", cmpCopy);
+     openEdit(cmp){
+      eventBus.$emit('edit', cmp)
     }
   },
 };

@@ -2,8 +2,7 @@
   <div class="action-panel">
     <div class="action-container flex">
       <div>
-        <!-- <button @click="edit()">Edit</button> -->
-        <button @click="remove()">Delete</button>
+        <button @click="remove()"><i class="fas fa-trash-alt"></i></button>
       </div>
       <div class="move-cmp">
         <button @click="updatePos(1)">
@@ -24,10 +23,6 @@ export default {
     cmp: Object
   },
   methods: {
-    // edit() {
-    //   console.log('cmpssssssssssßśš', this.cmp)
-    //   eventBus.$emit("edit", this.cmp);
-    // },
     remove() {
       eventBus.$emit("remove", this.cmp);
     },

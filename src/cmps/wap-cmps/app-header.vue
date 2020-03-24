@@ -12,7 +12,7 @@
       :style="child.style"
       :contenteditable="true"
       :src="child.imgUrl"
-      :class="isEditMode"
+      :class="[isEditMode, child.type === 'p' ? 'title' : '']"
       @blur="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
@@ -30,30 +30,25 @@ export default {
   data() {
     return {
       currCmp: {},
-      editMode: false
+      editMode: false,
     };
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-  },
-  computed: {
-    isEditMode(){
-    return (this.editMode)? 'edit-mode': ''
-    }
+    // console.log(currCmp.)
   },
   methods: {
+    isEditMode(cmp) {
+      return (cmp.editMode) ? "edit-mode" : "";
+    },
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
-      this.toggleEditMode()
     },
-    openEdit(cmp){
-      eventBus.$emit('edit', cmp)
-      this.toggleEditMode()
-    },
-    toggleEditMode(){
-      this.editMode = !this.editMode
+    openEdit(cmp) {
+      eventBus.$emit("edit", cmp);
+      eventBus.$emit("selectCmp", cmp);
     }
   },
   components: {

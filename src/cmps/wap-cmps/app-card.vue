@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card" :style="currCmp.style" :class="currCmp.subClass">
+  <div class="app-card" :style="cmp.style" :class="cmp.subClass">
     <component
       v-for="child in cmp.children"
       :is="child.type"
@@ -10,25 +10,23 @@
       :src="child.imgUrl"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
-   
   </div>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
+  name: "app-card",
   props: {
     cmp: Object,
     isEditing: Boolean
   },
   data() {
     return {
-      currCmp: {},
       editMode: false
     };
   },
   created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
     eventBus.$on("editMode", isEditMode => {
       this.editMode = isEditMode;
     });
@@ -39,9 +37,9 @@ export default {
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
-    openEdit(cmp){
-      eventBus.$emit('edit', cmp)
+    openEdit(cmp) {
+      eventBus.$emit("edit", cmp);
     }
-  },
+  }
 };
 </script>

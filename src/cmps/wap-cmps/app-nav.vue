@@ -1,24 +1,21 @@
 <template>
-  <nav class="app-nav light-and-shiny" :class="cmp.style" @click.stop="edit(cmp)">
+  <nav class="app-nav" :class="currCmp.subClass" @click.stop="edit(cmp)">
     <section class="flex space-between align-center">
-      <p
+      <!-- <p
         class="logo"
         id="Home"
-        :class="{editable: editMode}"
-        @blur="editLogo"
-        @click.stop="edit(currCmp.logo)"
-      >{{currCmp.logo}}</p>
+      >{{currCmp.logo}}</p> -->
 
-      <ul class="nav-links flex justify-end align-center">
+      <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="child in cmp.children" :key="child.id">
           <component
             :is="child.type"
             :style="child.style"
             :contenteditable="true"
             :href="'#' + child.to"
-            @click.stop="edit(child)"
             @blur="editTxt($event,child)"
             :src="child.imgUrl"
+            @click.stop="edit(child)"
           >{{child.txt}}</component>
         </li>
       </ul>
@@ -32,7 +29,7 @@
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
-  
+
   props: {
     cmp: Object
   },
@@ -44,10 +41,7 @@ export default {
     }
   },
   created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
+    this.currCmp = this.cmp;
   },
   methods: {
     edit(cmp) {
@@ -56,15 +50,19 @@ export default {
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
+      this.editMode = false
       eventBus.$emit("updateCmp", cmpCopy);
     },
     editLogo(ev) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(this.cmp));
       cmpCopy.logo = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
+    openEdit(cmp) {
+      this.editMode = true
+      eventBus.$emit('edit', cmp)
+    },
     toggleMenu() {
-      console.log("toggling");
       this.isMenuOpen = !this.isMenuOpen;
     },
     closeMobileNav() {
