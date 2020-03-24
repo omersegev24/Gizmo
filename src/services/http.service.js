@@ -26,12 +26,13 @@ export default {
 }
 
 
-async function ajax(endpoint, method='get', params=null) {
+async function ajax(endpoint, method='get', data=null) {
     try {
+        console.log('******************************************************************************',data)
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
-            params
+            data
         })
         return res.data;
     } catch (err) {

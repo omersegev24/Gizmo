@@ -3,6 +3,7 @@ import cloudinaryService from "../services/cloudinary.service.js";
 
 export default ({
     state: {
+        waps: [],
         wap: {},
         wapTheme: 'dark-theme',
         selectedCmp: {},
@@ -20,6 +21,9 @@ export default ({
     },
     mutations: {
 
+        setWaps(state, { waps }) {
+            state.waps = waps
+        },
         setWap(state, { wap }) {
             state.wap = wap
         },
@@ -30,71 +34,68 @@ export default ({
             const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
             state.wap.cmps.splice(idx, 1, updatedCmp)
         },
-        removeCmp(state, { cmpIdx }) {
-            state.wap.cmps.splice(cmpIdx, 1)
+        removeCmp(state, { cmp }) {
+            const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
+            state.wap.cmps.splice(idx, 1)
         },
         setSelectedCmp(state, { cmp }) {
             state.selectedCmp = cmp
         },
-        changeWapTheme(state, { wapTheme }) {
-            state.wapTheme = wapTheme
+        changeWapTheme(state, { wapConfig }) {
+            if (wapConfig.wapTitle.length > 0) state.wap.title = wapConfig.wapTitle
+            if (wapConfig.wapTheme.length > 0) state.wap.theme = wapConfig.wapTheme
+            state.wapTheme = wapConfig.wapTheme
         },
+        updatePos(state, { updatedPos }) {
+            const idx = state.wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
+            if (idx + updatedPos.diff > 0 || idx + updatedPos.diff < state.wap.cmps.length)
+                state.wap.cmps.splice(idx, 1)
+            state.wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
+        }
     },
     actions: {
+        async loadWaps(context) {
+            const waps = await wapService.query()
+            console.log(wap)
+            context.commit({ type: 'setWaps', waps })
+            return waps
+        },
         async loadWap(context) {
-            const wap = await wapService.query()
+            const wap = await wapService.getById('5e7a5f411c9d440000f4b6f7')
+            console.log(wap)
             context.commit({ type: 'setWap', wap })
             return wap
         },
-        async addCmp(context, { cmp }) {
-            var cmpCopy = JSON.parse(JSON.stringify(cmp))
-            var addedCmp = await wapService.addCmp(cmpCopy)
-            context.commit({
-                type: 'addCmp',
-                addedCmp
-            })
-            return addedCmp
-        },
         async updateCmp(context, { cmp }) {
             const cmpCopy = JSON.parse(JSON.stringify(cmp))
-            const wap = await wapService.updateWap(cmpCopy)
+            const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
+            const wap = await wapService.updateWap(wapCopy, cmpCopy)
             context.commit({
                 type: 'setWap',
                 wap
             })
         },
-        async removeCmp(context, { cmp }) {
-            const cmpIdx = await wapService.removeCmp(cmp)
-            context.commit({
-                type: 'removeCmp',
-                cmpIdx
-            })
-        },
-        async updatePos(context, { updatedPos }) {
-            const wap = await wapService.updatePos(updatedPos)
-            context.commit({
-                type: 'setWap',
-                wap
-            })
-        },
-        async updateTitleAndTheme(context, { wapConfig }) {
-            const wap = await wapService.updateWapConfig(wapConfig)
-            context.commit({
-                type: 'setWap',
-                wap
-            })
-            const { wapTheme } = wapConfig
-            context.commit({
-                type: 'changeWapTheme',
-                wapTheme
-            })
-        },
-        async uploadImg(context, {ev}) {
+        async uploadImg(context, { ev }) {
             context.commit({ type: 'setInProgress', inProgress: true })
             const res = await cloudinaryService.uploadImg(ev);
             context.commit({ type: 'setInProgress', inProgress: false })
             const { url } = res;
             return (url) ? url : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+        },
+        async addCmp(context, { cmp }) {
+            var addedCmp = JSON.parse(JSON.stringify(cmp))
+            addedCmp.id = await wapService.makeId();
+            context.commit({
+                type: 'addCmp',
+                addedCmp
+            })
+        },
+
+        async saveWap(context) {
+            context.commit({ type: 'setInProgress', inProgress: true })
+            await wapService.update(context.state.wap)
+            context.commit({ type: 'setInProgress', inProgress: false })
+
         },
     },
 })

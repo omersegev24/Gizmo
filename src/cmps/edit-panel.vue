@@ -10,7 +10,8 @@
         <section class="title">
           <p>Website Title</p>
           <input type="text" placeholder="Enter title" v-model="wapConfig.wapTitle" />
-          <button @click="changeTitleAndTheme">Save Changes</button>
+          <!-- <button @click="changeTitleAndTheme">Save Changes</button> -->
+          <button @click="saveWap">Save Changes</button>
         </section>
         <section class="wap-info">
           <p>Title: {{currWap.title}}</p>
@@ -89,6 +90,9 @@ export default {
     updateCmp(cmp) {
       eventBus.$emit("updateCmp", cmp);
     },
+    saveWap() {
+      eventBus.$emit("saveWap");
+    },
     async uploadImg(ev) {
       eventBus.$emit('uploadImg', ev)
       const url = await this.$store.dispatch({ type: "uploadImg", ev });
@@ -99,7 +103,8 @@ export default {
     changeTitleAndTheme(themeName) {
       this.wapConfig.wapTheme = themeName;
       const { wapConfig } = this;
-      this.$store.dispatch({ type: "updateTitleAndTheme", wapConfig });
+      // this.$store.dispatch({ type: "updateTitleAndTheme", wapConfig });
+      this.$store.commit({ type: "changeWapTheme", wapConfig });
     }
   },
   components: {
