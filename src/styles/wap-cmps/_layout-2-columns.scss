@@ -1,3 +1,11 @@
-// .layout-2-columns.light-and-shiny {
-//     margin: 0 auto;
-// }
+.layout-2-columns {
+  @include for-wide-layout {
+    flex-direction: column;
+  }
+  @include for-normal-layout {
+    flex-direction: column;
+  }
+  @include for-narrow-layout {
+    flex-direction: column;
+  }
+}

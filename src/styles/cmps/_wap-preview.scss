@@ -11,7 +11,7 @@
     .action-panel {
       visibility: visible;
     }
-    .screen{
+    .screen {
       height: 100%;
       width: 100%;
       top: 0;
@@ -20,9 +20,12 @@
       visibility: visible;
       transition: all 0.1s;
       border: 2px solid #459fed;
-      opacity: .9;
-      
+      opacity: 0.9;
     }
+  }
+
+  .edit-mode {
+    outline: 5px dotted black;
   }
 }
 

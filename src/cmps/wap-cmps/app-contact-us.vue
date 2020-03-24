@@ -13,27 +13,24 @@
       >{{currCmp.title}}</h3>
 
       <div class="adress-info">
-        <span
+        <p
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editCountry"
-        >{{currCmp.country}}</span>
+        >{{currCmp.country}}</p>
 
-        <span
+        <p
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editAddress"
-        >{{currCmp.address}}</span>
+        >{{currCmp.address}}</p>
       </div>
 
-      <span>
-        Tel:
-        <span
+        <p
           :class="{editable: editMode}"
           :contenteditable="editMode"
           @blur="editTitle"
-        >{{currCmp.phone}}</span>
-      </span>
+        >{{currCmp.phone}}</p>
 
       <a
         href="gmail.com"
@@ -41,10 +38,8 @@
         :contenteditable="editMode"
         @blur="editEmail"
       >{{currCmp.email}}</a>
-
-      
-
     </section>
+
     <form @submit.prevent="contactUs" class="flex flex-column">
       <label class="flex flex-column">
         Enter Your Name

@@ -17,21 +17,21 @@ const gWap = {
                     type: 'a',
                     to: 'app-header',
                     txt: 'Home',
-                    style: {}
+                    style:{}
                 },
                 {
                     id: 'lin16aq',
                     type: 'a',
                     to: 'app-contact-us',
-                    style: {},
-                    txt: 'Contact'
+                    txt: 'Contact',
+                    style:{}
                 },
                 {
                     id: 'lin1vraz',
                     type: 'a',
                     to: 'app-article',
-                    style: {},
-                    txt: 'About'
+                    txt: 'About',
+                    style:{}
                 },
             ]
         },
@@ -47,12 +47,21 @@ const gWap = {
                     type: 'h2',
                     txt: 'We sell corona',
                     style: {},
+                    editMode: false
+                },
+                {
+                    id: 'asd51w',
+                    type: 'img',
+                    imgUrl: '../assets/img/hero-photographer.jpg',
+                    style: {},
+                    editMode: false
                 },
                 {
                     id: 'saw21a',
                     type: 'button',
                     txt: 'Try me',
                     style: {},
+                    editMode: false
                 },
             ],
         },
