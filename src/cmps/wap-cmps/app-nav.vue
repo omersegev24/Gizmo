@@ -4,10 +4,10 @@
       <!-- <p
         class="logo"
         id="Home"
-      >{{currCmp.logo}}</p> -->
+      >{{currCmp.logo}}</p>-->
 
       <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
-        <li v-for="child in cmp.children" :key="child.id">
+        <li v-for="(child, idx) in cmp.children" :class="'nav-link-' + idx" :key="child.id">
           <component
             :is="child.type"
             :style="child.style"
@@ -31,7 +31,7 @@ import { eventBus } from "../../services/eventBus.service.js";
 export default {
 
   props: {
-    cmp: Object
+    cmp: Object,
   },
   data() {
     return {
@@ -71,3 +71,8 @@ export default {
   }
 };
 </script>
+<style>
+.marked {
+  border: 20px solid blue;
+}
+</style>

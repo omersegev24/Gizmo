@@ -5,10 +5,14 @@ export default ({
     state: {
         wap: {},
         wapTheme: 'dark-theme',
+        selectedCmp: {},
     },
     getters: {
         getWap(state) {
             return state.wap;
+        },
+        getSelectedCmp(state) {
+            return state.selectedCmp
         },
         getWapTheme(state) {
             return state.wapTheme;
@@ -28,6 +32,9 @@ export default ({
         },
         removeCmp(state, { cmpIdx }) {
             state.wap.cmps.splice(cmpIdx, 1)
+        },
+        setSelectedCmp(state, { cmp }) {
+            state.selectedCmp = cmp
         },
         changeWapTheme(state, { wapTheme }) {
             state.wapTheme = wapTheme
