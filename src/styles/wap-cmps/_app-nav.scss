@@ -3,6 +3,9 @@
   margin: 0;
 
   section {
+    > * {
+      color: $clr2;
+    }
     .logo {
       font-size: 3rem;
       font-weight: bold;
@@ -12,6 +15,23 @@
 
     .nav-links {
       margin-left: auto;
+      .nav-link-1 {
+        margin-left: auto;
+      }
+      li {
+        a {
+          margin-right: rem(50px);
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .nav-link-0 {
+        justify-self: felx-start;
+        // justify-self: flex-start;
+        // margin-right: auto;
+        margin-left: 0;
+      }
     }
 
     .hamburger-menu {
@@ -19,18 +39,7 @@
       visibility: hidden;
     }
 
-    > * {
-      color: $clr2;
-    }
 
-    li {
-      a {
-        margin-right: rem(50px);
-      }
-      &:hover {
-        cursor: pointer;
-      }
-    }
   }
 }
 

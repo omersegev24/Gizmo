@@ -1,10 +1,20 @@
 .app-social-links {
   padding: rem(20px);
   > * {
-    color: $clr5;
     padding: rem(5px);
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+.app-social-links.light-and-shiny {
+  > * {
+    color: $clr2;
+  }
+}
+.app-social-links.dark-theme {
+  > * {
+    color: $clr5;
   }
 }
