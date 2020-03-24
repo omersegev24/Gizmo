@@ -3,6 +3,7 @@
     <component
       :is="cmp.type"
       :cmp="cmp"
+      :selectedCmp="selectedCmp"
       :style="cmp.style"
       :class="getWapTheme"
       @click.native.stop="edit(cmp)"
@@ -41,6 +42,9 @@ export default {
   computed: {
     getWapTheme() {
       return this.$store.getters.getWapTheme
+    },
+    selectedCmp() {
+      return this.$store.getters.getSelectedCmp
     }
   },
   components: {

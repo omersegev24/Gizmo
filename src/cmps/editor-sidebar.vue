@@ -31,7 +31,7 @@
               <!-- <div class="themes-btn-container" v-if="item.title === 'Themes'">
                 <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
                 <button @click="changeWapTheme('dark-theme')">Dark</button>
-              </div> -->
+              </div>-->
               <div else>{{item.details}}</div>
             </div>
           </transition>
@@ -76,15 +76,17 @@ export default {
         }
       ],
       editMode: false,
-      currCmp: null,
     };
   },
   created() {
     eventBus.$on('edit', cmp => {
-      console.log('editor side bar', cmp)
       this.editMode = true;
-      this.currCmp = JSON.parse(JSON.stringify(cmp))
     })
+  },
+  computed: {
+    currCmp() {
+      return this.$store.getters.getSelectedCmp
+    }
   },
   methods: {
     toggle(currItem) {

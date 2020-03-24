@@ -26,11 +26,11 @@
         >{{currCmp.address}}</p>
       </div>
 
-        <p
-          :class="{editable: editMode}"
-          :contenteditable="editMode"
-          @blur="editTitle"
-        >{{currCmp.phone}}</p>
+      <p
+        :class="{editable: editMode}"
+        :contenteditable="editMode"
+        @blur="editTitle"
+      >{{currCmp.phone}}</p>
 
       <a
         href="gmail.com"
@@ -84,10 +84,10 @@ export default {
     eventBus.$on("editMode", isEditMode => {
       this.editMode = isEditMode;
     });
-    
+
   },
   methods: {
-    contactUs() {},
+    contactUs() { },
     editTitle(ev) {
       this.currCmp.title = ev.target.innerText;
       this.update();

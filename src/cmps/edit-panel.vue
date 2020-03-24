@@ -1,6 +1,6 @@
 <template>
   <div class="edit-panel flex flex-column">
-    <div v-if="!currCmp">
+    <div>
       <section class="wap-title-theme">
         <section class="themes">
           <p>Website Themes</p>
@@ -19,7 +19,7 @@
       </section>
       <p class="guide">Pick a section to start editing!</p>
     </div>
-    <div v-else>
+    <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
@@ -66,6 +66,7 @@ export default {
     };
   },
   computed: {
+    
     linkInputs() {
       if (this.currCmp.links) {
         return this.currCmp.links;
