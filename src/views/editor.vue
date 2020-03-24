@@ -29,9 +29,13 @@ export default {
     eventBus.$on('remove', cmp => {
       this.$store.dispatch({ type: 'removeCmp', cmp })
     })
-    eventBus.$on("updatePos", updatedPos => {
+    eventBus.$on('updatePos', updatedPos => {
       this.$store.dispatch({ type: 'updatePos', updatedPos })
     });
+
+    eventBus.$on('edit', cmp => {
+      this.$store.commit({ type: 'setSelectedCmp', cmp })
+    })
     // eventBus.$on('selectCmp', cmp => {
     //   this.$store.dispatch({type: 'selectCmp', cmp})
     // })

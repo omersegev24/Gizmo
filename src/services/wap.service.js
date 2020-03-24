@@ -171,7 +171,8 @@ const gWap = {
         type: 'app-social-links',
         style: {},
         subClass: 'light-and-shiny',
-        children: [{
+        children: [
+            {
             id: 'soch7z',
             social: 'facebook',
             url: 'www.facebook.com',
@@ -305,7 +306,8 @@ const gWap = {
         type: 'app-footer',
         style: {},
         subClass: 'light-and-shiny',
-        children: [{
+        children: [
+            {
             id: 'zqers4',
             type: 'p',
             txt: 'Cofferights',
@@ -316,11 +318,12 @@ const gWap = {
             type: 'social-links',
             style: {},
             subClass: 'light-and-shiny',
-            children: [{
+            children: [
+                {
                 id: 'socpovdsaz',
                 social: 'facebook',
                 url: 'www.facebook.com',
-                style: {}
+                style: {color:'red'}
             },
             {
                 id: 'soc343jzo',
