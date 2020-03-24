@@ -1,36 +1,30 @@
 <template>
   <div id="app">
+    <img v-if="inProgress" class="loading" src="./assets/img/loading.svg" />
     <main-nav></main-nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
-import mainNav from './cmps/main-nav.vue'
+import mainNav from "./cmps/main-nav.vue";
 export default {
-  components:{
+  computed: {
+    inProgress() {
+      return this.$store.getters.inProgress;
+    }
+  },
+  components: {
     mainNav
   }
-}
+};
 </script>
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<style lang="scss" scoped>
+  .loading{
+    width: 100px;
+    height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999;
   }
-}
 </style>

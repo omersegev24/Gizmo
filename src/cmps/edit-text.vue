@@ -37,11 +37,20 @@
     <span>Letter Spacing</span>
     <vue-slider
       v-model="letterSpacing"
-      
       :max="50"
       :contained="true"
       :tooltip="'active'"
       @change="setLetterSpacing"
+    ></vue-slider>
+
+    <span>Section Heigth</span>
+    <vue-slider
+      v-model="padding"
+      :min="0"
+      :max="100"
+      :contained="true"
+      :tooltip="'active'"
+      @change="setSectionHeigth"
     ></vue-slider>
 
     <span>Align</span>
@@ -69,6 +78,7 @@ export default {
       colorOpen: false,
       fontSize: 5,
       letterSpacing: 0,
+      padding: 0,
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"]
     };
   },
@@ -79,6 +89,10 @@ export default {
     },
     setLetterSpacing() {
       this.cmp.style.letterSpacing = this.letterSpacing + "px";
+      this.update();
+    },
+    setSectionHeigth() {
+      this.cmp.style.padding = this.padding + "px";
       this.update();
     },
     update() {

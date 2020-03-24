@@ -47,7 +47,8 @@ const gWap = {
         type: 'app-header',
         style: {},
         subClass: 'light-and-shiny',
-        children: [{
+        children: [
+            {
             id: 'asd51w',
             type: 'img',
             imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
@@ -237,19 +238,19 @@ const gWap = {
             style: {},
             subClass: 'light-and-shiny',
             children: [{
-                id: 'yldor1a',
+                id: 'vgyvkvhc',
                 type: 'p',
                 txt: 'Article title',
                 style: {},
             },
             {
-                id: 'xr4g2e1p',
+                id: 'ccgchkufu',
                 type: 'p',
                 txt: 'Article sub title',
                 style: {},
             },
             {
-                id: 'q0aewg2a',
+                id: 'q0ppewg2a',
                 type: 'p',
                 txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?',
                 style: {},

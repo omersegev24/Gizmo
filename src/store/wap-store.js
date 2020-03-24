@@ -1,4 +1,5 @@
 import { wapService } from '../services/wap.service.js'
+import cloudinaryService from "../services/cloudinary.service.js";
 
 export default ({
     state: {
@@ -80,6 +81,13 @@ export default ({
                 type: 'changeWapTheme',
                 wapTheme
             })
-        }
+        },
+        async uploadImg(context, {ev}) {
+            context.commit({ type: 'setInProgress', inProgress: true })
+            const res = await cloudinaryService.uploadImg(ev);
+            context.commit({ type: 'setInProgress', inProgress: false })
+            const { url } = res;
+            return (url) ? url : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+        },
     },
 })

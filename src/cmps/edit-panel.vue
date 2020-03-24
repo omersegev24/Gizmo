@@ -37,7 +37,7 @@
         <label class="btn-3" for="file">
           <span>select</span>
         </label>
-        <img :src="imgPreview" style="width: 250px, heigth: 250px" />
+        <img :src="cmpCopy.imgUrl" style="width: 250px, heigth: 250px" />
       </div>
 
       <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
@@ -47,7 +47,6 @@
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
-import cloudinaryService from "../services/cloudinary.service.js";
 
 import editText from "./edit-text.vue";
 import editMap from "./edit-map.vue";
@@ -62,7 +61,7 @@ export default {
       wapConfig: {
         wapTitle: "",
         wapTheme: ""
-      }
+      },
     };
   },
   computed: {
@@ -70,11 +69,6 @@ export default {
       if (this.currCmp.links) {
         return this.currCmp.links;
       }
-    },
-    imgPreview() {
-      return !this.currCmp.imgUrl
-        ? this.currCmp.imgUrl
-        : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
     },
     childrenInputs() {
       if (this.currCmp.children) {
@@ -86,27 +80,18 @@ export default {
     }
   },
   watch: {
-    // cmpCopy: {
-    //   handler() {
-    //     this.updateCmp(this.cmpCopy);
-    //   },
-    //   deep: true
-    // },
     currCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },
   methods: {
     updateCmp(cmp) {
-      console.log('yes', cmp)
       eventBus.$emit("updateCmp", cmp);
     },
     async uploadImg(ev) {
-      const res = await cloudinaryService.uploadImg(ev);
-      const { url } = res;
-      this.cmpCopy.imgUrl = url
-        ? url
-        : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+      const url = await this.$store.dispatch({ type: "uploadImg", ev });
+      this.cmpCopy.imgUrl = url;
+      this.updateCmp(this.cmpCopy)
     },
     changeTitleAndTheme(themeName) {
       this.wapConfig.wapTheme = themeName;
