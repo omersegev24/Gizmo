@@ -1,28 +1,31 @@
 .wap-preview {
   position: relative;
-  
+
   * {
-    word-break:break-all;
+    word-break: break-all;
   }
-  .screen{
+  .screen {
     visibility: hidden;
   }
   &:hover {
-    .action-panel{
+    .action-panel {
       visibility: visible;
     }
-    .screen{
+    .screen {
       height: 100%;
       width: 100%;
       top: 0;
       pointer-events: none;
       position: absolute;
-      visibility: visible;    
+      visibility: visible;
       transition: all 0.1s;
       border: 2px solid #459fed;
-      opacity: .6;
-      background: rgba(69, 159, 237, 0.3);
+      opacity: 0.9;
     }
+  }
+
+  .edit-mode {
+    outline: 5px dotted black;
   }
 }
 

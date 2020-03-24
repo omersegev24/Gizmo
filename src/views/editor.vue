@@ -14,7 +14,7 @@ import wapContainer from '../cmps/wap-container.vue'
 export default {
   data() {
     return {
-      cmps: []
+      cmps: [],
     };
   },
   async created() {
@@ -32,6 +32,9 @@ export default {
     eventBus.$on("updatePos", updatedPos => {
       this.$store.dispatch({ type: 'updatePos', updatedPos })
     });
+    // eventBus.$on('selectCmp', cmp => {
+    //   this.$store.dispatch({type: 'selectCmp', cmp})
+    // })
 
   },
   computed: {
@@ -48,7 +51,6 @@ export default {
     }
   },
   components: {
-    // wapPreview,
     editorSidebar,
     wapContainer
   }

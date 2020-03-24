@@ -1,7 +1,7 @@
 <template>
-  <nav class="app-nav light-and-shiny" :class="currCmp.subClass">
+  <nav class="app-nav" :class="currCmp.subClass">
     <section class="flex space-between align-center">
-      <p class="logo" id="Home" :class="{editable: editMode}" @blur="editLogo">{{currCmp.logo}}</p>
+      <p class="logo" id="Home" :class="{editable: editMode}" :contenteditable="editMode" @blur="editLogo">{{currCmp.logo}}</p>
 
       <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="child in currCmp.children" :key="child.id">
@@ -10,7 +10,6 @@
             :style="child.style"
             :contenteditable="true"
             :href="'#' + child.to"
-            @click.stop="edit(child)"
             @blur="editTxt($event,child)"
             :src="child.imgUrl"
           >{{child.txt}}</component>
@@ -28,6 +27,7 @@
 import { eventBus } from "../../services/eventBus.service.js";
 
 export default {
+  name: 'appNav',
   props: {
     cmp: Object
   },
@@ -39,10 +39,7 @@ export default {
     };
   },
   created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
+    this.currCmp = this.cmp;
   },
   methods: {
     edit(cmp) {
@@ -52,12 +49,17 @@ export default {
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
+      this.editMode = false
       eventBus.$emit("updateCmp", cmpCopy);
     },
     editLogo(ev) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(this.cmp));
       cmpCopy.logo = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
+    },
+    openEdit(cmp){
+      this.editMode = true
+      eventBus.$emit('edit', cmp)
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
