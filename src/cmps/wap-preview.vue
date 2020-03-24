@@ -28,7 +28,6 @@ import appSocialLinks from '../cmps/wap-cmps/app-social-links.vue';
 import appArticle from '../cmps/wap-cmps/app-article.vue';
 import actionPanel from '../cmps/action-panel.vue'
 import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
-import elTitle from './wap-elements-cmp/title.cmp.vue'
 export default {
 
   props: {
@@ -61,7 +60,6 @@ export default {
     appSocialLinks,
     appArticle,
     actionPanel,
-    elTitle
   },
 };
 </script>

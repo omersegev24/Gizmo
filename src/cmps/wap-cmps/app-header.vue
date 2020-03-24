@@ -22,8 +22,6 @@
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-import elTitle from "../wap-elements-cmp/title.cmp.vue";
-import elButton from "../wap-elements-cmp/button.cmp.vue";
 export default {
   props: {
     cmp: Object,
@@ -39,9 +37,6 @@ export default {
       eventBus.$emit('edit', cmp);
     }
   },
-  components: {
-    elTitle,
-    elButton
-  }
+ 
 };
 </script>
