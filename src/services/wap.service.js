@@ -5,7 +5,8 @@ const gWap = {
     title: 'My First Wap',
     theme: 'Light and Shiny',
     style: {},
-    cmps: [{
+    cmps: [
+        {
         id: 'cmp100',
         type: 'app-nav',
         style: {},
@@ -29,6 +30,7 @@ const gWap = {
                 type: 'a',
                 to: 'app-contact-us',
                 txt: 'Contact',
+                style: {}
 
             },
 
@@ -160,11 +162,32 @@ const gWap = {
         type: 'app-contact',
         style: {},
         subClass: 'light-and-shiny',
-        title: 'CONTACT',
-        country: 'Israel',
-        address: 'Tel Aviv Bacher 4',
-        phone: '123-456-7890',
-        email: 'gizmo@gizmo.com'
+        children: [
+            {
+                id: 't2r4pa2',
+                type: 'p',
+                txt: 'CONTACT',
+                style: {},
+            },
+            {
+                id: 'trbxspa2',
+                type: 'p',
+                txt: 'Tel Aviv Bacher 4',
+                style: {},
+            },
+            {
+                id: 'zr4v0a2',
+                type: 'p',
+                txt: '123-456-7890',
+                style: {},
+            },
+            {
+                id: 'sqwcpa2',
+                type: 'p',
+                txt: 'gizmo@gizmo.com',
+                style: {},
+            },
+        ],
     },
 
     {
@@ -379,8 +402,8 @@ function add(wap) {
 
 function updateWap(wap, cmp) {
     if (cmp.type === 'app-youtube') {
-        const youtubeId = _getYoutubeVidId(cmp.info.url)
-        cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
+        const youtubeId = _getYoutubeVidId(cmp.url)
+        cmp.url = 'https://www.youtube.com/embed/' + youtubeId
     }
     wap.cmps.forEach((currCmp, idx) => {
         var res = _findNode(cmp, currCmp)

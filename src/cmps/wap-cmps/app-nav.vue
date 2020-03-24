@@ -1,11 +1,6 @@
 <template>
-  <nav class="app-nav" :class="currCmp.subClass" @click.stop="edit(cmp)">
+  <nav class="app-nav" :class="cmp.subClass" @click.stop="edit(cmp)">
     <section class="flex space-between align-center">
-      <!-- <p
-        class="logo"
-        id="Home"
-      >{{currCmp.logo}}</p>-->
-
       <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="(child, idx) in cmp.children" :class="'nav-link-' + idx" :key="child.id">
           <component
@@ -13,8 +8,9 @@
             :style="child.style"
             :contenteditable="true"
             :href="'#' + child.to"
-            @blur="editTxt($event,child)"
+            @change="editTxt($event,child)"
             :src="child.imgUrl"
+            :class="{'mark-selected':child.id === selectedCmp.id}"
             @click.stop="edit(child)"
           >{{child.txt}}</component>
         </li>
@@ -32,16 +28,12 @@ export default {
 
   props: {
     cmp: Object,
+    selectedCmp: Object
   },
   data() {
     return {
-      currCmp: {},
-      editMode: false,
       isMenuOpen: false
     }
-  },
-  created() {
-    this.currCmp = this.cmp;
   },
   methods: {
     edit(cmp) {
@@ -71,8 +63,3 @@ export default {
   }
 };
 </script>
-<style>
-.marked {
-  border: 20px solid blue;
-}
-</style>

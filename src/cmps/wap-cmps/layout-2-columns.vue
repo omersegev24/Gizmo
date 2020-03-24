@@ -5,6 +5,7 @@
       :is="child.type"
       :cmp="child"
       :key="child.id"
+      :selectedCmp="selectedCmp"
     ></component>
   </section>
 </template>
@@ -16,12 +17,8 @@ import appArticle from './app-article.vue';
 
 export default {
   props: {
-    cmp: Object
-  },
-  data() {
-    return {
-      isEditing: false
-    }
+    cmp: Object,
+    selectedCmp: Object
   },
   components: {
     appCard,

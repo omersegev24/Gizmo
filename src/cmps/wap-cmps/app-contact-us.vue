@@ -1,46 +1,21 @@
 <template>
-  <section
-    class="app-contact-us flex space-evenly light-and-shiny"
-    id="app-contact-us"
-    :class="currCmp.subClass"
-  >
-    <section class="info">
-      <hr />
-      <h3
-        :class="{editable: editMode}"
-        :contenteditable="editMode"
-        @blur="editTitle"
-      >{{currCmp.title}}</h3>
-
-      <div class="adress-info">
-        <p
-          :class="{editable: editMode}"
-          :contenteditable="editMode"
-          @blur="editCountry"
-        >{{currCmp.country}}</p>
-
-        <p
-          :class="{editable: editMode}"
-          :contenteditable="editMode"
-          @blur="editAddress"
-        >{{currCmp.address}}</p>
-      </div>
-
-      <p
-        :class="{editable: editMode}"
-        :contenteditable="editMode"
-        @blur="editTitle"
-      >{{currCmp.phone}}</p>
-
-      <a
-        href="gmail.com"
-        :class="{editable: editMode}"
-        :contenteditable="editMode"
-        @blur="editEmail"
-      >{{currCmp.email}}</a>
-    </section>
-
-    <form @submit.prevent="contactUs" class="flex flex-column">
+  <section class="app-contact-us flex space-evenly" id="app-contact-us" :class="cmp.subClass">
+ 
+    <div class="flex flex-column space-evenly">
+      <component
+        class="info"
+        :style="child.style"
+        v-for="child in cmp.children"
+        :contenteditable="true"
+        :is="child.type"
+        :cmp="child"
+        :key="child.id"
+        @change="editTxt($event,child)"
+        :class="{ 'mark-selected':child.id === selectedCmp.id}"
+        @click.stop="openEdit(child)"
+      >{{child.txt}}</component>
+    </div>
+    <form  class="flex flex-column">
       <label class="flex flex-column">
         Enter Your Name
         <input type="text" placeholder="Name" />
@@ -70,44 +45,18 @@
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
-    cmp: Object
-  },
-  data() {
-    return {
-      currCmp: {},
-      editMode: false,
-      content: {}
-    };
-  },
-  created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
-
+    cmp: Object,
+    selectedCmp: Object
   },
   methods: {
-    contactUs() { },
-    editTitle(ev) {
-      this.currCmp.title = ev.target.innerText;
-      this.update();
+    editTxt(ev, cmp) {
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      cmpCopy.txt = ev.target.innerText;
+      eventBus.$emit('updateCmp', cmpCopy);
     },
-    editCountry(ev) {
-      this.currCmp.country = ev.target.innerText;
-      this.update();
+    openEdit(cmp) {
+      eventBus.$emit('edit', cmp)
     },
-    editAddress(ev) {
-      this.currCmp.address = ev.target.innerText;
-      this.update();
-    },
-    editEmail(ev) {
-      this.currCmp.email = ev.target.innerText;
-      this.update();
-    },
-    update() {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
-      eventBus.$emit("updateCmp", cmpCopy);
-    }
   }
 };
 </script>

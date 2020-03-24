@@ -5,7 +5,7 @@
       :cmp="cmp"
       :selectedCmp="selectedCmp"
       :style="cmp.style"
-      :class="getWapTheme"
+      :class="[getWapTheme,{'mark-selected':cmp.id === selectedCmp.id}]"
       @click.native.stop="edit(cmp)"
     ></component>
     <action-panel :cmp="cmp"></action-panel>

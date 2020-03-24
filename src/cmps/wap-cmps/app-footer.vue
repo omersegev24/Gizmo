@@ -2,7 +2,7 @@
   <footer
     class="app-footer flex justify-center align-center flex-column"
     id="app-footer"
-    :class="currCmp.subClass"
+    :class="cmp.subClass"
   >
     <component
       v-for="child in cmp.children"
@@ -14,7 +14,7 @@
       :class="{'mark-selected':child.id === selectedCmp.id}"
       :src="child.imgUrl"
       :style="child.style"
-      @blur="editTxt($event,child)"
+      @change="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </footer>
@@ -28,21 +28,9 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
-  data() {
-    return {
-      currCmp: {},
-      editMode: false,
-    };
-  },
-  created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
-  },
   methods: {
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(this.cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
