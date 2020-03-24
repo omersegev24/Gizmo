@@ -51,6 +51,9 @@ export default ({
             if (idx + updatedPos.diff > 0 || idx + updatedPos.diff < state.wap.cmps.length)
                 state.wap.cmps.splice(idx, 1)
             state.wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
+        },
+        updateImg(state, { url }) {
+            state.selectedCmp.imgUrl = url
         }
     },
     actions: {
@@ -61,7 +64,7 @@ export default ({
             return waps
         },
         async loadWap(context) {
-            const wap = await wapService.getById('5e7a5f411c9d440000f4b6f7')
+            const wap = await wapService.getById('5e7a76591c9d440000f4b6fb')
             console.log(wap)
             context.commit({ type: 'setWap', wap })
             return wap
@@ -79,8 +82,10 @@ export default ({
             context.commit({ type: 'setInProgress', inProgress: true })
             const res = await cloudinaryService.uploadImg(ev);
             context.commit({ type: 'setInProgress', inProgress: false })
-            const { url } = res;
-            return (url) ? url : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+            var { url } = res;
+            url = (url) ? url : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+            context.commit({ type: 'updateImg', url })
+            context.dispatch({ type: 'updateCmp', cmp: context.state.selectedCmp })
         },
         async addCmp(context, { cmp }) {
             var addedCmp = JSON.parse(JSON.stringify(cmp))

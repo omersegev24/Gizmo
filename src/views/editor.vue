@@ -35,9 +35,11 @@ export default {
     eventBus.$on("edit", cmp => {
       this.$store.commit({ type: "setSelectedCmp", cmp });
     });
-
+    eventBus.$on('uploadImg', ev => {
+      this.$store.dispatch({ type: "uploadImg", ev });
+    })
     eventBus.$on("saveWap", () => {
-      this.$store.dispatch({type: 'saveWap'})
+      this.$store.dispatch({ type: 'saveWap' })
     });
 
   },

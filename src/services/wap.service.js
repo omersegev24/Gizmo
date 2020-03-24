@@ -393,6 +393,7 @@ function remove(id) {
 }
 
 function update(wap) {
+    console.log('sendme',wap)
     return HttpService.put(`wap/${wap._id}`, wap)
 }
 function add(wap) {
@@ -412,7 +413,6 @@ function updateWap(wap, cmp) {
                 wap.cmps.splice(idx, 1, cmp)
             }
             else if (res.children) {
-                console.log('im here')
                 const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
                 res.children.splice(childIdx, 1, cmp)
             } else {

@@ -14,7 +14,7 @@
       :src="child.imgUrl"
       :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @change="editTxt($event,child)"
+      @input="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </header>
