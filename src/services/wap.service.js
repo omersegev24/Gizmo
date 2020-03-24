@@ -385,12 +385,6 @@ function addCmp(cmp) {
 }
 
 function updateWap(cmp) {
-  if (typeof cmp === 'string') {
-    var wap = storageService.load(WAP_KEY)
-    wap.title = cmp
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap)
-  } 
   if (cmp.type === 'app-youtube') {
     const youtubeId = _getYoutubeVidId(cmp.info.url)
     cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
