@@ -48,7 +48,7 @@
     <v-select :options="['left', 'center', 'right']" v-model="cmp.style.textAlign"></v-select>
 
     <span>Font</span>
-    <v-select :options="fontFamily" v-model="currCmp.style.fontFamily"></v-select>
+    <v-select :options="fontFamily" v-model="cmp.style.fontFamily"></v-select>
 
   </div>
 </template>
@@ -68,7 +68,7 @@ export default {
       bgcOpen: false,
       colorOpen: false,
       fontSize: 5,
-      letterSpacing: 2,
+      letterSpacing: 0,
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"]
     };
   },
