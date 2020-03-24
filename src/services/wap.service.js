@@ -49,13 +49,8 @@ const gWap = {
         type: 'app-header',
         style: {},
         subClass: 'light-and-shiny',
+        imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
         children: [
-            {
-                id: 'asd51w',
-                type: 'img',
-                imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
-                style: {},
-            },
             {
                 id: 'saw21a',
                 type: 'button',

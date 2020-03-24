@@ -103,7 +103,6 @@ export default {
     changeTitleAndTheme(themeName) {
       this.wapConfig.wapTheme = themeName;
       const { wapConfig } = this;
-      // this.$store.dispatch({ type: "updateTitleAndTheme", wapConfig });
       this.$store.commit({ type: "changeWapTheme", wapConfig });
     }
   },

@@ -51,6 +51,7 @@ export default {
       this.$store.dispatch({ type: "addCmp", cmp });
     },
     updateCmp(cmp) {
+      console.log('update in editor..........')
       this.$store.dispatch({ type: "updateCmp", cmp });
     }
   },

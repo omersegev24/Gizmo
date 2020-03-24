@@ -20,7 +20,6 @@ export default ({
         }
     },
     mutations: {
-
         setWaps(state, { waps }) {
             state.waps = waps
         },
@@ -61,12 +60,13 @@ export default ({
             return waps
         },
         async loadWap(context) {
-            const wap = await wapService.getById('5e7a5f411c9d440000f4b6f7')
+            const wap = await wapService.getById('5e7a76591c9d440000f4b6fb')
             console.log(wap)
             context.commit({ type: 'setWap', wap })
             return wap
         },
         async updateCmp(context, { cmp }) {
+            console.log('updateing cmp')
             const cmpCopy = JSON.parse(JSON.stringify(cmp))
             const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
             const wap = await wapService.updateWap(wapCopy, cmpCopy)
@@ -93,6 +93,7 @@ export default ({
 
         async saveWap(context) {
             context.commit({ type: 'setInProgress', inProgress: true })
+            console.log('wap store:::::::',context.state.wap)
             await wapService.update(context.state.wap)
             context.commit({ type: 'setInProgress', inProgress: false })
 
