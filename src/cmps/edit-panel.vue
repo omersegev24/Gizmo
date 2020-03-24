@@ -1,7 +1,23 @@
 <template>
   <div class="edit-panel flex flex-column">
     <div v-if="!currCmp">
-      <p>Pick a section to start editing!</p>
+      <section class="wap-title-theme">
+        <section class="themes">
+          <p>Website Themes</p>
+          <button @click="changeTitleAndTheme('light-and-shiny')">Light and Shiny</button>
+          <button @click="changeTitleAndTheme('dark-theme')">Dark</button>
+        </section>
+        <section class="title">
+          <p>Website Title</p>
+          <input type="text" placeholder="Enter title" v-model="wapConfig.wapTitle" />
+          <button @click="changeTitleAndTheme">Save Changes</button>
+        </section>
+        <section class="wap-info">
+          <p>Title: {{currWap.title}}</p>
+          <p>Theme: {{currWap.theme}}</p>
+        </section>
+      </section>
+      <p class="guide">Pick a section to start editing!</p>
     </div>
     <div v-else>
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
@@ -42,7 +58,11 @@ export default {
   },
   data() {
     return {
-      cmpCopy: JSON.parse(JSON.stringify(this.currCmp))
+      cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
+      wapConfig: {
+        wapTitle: "",
+        wapTheme: ""
+      }
     };
   },
   computed: {
@@ -55,12 +75,19 @@ export default {
       return !this.currCmp.imgUrl
         ? this.currCmp.imgUrl
         : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+    },
+    childrenInputs() {
+      if (this.currCmp.children) {
+        return this.currCmp.children;
+      }
+    },
+    currWap() {
+      return this.$store.getters.getWap;
     }
   },
   watch: {
     cmpCopy: {
       handler() {
-        // this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
         this.updateCmp(this.cmpCopy);
       },
       deep: true
@@ -76,10 +103,14 @@ export default {
     async uploadImg(ev) {
       const res = await cloudinaryService.uploadImg(ev);
       const { url } = res;
-
       this.cmpCopy.imgUrl = url
         ? url
         : "http://res.cloudinary.com/omer1234/image/upload/v1584998858/li0hhzwliqjrqcqv2coz.jpg";
+    },
+    changeTitleAndTheme(themeName) {
+      this.wapConfig.wapTheme = themeName;
+      const { wapConfig } = this;
+      this.$store.dispatch({ type: "updateTitleAndTheme", wapConfig });
     }
   },
   components: {
@@ -88,66 +119,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-[type="file"] {
-  height: 0;
-  overflow: hidden;
-  width: 0;
-}
-[type="file"] + label {
-  background: #f15d22;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Poppins", sans-serif;
-  font-size: inherit;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  outline: none;
-  padding: 10px 25px;
-  position: relative;
-  transition: all 0.3s;
-  vertical-align: middle;
-
-  &.btn-3 {
-    background-color: #3353f5;
-    border-radius: 5px;
-    overflow: hidden;
-
-    span {
-      display: inline-block;
-      height: 100%;
-      transition: all 0.3s;
-      width: 100%;
-    }
-
-    &::before {
-      color: #fff;
-      content: "\f093";
-      font-family: "Font Awesome 5 Free";
-      font-size: 100%;
-      height: 100%;
-      left: 0;
-      line-height: 2.6;
-      position: absolute;
-      top: -180%;
-      transition: all 0.3s;
-      width: 100%;
-    }
-
-    &:hover {
-      background-color: darken(#3353f5, 30%);
-
-      span {
-        transform: translateY(300%);
-      }
-      &::before {
-        top: 0;
-      }
-    }
-  }
-}
-</style>

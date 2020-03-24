@@ -3,7 +3,7 @@
     <section class="flex space-between align-center">
       <p class="logo" id="Home" :class="{editable: editMode}" :contenteditable="editMode" @blur="editLogo">{{currCmp.logo}}</p>
 
-      <ul class="nav-links flex justify-end align-center">
+      <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="child in currCmp.children" :key="child.id">
           <component
             :is="child.type"
@@ -62,7 +62,6 @@ export default {
       eventBus.$emit('edit', cmp)
     },
     toggleMenu() {
-      console.log("toggling");
       this.isMenuOpen = !this.isMenuOpen;
     },
     closeMobileNav() {

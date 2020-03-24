@@ -12,7 +12,7 @@
       :style="child.style"
       :contenteditable="true"
       :src="child.imgUrl"
-      :class="isEditMode(child)"
+      :class="[isEditMode, child.type === 'p' ? 'title' : '']"
       @blur="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
@@ -30,11 +30,12 @@ export default {
   data() {
     return {
       currCmp: {},
-      editMode: false
+      editMode: false,
     };
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    // console.log(currCmp.)
   },
   methods: {
     isEditMode(cmp) {
