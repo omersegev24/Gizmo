@@ -1,5 +1,5 @@
-import { storageService } from './storage.service.js'
-const WAP_KEY = 'wap'
+import HttpService from './http.service.js'
+
 const gWap = {
     _id: 'wap92829',
     title: 'My First Wap',
@@ -49,23 +49,23 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'asd51w',
-            type: 'img',
-            imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
-            style: {},
-        },
-        {
-            id: 'saw21a',
-            type: 'button',
-            txt: 'Try me',
-            style: {},
-        },
-        {
-            id: 'tre12',
-            type: 'p',
-            txt: 'We sell corona',
-            style: {},
-        },
+                id: 'asd51w',
+                type: 'img',
+                imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
+                style: {},
+            },
+            {
+                id: 'saw21a',
+                type: 'button',
+                txt: 'Try me',
+                style: {},
+            },
+            {
+                id: 'tre12',
+                type: 'p',
+                txt: 'We sell corona',
+                style: {},
+            },
         ],
     },
     {
@@ -174,23 +174,23 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'soch7z',
-            social: 'facebook',
-            url: 'www.facebook.com',
-            style: {}
-        },
-        {
-            id: 'soc1qzo',
-            social: 'github',
-            url: 'www.github.com',
-            style: {}
-        },
-        {
-            id: 'socro14q',
-            social: 'instagram',
-            url: 'www.instagram.com',
-            style: {}
-        },
+                id: 'soch7z',
+                social: 'facebook',
+                url: 'www.facebook.com',
+                style: {}
+            },
+            {
+                id: 'soc1qzo',
+                social: 'github',
+                url: 'www.github.com',
+                style: {}
+            },
+            {
+                id: 'socro14q',
+                social: 'instagram',
+                url: 'www.instagram.com',
+                style: {}
+            },
         ]
 
     },
@@ -309,38 +309,38 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'zqers4',
-            type: 'p',
-            txt: 'Cofferights',
-            style: {},
-        },
-        {
-            id: 'cmp11rzeq0',
-            type: 'social-links',
-            style: {},
-            subClass: 'light-and-shiny',
-            children: [
-                {
-                id: 'socpovdsaz',
-                social: 'facebook',
-                url: 'www.facebook.com',
-                style: {color:'red'}
+                id: 'zqers4',
+                type: 'p',
+                txt: 'Cofferights',
+                style: {},
             },
             {
-                id: 'soc343jzo',
-                social: 'github',
-                url: 'www.github.com',
-                style: {}
-            },
-            {
-                id: 'svnv4q',
-                social: 'instagram',
-                url: 'www.instagram.com',
-                style: {}
-            },
-            ]
+                id: 'cmp11rzeq0',
+                type: 'social-links',
+                style: {},
+                subClass: 'light-and-shiny',
+                children: [
+                    {
+                        id: 'socpovdsaz',
+                        social: 'facebook',
+                        url: 'www.facebook.com',
+                        style: { color: 'red' }
+                    },
+                    {
+                        id: 'soc343jzo',
+                        social: 'github',
+                        url: 'www.github.com',
+                        style: {}
+                    },
+                    {
+                        id: 'svnv4q',
+                        social: 'instagram',
+                        url: 'www.instagram.com',
+                        style: {}
+                    },
+                ]
 
-        },
+            },
         ]
     },
     ]
@@ -348,38 +348,40 @@ const gWap = {
 
 export const wapService = {
     query,
-    addCmp,
+    getById,
+    remove,
+    update,
+    add,
     updateWap,
-    removeCmp,
-    updatePos,
-    updateWapConfig
+    makeId,
 }
 
 
 function query() {
-    let wap = storageService.load(WAP_KEY)
-    if (wap) return Promise.resolve(wap)
-    wap = gWap
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap);
+    return HttpService.get('wap')
+}
+
+function getById(id) {
+    return HttpService.get(`wap/${id}`)
+}
+
+function remove(id) {
+    return HttpService.delete(`wap/${id}`)
+}
+
+function update(wap) {
+    return HttpService.put(`wap/${wap._id}`, wap)
+}
+function add(wap) {
+    return HttpService.post('wap', wap)
 }
 
 
-function addCmp(cmp) {
-
-    let wap = storageService.load(WAP_KEY)
-    cmp.id = _makeId()
-    wap.cmps.push(cmp);
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(cmp)
-}
-
-function updateWap(cmp) {
+function updateWap(wap, cmp) {
     if (cmp.type === 'app-youtube') {
         const youtubeId = _getYoutubeVidId(cmp.info.url)
         cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
     }
-    var wap = storageService.load(WAP_KEY)
     wap.cmps.forEach((currCmp, idx) => {
         var res = _findNode(cmp, currCmp)
         if (res) {
@@ -396,18 +398,6 @@ function updateWap(cmp) {
             }
         }
     })
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap)
-}
-
-
-
-
-function updateWapConfig(config) {
-    var wap = storageService.load(WAP_KEY)
-    if (config.wapTitle !== '') wap.title = config.wapTitle
-    if (config.wapTheme !== '') wap.theme = config.wapTheme
-    storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
 }
 
@@ -434,33 +424,13 @@ function _findNode(cmp, currentNode) {
     }
 }
 
-
-function removeCmp(cmp) {
-    let wap = storageService.load(WAP_KEY)
-    const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
-    wap.cmps.splice(idx, 1)
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(idx)
-}
-
-
-
-function updatePos(updatedPos) {
-    let wap = storageService.load(WAP_KEY)
-    const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
-    if (idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
-    wap.cmps.splice(idx, 1)
-    wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap)
-}
-function _makeId(length = 5) {
+function makeId(length = 5) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (let i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-    return txt;
+    return Promise.resolve(txt);
 }
 
 function _getYoutubeVidId(url) {
@@ -471,3 +441,11 @@ function _getYoutubeVidId(url) {
         ? match[2]
         : '';
 }
+
+// function addCmp(cmp) {
+//     let wap = storageService.load(WAP_KEY)
+//     cmp.id = _makeId()
+//     wap.cmps.push(cmp);
+//     storageService.store(WAP_KEY, wap)
+//     return Promise.resolve(cmp)
+// }
