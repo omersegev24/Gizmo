@@ -3,6 +3,7 @@ const WAP_KEY = 'wap'
 const gWap = {
   _id: 'wap92829',
   title: 'My First Wap',
+  theme: 'Light and Shiny',
   style: {},
   cmps: [{
       id: 'cmp100',
@@ -360,7 +361,8 @@ export const wapService = {
   addCmp,
   updateWap,
   removeCmp,
-  updatePos
+  updatePos,
+  updateWapConfig
 }
 
 
@@ -383,6 +385,12 @@ function addCmp(cmp) {
 }
 
 function updateWap(cmp) {
+  if (typeof cmp === 'string') {
+    var wap = storageService.load(WAP_KEY)
+    wap.title = cmp
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
+  } 
   if (cmp.type === 'app-youtube') {
     const youtubeId = _getYoutubeVidId(cmp.info.url)
     cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
@@ -403,6 +411,14 @@ function updateWap(cmp) {
   })
   storageService.store(WAP_KEY, wap)
   return Promise.resolve(wap)
+}
+
+function updateWapConfig(config) {
+    var wap = storageService.load(WAP_KEY)
+    if (config.wapTitle !== '') wap.title = config.wapTitle
+    if (config.wapTheme !== '') wap.theme = config.wapTheme
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
 }
 
 

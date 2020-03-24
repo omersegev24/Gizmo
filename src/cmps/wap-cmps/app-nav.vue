@@ -60,7 +60,6 @@ export default {
       eventBus.$emit("updateCmp", cmpCopy);
     },
     toggleMenu() {
-      console.log("toggling");
       this.isMenuOpen = !this.isMenuOpen;
     },
     closeMobileNav() {

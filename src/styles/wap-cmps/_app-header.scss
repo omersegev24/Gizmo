@@ -38,6 +38,8 @@
     position: absolute;
     top: 50%;
     @include for-light-button;
+    width: rem(200px);
+    font-size: 1.5rem;
   }
 }
 

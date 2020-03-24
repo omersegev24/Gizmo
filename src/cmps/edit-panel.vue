@@ -1,7 +1,23 @@
 <template>
   <div class="edit-panel flex flex-column">
     <div v-if="!currCmp">
-      <p>Pick a section to start editing!</p>
+      <section class="wap-title-theme">
+        <section class="themes">
+          <p>Wap Themes</p>
+          <button @click="changeTitleAndTheme('light-and-shiny')">Light and Shiny</button>
+          <button @click="changeTitleAndTheme('dark-theme')">Dark</button>
+        </section>
+        <section class="title">
+          <p>Wap Title</p>
+          <input type="text" placeholder="Enter title" v-model="wapConfig.wapTitle" />
+          <button @click="changeTitleAndTheme">Save Changes</button>
+        </section>
+        <section class="wap-info">
+          <p>Title: {{currWap.title}}</p>
+          <p>Theme: {{currWap.theme}}</p>
+        </section>
+      </section>
+      <p class="guide">Pick a section to start editing!</p>
     </div>
     <div v-else>
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
@@ -48,8 +64,12 @@ export default {
   },
   data() {
     return {
-      cmpCopy: JSON.parse(JSON.stringify(this.currCmp))
-    }
+      cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
+      wapConfig: {
+        wapTitle: '',
+        wapTheme: ''
+      }
+    };
   },
   computed: {
     inputToRender() {
@@ -66,6 +86,9 @@ export default {
       if (this.currCmp.children) {
         return this.currCmp.children;
       }
+    },
+    currWap() {
+      return this.$store.getters.getWap;
     }
   },
   watch: {
@@ -82,8 +105,13 @@ export default {
   },
   methods: {
     updateCmp(cmp) {
-      eventBus.$emit("updateCmp", cmp);
-    }
+      eventBus.$emit('updateCmp', cmp);
+    },
+    changeTitleAndTheme(themeName) {
+      this.wapConfig.wapTheme = themeName
+      const { wapConfig } = this
+      this.$store.dispatch({ type: 'updateTitleAndTheme', wapConfig})
+    },
   },
   components: {
     editText,

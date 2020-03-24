@@ -25,14 +25,12 @@ export default ({
             const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
             state.wap.cmps.splice(idx, 1, updatedCmp)
         },
-
         removeCmp(state, { cmpIdx }) {
             state.wap.cmps.splice(cmpIdx, 1)
         },
-        changeWapTheme(state, { themeName }) {
-            state.wapTheme = themeName
-        }
-
+        changeWapTheme(state, { wapTheme }) {
+            state.wapTheme = wapTheme
+        },
     },
     actions: {
         async loadWap(context) {
@@ -41,7 +39,6 @@ export default ({
             return wap
         },
         async addCmp(context, { cmp }) {
-
             var cmpCopy = JSON.parse(JSON.stringify(cmp))
             var addedCmp = await wapService.addCmp(cmpCopy)
             context.commit({
@@ -57,7 +54,6 @@ export default ({
                 type: 'setWap',
                 wap
             })
-
         },
         async removeCmp(context, { cmp }) {
             const cmpIdx = await wapService.removeCmp(cmp)
@@ -73,5 +69,17 @@ export default ({
                 wap
             })
         },
+        async updateTitleAndTheme(context, { wapConfig }) {
+            const wap = await wapService.updateWapConfig(wapConfig)
+            context.commit({
+                type: 'setWap',
+                wap
+            })
+            const { wapTheme } = wapConfig
+            context.commit({
+                type: 'changeWapTheme',
+                wapTheme
+            })
+        }
     },
 })

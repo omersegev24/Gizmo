@@ -1,8 +1,58 @@
-.edit-panel{
-    input[type=text]{
-        padding: 10px;
-        margin: 15px auto;
-        width: 80%;
-        font-size: 0.877rem;
+.edit-panel {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+
+  input[type="text"] {
+    padding: 10px;
+    margin: 15px auto;
+    width: 80%;
+    font-size: 0.877rem;
+  }
+
+  .wap-title-theme {
+    * {
+      color: $clr2;
     }
+    p {
+			font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .themes {
+      margin: 2rem 0 1rem;
+      button {
+        @include for-light-button;
+        margin: 2.5px;
+      }
+      :last-child {
+        @include for-dark-button;
+      }
+    }
+    .title {
+			p {
+				margin-bottom: 10px;
+			}
+			input {
+				margin-top: 0;
+			}
+      button {
+        @include for-light-button;
+				font-weight: bold;
+				background-color: $clr4;
+				color: $clr2;
+				transition: .3s;
+        &:hover {
+          color: $clr4;
+          background-color: $clr2;
+        }
+      }
+		}
+		.wap-info {
+			text-transform: capitalize;
+			margin-bottom: 20px;
+		}
+  }
+	.guide {
+		font-weight: bold;
+	}
 }

@@ -28,10 +28,10 @@
                   {{cmp.type}}
                 </div>
               </div>
-              <div class="themes-btn-container" v-if="item.title === 'Themes'">
+              <!-- <div class="themes-btn-container" v-if="item.title === 'Themes'">
                 <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
                 <button @click="changeWapTheme('dark-theme')">Dark</button>
-              </div>
+              </div> -->
               <div else>{{item.details}}</div>
             </div>
           </transition>
@@ -93,9 +93,9 @@ export default {
         else item.active = false;
       });
     },
-    changeWapTheme(themeName) {
-      this.$store.commit({ type: 'changeWapTheme', themeName });
-    }
+    // changeWapTheme(themeName) {
+    //   this.$store.commit({ type: 'changeWapTheme', themeName });
+    // }
   },
   components: {
     editPanel
