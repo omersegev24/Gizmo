@@ -4,14 +4,14 @@
       <section class="wap-title-theme">
         <section class="themes">
           <p>Website Themes</p>
-          <button @click="changeTitleAndTheme('light-and-shiny')">Light and Shiny</button>
-          <button @click="changeTitleAndTheme('dark-theme')">Dark</button>
+          <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
+          <button @click="changeWapTheme('dark-theme')">Dark</button>
         </section>
         <section class="title">
           <p>Website Title</p>
-          <input type="text" placeholder="Enter title" v-model="wapConfig.wapTitle" />
-          <!-- <button @click="changeTitleAndTheme">Save Changes</button> -->
-          <button @click="saveWap">Save Changes</button>
+          <input type="text" placeholder="Enter title" v-model="wapTitle" />
+          <button @click="changeWapTitle">Save Title</button>
+          <button @click="saveWap">Save Wap</button>
         </section>
         <section class="wap-info">
           <p>Title: {{currWap.title}}</p>
@@ -59,10 +59,10 @@ export default {
   data() {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
-      wapConfig: {
-        wapTitle: "",
-        wapTheme: ""
-      },
+      // wapPrefs: {
+      wapTitle: '',
+      wapTheme: ''
+      // },
     };
   },
   computed: {
@@ -99,12 +99,11 @@ export default {
       this.cmpCopy.imgUrl = url;
       this.updateCmp(this.cmpCopy)
     },
-
-    changeTitleAndTheme(themeName) {
-      this.wapConfig.wapTheme = themeName;
-      const { wapConfig } = this;
-      // this.$store.dispatch({ type: "updateTitleAndTheme", wapConfig });
-      this.$store.commit({ type: "changeWapTheme", wapConfig });
+    changeWapTitle() {
+      eventBus.$emit('changeWapTitle', this.wapTitle);
+    },
+    changeWapTheme(theme) {
+      eventBus.$emit('changeWapTheme', theme);
     }
   },
   components: {

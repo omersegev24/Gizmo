@@ -95,9 +95,6 @@ export default {
         else item.active = false;
       });
     },
-    // changeWapTheme(themeName) {
-    //   this.$store.commit({ type: 'changeWapTheme', themeName });
-    // }
   },
   components: {
     editPanel

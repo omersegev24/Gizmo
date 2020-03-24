@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import { eventBus } from "../services/eventBus.service.js";
-import { wapService } from "../services/wap.service.js";
-import { cmpService } from "../services/cmp.service.js";
-import editorSidebar from "../cmps/editor-sidebar.vue";
-import wapContainer from "../cmps/wap-container.vue";
+import { eventBus } from '../services/eventBus.service.js';
+import { wapService } from '../services/wap.service.js';
+import { cmpService } from '../services/cmp.service.js';
+import editorSidebar from '../cmps/editor-sidebar.vue';
+import wapContainer from '../cmps/wap-container.vue';
 export default {
   data() {
     return {
@@ -18,26 +18,31 @@ export default {
     };
   },
   async created() {
-    this.$store.dispatch({ type: "loadWap" });
+    this.$store.dispatch({ type: 'loadWap' });
 
     let cmps = await cmpService.query();
     this.cmps = cmps;
 
-    eventBus.$on("updateCmp", updatedCmp => {
+    eventBus.$on('updateCmp', updatedCmp => {
       this.updateCmp(updatedCmp);
     });
-    eventBus.$on("remove", cmp => {
-      this.$store.commit({ type: "removeCmp", cmp });
+    eventBus.$on('remove', cmp => {
+      this.$store.commit({ type: 'removeCmp', cmp });
     });
-    eventBus.$on("updatePos", updatedPos => {
-      this.$store.commit({ type: "updatePos", updatedPos });
+    eventBus.$on('updatePos', updatedPos => {
+      this.$store.commit({ type: 'updatePos', updatedPos });
     });
-    eventBus.$on("edit", cmp => {
-      this.$store.commit({ type: "setSelectedCmp", cmp });
+    eventBus.$on('edit', cmp => {
+      this.$store.commit({ type: 'setSelectedCmp', cmp });
     });
-
-    eventBus.$on("saveWap", () => {
+    eventBus.$on('saveWap', () => {
       this.$store.dispatch({type: 'saveWap'})
+    });
+    eventBus.$on('changeWapTheme', theme => {
+      this.$store.commit({ type: 'changeWapTheme', theme });
+    });
+    eventBus.$on('changeWapTitle', title => {
+      this.$store.commit({ type: 'changeWapTitle', title });
     });
 
   },
@@ -48,10 +53,10 @@ export default {
   },
   methods: {
     addCmp(cmp) {
-      this.$store.dispatch({ type: "addCmp", cmp });
+      this.$store.dispatch({ type: 'addCmp', cmp });
     },
     updateCmp(cmp) {
-      this.$store.dispatch({ type: "updateCmp", cmp });
+      this.$store.dispatch({ type: 'updateCmp', cmp });
     }
   },
   components: {
