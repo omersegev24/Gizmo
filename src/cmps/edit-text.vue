@@ -1,27 +1,30 @@
 <template>
   <div class="edit-text flex flex-column">
     <div class="color-picker">
-      <p @click="colorOpen = !colorOpen">Font Color</p>
-      <swatches
-        v-if="colorOpen"
-        v-model="cmp.style.color"
-        @click.native="update"
-        colors="material-light"
-        swatchSize="23"
-        borderRadius="0"
-        inline
-      />
-
-      <p @click="bgcOpen = !bgcOpen">Background Color</p>
-      <swatches
-        v-if="bgcOpen"
-        v-model="cmp.style.backgroundColor"
-        @click.native="update"
-        colors="material-light"
-        swatchSize="23"
-        borderRadius="0"
-        inline
-      />
+      <div v-if="!currCmp.children">
+        <p @click="colorOpen = !colorOpen">Font Color</p>
+        <swatches
+          v-if="colorOpen"
+          v-model="cmp.style.color"
+          @click.native="update"
+          colors="material-light"
+          swatchSize="23"
+          borderRadius="0"
+          inline
+        />
+      </div>
+      <div v-if="!currCmp.social">
+        <p @click="bgcOpen = !bgcOpen">Background Color</p>
+        <swatches
+          v-if="bgcOpen"
+          v-model="cmp.style.backgroundColor"
+          @click.native="update"
+          colors="material-light"
+          swatchSize="23"
+          borderRadius="0"
+          inline
+        />
+      </div>
     </div>
 
     <span>Text Size</span>
@@ -58,7 +61,6 @@
 
     <span>Font</span>
     <v-select :options="fontFamily" v-model="cmp.style.fontFamily"></v-select>
-
   </div>
 </template>
 
@@ -99,8 +101,8 @@ export default {
       this.$emit("updateCmp", JSON.parse(JSON.stringify(this.cmp)));
     }
   },
-  watch:{
-    currCmp(){
+  watch: {
+    currCmp() {
       this.cmp = JSON.parse(JSON.stringify(this.currCmp))
     }
   },

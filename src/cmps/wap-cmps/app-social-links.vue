@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     openEdit(link) {
-      console.log('hello', link)
       eventBus.$emit('edit', link)
     }
   }

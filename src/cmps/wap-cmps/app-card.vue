@@ -6,8 +6,9 @@
       :key="child.id"
       :style="child.style"
       :contenteditable="true"
-      @blur="editTxt($event,child)"
+      @change="editTxt($event,child)"
       :src="child.imgUrl"
+      :class="{ 'mark-selected':child.id === selectedCmp.id}"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </div>
@@ -19,17 +20,7 @@ export default {
   name: "app-card",
   props: {
     cmp: Object,
-    isEditing: Boolean
-  },
-  data() {
-    return {
-      editMode: false
-    };
-  },
-  created() {
-    eventBus.$on("editMode", isEditMode => {
-      this.editMode = isEditMode;
-    });
+    selectedCmp: Object
   },
   methods: {
     editTxt(ev, cmp) {

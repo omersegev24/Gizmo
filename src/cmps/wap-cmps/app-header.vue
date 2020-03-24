@@ -2,8 +2,8 @@
   <header
     class="app-header flex justify-center align-center flex-column"
     id="app-header"
-    :class="currCmp.subClass"
-    :style="currCmp.style"
+    :class="cmp.subClass"
+    :style="cmp.style"
   >
     <component
       v-for="child in cmp.children"
@@ -14,7 +14,7 @@
       :src="child.imgUrl"
       :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @blur="editTxt($event,child)"
+      @change="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </header>
@@ -28,16 +28,6 @@ export default {
   props: {
     cmp: Object,
     selectedCmp: Object
-  },
-  data() {
-    return {
-      currCmp: {},
-      editMode: false,
-    };
-  },
-  created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    // console.log(currCmp.)
   },
   methods: {
     editTxt(ev, cmp) {

@@ -5,7 +5,8 @@ const gWap = {
     title: 'My First Wap',
     theme: 'Light and Shiny',
     style: {},
-    cmps: [{
+    cmps: [
+        {
         id: 'cmp100',
         type: 'app-nav',
         style: {},
@@ -29,6 +30,7 @@ const gWap = {
                 type: 'a',
                 to: 'app-contact-us',
                 txt: 'Contact',
+                style: {}
 
             },
 
@@ -49,23 +51,23 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'asd51w',
-            type: 'img',
-            imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
-            style: {},
-        },
-        {
-            id: 'saw21a',
-            type: 'button',
-            txt: 'Try me',
-            style: {},
-        },
-        {
-            id: 'tre12',
-            type: 'p',
-            txt: 'We sell corona',
-            style: {},
-        },
+                id: 'asd51w',
+                type: 'img',
+                imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
+                style: {},
+            },
+            {
+                id: 'saw21a',
+                type: 'button',
+                txt: 'Try me',
+                style: {},
+            },
+            {
+                id: 'tre12',
+                type: 'p',
+                txt: 'We sell corona',
+                style: {},
+            },
         ],
     },
     {
@@ -160,11 +162,32 @@ const gWap = {
         type: 'app-contact',
         style: {},
         subClass: 'light-and-shiny',
-        title: 'CONTACT',
-        country: 'Israel',
-        address: 'Tel Aviv Bacher 4',
-        phone: '123-456-7890',
-        email: 'gizmo@gizmo.com'
+        children: [
+            {
+                id: 't2r4pa2',
+                type: 'p',
+                txt: 'CONTACT',
+                style: {},
+            },
+            {
+                id: 'trbxspa2',
+                type: 'p',
+                txt: 'Tel Aviv Bacher 4',
+                style: {},
+            },
+            {
+                id: 'zr4v0a2',
+                type: 'p',
+                txt: '123-456-7890',
+                style: {},
+            },
+            {
+                id: 'sqwcpa2',
+                type: 'p',
+                txt: 'gizmo@gizmo.com',
+                style: {},
+            },
+        ],
     },
 
     {
@@ -174,23 +197,23 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'soch7z',
-            social: 'facebook',
-            url: 'www.facebook.com',
-            style: {}
-        },
-        {
-            id: 'soc1qzo',
-            social: 'github',
-            url: 'www.github.com',
-            style: {}
-        },
-        {
-            id: 'socro14q',
-            social: 'instagram',
-            url: 'www.instagram.com',
-            style: {}
-        },
+                id: 'soch7z',
+                social: 'facebook',
+                url: 'www.facebook.com',
+                style: {}
+            },
+            {
+                id: 'soc1qzo',
+                social: 'github',
+                url: 'www.github.com',
+                style: {}
+            },
+            {
+                id: 'socro14q',
+                social: 'instagram',
+                url: 'www.instagram.com',
+                style: {}
+            },
         ]
 
     },
@@ -309,38 +332,38 @@ const gWap = {
         subClass: 'light-and-shiny',
         children: [
             {
-            id: 'zqers4',
-            type: 'p',
-            txt: 'Cofferights',
-            style: {},
-        },
-        {
-            id: 'cmp11rzeq0',
-            type: 'social-links',
-            style: {},
-            subClass: 'light-and-shiny',
-            children: [
-                {
-                id: 'socpovdsaz',
-                social: 'facebook',
-                url: 'www.facebook.com',
-                style: {color:'red'}
+                id: 'zqers4',
+                type: 'p',
+                txt: 'Cofferights',
+                style: {},
             },
             {
-                id: 'soc343jzo',
-                social: 'github',
-                url: 'www.github.com',
-                style: {}
-            },
-            {
-                id: 'svnv4q',
-                social: 'instagram',
-                url: 'www.instagram.com',
-                style: {}
-            },
-            ]
+                id: 'cmp11rzeq0',
+                type: 'social-links',
+                style: {},
+                subClass: 'light-and-shiny',
+                children: [
+                    {
+                        id: 'socpovdsaz',
+                        social: 'facebook',
+                        url: 'www.facebook.com',
+                        style: { color: 'red' }
+                    },
+                    {
+                        id: 'soc343jzo',
+                        social: 'github',
+                        url: 'www.github.com',
+                        style: {}
+                    },
+                    {
+                        id: 'svnv4q',
+                        social: 'instagram',
+                        url: 'www.instagram.com',
+                        style: {}
+                    },
+                ]
 
-        },
+            },
         ]
     },
     ]
@@ -376,8 +399,8 @@ function addCmp(cmp) {
 
 function updateWap(cmp) {
     if (cmp.type === 'app-youtube') {
-        const youtubeId = _getYoutubeVidId(cmp.info.url)
-        cmp.info.url = 'https://www.youtube.com/embed/' + youtubeId
+        const youtubeId = _getYoutubeVidId(cmp.url)
+        cmp.url = 'https://www.youtube.com/embed/' + youtubeId
     }
     var wap = storageService.load(WAP_KEY)
     wap.cmps.forEach((currCmp, idx) => {

@@ -1,5 +1,5 @@
 <template>
-  <section class="app-article light-and-shiny" id="app-article" :class="currCmp.subClass">
+  <section class="app-article light-and-shiny" id="app-article" :class="cmp.subClass">
     <component
       v-for="child in cmp.children"
       :is="child.type"
@@ -7,7 +7,8 @@
       :style="child.style"
       :contenteditable="true"
       :src="child.imgUrl"
-      @blur="editTxt($event,child)"
+      :class="{ 'mark-selected':child.id === selectedCmp.id}"
+      @change="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </section>
@@ -17,15 +18,8 @@
 import { eventBus } from '../../services/eventBus.service.js';
 export default {
   props: {
-    cmp: Object
-  },
-  data() {
-    return {
-      currCmp: {},
-    };
-  },
-  created() {
-    this.currCmp = JSON.parse(JSON.stringify(this.cmp));
+    cmp: Object,
+    selectedCmp: Object
   },
   methods: {
     editTxt(ev, cmp) {
@@ -33,7 +27,7 @@ export default {
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
-     openEdit(cmp){
+    openEdit(cmp) {
       eventBus.$emit('edit', cmp)
     }
   },

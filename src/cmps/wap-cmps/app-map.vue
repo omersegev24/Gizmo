@@ -34,20 +34,9 @@ export default {
       height: 500,
     };
   },
-  created() {
-    // this.currCmp = JSON.parse(JSON.stringify(this.cmp));
-    // // eventBus.$on('updateMap', mapCmp => this.currCmp = mapCmp)
-    // eventBus.$on('resize-map', (mapSize) => {
-    //   this.width = mapSize.width;
-    //   this.height = mapSize.height;
-    // })
-    // eventBus.$on('updateLoc', loc => {
-    //   console.log(loc.lat)
-    // })
-  },
+
   methods: {
     openEdit(){
-      console.log(this.cmp)
       eventBus.$emit('edit', this.cmp)
     }
   },

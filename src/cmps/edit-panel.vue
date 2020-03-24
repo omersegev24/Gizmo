@@ -17,8 +17,8 @@
           <p>Theme: {{currWap.theme}}</p>
         </section>
       </section>
-      <!-- <p class="guide">Pick a section to start editing!</p> -->
     </div>
+
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
@@ -40,7 +40,7 @@
         <img :src="cmpCopy.imgUrl" style="width: 250px, heigth: 250px" />
       </div>
 
-      <edit-text :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
+      <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
     };
   },
   computed: {
-    
+
     linkInputs() {
       if (this.currCmp.links) {
         return this.currCmp.links;
@@ -90,10 +90,12 @@ export default {
       eventBus.$emit("updateCmp", cmp);
     },
     async uploadImg(ev) {
+      eventBus.$emit('uploadImg', ev)
       const url = await this.$store.dispatch({ type: "uploadImg", ev });
       this.cmpCopy.imgUrl = url;
       this.updateCmp(this.cmpCopy)
     },
+
     changeTitleAndTheme(themeName) {
       this.wapConfig.wapTheme = themeName;
       const { wapConfig } = this;
