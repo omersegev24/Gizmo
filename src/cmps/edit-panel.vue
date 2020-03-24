@@ -69,19 +69,20 @@ export default {
     }
   },
   watch: {
-    cmpCopy: {
-      handler() {
-        // this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
-        this.updateCmp(this.cmpCopy);
-      },
-      deep: true
-    },
+    // cmpCopy: {
+    //   handler() {
+    //     this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
+    //     this.updateCmp(this.cmpCopy);
+    //   },
+    //   deep: true
+    // },
     currCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.currCmp));
     }
   },
   methods: {
     updateCmp(cmp) {
+      console.log('yes', cmp)
       eventBus.$emit("updateCmp", cmp);
     }
   },

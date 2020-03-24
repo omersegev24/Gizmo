@@ -7,7 +7,7 @@ const gWap = {
     cmps: [
         {
             id: 'cmp100',
-            type: 'app-nav',
+            type: 'appNav',
             style: {},
             subClass: 'light-and-shiny',
             logo: 'Gizmo',
@@ -17,21 +17,21 @@ const gWap = {
                     type: 'a',
                     to: 'app-header',
                     txt: 'Home',
-                    style:{}
+                    style: {}
                 },
                 {
                     id: 'lin16aq',
                     type: 'a',
                     to: 'app-contact-us',
                     txt: 'Contact',
-                    style:{}
+                    style: {}
                 },
                 {
                     id: 'lin1vraz',
                     type: 'a',
                     to: 'app-article',
                     txt: 'About',
-                    style:{}
+                    style: {}
                 },
             ]
         },
@@ -384,7 +384,11 @@ function updateWap(cmp) {
     wap.cmps.forEach((currCmp, idx) => {
         var res = _findNode(cmp, currCmp)
         if (res) {
-            if (res.children) {
+            if (res.id === currCmp.id) {
+                wap.cmps.splice(idx, 1, cmp)
+            }
+            else if (res.children) {
+                console.log('im here')
                 const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
                 res.children.splice(childIdx, 1, cmp)
             } else {
@@ -393,46 +397,11 @@ function updateWap(cmp) {
             }
         }
 
+
     })
+
     storageService.store(WAP_KEY, wap)
     return Promise.resolve(wap)
-}
-
-
-function removeCmp(cmp) {
-    let wap = storageService.load(WAP_KEY)
-    const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
-    wap.cmps.splice(idx, 1)
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(idx)
-}
-
-function updatePos(updatedPos) {
-    let wap = storageService.load(WAP_KEY)
-    const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
-    if (idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
-    wap.cmps.splice(idx, 1)
-    wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
-    storageService.store(WAP_KEY, wap)
-    return Promise.resolve(wap)
-}
-
-function _makeId(length = 5) {
-    var txt = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < length; i++) {
-        txt += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return txt;
-}
-
-function _getYoutubeVidId(url) {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-
-    return (match && match[2].length === 11)
-        ? match[2]
-        : '';
 }
 
 function _findNode(cmp, currentNode) {
@@ -456,4 +425,42 @@ function _findNode(cmp, currentNode) {
     } else {
         return false
     }
+}
+
+
+function removeCmp(cmp) {
+    let wap = storageService.load(WAP_KEY)
+    const idx = wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
+    wap.cmps.splice(idx, 1)
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(idx)
+}
+
+
+
+function updatePos(updatedPos) {
+    let wap = storageService.load(WAP_KEY)
+    const idx = wap.cmps.findIndex(cmp => cmp.id === updatedPos.cmp.id)
+    if (idx + updatedPos.diff < 0 || idx + updatedPos.diff > wap.cmps.length) return Promise.resolve(wap)
+    wap.cmps.splice(idx, 1)
+    wap.cmps.splice(idx + updatedPos.diff, 0, updatedPos.cmp)
+    storageService.store(WAP_KEY, wap)
+    return Promise.resolve(wap)
+}
+function _makeId(length = 5) {
+    var txt = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return txt;
+}
+
+function _getYoutubeVidId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+        ? match[2]
+        : '';
 }

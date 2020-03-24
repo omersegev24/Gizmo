@@ -1,6 +1,12 @@
 <template>
   <div class="wap-preview">
-    <component :is="cmp.type" :cmp="cmp" :style="cmp.style" :class="getWapTheme"></component>
+    <component
+      :is="cmp.type"
+      :cmp="cmp"
+      :style="cmp.style"
+      :class="getWapTheme"
+      @click.native.stop="edit(cmp)"
+    ></component>
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
   </div>
@@ -23,8 +29,19 @@ import actionPanel from '../cmps/action-panel.vue'
 import appYoutube from '../cmps/wap-cmps/app-youtube.vue'
 import elTitle from './wap-elements-cmp/title.cmp.vue'
 export default {
+
   props: {
     cmp: Object,
+  },
+  methods: {
+    edit(cmp) {
+      eventBus.$emit('edit', cmp)
+    },
+  },
+  computed: {
+    getWapTheme() {
+      return this.$store.getters.getWapTheme
+    }
   },
   components: {
     appNav,
@@ -42,10 +59,5 @@ export default {
     actionPanel,
     elTitle
   },
-  computed: {
-    getWapTheme() {
-      return this.$store.getters.getWapTheme
-    }
-  }
 };
 </script>

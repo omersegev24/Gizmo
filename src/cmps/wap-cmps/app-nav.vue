@@ -1,10 +1,16 @@
 <template>
-  <nav class="app-nav light-and-shiny" :class="currCmp.subClass">
+  <nav class="app-nav light-and-shiny" :class="cmp.style" @click.stop="edit(cmp)">
     <section class="flex space-between align-center">
-      <p class="logo" id="Home" :class="{editable: editMode}" @blur="editLogo">{{currCmp.logo}}</p>
+      <p
+        class="logo"
+        id="Home"
+        :class="{editable: editMode}"
+        @blur="editLogo"
+        @click.stop="edit(currCmp.logo)"
+      >{{currCmp.logo}}</p>
 
       <ul class="nav-links flex justify-end align-center">
-        <li v-for="child in currCmp.children" :key="child.id">
+        <li v-for="child in cmp.children" :key="child.id">
           <component
             :is="child.type"
             :style="child.style"
@@ -14,7 +20,6 @@
             @blur="editTxt($event,child)"
             :src="child.imgUrl"
           >{{child.txt}}</component>
-          <!-- <a :href="'#' + link.to">{{link.txt}}</a> -->
         </li>
       </ul>
       <span @click="toggleMenu">
@@ -26,8 +31,8 @@
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-
 export default {
+  
   props: {
     cmp: Object
   },
@@ -36,7 +41,7 @@ export default {
       currCmp: {},
       editMode: false,
       isMenuOpen: false
-    };
+    }
   },
   created() {
     this.currCmp = JSON.parse(JSON.stringify(this.cmp));
@@ -46,7 +51,6 @@ export default {
   },
   methods: {
     edit(cmp) {
-      console.log('c', cmp)
       eventBus.$emit('edit', cmp)
     },
     editTxt(ev, cmp) {
