@@ -38,7 +38,7 @@
         <label class="btn-3" for="file">
           <span>select</span>
         </label>
-        <img :src="cmpCopy.imgUrl" style="width: 250px, heigth: 250px" />
+        <img :src="currCmp.imgUrl" style="width: 250px, heigth: 250px" />
       </div>
 
       <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
@@ -93,11 +93,8 @@ export default {
     saveWap() {
       eventBus.$emit("saveWap");
     },
-    async uploadImg(ev) {
+     uploadImg(ev) {
       eventBus.$emit('uploadImg', ev)
-      const url = await this.$store.dispatch({ type: "uploadImg", ev });
-      this.cmpCopy.imgUrl = url;
-      this.updateCmp(this.cmpCopy)
     },
     changeWapTitle() {
       eventBus.$emit('changeWapTitle', this.wapTitle);

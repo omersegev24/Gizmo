@@ -35,8 +35,11 @@ export default {
     eventBus.$on('edit', cmp => {
       this.$store.commit({ type: 'setSelectedCmp', cmp });
     });
-    eventBus.$on('saveWap', () => {
-      this.$store.dispatch({type: 'saveWap'})
+    eventBus.$on('uploadImg', ev => {
+      this.$store.dispatch({ type: "uploadImg", ev });
+    })
+    eventBus.$on("saveWap", () => {
+      this.$store.dispatch({ type: 'saveWap' })
     });
     eventBus.$on('changeWapTheme', theme => {
       this.$store.commit({ type: 'changeWapTheme', theme });
@@ -56,7 +59,8 @@ export default {
       this.$store.dispatch({ type: 'addCmp', cmp });
     },
     updateCmp(cmp) {
-      this.$store.dispatch({ type: 'updateCmp', cmp });
+      console.log('update in editor..........')
+      this.$store.dispatch({ type: "updateCmp", cmp });
     }
   },
   components: {

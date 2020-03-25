@@ -1,10 +1,10 @@
 <template>
-  <div class="action-panel">
+  <div v-if="cmp.type !== 'app-nav'" class="action-panel">
     <div class="action-container flex">
       <div>
         <button @click="remove()"><i class="fas fa-trash-alt"></i></button>
       </div>
-      <div class="move-cmp">
+      <div v-if="cmp.type !== 'app-nav'" class="move-cmp">
         <button @click="updatePos(1)">
           <i class="fas fa-arrow-down"></i>
         </button>

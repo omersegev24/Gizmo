@@ -1,8 +1,8 @@
 <template>
   <nav class="app-nav" :class="cmp.subClass" @click.stop="edit(cmp)">
     <section class="flex space-between align-center">
-      <ul class="nav-links flex justify-end align-center" :class="{'menu-open': isMenuOpen}">
-        <li v-for="(child, idx) in cmp.children" :class="'nav-link-' + idx" :key="child.id">
+      <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
+        <li v-for="(child, idx) in cmp.children" :class="[{'logo':idx === 0}, `nav-link-${idx}`]" :key="child.id">
           <component
             :is="child.type"
             :style="child.style"
@@ -15,9 +15,9 @@
           >{{child.txt}}</component>
         </li>
       </ul>
-      <span @click="toggleMenu">
-        <i class="hamburger-menu fas fa-bars"></i>
-      </span>
+      <p class="hamburger-menu" @click="toggleMenu">
+        <i class="fas fa-bars"></i>
+      </p>
     </section>
   </nav>
 </template>

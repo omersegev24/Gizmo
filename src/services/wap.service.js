@@ -49,13 +49,8 @@ const gWap = {
         type: 'app-header',
         style: {},
         subClass: 'light-and-shiny',
+        imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
         children: [
-            {
-                id: 'asd51w',
-                type: 'img',
-                imgUrl: 'https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg',
-                style: {},
-            },
             {
                 id: 'saw21a',
                 type: 'button',
@@ -393,6 +388,7 @@ function remove(id) {
 }
 
 function update(wap) {
+    console.log('sendme',wap)
     return HttpService.put(`wap/${wap._id}`, wap)
 }
 function add(wap) {
@@ -412,7 +408,6 @@ function updateWap(wap, cmp) {
                 wap.cmps.splice(idx, 1, cmp)
             }
             else if (res.children) {
-                console.log('im here')
                 const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
                 res.children.splice(childIdx, 1, cmp)
             } else {

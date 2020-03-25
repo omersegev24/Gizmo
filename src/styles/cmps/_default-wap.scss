@@ -1,70 +1,70 @@
-section {
-  .light-and-shiny {
-    nav {
-      width: 100%;
-      background-color: $clr1;
-      color: $clr4;
-      border-bottom: 1px solid $clr4;
-      .logo {
-        margin-left: rem(50px);
-        margin-right: auto;
-        margin-top: auto;
-        margin-bottom: auto;
-        height: fit-content;
-        font-weight: bold;
-      }
-      .logo:hover {
-        cursor: pointer;
-      }
-      ul {
-        list-style-type: none;
-        li {
-          margin: 0 rem(50px);
-          font-weight: bold;
-          a {
-            color: $clr4;
-          }
-        }
-      }
-    }
+// section {
+//   .light-and-shiny {
+//     nav {
+//       width: 100%;
+//       background-color: $clr1;
+//       color: $clr4;
+//       border-bottom: 1px solid $clr4;
+//       .logo {
+//         margin-left: rem(50px);
+//         margin-right: auto;
+//         margin-top: auto;
+//         margin-bottom: auto;
+//         height: fit-content;
+//         font-weight: bold;
+//       }
+//       .logo:hover {
+//         cursor: pointer;
+//       }
+//       ul {
+//         list-style-type: none;
+//         li {
+//           margin: 0 rem(50px);
+//           font-weight: bold;
+//           a {
+//             color: $clr4;
+//           }
+//         }
+//       }
+//     }
 
-    .hero {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~@/assets/img/hero-photographer.jpg");
-      height: 50vh;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-      margin-bottom: rem(50px);
+//     .hero {
+//       background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~@/assets/img/hero-photographer.jpg");
+//       height: 50vh;
+//       background-position: center;
+//       background-repeat: no-repeat;
+//       background-size: cover;
+//       position: relative;
+//       margin-bottom: rem(50px);
 
-      .hero-txt {
-        width: fit-content;
-        height: fit-content;
-        color: white;
-      }
-    }
-    .cards-container {
-      width: 90vw;
-      height: 40vh;
-      margin: 0 auto;
-      margin-bottom: rem(50px);
+//       .hero-txt {
+//         width: fit-content;
+//         height: fit-content;
+//         color: white;
+//       }
+//     }
+//     .cards-container {
+//       width: 90vw;
+//       height: 40vh;
+//       margin: 0 auto;
+//       margin-bottom: rem(50px);
 
-      .card {
-        width: 30%;
-        // background-color: $clr2;
-        border: 1px solid $clr2;
-      }
-    }
+//       .card {
+//         width: 30%;
+//         // background-color: $clr2;
+//         border: 1px solid $clr2;
+//       }
+//     }
 
-    footer {
-      background-color: $clr3;
-      color: $clr1;
-      height: rem(100px);
-      font-weight: bold;
-      }
+//     footer {
+//       background-color: $clr3;
+//       color: $clr1;
+//       height: rem(100px);
+//       font-weight: bold;
+//       }
 
-      p {
-        margin: 0;
-      }
-  }
-}
+//       p {
+//         margin: 0;
+//       }
+//   }
+// }

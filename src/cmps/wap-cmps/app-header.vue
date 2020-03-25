@@ -31,11 +31,11 @@ export default {
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
-      eventBus.$emit('updateCmp', cmpCopy);
+      eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
-      eventBus.$emit('edit', cmp);
+      eventBus.$emit("edit", cmp);
     }
-  },
+  }
 };
 </script>
