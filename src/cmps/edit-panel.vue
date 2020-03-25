@@ -1,24 +1,18 @@
 <template>
   <section class="edit-panel flex flex-column">
-    <!-- <div>
-      <section class="wap-title-theme">
-        <section class="themes">
-          <p>Website Themes</p>
-          <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
-          <button @click="changeWapTheme('dark-theme')">Dark</button>
-        </section>
-        <section class="title">
-          <p>Website Title</p>
-          <input type="text" placeholder="Enter title" v-model="wapTitle" />
-          <button @click="saveWap">Save Wap</button>
-        </section>
-        <section class="wap-info">
-          <p>Title: {{currWap.title}}</p>
-          <p>Theme: {{currWap.theme}}</p>
-        </section>
-      </section>
-    </div>-->
-    <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+    <section class="wap-prefs-container">
+      <div class="flex space-between align-center" @click="toggleWapPrefs">
+        <p>Wap Preferences</p>
+          <span>
+            <i :class="[isPrefsOpen ? 'fas fa-sort-up' : 'fas fa-sort-down']"></i>
+          </span>
+      </div>
+      <transition name="prefs">
+      <div v-show="isPrefsOpen">
+        <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+      </div>
+      </transition>
+    </section>
 
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
@@ -34,7 +28,13 @@
           rows="6"
           @input="updateCmp(cmpCopy)"
         ></textarea>
-        <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
+        <input
+          v-else
+          type="text"
+          v-model="cmpCopy.txt"
+          @input="updateCmp(cmpCopy)"
+          placeholder="Enter text"
+        />
       </div>
 
       <div v-if="currCmp.to">
@@ -62,7 +62,7 @@ import { eventBus } from "../services/eventBus.service.js";
 
 import editText from "./edit-text.vue";
 import editMap from "./edit-map.vue";
-import wapPrefs from './wap-cmps/wap-prefs.vue'
+import wapPrefs from "./wap-cmps/wap-prefs.vue";
 export default {
   props: {
     currCmp: Object
@@ -70,9 +70,10 @@ export default {
   data() {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
+      isPrefsOpen: false,
       // wapPrefs: {
-      wapTitle: '',
-      wapTheme: ''
+      wapTitle: "",
+      wapTheme: ""
       // },
     };
   },
@@ -87,24 +88,25 @@ export default {
     }
   },
   methods: {
-    updateWapPref(wap){
-      
-    },
+    updateWapPref(wap) {},
     updateCmp(cmp) {
-      console.log('inside editpanel ', cmp.txt)
-      eventBus.$emit('updateCmp', cmp);
+      console.log("inside editpanel ", cmp.txt);
+      eventBus.$emit("updateCmp", cmp);
     },
     saveWap() {
-      eventBus.$emit('saveWap');
+      eventBus.$emit("saveWap");
     },
     uploadImg(ev) {
-      eventBus.$emit('uploadImg', ev)
+      eventBus.$emit("uploadImg", ev);
     },
     changeWapTitle() {
-      eventBus.$emit('changeWapTitle', this.wapTitle);
+      eventBus.$emit("changeWapTitle", this.wapTitle);
     },
     changeWapTheme(theme) {
-      eventBus.$emit('changeWapTheme', theme);
+      eventBus.$emit("changeWapTheme", theme);
+    },
+    toggleWapPrefs() {
+      this.isPrefsOpen = !this.isPrefsOpen;
     }
   },
   components: {
