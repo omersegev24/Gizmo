@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     editTxt(ev, cmp) {
+      cp
       var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);

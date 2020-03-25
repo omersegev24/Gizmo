@@ -23,7 +23,7 @@
             @blur="editTxt($event,link)"
             :src="link.imgUrl"
             :class="{'mark-selected':link.id === selectedCmp.id}"
-            @click.stop="edit(child)"
+            @click.stop="edit(link)"
           >{{link.txt}}</component>
         </li>
       </ul>
