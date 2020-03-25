@@ -3,8 +3,9 @@
     class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="cmp.subClass"
-    :style="cmp.style"
+    :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
   >
+  
     <component
       v-for="child in cmp.children"
       :is="child.type"

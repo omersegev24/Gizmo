@@ -6,12 +6,11 @@
 
   overflow: hidden;
 
-  img {
-    object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-width: 460px;
-  }
+  // object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 460px;
 
   * {
     font-family: AlegreyaSans;
@@ -72,9 +71,9 @@
     .title {
       font-size: 2.5rem;
       top: 35%;
-		}
-		button {
-			@include for-responsive-btn;
-		}
+    }
+    button {
+      @include for-responsive-btn;
+    }
   }
 }
