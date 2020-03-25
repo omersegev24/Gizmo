@@ -18,7 +18,7 @@ export default {
     };
   },
   async created() {
-    this.$store.dispatch({ type: 'loadWap' });
+    this.$store.dispatch({ type: 'loadWap', wapId: '5e7a76591c9d440000f4b6fb' });
 
     let cmps = await cmpService.query();
     this.cmps = cmps;
@@ -47,7 +47,6 @@ export default {
     eventBus.$on('changeWapTitle', title => {
       this.$store.commit({ type: 'changeWapTitle', title });
     });
-
   },
   computed: {
     wap() {

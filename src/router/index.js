@@ -5,6 +5,7 @@ import aboutPage from '../views/about.vue'
 import editorPage from '../views/editor.vue'
 import explorePage from '../views/explore.vue'
 import templatePage from '../views/template.vue'
+import website from '../views/website.vue'
 
 
 
@@ -36,6 +37,11 @@ const routes = [
     name: 'Template',
     component: templatePage
   },
+  {
+    path: '/website/:id',
+    name: 'Website',
+    component: website
+  }
 
 ]
 

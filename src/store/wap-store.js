@@ -61,8 +61,8 @@ export default ({
 			context.commit({ type: 'setWaps', waps })
 			return waps
 		},
-		async loadWap(context) {
-			const wap = await wapService.getById('5e7a76591c9d440000f4b6fb')
+		async loadWap(context, {wapId}) {
+			const wap = await wapService.getById(wapId)
 			context.commit({ type: 'setWap', wap })
 			return wap
 		},
@@ -97,12 +97,6 @@ export default ({
 			context.commit({ type: 'setInProgress', inProgress: true })
 			await wapService.update(context.state.wap)
 			context.commit({ type: 'setInProgress', inProgress: false })
-
-			// async saveWap(context) {
-			//   context.commit({ type: 'setInProgress', inProgress: true })
-			//   await wapService.update(context.state.wap)
-			//   context.commit({ type: 'setInProgress', inProgress: false })
-			// },
 		},
 	}
 })
