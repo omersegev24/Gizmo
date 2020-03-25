@@ -24,8 +24,8 @@
             <div v-if="item.active" class="item-details">
               <div v-if="item.title === 'Sections'" class="cmp-btns-container flex flex-column">
                 <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in cmps" :key="cmp.id">
-                  <span class="fas fa-plus"></span>
-                  {{cmp.type}}
+                  <p :class="cmpType(cmp.type).class + ' fa-3x'"></p>
+                  <p>{{cmpType(cmp.type).name}}</p>
                 </div>
               </div>
               <!-- <div class="themes-btn-container" v-if="item.title === 'Themes'">
@@ -43,7 +43,7 @@
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
-import editPanel from '../cmps/edit-panel.vue'
+import editPanel from "../cmps/edit-panel.vue";
 export default {
   props: {
     cmps: Array
@@ -72,21 +72,21 @@ export default {
         {
           id: 4,
           active: false,
-          title: "Themes",
+          title: "Themes"
         }
       ],
-      editMode: false,
+      editMode: false
     };
   },
   created() {
-    eventBus.$on('edit', cmp => {
+    eventBus.$on("edit", cmp => {
       this.editMode = true;
-    })
+    });
   },
   computed: {
     currCmp() {
-      return this.$store.getters.getSelectedCmp
-    }
+      return this.$store.getters.getSelectedCmp;
+    },
   },
   methods: {
     toggle(currItem) {
@@ -95,6 +95,32 @@ export default {
         else item.active = false;
       });
     },
+    cmpType(type) {
+      switch (type) {
+        case "app-header":
+          return {name: 'Header', class: "fas fa-heading"};
+        case "app-article":
+          return {name: 'Article', class: 'fas fa-newspaper'};
+        case "layout-2-columns":
+          return {name: 'Cards', class:"fas fa-th-large"};
+        case "layout-3-columns":
+          return {name: 'Columns', class:'fas fa-th'};
+        case "app-card":
+          return {name: 'Card', class:'fas fa-square'};
+        case "app-footer":
+          return {name: 'Footer', class:'fab fa-facebook-f'};
+        case "app-contact":
+          return {name: 'Contact ', class:"fas fa-address-card"};
+        case "app-chat":
+          return {name: "Chat", class:'fas fa-comment-dots'};
+        case "app-youtube":
+          return {name:'YouTube', class:'fab fa-youtube'}
+        case "app-social-links":
+          return {name:'Social Links', class:'fas fa-share-alt'}
+        case "app-map":
+          return {name: 'Map', class:'fas fa-map-marked-alt'}
+      }
+    }
     // changeWapTheme(themeName) {
     //   this.$store.commit({ type: 'changeWapTheme', themeName });
     // }
