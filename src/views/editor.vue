@@ -23,11 +23,11 @@ export default {
     let cmps = await cmpService.query();
     this.cmps = cmps;
 
-    eventBus.$on('updateCmp', updatedCmp => {
-      this.updateCmp(updatedCmp);
+    eventBus.$on('updateCmp', cmp => {
+      this.$store.dispatch({ type: "updateCmp", cmp });
     });
     eventBus.$on('remove', cmp => {
-      this.$store.commit({ type: 'removeCmp', cmp });
+      this.$store.commit({ type: 'removeCmp', cmp }); // todo cmp id 
     });
     eventBus.$on('updatePos', updatedPos => {
       this.$store.commit({ type: 'updatePos', updatedPos });
@@ -40,6 +40,9 @@ export default {
     })
     eventBus.$on('saveWap', () => {
       this.$store.dispatch({ type: 'saveWap' })
+    });
+    eventBus.$on('updateWapPrefs', wapPrefs => {
+      this.$store.commit({ type: 'updateWapPrefs', wapPrefs })
     });
     eventBus.$on('changeWapTheme', theme => {
       this.$store.commit({ type: 'changeWapTheme', theme });

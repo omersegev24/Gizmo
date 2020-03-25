@@ -1,24 +1,36 @@
 <template>
-  <nav class="app-nav" :class="cmp.subClass" @click.stop="edit(cmp)">
-    <section class="flex space-between align-center">
+  <nav class="app-nav flex space-between align-center" :class="cmp.subClass" @click.stop="edit(cmp)">
+    <span v-for="logo in logos" :key="logo.id">
+      <component
+        class="logo"
+        :is="logo.type"
+        :style="logo.style"
+        :contenteditable="true"
+        @blur="editTxt($event,logo)"
+        :class="{'mark-selected':logo.id === selectedCmp.id}"
+        @click.stop="edit(logo)"
+      >{{logo.txt}}</component>
+    </span>
+    <!-- <section class="flex space-between align-center"> -->
       <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
-        <li v-for="(child, idx) in cmp.children" :class="[{'logo':idx === 0}, `nav-link-${idx}`]" :key="child.id">
+        <li v-for="link in links" :key="link.id">
+          <!-- :class="[{'logo':idx === 0}, `nav-link-${idx}`]" -->
           <component
-            :is="child.type"
-            :style="child.style"
+            :is="link.type"
+            :style="link.style"
             :contenteditable="true"
-            :href="'#' + child.to"
-            @change="editTxt($event,child)"
-            :src="child.imgUrl"
-            :class="{'mark-selected':child.id === selectedCmp.id}"
+            :href="'#' + link.to"
+            @blur="editTxt($event,link)"
+            :src="link.imgUrl"
+            :class="{'mark-selected':link.id === selectedCmp.id}"
             @click.stop="edit(child)"
-          >{{child.txt}}</component>
+          >{{link.txt}}</component>
         </li>
       </ul>
       <p class="hamburger-menu" @click="toggleMenu">
         <i class="fas fa-bars"></i>
       </p>
-    </section>
+    <!-- </section> -->
   </nav>
 </template>
 
@@ -33,6 +45,22 @@ export default {
   data() {
     return {
       isMenuOpen: false
+    }
+  },
+  computed: {
+    links() {
+      const links = this.cmp.children.filter(child => {
+        return child.type === 'a'
+      })
+      return links
+    },
+    logos() {
+
+      const logo = this.cmp.children.filter(child => {
+        return child.type === 'h1'
+      })
+      console.log(logo)
+      return logo
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
-  <div class="edit-panel flex flex-column">
-    <div>
+  <section class="edit-panel flex flex-column">
+    <!-- <div>
       <section class="wap-title-theme">
         <section class="themes">
           <p>Website Themes</p>
@@ -10,7 +10,6 @@
         <section class="title">
           <p>Website Title</p>
           <input type="text" placeholder="Enter title" v-model="wapTitle" />
-          <!-- <button @click="changeWapTitle">Save Title</button> -->
           <button @click="saveWap">Save Wap</button>
         </section>
         <section class="wap-info">
@@ -18,22 +17,24 @@
           <p>Theme: {{currWap.theme}}</p>
         </section>
       </section>
-    </div>
+    </div>-->
+    <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
 
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-      <div v-if="currCmp.txt" @input="updateCmp(cmpCopy)">
+      <div v-if="currCmp.txt">
         <textarea
           v-if="currCmp.txt.length > 100"
           v-model="cmpCopy.txt"
           :style="{resize:'none'}"
           cols="30"
           rows="6"
+          @input="updateCmp(cmpCopy)"
         ></textarea>
-        <input v-else type="text" v-model="cmpCopy.txt" />
+        <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
       </div>
 
       <div v-if="currCmp.to">
@@ -50,9 +51,10 @@
         <img :src="currCmp.imgUrl" style="width: 250px, heigth: 250px" />
       </div>
 
-      <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
+      <edit-text v-if="currCmp.type!=='img'" :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
     </div>
-  </div>
+    <button @click="saveWap">Save Wap</button>
+  </section>
 </template>
 
 <script>
@@ -60,7 +62,7 @@ import { eventBus } from "../services/eventBus.service.js";
 
 import editText from "./edit-text.vue";
 import editMap from "./edit-map.vue";
-
+import wapPrefs from './wap-cmps/wap-prefs.vue'
 export default {
   props: {
     currCmp: Object
@@ -75,17 +77,6 @@ export default {
     };
   },
   computed: {
-
-    // linkInputs() {
-    //   if (this.currCmp.type === 'a') {
-    //     return this.currCmp
-    //   }
-    // },
-    // childrenInputs() {
-    //   if (this.currCmp.children) {
-    //     return this.currCmp.children;
-    //   }
-    // },
     currWap() {
       return this.$store.getters.getWap;
     }
@@ -96,11 +87,15 @@ export default {
     }
   },
   methods: {
+    updateWapPref(wap){
+      
+    },
     updateCmp(cmp) {
-      eventBus.$emit("updateCmp", cmp);
+      console.log('inside editpanel ', cmp.txt)
+      eventBus.$emit('updateCmp', cmp);
     },
     saveWap() {
-      eventBus.$emit("saveWap");
+      eventBus.$emit('saveWap');
     },
     uploadImg(ev) {
       eventBus.$emit('uploadImg', ev)
@@ -114,7 +109,8 @@ export default {
   },
   components: {
     editText,
-    editMap
+    editMap,
+    wapPrefs
   }
 };
 </script>
