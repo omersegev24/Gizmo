@@ -112,6 +112,9 @@
   &,item-details-inner{
     padding: 0.75rem 1.25rem;
   }
+  :hover{
+    opacity: 0.7;
+  }
 }
 .accordion-row-icon {
   $size: 8px;
@@ -134,7 +137,7 @@
 }
 .item-details {
   overflow: hidden;
-  background-color: #f8f8f8dc;
+  background-color: rgba(220,220,220, 0.5);
 }
 .accordion-item-enter-active,
 .accordion-item-leave-active {
@@ -149,9 +152,12 @@
   background-color: #fff;
   padding: 0.5rem;
   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  margin: 5px;
+  width: 140px;
+  border-radius: rem(5px);
   cursor: pointer;
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 }
 }

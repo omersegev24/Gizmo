@@ -22,9 +22,12 @@
           </div>
           <transition name="fade">
             <div v-if="item.active" class="item-details">
-              <div v-if="item.title === 'Sections'" class="cmp-btns-container flex flex-column">
+              <div
+                v-if="item.title === 'Sections'"
+                class="cmp-btns-container flex flex-wrap space-evenly"
+              >
                 <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in cmps" :key="cmp.id">
-                  <p :class="cmpType(cmp.type).class + ' fa-3x'"></p>
+                  <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
                   <p>{{cmpType(cmp.type).name}}</p>
                 </div>
               </div>
