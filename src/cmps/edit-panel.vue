@@ -10,7 +10,7 @@
         <section class="title">
           <p>Website Title</p>
           <input type="text" placeholder="Enter title" v-model="wapTitle" />
-          <button @click="changeWapTitle">Save Title</button>
+          <!-- <button @click="changeWapTitle">Save Title</button> -->
           <button @click="saveWap">Save Wap</button>
         </section>
         <section class="wap-info">
@@ -25,11 +25,20 @@
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-      <div v-for="(child, index) in linkInputs" :key="child.id">
-        <div v-for="(item, key) in child" :key="key">
-          <p>{{key}}</p>
-          <input type="text" v-model="cmpCopy.links[index][key]" placeholder="Enter text..." />
-        </div>
+      <div v-if="currCmp.txt" @input="updateCmp(cmpCopy)">
+        <textarea
+          v-if="currCmp.txt.length > 100"
+          v-model="cmpCopy.txt"
+          :style="{resize:'none'}"
+          cols="30"
+          rows="6"
+        ></textarea>
+        <input v-else type="text" v-model="cmpCopy.txt" />
+      </div>
+
+      <div v-if="currCmp.to">
+        <p>Link to:</p>
+        <input type="text" v-model="cmpCopy.to" placeholder="Enter text..." />
       </div>
 
       <div v-if="currCmp.imgUrl">
@@ -67,16 +76,16 @@ export default {
   },
   computed: {
 
-    linkInputs() {
-      if (this.currCmp.links) {
-        return this.currCmp.links;
-      }
-    },
-    childrenInputs() {
-      if (this.currCmp.children) {
-        return this.currCmp.children;
-      }
-    },
+    // linkInputs() {
+    //   if (this.currCmp.type === 'a') {
+    //     return this.currCmp
+    //   }
+    // },
+    // childrenInputs() {
+    //   if (this.currCmp.children) {
+    //     return this.currCmp.children;
+    //   }
+    // },
     currWap() {
       return this.$store.getters.getWap;
     }
@@ -93,7 +102,7 @@ export default {
     saveWap() {
       eventBus.$emit("saveWap");
     },
-     uploadImg(ev) {
+    uploadImg(ev) {
       eventBus.$emit('uploadImg', ev)
     },
     changeWapTitle() {

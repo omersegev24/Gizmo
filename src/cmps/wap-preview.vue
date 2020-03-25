@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     getWapTheme() {
-      return this.$store.getters.getWapTheme
+      return this.$store.getters.wapTheme
     },
     selectedCmp() {
       return this.$store.getters.getSelectedCmp

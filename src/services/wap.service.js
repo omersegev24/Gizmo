@@ -70,7 +70,8 @@ const gWap = {
         type: 'layout-2-columns',
         style: {},
         subClass: 'light-and-shiny',
-        children: [{
+        children: [
+            {
             id: 'cmp12',
             type: 'app-card',
             style: { color: 'red' },
@@ -230,7 +231,8 @@ const gWap = {
             type: 'app-article',
             style: {},
             subClass: 'light-and-shiny',
-            children: [{
+            children: [
+                {
                 id: 'yldor1a',
                 type: 'p',
                 txt: 'Article title',
@@ -402,21 +404,21 @@ function updateWap(wap, cmp) {
         cmp.url = 'https://www.youtube.com/embed/' + youtubeId
     }
     wap.cmps.forEach((currCmp, idx) => {
-        var res = _findNode(cmp, currCmp)
-        if (res) {
-            if (res.id === currCmp.id) {
+        var node = _findNode(cmp, currCmp)
+        if (node) {
+            if (node.id === currCmp.id) {
                 wap.cmps.splice(idx, 1, cmp)
             }
-            else if (res.children) {
-                const childIdx = res.children.findIndex(childCmp => childCmp.id === cmp.id)
-                res.children.splice(childIdx, 1, cmp)
+            else if (node.children) {
+                const childIdx = node.children.findIndex(childCmp => childCmp.id === cmp.id)
+                node.children.splice(childIdx, 1, cmp)
             } else {
                 const nodeIdx = currCmp.children.findIndex(nodeCmp => nodeCmp.id === cmp.id)
                 currCmp.children.splice(nodeIdx, 1, cmp)
             }
         }
     })
-    return Promise.resolve(wap)
+    return wap
 }
 
 function _findNode(cmp, currentNode) {
@@ -428,7 +430,7 @@ function _findNode(cmp, currentNode) {
         return currentNode;
     } else if (currentNode.children) {
 
-        for (i = 0; i < currentNode.children.length; i += 1) {
+        for (i = 0; i < currentNode.children.length; i++) {
             currentChild = currentNode.children[i];
 
             result = _findNode(cmp, currentChild);

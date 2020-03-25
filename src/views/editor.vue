@@ -36,9 +36,9 @@ export default {
       this.$store.commit({ type: 'setSelectedCmp', cmp });
     });
     eventBus.$on('uploadImg', ev => {
-      this.$store.dispatch({ type: "uploadImg", ev });
+      this.$store.dispatch({ type: 'uploadImg', ev });
     })
-    eventBus.$on("saveWap", () => {
+    eventBus.$on('saveWap', () => {
       this.$store.dispatch({ type: 'saveWap' })
     });
     eventBus.$on('changeWapTheme', theme => {
@@ -59,7 +59,6 @@ export default {
       this.$store.dispatch({ type: 'addCmp', cmp });
     },
     updateCmp(cmp) {
-      console.log('update in editor..........')
       this.$store.dispatch({ type: "updateCmp", cmp });
     }
   },

@@ -1,6 +1,6 @@
 <template>
-  <section class="wap-container" :class="getWapTheme" v-if="wap">
-    <wap-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="getWapTheme"></wap-preview>
+  <section class="wap-container" :class="wapTheme" v-if="wap">
+    <wap-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></wap-preview>
   </section>
 </template>
 
@@ -14,8 +14,8 @@ export default {
     wapPreview
   },
   computed: {
-    getWapTheme() {
-      return this.$store.getters.getWapTheme
+    wapTheme() {
+      return this.$store.getters.wapTheme
     }
   }
 }

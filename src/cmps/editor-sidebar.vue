@@ -8,8 +8,9 @@
         <span class="far fa-edit"></span> Edit
       </div>
     </div>
-
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
+
+    <!-- <accordion id="accordion-example-1" :content="items"></accordion> -->
 
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
       <div v-for="item in items" :item="item" :key="item.id">
@@ -28,10 +29,6 @@
                   <p>{{cmpType(cmp.type).name}}</p>
                 </div>
               </div>
-              <!-- <div class="themes-btn-container" v-if="item.title === 'Themes'">
-                <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
-                <button @click="changeWapTheme('dark-theme')">Dark</button>
-              </div>-->
               <div else>{{item.details}}</div>
             </div>
           </transition>
@@ -44,6 +41,7 @@
 <script>
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
+import accordion from './accordion.cmp.vue'
 export default {
   props: {
     cmps: Array
@@ -54,25 +52,29 @@ export default {
         {
           id: 1,
           active: false,
-          title: "Sections"
+          title: "Sections",
+          cmps: this.cmps
         },
         {
           id: 2,
           active: false,
           title: "Elements",
           details: `
-          <p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`
+          <p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`,
+          cmps:{}
         },
         {
           id: 3,
           active: false,
           title: "Widgets",
-          details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`
+          details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`,
+          cmps:{}
         },
         {
           id: 4,
           active: false,
-          title: "Themes"
+          title: "Themes",
+          cmps:{}
         }
       ],
       editMode: false
@@ -98,27 +100,27 @@ export default {
     cmpType(type) {
       switch (type) {
         case "app-header":
-          return {name: 'Header', class: "fas fa-heading"};
+          return { name: 'Header', class: "fas fa-heading" };
         case "app-article":
-          return {name: 'Article', class: 'fas fa-newspaper'};
+          return { name: 'Article', class: 'fas fa-newspaper' };
         case "layout-2-columns":
-          return {name: 'Cards', class:"fas fa-th-large"};
+          return { name: 'Cards', class: "fas fa-th-large" };
         case "layout-3-columns":
-          return {name: 'Columns', class:'fas fa-th'};
+          return { name: 'Columns', class: 'fas fa-th' };
         case "app-card":
-          return {name: 'Card', class:'fas fa-square'};
+          return { name: 'Card', class: 'fas fa-square' };
         case "app-footer":
-          return {name: 'Footer', class:'fab fa-facebook-f'};
+          return { name: 'Footer', class: 'fab fa-facebook-f' };
         case "app-contact":
-          return {name: 'Contact ', class:"fas fa-address-card"};
+          return { name: 'Contact ', class: "fas fa-address-card" };
         case "app-chat":
-          return {name: "Chat", class:'fas fa-comment-dots'};
+          return { name: "Chat", class: 'fas fa-comment-dots' };
         case "app-youtube":
-          return {name:'YouTube', class:'fab fa-youtube'}
+          return { name: 'YouTube', class: 'fab fa-youtube' }
         case "app-social-links":
-          return {name:'Social Links', class:'fas fa-share-alt'}
+          return { name: 'Social Links', class: 'fas fa-share-alt' }
         case "app-map":
-          return {name: 'Map', class:'fas fa-map-marked-alt'}
+          return { name: 'Map', class: 'fas fa-map-marked-alt' }
       }
     }
     // changeWapTheme(themeName) {
@@ -126,7 +128,8 @@ export default {
     // }
   },
   components: {
-    editPanel
+    editPanel,
+    accordion
   }
 };
 </script>
