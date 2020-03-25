@@ -18,25 +18,14 @@
         </section>
       </section>
     </div>-->
-    <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+    <wap-prefs  :wap="currWap"></wap-prefs>
 
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-      <div v-if="currCmp.txt">
-        <textarea
-          v-if="currCmp.txt.length > 100"
-          v-model="cmpCopy.txt"
-          :style="{resize:'none'}"
-          cols="30"
-          rows="6"
-          @input="updateCmp(cmpCopy)"
-        ></textarea>
-        <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
-      </div>
-
+    
       <div v-if="currCmp.to">
         <p>Link to:</p>
         <input type="text" v-model="cmpCopy.to" placeholder="Enter text..." />
@@ -70,10 +59,7 @@ export default {
   data() {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
-      // wapPrefs: {
-      wapTitle: '',
-      wapTheme: ''
-      // },
+     
     };
   },
   computed: {
@@ -87,11 +73,7 @@ export default {
     }
   },
   methods: {
-    updateWapPref(wap){
-      
-    },
     updateCmp(cmp) {
-      console.log('inside editpanel ', cmp.txt)
       eventBus.$emit('updateCmp', cmp);
     },
     saveWap() {

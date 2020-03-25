@@ -37,11 +37,9 @@ export default {
   },
   methods: {
     updateWapPrefs(theme) {
-      console.log('yes')
       if (theme) {
         this.wapPrefs.theme = theme
       }
-      console.log(this.wapPrefs.title)
       eventBus.$emit('updateWapPrefs', this.wapPrefs)
     }
   }

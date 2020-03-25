@@ -5,7 +5,6 @@
     :class="cmp.subClass"
     :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
   >
-  
     <component
       v-for="child in cmp.children"
       :is="child.type"
@@ -15,8 +14,10 @@
       :src="child.imgUrl"
       :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @blur="editTxt($event,child)"
+      @input="editTxt($event)"
+      @keydown="test($event)"
       @click.stop="openEdit(child)"
+      ref="txt"
     >{{child.txt}}</component>
   </header>
 </template>
@@ -28,21 +29,30 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
-  data() {
-    return {
-      content: this.cmp.txt
-    }
-  },
   methods: {
+    test(ev) {
+      console.log(this.$refs.txt[1]);
+
+      if (ev.keyCode === 13) {
+        this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
+        return false
+      }
+
+    },
     editTxt(ev, cmp) {
-      cp
       var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
+      console.log('cmp', cmp.type)
       eventBus.$emit("edit", cmp);
     }
   }
 };
 </script>
+<style >
+p {
+  display: block;
+}
+</style>

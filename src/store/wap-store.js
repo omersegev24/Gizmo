@@ -34,7 +34,6 @@ export default ({
 		},
 		updateWapPrefs(state, { wapPrefs }) {
 			const wapCopy = JSON.parse(JSON.stringify(wapPrefs))
-			console.log('i am here',wapCopy.title)
 			state.wap.theme = wapCopy.theme
 			state.wap.title = wapCopy.title
 		},
@@ -67,13 +66,14 @@ export default ({
 			context.commit({ type: 'setWaps', waps })
 			return waps
 		},
-		async loadWap(context, {wapId}) {
+		async loadWap(context, { wapId }) {
 			const wap = await wapService.getById(wapId)
 			context.commit({ type: 'setWap', wap })
 			return wap
 		},
 		async updateCmp(context, { cmp }) {
-			console.log('inside store updateCMp', cmp.txt)
+			// console.log('inside store updateCMp', cmp.txt)
+			console.log('cmp store',cmp.type)
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
 			const wap = await wapService.updateWap(wapCopy, cmpCopy)
@@ -81,6 +81,10 @@ export default ({
 				type: 'setWap',
 				wap
 			})
+			// context.commit({
+			// 	type: 'setSelectedCmp',
+			// 	cmp
+			// })
 		},
 		async uploadImg(context, { ev }) {
 			context.commit({ type: 'setInProgress', inProgress: true })

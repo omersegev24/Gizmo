@@ -8,6 +8,7 @@
         <span class="far fa-edit"></span> Edit
       </div>
     </div>
+
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
 
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
@@ -51,7 +52,7 @@ export default {
           active: false,
           title: "Sections",
           type: 'selection-cmps',
-          cmps:''
+          cmps: ''
         },
         {
           id: 2,

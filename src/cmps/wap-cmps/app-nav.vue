@@ -6,7 +6,7 @@
         :is="logo.type"
         :style="logo.style"
         :contenteditable="true"
-        @blur="editTxt($event,logo)"
+        @input="editTxt($event,logo)"
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
       >{{logo.txt}}</component>
@@ -20,7 +20,7 @@
             :style="link.style"
             :contenteditable="true"
             :href="'#' + link.to"
-            @blur="editTxt($event,link)"
+            @input="editTxt($event,link)"
             :src="link.imgUrl"
             :class="{'mark-selected':link.id === selectedCmp.id}"
             @click.stop="edit(link)"
@@ -59,7 +59,6 @@ export default {
       const logo = this.cmp.children.filter(child => {
         return child.type === 'h1'
       })
-      console.log(logo)
       return logo
     }
   },

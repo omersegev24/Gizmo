@@ -10,7 +10,7 @@
         :is="child.type"
         :cmp="child"
         :key="child.id"
-        @change="editTxt($event,child)"
+        @input="editTxt($event,child)"
         :class="{ 'mark-selected':child.id === selectedCmp.id}"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
