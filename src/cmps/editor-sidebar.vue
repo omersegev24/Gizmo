@@ -8,7 +8,7 @@
         <span class="far fa-edit"></span> Edit
       </div>
     </div>
-    <hr class="divider" />
+   
     
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
 
@@ -53,7 +53,7 @@ export default {
           active: false,
           title: "Sections",
           type: 'selection-cmps',
-          cmps:''
+          cmps: ''
         },
         {
           id: 2,

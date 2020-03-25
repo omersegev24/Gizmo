@@ -3,6 +3,41 @@
   font-weight: 400;
   font-size: 0.9rem;
 
+  .wap-prefs-container {
+    background-color: rgb(240, 240, 240);
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: start;
+    margin-bottom: rem(20px);
+    div {
+      padding: rem(10px);
+      p {
+        width: fit-content;
+        margin: 0;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .prefs-enter,
+  .prefs-leave-to {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .prefs-enter-active,
+  .prefs-leave-active {
+    transition: all 0.2s;
+  }
+
+  // input[type="text"] {
+  //   padding: 10px;
+  //   margin: 15px auto;
+  //   width: 80%;
+  //   font-size: 0.877rem;
+  // }
 
   .wap-title-theme {
 
@@ -12,7 +47,7 @@
     
     
     .themes {
-      margin: 2rem 0 1rem;
+      margin: 0.3rem 0 1rem;
       button {
         @include for-light-button;
         margin: 2.5px;

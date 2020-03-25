@@ -3,11 +3,11 @@
     class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="cmp.subClass"
-    :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
+    :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
   >
-  
     <component
       v-for="child in cmp.children"
+      ref="txt"
       :is="child.type"
       :key="child.id"
       :style="child.style"
@@ -15,7 +15,7 @@
       :src="child.imgUrl"
       :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @blur="editTxt($event,child)"
+      @input="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </header>
@@ -28,20 +28,30 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
-  data() {
-    return {
-      content: this.cmp.txt
-    }
-  },
   methods: {
+    // test(ev) {
+    //   console.log(this.$refs.txt[1]);
+
+    //   if (ev.keyCode === 13) {
+    //     this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
+    //     return false
+    //   }
+
+    // },
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
+      console.log('cmp', cmp.type)
       eventBus.$emit("edit", cmp);
-    }
+    },
   }
 };
 </script>
+<style >
+p {
+  display: block;
+}
+</style>

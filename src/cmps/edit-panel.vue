@@ -1,26 +1,20 @@
 <template>
   <section class="edit-panel flex flex-column">
-    <!-- <div>
-      <section class="wap-title-theme">
-        <section class="themes">
-          <p>Website Themes</p>
-          <button @click="changeWapTheme('light-and-shiny')">Light and Shiny</button>
-          <button @click="changeWapTheme('dark-theme')">Dark</button>
-        </section>
-        <section class="title">
-          <p>Website Title</p>
-          <input type="text" placeholder="Enter title" v-model="wapTitle" />
-          <button @click="saveWap">Save Wap</button>
-        </section>
-        <section class="wap-info">
-          <p>Title: {{currWap.title}}</p>
-          <p>Theme: {{currWap.theme}}</p>
-        </section>
-      </section>
-    </div>-->
-    <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+    <section class="wap-prefs-container">
+      <div class="flex space-between align-center" @click="toggleWapPrefs">
+        <p>Wap Preferences</p>
+          <span>
+            <i :class="[isPrefsOpen ? 'fas fa-sort-up' : 'fas fa-sort-down']"></i>
+          </span>
+      </div>
+      <transition name="prefs">
+      <div v-show="isPrefsOpen">
+        <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+      </div>
+      </transition>
+    </section>
 
-    <hr class="divider" />
+    <hr v-if="currCmp.id" class="divider" />
 
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
@@ -38,6 +32,14 @@
         ></textarea>
         <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
       </div>-->
+        <!-- <input
+          v-else
+          type="text"
+          v-model="cmpCopy.txt"
+          @input="updateCmp(cmpCopy)"
+          placeholder="Enter text"
+        />
+      </div> -->
 
       <div v-if="currCmp.to" class="flex align-center space-between">
         <p>Link to:</p>
@@ -57,7 +59,7 @@
         <hr class="divider" />
       </div>
 
-      <edit-text v-if="currCmp.type!=='img'" :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
+      <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
     <hr class="divider" />
     <div class="save-btns flex space-evenly align-center">
@@ -81,6 +83,7 @@ export default {
   data() {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
+      isPrefsOpen: false,
       // wapPrefs: {
       wapTitle: "",
       wapTheme: ""
@@ -114,6 +117,9 @@ export default {
     },
     changeWapTheme(theme) {
       eventBus.$emit("changeWapTheme", theme);
+    },
+    toggleWapPrefs() {
+      this.isPrefsOpen = !this.isPrefsOpen;
     }
   },
   components: {

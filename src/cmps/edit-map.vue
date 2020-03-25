@@ -11,7 +11,7 @@
     <vue-slider
       v-model="mapData.style.width"
       :min="300"
-      :max="960"
+      :max="1500"
       :contained="true"
       :tooltip="'active'"
       @change="update"
@@ -23,7 +23,7 @@
     <vue-slider
       v-model="mapData.style.height"
       :min="300"
-      :max="960"
+      :max="1500"
       :contained="true"
       :tooltip="'active'"
       @change="update"

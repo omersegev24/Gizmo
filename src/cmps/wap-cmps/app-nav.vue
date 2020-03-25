@@ -1,26 +1,24 @@
 <template>
   <nav class="app-nav flex space-between align-center" :class="cmp.subClass" @click.stop="edit(cmp)">
-    <span v-for="logo in logos" :key="logo.id">
+    <p v-for="logo in logos" :key="logo.id">
       <component
         class="logo"
         :is="logo.type"
         :style="logo.style"
         :contenteditable="true"
-        @blur="editTxt($event,logo)"
+        @input="editTxt($event,logo)"
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
       >{{logo.txt}}</component>
-    </span>
-    <!-- <section class="flex space-between align-center"> -->
+    </p>
       <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="link in links" :key="link.id">
-          <!-- :class="[{'logo':idx === 0}, `nav-link-${idx}`]" -->
           <component
             :is="link.type"
             :style="link.style"
             :contenteditable="true"
             :href="'#' + link.to"
-            @blur="editTxt($event,link)"
+            @input="editTxt($event,link)"
             :src="link.imgUrl"
             :class="{'mark-selected':link.id === selectedCmp.id}"
             @click.stop="edit(link)"
@@ -30,7 +28,6 @@
       <p class="hamburger-menu" @click="toggleMenu">
         <i class="fas fa-bars"></i>
       </p>
-    <!-- </section> -->
   </nav>
 </template>
 
@@ -59,7 +56,6 @@ export default {
       const logo = this.cmp.children.filter(child => {
         return child.type === 'h1'
       })
-      console.log(logo)
       return logo
     }
   },
