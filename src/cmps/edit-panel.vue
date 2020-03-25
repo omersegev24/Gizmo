@@ -51,7 +51,7 @@
         <img :src="currCmp.imgUrl" style="width: 250px, heigth: 250px" />
       </div>
 
-      <edit-text v-if="currCmp.type!=='img'" :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
+      <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
     <button @click="saveWap">Save Wap</button>
   </section>

@@ -29,7 +29,7 @@
 
     <span>Text Size</span>
     <vue-slider
-      v-model="fontSize"
+      v-model="cmp.style.fontSize"
       :min="10"
       :max="100"
       :contained="true"
@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      cmp: this.currCmp,
+      cmp: JSON.parse(JSON.stringify(this.currCmp)),
       bgcOpen: false,
       colorOpen: false,
       fontSize: 5,
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     setTextSize() {
-      this.cmp.style.fontSize = this.fontSize + "px";
+      this.cmp.style.fontSize = this.cmp.style.fontSize + "px";
       this.update();
     },
     setLetterSpacing() {
@@ -103,7 +103,7 @@ export default {
   },
   watch: {
     currCmp() {
-      this.cmp = this.currCmp
+      this.cmp = JSON.parse(JSON.stringify(this.currCmp))
     }
   },
   components: {

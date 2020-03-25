@@ -28,20 +28,30 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
-  data() {
-    return {
-      content: this.cmp.txt,
-    };
-  },
   methods: {
+    // test(ev) {
+    //   console.log(this.$refs.txt[1]);
+
+    //   if (ev.keyCode === 13) {
+    //     this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
+    //     return false
+    //   }
+
+    // },
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
+      console.log('cmp', cmp.type)
       eventBus.$emit("edit", cmp);
     },
   }
 };
 </script>
+<style >
+p {
+  display: block;
+}
+</style>
