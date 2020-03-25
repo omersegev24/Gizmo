@@ -19,8 +19,8 @@
       pointer-events: none;
       position: absolute;
       visibility: visible;
+      border: 3px dashed darken($clr5, 5%);
       transition: all 0.1s;
-      border: 3px dashed black;
     }
   }
 }

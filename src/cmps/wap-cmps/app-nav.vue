@@ -1,6 +1,6 @@
 <template>
   <nav class="app-nav flex space-between align-center" :class="cmp.subClass" @click.stop="edit(cmp)">
-    <span v-for="logo in logos" :key="logo.id">
+    <p v-for="logo in logos" :key="logo.id">
       <component
         class="logo"
         :is="logo.type"
@@ -10,11 +10,9 @@
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
       >{{logo.txt}}</component>
-    </span>
-    <!-- <section class="flex space-between align-center"> -->
+    </p>
       <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
         <li v-for="link in links" :key="link.id">
-          <!-- :class="[{'logo':idx === 0}, `nav-link-${idx}`]" -->
           <component
             :is="link.type"
             :style="link.style"
@@ -30,7 +28,6 @@
       <p class="hamburger-menu" @click="toggleMenu">
         <i class="fas fa-bars"></i>
       </p>
-    <!-- </section> -->
   </nav>
 </template>
 
