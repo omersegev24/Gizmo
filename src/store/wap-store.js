@@ -32,6 +32,12 @@ export default ({
 			const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === updatedCmp.id)
 			state.wap.cmps.splice(idx, 1, updatedCmp)
 		},
+		updateWapPrefs(state, { wapPrefs }) {
+			const wapCopy = JSON.parse(JSON.stringify(wapPrefs))
+			console.log('i am here',wapCopy.title)
+			state.wap.theme = wapCopy.theme
+			state.wap.title = wapCopy.title
+		},
 		removeCmp(state, { cmp }) {
 			const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
 			state.wap.cmps.splice(idx, 1)
@@ -67,6 +73,7 @@ export default ({
 			return wap
 		},
 		async updateCmp(context, { cmp }) {
+			console.log('inside store updateCMp', cmp.txt)
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
 			const wap = await wapService.updateWap(wapCopy, cmpCopy)

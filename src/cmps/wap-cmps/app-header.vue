@@ -3,8 +3,9 @@
     class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="cmp.subClass"
-    :style="cmp.style"
+    :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
   >
+  
     <component
       v-for="child in cmp.children"
       :is="child.type"
@@ -27,9 +28,14 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
+  data() {
+    return {
+      content: this.cmp.txt
+    }
+  },
   methods: {
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(cmp));
+      var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },

@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      cmp: JSON.parse(JSON.stringify(this.currCmp)),
+      cmp: this.currCmp,
       bgcOpen: false,
       colorOpen: false,
       fontSize: 5,
@@ -98,12 +98,12 @@ export default {
       this.update();
     },
     update() {
-      this.$emit("updateCmp", JSON.parse(JSON.stringify(this.cmp)));
+      this.$emit("updateCmp", this.cmp);
     }
   },
   watch: {
     currCmp() {
-      this.cmp = JSON.parse(JSON.stringify(this.currCmp))
+      this.cmp = this.currCmp
     }
   },
   components: {

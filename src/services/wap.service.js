@@ -74,9 +74,10 @@ const gWap = {
             {
             id: 'cmp12',
             type: 'app-card',
-            style: { color: 'red' },
+            style: { },
             subClass: 'light-and-shiny',
-            children: [{
+            children: [
+                {
                 id: 'saoomor1a',
                 type: 'img',
                 imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',

@@ -14,6 +14,7 @@ export default {
     wapPreview
   },
   computed: {
+
     wapTheme() {
       return this.$store.getters.wapTheme
     }
