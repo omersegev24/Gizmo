@@ -32,14 +32,8 @@
     transition: all 0.2s;
   }
 
-  // input[type="text"] {
-  //   padding: 10px;
-  //   margin: 15px auto;
-  //   width: 80%;
-  //   font-size: 0.877rem;
-  // }
-
   .wap-title-theme {
+    // font-size: 0.8rem;
 
     * {
       color: $clr2;
@@ -48,17 +42,27 @@
     
     .themes {
       margin: 0.3rem 0 1rem;
-      button {
-        @include for-light-button;
-        margin: 2.5px;
+      p {
+        padding-right: 0;
       }
-      :last-child {
-        @include for-dark-button;
+      div {
+        button {
+          @include for-light-button;
+          margin: 2.5px;
+          margin-left: 5px;
+          // padding: 10px;
+        }
+        :last-child {
+          @include for-dark-button;
+        }
       }
     }
     .title {
       display: flex;
       align-items: center;
+      p {
+        padding-right: 0;
+      }
 
       button {
         @include for-light-button;
@@ -79,69 +83,67 @@
       margin-bottom: 20px;
     }
   }
-  .guide {
-    font-weight: bold;
-  }
-  [type="file"] {
-    height: 0;
-    overflow: hidden;
-    width: 0;
-  }
-  [type="file"] + label {
-    background: #f15d22;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Poppins", sans-serif;
-    font-size: inherit;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    outline: none;
-    padding: 10px 25px;
-    position: relative;
-    transition: all 0.3s;
-    vertical-align: middle;
-
-    &.btn-3 {
-      background-color: #3353f5;
-      border-radius: 5px;
+  .upload-img-container {
+    padding: 10px;
+    [type="file"] {
+      height: 0;
       overflow: hidden;
-      margin: 10px;
-
-      span {
-        display: inline-block;
-        height: 100%;
-        transition: all 0.3s;
-        width: 100%;
-      }
-
-      &::before {
-        color: #fff;
-        content: "\f093";
-        font-family: "Font Awesome 5 Free";
-        font-size: 100%;
-        height: 100%;
-        left: 0;
-        line-height: 2.6;
-        position: absolute;
-        top: -180%;
-        transition: all 0.3s;
-        width: 100%;
-      }
-
-      &:hover {
-        background-color: darken(#3353f5, 30%);
-
-        span {
-          transform: translateY(300%);
-        }
-        &::before {
-          top: 0;
-        }
-      }
+      width: 0;
     }
+    [type="file"] + label {
+      background: #f15d22;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      // font-family: "Poppins", sans-serif;
+      font-size: inherit;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      outline: none;
+      padding: 10px 25px;
+      position: relative;
+      transition: all 0.3s;
+      vertical-align: middle;
+  
+      &.btn-3 {
+        @include for-light-button;
+        overflow: hidden;
+        margin-right: 10px;
+  
+        span {
+          display: inline-block;
+          height: 100%;
+          transition: all 0.3s;
+          width: 100%;
+        }
+  
+        &::before {
+          color: $clr2;
+          content: "\f093";
+          font-family: "Font Awesome 5 Free";
+          font-size: 100%;
+          height: 100%;
+          left: 0;
+          line-height: 2.6;
+          position: absolute;
+          top: -180%;
+          transition: all 0.3s;
+          width: 100%;
+        }
+  
+        &:hover {
+          background-color: $clr1;
+  
+          span {
+            transform: translateY(300%);
+          }
+          &::before {
+            top: 0;
+          }
+        }
+      }
+  }
   }
   .img-preview{
     padding-bottom: 10px;
