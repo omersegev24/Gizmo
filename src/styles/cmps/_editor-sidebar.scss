@@ -1,5 +1,7 @@
 .editor-sidebar {
   min-width: rem(360px);
+  max-width: rem(360px);
+
   border-right: 1px solid rgba(10, 10, 10, 0.1);
   background-color: #fff;
   height: calc(100vh - 71px);
@@ -58,6 +60,20 @@
     color: #e0e3e5 !important;
     opacity: 0.3;
     margin: 10px 0;
+  }
+  .save-btns{
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+    padding: 20px;
+    // width: 360px;
+  //   background-color: rgba(99, 99, 99, 1);
+    
+  }
+  .save-btns > * {
+    @include for-light-button;
+    margin: 0 40px;
+    padding: 10px 20px;
   }
 }
 

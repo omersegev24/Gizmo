@@ -1,34 +1,34 @@
 <template>
   <section class="edit-map">
     <div class="location flex space-between align-center">
-    <p>Search location:</p>
-    <gmap-autocomplete @place_changed="getAddressData"></gmap-autocomplete>
+      <p>Search location:</p>
+      <gmap-autocomplete @place_changed="getAddressData"></gmap-autocomplete>
     </div>
 
-<div class="map-config">
-    <hr class="divider" />
-    <p>Width</p>
-    <vue-slider
-      v-model="mapData.style.width"
-      :min="300"
-      :max="1500"
-      :contained="true"
-      :tooltip="'active'"
-      @change="update"
-    ></vue-slider>
+    <div class="map-config">
+      <hr class="divider" />
+      <p>Width</p>
+      <vue-slider
+        v-model="mapData.style.width"
+        :min="300"
+        :max="1500"
+        :contained="true"
+        :tooltip="'active'"
+        @change="update"
+      ></vue-slider>
 
-    <hr class="divider" />
+      <hr class="divider" />
 
-    <p>Height</p>
-    <vue-slider
-      v-model="mapData.style.height"
-      :min="300"
-      :max="1500"
-      :contained="true"
-      :tooltip="'active'"
-      @change="update"
-    ></vue-slider>
-</div>
+      <p>Height</p>
+      <vue-slider
+        v-model="mapData.style.height"
+        :min="300"
+        :max="1500"
+        :contained="true"
+        :tooltip="'active'"
+        @change="update"
+      ></vue-slider>
+    </div>
     <hr class="divider" />
   </section>
 </template>

@@ -8,8 +8,7 @@
         <span class="far fa-edit"></span> Edit
       </div>
     </div>
-   
-    
+
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
 
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">
@@ -35,6 +34,11 @@
         </div>
       </div>
     </div>
+
+    <div class="save-btns flex space-evenly align-center">
+      <button>Publish</button>
+      <button @click="saveWap">Save</button>
+    </div>
   </section>
 </template>
 
@@ -52,8 +56,8 @@ export default {
           id: 1,
           active: false,
           title: "Sections",
-          type: 'selection-cmps',
-          cmps: ''
+          type: "selection-cmps",
+          cmps: ""
         },
         {
           id: 2,
@@ -78,7 +82,7 @@ export default {
     eventBus.$on("edit", cmp => {
       this.editMode = true;
     });
-    this.items[0].cmps = this.cmps
+    this.items[0].cmps = this.cmps;
   },
   computed: {
     currCmp() {
@@ -86,6 +90,9 @@ export default {
     }
   },
   methods: {
+    saveWap() {
+      eventBus.$emit("saveWap");
+    },
     toggle(currItem) {
       this.items.forEach((item, index) => {
         if (item.id === currItem.id) item.active = !item.active;
@@ -123,7 +130,7 @@ export default {
     // }
   },
   components: {
-    editPanel,
+    editPanel
   }
 };
 </script>

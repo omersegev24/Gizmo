@@ -1,20 +1,20 @@
 .edit-text {
   width: 80%;
   margin: 0 auto;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   text-align: left;
 
-  input[type=search],.vs--searchable{
-      width: 50%;
-      &:hover {
-          cursor: pointer;
-      }
+  #vs1__combobox,#vs2__combobox {
+      width: 160px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .color-picker {
-      > * {
-        margin-bottom: 10px;
-      }
+    > * {
+      margin-bottom: 10px;
+    }
     > * {
       text-align: left;
       padding: 10px 0;
@@ -24,7 +24,7 @@
         color: $clr3;
       }
     }
-    
+
     .divider {
       width: 80%;
       margin: 10px auto;

@@ -62,11 +62,6 @@
       <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
     <hr class="divider" />
-    <div class="save-btns flex space-evenly align-center">
-    <button @click="saveWap">Publish</button>
-    <button @click="saveWap">Save</button>
-    </div>
-    <hr class="divider" />
   </section>
 </template>
 
@@ -105,9 +100,6 @@ export default {
     updateCmp(cmp) {
       console.log("inside editpanel ", cmp.txt);
       eventBus.$emit("updateCmp", cmp);
-    },
-    saveWap() {
-      eventBus.$emit("saveWap");
     },
     uploadImg(ev) {
       eventBus.$emit("uploadImg", ev);

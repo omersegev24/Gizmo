@@ -146,9 +146,4 @@
   .img-preview{
     padding-bottom: 10px;
   }
-  .save-btns > * {
-      @include for-light-button;
-      margin: 0;
-      padding: 10px 20px;
-    }
 }

@@ -34,7 +34,6 @@
       <p>Text Size</p>
       <vue-slider
         v-model="fontSize"
-        :min="10"
         :max="100"
         :contained="true"
         :tooltip="'active'"
@@ -50,18 +49,6 @@
         :contained="true"
         :tooltip="'active'"
         @change="setLetterSpacing"
-      ></vue-slider>
-
-      <hr class="divider" />
-
-      <p>Section Heigth</p>
-      <vue-slider
-        v-model="padding"
-        :min="0"
-        :max="100"
-        :contained="true"
-        :tooltip="'active'"
-        @change="setSectionHeigth"
       ></vue-slider>
 
       <hr class="divider" />
@@ -95,15 +82,15 @@ export default {
       cmp: JSON.parse(JSON.stringify(this.currCmp)),
       bgcOpen: false,
       colorOpen: false,
-      fontSize: 5,
-      letterSpacing: 0,
+      fontSize: parseInt(this.currCmp.style.fontSize, 10),
+      letterSpacing: parseInt(this.currCmp.style.letterSpacing, 10),
       padding: 0,
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"]
     };
   },
   methods: {
     setTextSize() {
-      this.cmp.style.fontSize = this.cmp.style.fontSize + "px";
+      this.cmp.style.fontSize = this.fontSize + "px";
       this.update();
     },
     setLetterSpacing() {
@@ -120,7 +107,9 @@ export default {
   },
   watch: {
     currCmp() {
-      this.cmp = JSON.parse(JSON.stringify(this.currCmp))
+      this.cmp = JSON.parse(JSON.stringify(this.currCmp));
+      this.fontSize = parseInt(this.currCmp.style.fontSize, 10);
+      this.letterSpacing = parseInt(this.currCmp.style.letterSpacing, 10);
     }
   },
   components: {
