@@ -20,12 +20,14 @@
     </div>-->
     <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
 
+    <hr class="divider" />
+
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-      <div v-if="currCmp.txt">
+      <!-- <div v-if="currCmp.txt">
         <textarea
           v-if="currCmp.txt.length > 100"
           v-model="cmpCopy.txt"
@@ -35,25 +37,34 @@
           @input="updateCmp(cmpCopy)"
         ></textarea>
         <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
-      </div>
+      </div>-->
 
-      <div v-if="currCmp.to">
+      <div v-if="currCmp.to" class="flex align-center space-between">
         <p>Link to:</p>
         <input type="text" v-model="cmpCopy.to" placeholder="Enter text..." />
       </div>
+      <hr v-if="currCmp.to" class="divider" />
 
       <div v-if="currCmp.imgUrl">
-        <p>{{'Image'}}</p>
-        <input @change="uploadImg" id="file" type="file" />
-        <label class="btn-3" for="file">
-          <span>select</span>
-        </label>
-        <img :src="currCmp.imgUrl" style="width: 250px, heigth: 250px" />
+        <div class="flex space-between align-center">
+          <p>Upload image:</p>
+          <input @change="uploadImg" id="file" type="file" />
+          <label class="btn-3" for="file">
+            <span>Upload</span>
+          </label>
+        </div>
+        <img class="img-preview" :src="currCmp.imgUrl" style="max-width: 250px" />
+        <hr class="divider" />
       </div>
 
       <edit-text v-if="currCmp.type!=='img'" :currCmp="cmpCopy" @updateCmp="updateCmp"></edit-text>
     </div>
-    <button @click="saveWap">Save Wap</button>
+    <hr class="divider" />
+    <div class="save-btns flex space-evenly align-center">
+    <button @click="saveWap">Publish</button>
+    <button @click="saveWap">Save</button>
+    </div>
+    <hr class="divider" />
   </section>
 </template>
 
@@ -62,7 +73,7 @@ import { eventBus } from "../services/eventBus.service.js";
 
 import editText from "./edit-text.vue";
 import editMap from "./edit-map.vue";
-import wapPrefs from './wap-cmps/wap-prefs.vue'
+import wapPrefs from "./wap-cmps/wap-prefs.vue";
 export default {
   props: {
     currCmp: Object
@@ -71,8 +82,8 @@ export default {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
       // wapPrefs: {
-      wapTitle: '',
-      wapTheme: ''
+      wapTitle: "",
+      wapTheme: ""
       // },
     };
   },
@@ -87,24 +98,22 @@ export default {
     }
   },
   methods: {
-    updateWapPref(wap){
-      
-    },
+    updateWapPref(wap) {},
     updateCmp(cmp) {
-      console.log('inside editpanel ', cmp.txt)
-      eventBus.$emit('updateCmp', cmp);
+      console.log("inside editpanel ", cmp.txt);
+      eventBus.$emit("updateCmp", cmp);
     },
     saveWap() {
-      eventBus.$emit('saveWap');
+      eventBus.$emit("saveWap");
     },
     uploadImg(ev) {
-      eventBus.$emit('uploadImg', ev)
+      eventBus.$emit("uploadImg", ev);
     },
     changeWapTitle() {
-      eventBus.$emit('changeWapTitle', this.wapTitle);
+      eventBus.$emit("changeWapTitle", this.wapTitle);
     },
     changeWapTheme(theme) {
-      eventBus.$emit('changeWapTheme', theme);
+      eventBus.$emit("changeWapTheme", theme);
     }
   },
   components: {

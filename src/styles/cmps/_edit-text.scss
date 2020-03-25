@@ -1,20 +1,33 @@
-.edit-text{
-    width: 80%;
-    margin: 0 auto;
-    padding-bottom: 30px;
+.edit-text {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  text-align: left;
 
-    input[type=search],.vs__open-indicator {
-        &:hover {
-            cursor: pointer;
-        }
-    }
+  input[type=search],.vs--searchable{
+      width: 50%;
+      &:hover {
+          cursor: pointer;
+      }
+  }
 
-    .color-picker{
-        > * {
-            cursor: pointer;
-            &:hover{
-                color: $clr3;
-            }
-        }
+  .color-picker {
+      > * {
+        margin-bottom: 10px;
+      }
+    > * {
+      text-align: left;
+      padding: 10px 0;
+      border: 1px solid #e0e3e5;
+      cursor: pointer;
+      &:hover {
+        color: $clr3;
+      }
     }
+    
+    .divider {
+      width: 80%;
+      margin: 10px auto;
+    }
+  }
 }

@@ -8,6 +8,8 @@
         <span class="far fa-edit"></span> Edit
       </div>
     </div>
+    <hr class="divider" />
+    
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
 
     <div v-if="!editMode" class="add-cmp accordion" role="presentation">

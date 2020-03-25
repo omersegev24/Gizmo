@@ -1,6 +1,12 @@
 <template>
   <section class="edit-map">
+    <div class="location flex space-between align-center">
+    <p>Search location:</p>
     <gmap-autocomplete @place_changed="getAddressData"></gmap-autocomplete>
+    </div>
+
+<div class="map-config">
+    <hr class="divider" />
     <p>Width</p>
     <vue-slider
       v-model="mapData.style.width"
@@ -10,6 +16,9 @@
       :tooltip="'active'"
       @change="update"
     ></vue-slider>
+
+    <hr class="divider" />
+
     <p>Height</p>
     <vue-slider
       v-model="mapData.style.height"
@@ -19,12 +28,14 @@
       :tooltip="'active'"
       @change="update"
     ></vue-slider>
+</div>
+    <hr class="divider" />
   </section>
 </template>
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
-import { mapService } from "../services/map.service.js"
+import { mapService } from "../services/map.service.js";
 import vueSlider from "vue-slider-component";
 export default {
   props: {
@@ -38,29 +49,29 @@ export default {
       mapData: {
         style: {
           width: 500,
-          height: 500,
+          height: 500
         },
         pos: {}
-      },
+      }
     };
   },
   methods: {
     getAddressData(place) {
-      this.mapData.pos = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      this.mapData.pos = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      };
 
-      this.update()
+      this.update();
     },
     update() {
-      const mapCopy = JSON.parse(JSON.stringify(this.mapCmp))
-      mapCopy.style = this.mapData.style
-      mapCopy.center = this.mapData.pos
-      mapCopy.markers[0].position = this.mapData.pos
-      
-      eventBus.$emit('updateCmp', mapCopy)
+      const mapCopy = JSON.parse(JSON.stringify(this.mapCmp));
+      mapCopy.style = this.mapData.style;
+      mapCopy.center = this.mapData.pos;
+      mapCopy.markers[0].position = this.mapData.pos;
+
+      eventBus.$emit("updateCmp", mapCopy);
     }
   }
 };
 </script>
-
-<style>
-</style>

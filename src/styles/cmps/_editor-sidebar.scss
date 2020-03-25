@@ -1,39 +1,61 @@
 .editor-sidebar {
-  width: rem(250px);
+  min-width: rem(360px);
   border-right: 1px solid rgba(10, 10, 10, 0.1);
   background-color: #fff;
-  // height: 91vh;
   height: calc(100vh - 71px);
   overflow-y: scroll;
 
-  
+  p {
+    font-weight: bold;
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 0.877rem;
+  }
+
   .top-sidebar {
     background-color: $clr2;
     color: #fff;
-    
+
     > * {
       width: 50%;
       padding: rem(15px);
       cursor: pointer;
-      
+
       &:hover {
         transition: 0.2s;
         color: $clr3;
       }
     }
-    
+
     .active-tab {
       transition: 0.3s;
       background-color: #fff;
       color: $clr2;
     }
   }
-  
+  // input[type="text"] {
+  //   padding: 10px;
+  //   font-size: 0.877rem;
+  // }
   .themes-btn-container {
     button {
       @include for-light-button;
       margin: 5px;
     }
+  }
+
+  .divider{
+    width: 100%;
+    height: 1px;
+    margin: 0 ;
+    color: #e0e3e5 !important;
+    opacity: 0.3;
+    margin: 10px 0;
   }
 }
 
@@ -51,12 +73,6 @@
   .item-details {
     margin-left: 0;
   }
-}
-
-.accordion-row,
-.item-details-inner {
-  padding: 0.75rem 1.25rem;
-}
 
 .accordion-item-title {
   position: relative;
@@ -68,7 +84,6 @@
     padding-right: 1.25rem;
   }
 }
-
 .accordion-row {
   width: 100%;
   text-align: left;
@@ -76,8 +91,10 @@
   border: none;
   outline: none;
   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  &,item-details-inner{
+    padding: 0.75rem 1.25rem;
+  }
 }
-
 .accordion-row-icon {
   $size: 8px;
   display: block;
@@ -97,12 +114,10 @@
     transform: translateY($size / 4) rotate(225deg);
   }
 }
-
 .item-details {
   overflow: hidden;
   background-color: #f8f8f8dc;
 }
-
 .accordion-item-enter-active,
 .accordion-item-leave-active {
   will-change: height;
@@ -112,7 +127,6 @@
 .accordion-item-leave-to {
   height: 0 !important;
 }
-
 .cmp-btn {
   background-color: #fff;
   padding: 0.5rem;
@@ -121,4 +135,5 @@
   &:hover {
     opacity: 0.5;
   }
+}
 }

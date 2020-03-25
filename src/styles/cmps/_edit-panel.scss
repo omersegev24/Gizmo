@@ -3,21 +3,14 @@
   font-weight: 400;
   font-size: 0.9rem;
 
-  input[type="text"] {
-    padding: 10px;
-    margin: 15px auto;
-    width: 80%;
-    font-size: 0.877rem;
-  }
 
   .wap-title-theme {
+
     * {
       color: $clr2;
     }
-    p {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+    
+    
     .themes {
       margin: 2rem 0 1rem;
       button {
@@ -29,12 +22,9 @@
       }
     }
     .title {
-      p {
-        margin-bottom: 10px;
-      }
-      input {
-        margin-top: 0;
-      }
+      display: flex;
+      align-items: center;
+
       button {
         @include for-light-button;
         font-weight: bold;
@@ -83,6 +73,7 @@
       background-color: #3353f5;
       border-radius: 5px;
       overflow: hidden;
+      margin: 10px;
 
       span {
         display: inline-block;
@@ -117,4 +108,12 @@
       }
     }
   }
+  .img-preview{
+    padding-bottom: 10px;
+  }
+  .save-btns > * {
+      @include for-light-button;
+      margin: 0;
+      padding: 10px 20px;
+    }
 }
