@@ -33,8 +33,9 @@
   margin-bottom: rem(20px);
 }
 
-.mark-selected{
-  outline: 2px dashed black;
+.mark-selected {
+  outline: 3px dashed black;
+  outline-offset: 15px;
 }
 // Aspect ratios
 
