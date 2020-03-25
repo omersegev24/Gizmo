@@ -15,8 +15,7 @@
       :src="child.imgUrl"
       :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @input="editTxt($event)"
-      @keydown="test($event)"
+      @input="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </header>
@@ -30,17 +29,17 @@ export default {
     selectedCmp: Object
   },
   methods: {
-    test(ev) {
-      console.log(this.$refs.txt[1]);
+    // test(ev) {
+    //   console.log(this.$refs.txt[1]);
 
-      if (ev.keyCode === 13) {
-        this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
-        return false
-      }
+    //   if (ev.keyCode === 13) {
+    //     this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
+    //     return false
+    //   }
 
-    },
+    // },
     editTxt(ev, cmp) {
-      var cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
+      var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },

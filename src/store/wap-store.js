@@ -81,10 +81,10 @@ export default ({
 				type: 'setWap',
 				wap
 			})
-			// context.commit({
-			// 	type: 'setSelectedCmp',
-			// 	cmp
-			// })
+			context.commit({
+				type: 'setSelectedCmp',
+				cmp
+			})
 		},
 		async uploadImg(context, { ev }) {
 			context.commit({ type: 'setInProgress', inProgress: true })
