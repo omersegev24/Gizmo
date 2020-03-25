@@ -29,8 +29,7 @@
 
     <span>Text Size</span>
     <vue-slider
-      v-model="cmp.style.fontSize"
-      :min="10"
+      v-model="fontSize"
       :max="100"
       :contained="true"
       :tooltip="'active'"
@@ -49,7 +48,6 @@
     <span>Section Heigth</span>
     <vue-slider
       v-model="padding"
-      :min="0"
       :max="100"
       :contained="true"
       :tooltip="'active'"
@@ -78,15 +76,15 @@ export default {
       cmp: JSON.parse(JSON.stringify(this.currCmp)),
       bgcOpen: false,
       colorOpen: false,
-      fontSize: 5,
-      letterSpacing: 0,
+      fontSize: parseInt(this.currCmp.style.fontSize, 10),
+      letterSpacing: parseInt(this.currCmp.style.letterSpacing, 10),
       padding: 0,
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"]
     };
   },
   methods: {
     setTextSize() {
-      this.cmp.style.fontSize = this.cmp.style.fontSize + "px";
+      this.cmp.style.fontSize = this.fontSize + "px";
       this.update();
     },
     setLetterSpacing() {
@@ -104,6 +102,8 @@ export default {
   watch: {
     currCmp() {
       this.cmp = JSON.parse(JSON.stringify(this.currCmp))
+      this.fontSize = parseInt(this.currCmp.style.fontSize, 10);
+      this.letterSpacing = parseInt(this.currCmp.style.letterSpacing, 10);
     }
   },
   components: {
