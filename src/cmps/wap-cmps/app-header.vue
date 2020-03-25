@@ -3,10 +3,11 @@
     class="app-header flex justify-center align-center flex-column"
     id="app-header"
     :class="cmp.subClass"
-    :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
+    :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
   >
     <component
       v-for="child in cmp.children"
+      ref="txt"
       :is="child.type"
       :key="child.id"
       :style="child.style"
@@ -17,7 +18,6 @@
       @input="editTxt($event)"
       @keydown="test($event)"
       @click.stop="openEdit(child)"
-      ref="txt"
     >{{child.txt}}</component>
   </header>
 </template>
@@ -47,7 +47,7 @@ export default {
     openEdit(cmp) {
       console.log('cmp', cmp.type)
       eventBus.$emit("edit", cmp);
-    }
+    },
   }
 };
 </script>
