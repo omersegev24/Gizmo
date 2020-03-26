@@ -48,8 +48,14 @@
   button {
     @include for-dark-button;
     font-weight: bold;
-    background-color: darken($clr5, 30%);
-    border-color: darken($clr5, 30%);
+    color: $clr5;
+    background-color: $clr6;
+    border: 2px solid $clr5;
+    &:hover {
+      color: $clr5;
+      background-color: lighten($clr6, 5%);
+      border: 2px solid $clr5;
+    }
   }
 }
 
