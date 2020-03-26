@@ -1,13 +1,17 @@
-{
-    "title": "omer",
-    "theme": "light-and-shiny",
+
+ 
+    "title": "daniel new test",
+    "theme": {
+        "isTrusted": true
+    },
     "style": {},
     "cmps": [
         {
             "id": "cmp100",
             "type": "app-nav",
             "style": {
-                "backgroundColor": "#CE93D8"
+                "backgroundColor": "#FFF59D",
+                "fontSize": "48px"
             },
             "subClass": "light-and-shiny",
             "children": [
@@ -44,67 +48,45 @@
             "id": "cmp10111",
             "type": "app-header",
             "imgUrl": "https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg",
-            "style": {},
+            "style": {
+                "fontSize": "100px"
+            },
             "subClass": "light-and-shiny",
             "children": [
                 {
                     "id": "saw21a",
                     "type": "button",
                     "txt": "Try me",
-                    "coords": {}
+                    "coords": {
+                        "x": {
+                            "$numberInt": "153"
+                        },
+                        "y": {
+                            "$numberInt": "65"
+                        }
+                    },
                     "style": {}
                 },
                 {
                     "id": "tre12",
                     "type": "p",
-                    "txt": "תפתח זום",
+                    "txt": "גשדגשד",
+                    "coords": {
+                        "x": {
+                            "$numberInt": "429"
+                        },
+                        "y": {
+                            "$numberInt": "59"
+                        }
+                    },
                     "style": {
                         "color": "#CE93D8",
-                        "fontSize": "70px",
+                        "fontSize": "64px",
                         "letterSpacing": "18px"
                     }
                 }
             ],
             "txt": "daniel"
-        },
-        {
-            "id": "cmp106",
-            "type": "app-contact",
-            "style": {
-                "backgroundColor": "#CE93D8"
-            },
-            "subClass": "light-and-shiny",
-            "children": [
-                {
-                    "id": "t2r4pa2",
-                    "type": "p",
-                    "txt": "CONTACT",
-                    "style": {
-                        "fontSize": "25px"
-                    }
-                },
-                {
-                    "id": "trbxspa2",
-                    "type": "p",
-                    "txt": "Tel Aviv Bacher 4",
-                    "style": {}
-                },
-                {
-                    "id": "zr4v0a2",
-                    "type": "p",
-                    "txt": "123-456-7890",
-                    "style": {}
-                },
-                {
-                    "id": "sqwcpa2",
-                    "type": "p",
-                    "txt": "gizmo@gizmo.com",
-                    "style": {
-                        "fontSize": "12px",
-                        "letterSpacing": "0px"
-                    }
-                }
-            ]
         },
         {
             "id": "cmp102",
@@ -125,6 +107,54 @@
             "markers": [
                 {
                     "position": {}
+                }
+            ]
+        },
+        {
+            "id": "cmp106",
+            "type": "app-contact",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "cmp1zdasz3",
+                    "type": "app-article",
+                    "style": {},
+                    "subClass": "light-and-shiny",
+                    "children": [
+                        {
+                            "id": "pmr1a",
+                            "type": "p",
+                            "txt": "Contact",
+                            "style": {}
+                        },
+                        {
+                            "id": "12m0lp",
+                            "type": "p",
+                            "txt": "Tel Aviv Bacher 4",
+                            "style": {}
+                        },
+                        {
+                            "id": "pxxppqz2a",
+                            "type": "p",
+                            "txt": "123-456-7890",
+                            "style": {}
+                        },
+                        {
+                            "id": "qmhjz2a",
+                            "type": "p",
+                            "txt": "gizmo@gizmo.com",
+                            "style": {}
+                        }
+                    ]
+                },
+                {
+                    "id": "form12zdf",
+                    "type": "app-form",
+                    "style": {},
+                    "txt": ""
                 }
             ]
         },
@@ -161,7 +191,7 @@
                         {
                             "id": "q0aewg2a",
                             "type": "p",
-                            "txt": "daniel keva hagevergever\n\n\ndsadsad\n\n\n\nsadasdsad\n\n\n\n\n\n\n\n\nasdsadsadas\n\n\n\n\nasdasdasdas\n\n\n\nsadasdasdsadas\n\n\n\nsadsadas",
+                            "txt": "",
                             "style": {}
                         }
                     ]
@@ -291,6 +321,46 @@
             },
             "subClass": "light-and-shiny",
             "title": "Chat"
+        },
+        {
+            "id": "Ues7I",
+            "type": "app-header",
+            "style": {},
+            "subClass": "light-and-shiny",
+            "imgUrl": "https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg",
+            "children": [
+                {
+                    "id": "saw21a",
+                    "type": "button",
+                    "txt": "Try me",
+                    "coords": {
+                        "x": {
+                            "$numberInt": "153"
+                        },
+                        "y": {
+                            "$numberInt": "65"
+                        }
+                    },
+                    "style": {}
+                },
+                {
+                    "id": "tre12",
+                    "type": "p",
+                    "txt": "גשדגשד",
+                    "coords": {
+                        "x": {
+                            "$numberInt": "429"
+                        },
+                        "y": {
+                            "$numberInt": "59"
+                        }
+                    },
+                    "style": {
+                        "color": "#CE93D8",
+                        "fontSize": "64px",
+                        "letterSpacing": "18px"
+                    }
+                }
+            ]
         }
-    ]
-}
+    ]}

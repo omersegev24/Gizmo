@@ -1,15 +1,17 @@
 <template>
   <div class="cmp-preview">
-    <component
-      :is="cmp.type"
-      :cmp="cmp"
-      :selectedCmp="selectedCmp"
-      :style="cmp.style"
-      :class="[getWapTheme,{'mark-selected':cmp.id === selectedCmp.id}]"
-      @click.native.stop="edit(cmp)"
-    ></component>
-    <action-panel :cmp="cmp"></action-panel>
-    <div class="screen"></div>
+    
+      <component
+        :is="cmp.type"
+        :cmp="cmp"
+        :selectedCmp="selectedCmp"
+        :style="cmp.style"
+        :class="[getWapTheme,{'mark-selected':cmp.id === selectedCmp.id}]"
+        @click.native.stop="edit(cmp)"
+      ></component>
+
+      <action-panel :cmp="cmp"></action-panel>
+      <div class="screen"></div>
   </div>
 </template>
 
@@ -33,12 +35,21 @@ export default {
   props: {
     cmp: Object,
   },
+  data() {
+    return {
+      enabled: true,
+      dragging: false
+    };
+  },
   methods: {
     edit(cmp) {
       eventBus.$emit('edit', cmp)
     },
   },
   computed: {
+    cmpCopy() {
+      return JSON.parse(JSON.stringify(this.cmp))
+    },
     getWapTheme() {
       return this.$store.getters.wapTheme
     },

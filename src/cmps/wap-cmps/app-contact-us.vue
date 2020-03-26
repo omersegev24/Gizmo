@@ -1,52 +1,49 @@
 <template>
   <section class="app-contact-us flex space-evenly" id="app-contact-us" :class="cmp.subClass">
- 
-    <div class="flex flex-column space-evenly">
+    <draggable
+      v-model="contactCmp"
+      class="flex space-evenly"
+      style="width:100%"
+      @start="dragging = true"
+      @end="dragging = false"
+    >
       <component
         class="info"
         :style="child.style"
         v-for="child in cmp.children"
-        :contenteditable="true"
+        :contenteditable="false"
+        :selectedCmp="selectedCmp"
         :is="child.type"
         :cmp="child"
         :key="child.id"
         @input="editTxt($event,child)"
-        :class="{ 'mark-selected':child.id === selectedCmp.id}"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
-    </div>
-    <form  class="flex flex-column">
-      <label class="flex flex-column">
-        Enter Your Name
-        <input type="text" placeholder="Name" />
-      </label>
-      <label class="flex flex-column">
-        Enter Your Email *
-        <input type="email" placeholder="Email" />
-      </label>
-      <label class="flex flex-column">
-        Enter Your Phone
-        <input type="phone" placeholder="Phone" />
-      </label>
-      <label class="flex flex-column">
-        Enter Your Subject
-        <input type="text" placeholder="Subject" />
-      </label>
-      <label class="flex flex-column">
-        Message
-        <textarea cols="40" rows="3" placeholder="Type your Message here..."></textarea>
-      </label>
-      <button>Submit</button>
-    </form>
+    </draggable>
+
   </section>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
+import appForm from './app-form.vue'
+import appArticle from './app-article.vue'
 export default {
   props: {
     cmp: Object,
     selectedCmp: Object
+  },
+  computed: {
+    contactCmp: {
+      get() {
+        return JSON.parse(JSON.stringify(this.cmp.children));
+      },
+      set(cmps) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
+        cmpCopy.children = cmps
+        eventBus.$emit('updateCmp', cmpCopy);
+      }
+    },
   },
   methods: {
     editTxt(ev, cmp) {
@@ -57,6 +54,10 @@ export default {
     openEdit(cmp) {
       eventBus.$emit('edit', cmp)
     },
+  },
+  components: {
+    appForm,
+    appArticle
   }
 };
 </script>

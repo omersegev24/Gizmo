@@ -3,12 +3,12 @@
     <section class="wap-prefs-container">
       <div class="flex space-between align-center" @click="toggleWapPrefs">
         <p>Website Preferences</p>
-        <template v-if="!isPrefsOpen"> 
+        <template v-if="!isPrefsOpen">
           <span>
             <i class="fas fa-angle-down"></i>
           </span>
         </template>
-        <template v-else> 
+        <template v-else>
           <span>
             <i class="fas fa-angle-up"></i>
           </span>
@@ -39,14 +39,14 @@
         ></textarea>
         <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
       </div>-->
-        <!-- <input
+      <!-- <input
           v-else
           type="text"
           v-model="cmpCopy.txt"
           @input="updateCmp(cmpCopy)"
           placeholder="Enter text"
         />
-      </div> -->
+      </div>-->
 
       <div v-if="currCmp.to" class="flex align-center space-between">
         <p>Link to:</p>
@@ -57,7 +57,7 @@
       <div v-if="currCmp.imgUrl">
         <div class="upload-img-container flex space-between align-center">
           <p>Upload image:</p>
-          <input @change="uploadImg" id="file" type="file" title="Upload Image"/>
+          <input @change="uploadImg" id="file" type="file" title="Upload Image" />
           <label class="btn-3" for="file">
             <span>Upload</span>
           </label>
@@ -103,9 +103,9 @@ export default {
     }
   },
   methods: {
-    updateWapPref(wap) {},
+    updateWapPref(wap) { },
     updateCmp(cmp) {
-      console.log("inside editpanel ", cmp.txt);
+      console.log("inside editpanel ", cmp.type);
       eventBus.$emit("updateCmp", cmp);
     },
     uploadImg(ev) {

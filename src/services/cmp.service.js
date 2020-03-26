@@ -34,6 +34,12 @@ const cmps = [
     //         }
     //     ]
     // },
+    // {
+    //     id: '12zs',
+    //     type: 'p',
+    //     txt: 'text text',
+    //     style: {}
+    // },
     {
         id: 'cmp102',
         type: 'app-header',

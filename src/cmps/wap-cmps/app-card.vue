@@ -29,6 +29,7 @@ export default {
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
+      console.log('app-card open edit', cmp)
       eventBus.$emit("edit", cmp);
     }
   }

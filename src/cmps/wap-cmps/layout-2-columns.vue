@@ -1,12 +1,21 @@
 <template>
-  <section class="layout-2-columns flex justify-center" :class="cmp.subClass" :style="cmp.style">
-    <component
-      v-for="child in cmp.children"
-      :is="child.type"
-      :cmp="child"
-      :key="child.id"
-      :selectedCmp="selectedCmp"
-    ></component>
+  <section class="layout-2-columns flex justify-center" :style="cmp.style">
+    <draggable
+      v-model="contactCmp"
+      class="flex space-evenly"
+      style="width:100%"
+      @start="dragging = true"
+      @end="dragging = false"
+    >
+      <component
+        v-for="child in cmp.children"
+        :is="child.type"
+        :cmp="child"
+        :key="child.id"
+        :style="child.style"
+        :selectedCmp="selectedCmp"
+      ></component>
+    </draggable>
   </section>
 </template>
 
@@ -19,6 +28,39 @@ export default {
   props: {
     cmp: Object,
     selectedCmp: Object
+  },
+  data() {
+    return {
+      cmpCopy: JSON.parse(JSON.stringify(this.cmp))
+    }
+  },
+  computed: {
+    contactCmp: {
+      get() {
+        return JSON.parse(JSON.stringify(this.cmp.children));
+      },
+      set(cmps) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
+        cmpCopy.children = cmps
+        eventBus.$emit('updateCmp', cmpCopy);
+      }
+    },
+
+  },
+  watch: {
+    cmp: {
+      handler() {
+        this.cmpCopy = JSON.parse(JSON.stringify(this.cmp))
+
+      },
+      deep: true
+    }
+  },
+  methods: {
+    openEdit(cmp) {
+      console.log(cmp)
+      eventBus.$emit('edit', cmp)
+    },
   },
   components: {
     appCard,

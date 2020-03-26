@@ -192,6 +192,8 @@ export default {
           return { name: "Social Links", class: "fas fa-share-alt" };
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
+        case "p":
+          return { name: "Text", class: "fas fa-map-marked-alt" };
       }
     },
     widgetsCmps(type) {
