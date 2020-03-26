@@ -55,7 +55,7 @@
     }
   }
 
-  .divider{
+  .divider {
     width: 100%;
     height: 1px;
     margin: 0;
@@ -104,93 +104,133 @@
     margin-left: 0;
   }
 
-.accordion-item-title {
-  position: relative;
+  .accordion-item-title {
+    position: relative;
 
-  h4 {
-    color: $clr2;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: start;
-    margin-bottom: rem(20px);
-    div {
-      padding: rem(10px);
-      p {
-        width: fit-content;
-        margin: 0;
+    h4 {
+      color: $clr2;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: start;
+      margin-bottom: rem(20px);
+      div {
+        padding: rem(10px);
+        p {
+          width: fit-content;
+          margin: 0;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
-      &:hover {
-        cursor: pointer;
+      // font-size: 1.25rem;
+      // padding: rem(5px);
+      // padding-right: 1.25rem;
+      // width: fit-content;
+      // margin: 0;
+    }
+  }
+  .accordion-row {
+    width: 100%;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    &,
+    .item-details-inner {
+      padding: 0.75rem 1.25rem;
+    }
+    :hover {
+      opacity: 0.7;
+    }
+    span {
+      color: $clr2;
+      font-size: 1rem;
+    }
+  }
+  .accordion-row-icon {
+    $size: 8px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 1.25rem;
+    bottom: 0;
+    margin: auto;
+    width: $size;
+    height: $size;
+    border-right: 2px solid $clr2;
+    border-bottom: 2px solid $clr2;
+    transform: translateY(-$size / 4) rotate(45deg);
+    transition: transform 0.2s ease;
+
+    .is-active & {
+      transform: translateY($size / 4) rotate(225deg);
+    }
+  }
+  .item-details {
+    overflow: hidden;
+    background-color: rgba(220, 220, 220, 0.5);
+  }
+  .accordion-item-enter-active,
+  .accordion-item-leave-active {
+    will-change: height;
+    transition: height 0.2s ease;
+  }
+  .accordion-item-enter,
+  .accordion-item-leave-to {
+    height: 0 !important;
+  }
+
+  .list-group {
+   display: flex 
+  }
+  .cmp-btn {
+    width: 75px;
+    height: 75px;
+    background-color: #fff;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    margin: 5px;
+    font-size: 0.8rem;
+    min-width: 100px;
+    border-radius: rem(5px);
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .cmp-preview {
+      text-align: center;
+      background-color: #ccc;
+      border-radius: 0.5em;
+      user-select: none;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      &:focus {
+        opacity: 1;
       }
     }
-    // font-size: 1.25rem;
-    // padding: rem(5px);
-    // padding-right: 1.25rem;
-    // width: fit-content;
-    // margin: 0;
+    &.sortable-drag {
+      // width: 100%;
+      .cmp-preview {
+        // overflow: unset;
+        opacity: 1;
+      }
+    }
   }
-}
-.accordion-row {
-  width: 100%;
-  text-align: left;
-  background-color: #fff;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
-  &,.item-details-inner{
-    padding: 0.75rem 1.25rem;
-  }
-  :hover{
-    opacity: 0.7;
-  }
-  span {
-    color: $clr2;
-    font-size: 1rem;
-  }
-}
-.accordion-row-icon {
-  $size: 8px;
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 1.25rem;
-  bottom: 0;
-  margin: auto;
-  width: $size;
-  height: $size;
-  border-right: 2px solid $clr2;
-  border-bottom: 2px solid $clr2;
-  transform: translateY(-$size / 4) rotate(45deg);
-  transition: transform 0.2s ease;
 
-  .is-active & {
-    transform: translateY($size / 4) rotate(225deg);
-  }
-}
-.item-details {
-  overflow: hidden;
-  background-color: rgba(220,220,220, 0.5);
-}
-.accordion-item-enter-active,
-.accordion-item-leave-active {
-  will-change: height;
-  transition: height 0.2s ease;
-}
-.accordion-item-enter,
-.accordion-item-leave-to {
-  height: 0 !important;
-}
-.cmp-btn {
-  background-color: #fff;
-  padding: 0.5rem;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
-  margin: 5px;
-  font-size: 0.8rem;
-  min-width: 100px;
-  border-radius: rem(5px);
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-}
+  // .cmp-btn {
+  //   background-color: #fff;
+  //   padding: 0.5rem;
+  //   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  //   margin: 5px;
+  //   font-size: 0.8rem;
+  //   min-width: 100px;
+  //   border-radius: rem(5px);
+  //   &:hover {
+  //     cursor: pointer;
+  //     opacity: 0.8;
+  //   }
+  // }
 }

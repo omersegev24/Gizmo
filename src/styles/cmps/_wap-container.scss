@@ -6,7 +6,6 @@
   // height: calc(100vh - 90px);      
   overflow-y: scroll;
   overflow-x: hidden;
-  border-radius: 5px;
   
   @include for-narrow-layout {
     width: $break-narrow;

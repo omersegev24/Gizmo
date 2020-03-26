@@ -18,6 +18,7 @@
 <script>
 import cmpPreview from "./cmp-preview.vue";
 export default {
+  display: "Nested",
   props: {
     wap: Object
   },
