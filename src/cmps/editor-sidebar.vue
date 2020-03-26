@@ -36,18 +36,40 @@
                 v-if="item.title === 'Sections'"
                 class="cmp-btns-container flex flex-wrap space-evenly"
               >
-                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in filteredCmps" :key="cmp.id">
-                  <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-                    <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-                    <p>{{cmpType(cmp.type).name}}</p>
+                <draggable
+                  :list="filteredCmps"
+                  :disabled="!enabled"
+                  :group="{ name: 'wap', pull: 'clone', put: false }"
+                  class="list-group"
+                  ghost-class="ghost"
+                  @start="dragging = true"
+                  @end="dragging = false"
+                >
+                  <div
+                    class="cmp-btn"
+                    @click="$emit('addCmp',cmp)"
+                    v-for="cmp in filteredCmps"
+                    :key="cmp.id"
+                  >
+                    <cmp-preview :cmp="cmp"></cmp-preview>
+
+                    <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
+                      <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+                      <p>{{cmpType(cmp.type).name}}</p>
+                    </div>
                   </div>
-                </div>
+                </draggable>
               </div>
               <div
                 v-else-if="item.title === 'Widgets'"
                 class="cmp-btns-container flex flex-wrap space-evenly"
               >
-                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="widget in widgets" :key="widget.id">
+                <div
+                  class="cmp-btn"
+                  @click="$emit('addCmp',cmp)"
+                  v-for="widget in widgets"
+                  :key="widget.id"
+                >
                   <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
                     <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
                     <p>{{widgetsCmps(widget.type).name}}</p>
@@ -70,12 +92,15 @@
 <script>
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
+import cmpPreview from './cmp-preview.vue'
 export default {
   props: {
     cmps: Array
   },
   data() {
     return {
+      enabled: true,
+      dragging: false,
       items: [
         {
           id: 1,
@@ -107,16 +132,17 @@ export default {
     this.items[0].cmps = this.cmps;
   },
   computed: {
+
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
     filteredCmps() {
-      return this.cmps.filter(cmp => 
+      return this.cmps.filter(cmp =>
         cmp.type !== 'app-youtube' && cmp.type !== 'app-map'
       );
     },
     widgets() {
-      return this.cmps.filter(cmp => 
+      return this.cmps.filter(cmp =>
         cmp.type === 'app-youtube' || cmp.type === 'app-map'
       );
     }
@@ -169,7 +195,18 @@ export default {
     }
   },
   components: {
-    editPanel
+    editPanel,
+    cmpPreview
   }
 };
 </script>
+<style lang="scss" scoped>
+.cmp-btn {
+  &.static-cmp {
+    overflow: hidden;
+    .cmp-preview {
+      opacity: 0;
+    }
+  }
+}
+</style>

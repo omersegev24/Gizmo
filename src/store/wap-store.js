@@ -9,7 +9,7 @@ export default ({
 		selectedCmp: {},
 	},
 	getters: {
-		waps(state){
+		waps(state) {
 			return state.waps;
 		},
 		wap(state) {
@@ -33,7 +33,9 @@ export default ({
 			state.wap = wap
 		},
 		updateCmps(state, { cmps }) {
+			console.log('updateCmps', cmps)
 			state.wap.cmps = cmps
+			console.log('updateCmps', state.wap)
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
