@@ -3,6 +3,7 @@
     <draggable
       v-model="wapCmp"
       :disabled="!enabled"
+      group="wap"
       class="list-group"
       ghost-class="ghost"
       @start="dragging = true"
@@ -35,7 +36,7 @@ export default {
       },
       set(cmps) {
         // const cmps =  JSON.parse(JSON.stringify(value))
-        this.$store.commit({type:'updateCmps', cmps})
+        this.$store.commit({ type: 'updateCmps', cmps })
       }
     },
 
