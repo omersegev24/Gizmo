@@ -1,5 +1,11 @@
 <template>
-  <nav class="app-nav flex space-between align-center" :class="cmp.subClass" @click.stop="edit(cmp)">
+  <nav
+    class="app-nav flex space-between align-center"
+    :class="cmp.subClass"
+    @click.stop="edit(cmp)"
+    role="navv"
+    slot="header"
+  >
     <p v-for="logo in logos" :key="logo.id">
       <component
         class="logo"
@@ -11,30 +17,30 @@
         @click.stop="edit(logo)"
       >{{logo.txt}}</component>
     </p>
-      <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
-        <li v-for="link in links" :key="link.id">
-          <component
-            :is="link.type"
-            :style="link.style"
-            :contenteditable="true"
-            :href="'#' + link.to"
-            @input="editTxt($event,link)"
-            :src="link.imgUrl"
-            :class="{'mark-selected':link.id === selectedCmp.id}"
-            @click.stop="edit(link)"
-          >{{link.txt}}</component>
-        </li>
-      </ul>
-      <p class="hamburger-menu" @click="toggleMenu">
-        <i class="fas fa-bars"></i>
-      </p>
+    <ul class="nav-links flex align-center" :class="{'menu-open': isMenuOpen}">
+      <li v-for="link in links" :key="link.id">
+        <component
+          :is="link.type"
+          :style="link.style"
+          :contenteditable="true"
+          :href="'#' + link.to"
+          @input="editTxt($event,link)"
+          :src="link.imgUrl"
+          :class="{'mark-selected':link.id === selectedCmp.id}"
+          @click.stop="edit(link)"
+        >{{link.txt}}</component>
+      </li>
+    </ul>
+    <p class="hamburger-menu" @click="toggleMenu">
+      <i class="fas fa-bars"></i>
+    </p>
   </nav>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
-
+  display: "Header slot",
   props: {
     cmp: Object,
     selectedCmp: Object

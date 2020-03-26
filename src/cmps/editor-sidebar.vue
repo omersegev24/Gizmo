@@ -40,10 +40,11 @@
                   :list="filteredCmps"
                   :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
-                  class="list-group"
+                  dragClass="sortable-drag"
                   @start="dragStart"
                   @end="dragging = false"
-                  @clone="cloneCmp(cmp)"
+                  :clone="cloneCmp"
+                  handle="navv"
                 >
                   <div
                     class="cmp-btn"
@@ -150,10 +151,11 @@ export default {
   methods: {
     cloneCmp(cmp) {
       console.log('evenet clone', cmp)
+
     },
     dragStart(ev) {
       this.dragging = true
-      console.log('ev', ev)
+      // console.log('ev', ev.item.classList)
     },
     saveWap() {
       eventBus.$emit("saveWap");
