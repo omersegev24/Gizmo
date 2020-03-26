@@ -40,9 +40,10 @@
                   :list="filteredCmps"
                   :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
-                  ghost-class="ghost"
-                  @start="dragging = true"
-                  @end="dragging = false, cloneCmp"
+                  class="list-group"
+                  @start="dragStart"
+                  @end="dragging = false"
+                  :clone="cloneCmp"
                 >
                   <div
                     class="cmp-btn"
@@ -89,6 +90,7 @@
 </template>
 
 <script>
+import {wapService} from '../services/wap.service.js'
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
 import cmpPreview from './cmp-preview.vue'
@@ -147,7 +149,14 @@ export default {
   },
   methods: {
     cloneCmp(cmp) {
-      console.log(cmp)
+      console.log('evenet clone', cmp)
+      var copy = JSON.parse(JSON.stringify(cmp))
+      copy.id = wapService.makeId()
+      return copy
+    },
+    dragStart(ev) {
+      this.dragging = true
+      console.log('ev', ev)
     },
     saveWap() {
       eventBus.$emit("saveWap");
@@ -203,10 +212,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .cmp-btn {
-  &.static-cmp {
-    overflow: hidden;
+  width: 100px;
+  height: 100px;
+  /* overflow: hidden; */
+  .cmp-preview {
+    opacity: 0;
+  }
+  &.sortable-drag {
+    /* overflow: unset; */
+    width: 100%;
     .cmp-preview {
-      opacity: 0;
+      opacity: 1;
     }
   }
 }

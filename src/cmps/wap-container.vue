@@ -3,13 +3,16 @@
     <draggable
       v-model="wapCmp"
       :disabled="!enabled"
-      group="wap"
       class="list-group"
       ghost-class="ghost"
       @start="dragging = true"
       @end="dragging = false"
+      group="wap"
     >
       <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
+
+      <!-- <div slot="header" class="btn-group list-group-item" role="group" >HEADER</div> -->
+
     </draggable>
   </section>
 </template>
@@ -32,18 +35,18 @@ export default {
   computed: {
     wapCmp: {
       get() {
-        return this.$store.getters.cmps
+        return this.$store.getters.cmps;
       },
       set(cmps) {
         // const cmps =  JSON.parse(JSON.stringify(value))
-        this.$store.commit({ type: 'updateCmps', cmps })
+        this.$store.commit({ type: "updateCmps", cmps });
       }
     },
 
     wapTheme() {
-      return this.$store.getters.wapTheme
-    },
-  },
+      return this.$store.getters.wapTheme;
+    }
+  }
 };
 </script>
 <style scoped>
