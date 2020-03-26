@@ -1,5 +1,5 @@
 <template>
-  <section class="editor-sidebar">
+  <section class="editor-sidebar flex flex-column">
     <div class="top-sidebar flex">
       <div :class="{'active-tab': !editMode}" @click="editMode = false">
         <span class="fas fa-plus"></span> Elements
@@ -15,9 +15,19 @@
       <div v-for="item in items" :item="item" :key="item.id">
         <div class="accordion-item" :class="{'is-active': item.active}">
           <div class="accordion-item-title">
-            <button @click="toggle(item)" class="accordion-row">
-              <p>{{item.title}}</p>
-              <span class="accordion-row-icon"></span>
+            <button @click="toggle(item)" class="accordion-row flex space-between align-center">
+              <h4>{{item.title}}</h4>
+              <template v-if="!item.active" class="accordion-row-icon">
+                <span>
+                  <i class="fas fa-angle-down"></i>
+                </span>
+              </template>
+              <template v-else>
+                <span>
+                  <i class="fas fa-angle-up"></i>
+                </span>
+              </template>
+              <!-- <span class="accordion-row-icon"></span> -->
             </button>
           </div>
           <transition name="fade">
@@ -26,12 +36,24 @@
                 v-if="item.title === 'Sections'"
                 class="cmp-btns-container flex flex-wrap space-evenly"
               >
-                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in cmps" :key="cmp.id">
-                  <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-                  <p>{{cmpType(cmp.type).name}}</p>
+                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="cmp in filteredCmps" :key="cmp.id">
+                  <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
+                    <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+                    <p>{{cmpType(cmp.type).name}}</p>
+                  </div>
                 </div>
               </div>
-              <div else>{{item.details}}</div>
+              <div
+                v-else-if="item.title === 'Widgets'"
+                class="cmp-btns-container flex flex-wrap space-evenly"
+              >
+                <div class="cmp-btn" @click="$emit('addCmp',cmp)" v-for="widget in widgets" :key="widget.id">
+                  <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
+                    <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
+                    <p>{{widgetsCmps(widget.type).name}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </transition>
         </div>
@@ -66,15 +88,12 @@ export default {
           id: 2,
           active: false,
           title: "Elements",
-          details: `
-          <p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`,
           cmps: {}
         },
         {
           id: 3,
           active: false,
           title: "Widgets",
-          details: `<p>Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>`,
           cmps: {}
         }
       ],
@@ -90,6 +109,16 @@ export default {
   computed: {
     currCmp() {
       return this.$store.getters.selectedCmp;
+    },
+    filteredCmps() {
+      return this.cmps.filter(cmp => 
+        cmp.type !== 'app-youtube' && cmp.type !== 'app-map'
+      );
+    },
+    widgets() {
+      return this.cmps.filter(cmp => 
+        cmp.type === 'app-youtube' || cmp.type === 'app-map'
+      );
     }
   },
   methods: {
@@ -127,10 +156,17 @@ export default {
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
       }
+    },
+    widgetsCmps(type) {
+      switch (type) {
+        case "app-youtube":
+          return { name: "YouTube", class: "fab fa-youtube" };
+        case "app-map":
+          return { name: "Map", class: "fas fa-map-marked-alt" };
+        default:
+          return false;
+      }
     }
-    // changeWapTheme(themeName) {
-    //   this.$store.commit({ type: 'changeWapTheme', themeName });
-    // }
   },
   components: {
     editPanel

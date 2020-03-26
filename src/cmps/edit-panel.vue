@@ -3,14 +3,21 @@
     <section class="wap-prefs-container">
       <div class="flex space-between align-center" @click="toggleWapPrefs">
         <p>Website Preferences</p>
+        <template v-if="!isPrefsOpen"> 
           <span>
-            <i :class="[isPrefsOpen ? 'fas fa-sort-up' : 'fas fa-sort-down']"></i>
+            <i class="fas fa-angle-down"></i>
           </span>
+        </template>
+        <template v-else> 
+          <span>
+            <i class="fas fa-angle-up"></i>
+          </span>
+        </template>
       </div>
       <transition name="prefs">
-      <div v-show="isPrefsOpen">
-        <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
-      </div>
+        <div v-show="isPrefsOpen">
+          <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+        </div>
       </transition>
     </section>
 
