@@ -153,16 +153,10 @@
   .app-contact-us {
     flex-direction: column;
     .info {
+      margin: 0 auto;
       margin-bottom: 20px;
       .adress-info {
         margin: rem(40px) 0;
-        p {
-          margin: 0 auto;
-        }
-      }
-
-      p {
-        margin: 0 auto;
       }
     }
     form {

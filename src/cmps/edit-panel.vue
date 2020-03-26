@@ -2,7 +2,7 @@
   <section class="edit-panel flex flex-column">
     <section class="wap-prefs-container">
       <div class="flex space-between align-center" @click="toggleWapPrefs">
-        <p>Wap Preferences</p>
+        <p>Website Preferences</p>
           <span>
             <i :class="[isPrefsOpen ? 'fas fa-sort-up' : 'fas fa-sort-down']"></i>
           </span>
@@ -48,9 +48,9 @@
       <hr v-if="currCmp.to" class="divider" />
 
       <div v-if="currCmp.imgUrl">
-        <div class="flex space-between align-center">
+        <div class="upload-img-container flex space-between align-center">
           <p>Upload image:</p>
-          <input @change="uploadImg" id="file" type="file" />
+          <input @change="uploadImg" id="file" type="file" title="Upload Image"/>
           <label class="btn-3" for="file">
             <span>Upload</span>
           </label>

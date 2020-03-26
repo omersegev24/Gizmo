@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="save-btns flex space-evenly align-center">
+    <div class="save-btns flex justify-center align-center">
       <button>Publish</button>
       <button @click="saveWap">Save</button>
     </div>
