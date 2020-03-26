@@ -40,7 +40,6 @@
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
-  display: "Header slot",
   props: {
     cmp: Object,
     selectedCmp: Object

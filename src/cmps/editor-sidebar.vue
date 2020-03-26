@@ -44,7 +44,6 @@
                   @start="dragStart"
                   @end="dragging = false"
                   :clone="cloneCmp"
-                  handle="navv"
                 >
                   <div
                     class="cmp-btn"
@@ -91,6 +90,7 @@
 </template>
 
 <script>
+import {wapService} from '../services/wap.service.js'
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
 import cmpPreview from './cmp-preview.vue'
@@ -151,7 +151,9 @@ export default {
   methods: {
     cloneCmp(cmp) {
       console.log('evenet clone', cmp)
-
+      var copy = JSON.parse(JSON.stringify(cmp))
+      copy.id = wapService.makeId()
+      return copy
     },
     dragStart(ev) {
       this.dragging = true

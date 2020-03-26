@@ -64,7 +64,7 @@ export default {
     },
     async saveWap() {
       const id = await this.$store.dispatch({ type: "saveWap" });
-      console.log("link", window.location.origin + '/website/' + id);
+      console.log("link", window.location.origin + "/website/" + id);
     }
   },
   components: {
