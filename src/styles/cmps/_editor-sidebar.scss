@@ -182,7 +182,12 @@
     height: 0 !important;
   }
 
+  .list-group {
+   display: flex 
+  }
   .cmp-btn {
+    width: 75px;
+    height: 75px;
     background-color: #fff;
     padding: 0.5rem;
     border-bottom: 1px solid rgba(10, 10, 10, 0.1);
@@ -194,5 +199,38 @@
       cursor: pointer;
       opacity: 0.8;
     }
+    .cmp-preview {
+      text-align: center;
+      background-color: #ccc;
+      border-radius: 0.5em;
+      user-select: none;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      &:focus {
+        opacity: 1;
+      }
+    }
+    &.sortable-drag {
+      // width: 100%;
+      .cmp-preview {
+        // overflow: unset;
+        opacity: 1;
+      }
+    }
   }
+
+  // .cmp-btn {
+  //   background-color: #fff;
+  //   padding: 0.5rem;
+  //   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  //   margin: 5px;
+  //   font-size: 0.8rem;
+  //   min-width: 100px;
+  //   border-radius: rem(5px);
+  //   &:hover {
+  //     cursor: pointer;
+  //     opacity: 0.8;
+  //   }
+  // }
 }
