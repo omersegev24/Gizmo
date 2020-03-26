@@ -6,6 +6,7 @@
       :cmp="child"
       :key="child.id"
       :selectedCmp="selectedCmp"
+      @click.native="openEdit(child)"
     ></component>
   </section>
 </template>
@@ -23,6 +24,11 @@ export default {
   components: {
     appCard,
     appArticle
-  }
+  },
+  methods: {
+    openEdit(cmp){
+      eventBus.$emit('edit', cmp)
+    },
+  },
 };
 </script>

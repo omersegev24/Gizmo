@@ -16,6 +16,8 @@
 //VIEWS
 @import 'views/home';
 @import 'views/editor';
+@import 'views/explore';
+@import 'views/template';
 
 
 // CMPS
@@ -27,6 +29,7 @@
 @import 'cmps/edit-text';
 @import 'cmps/edit-map';
 @import 'cmps/action-panel';
+@import 'cmps/wap-list';
 
 //WAP CMPS
 @import 'wap-cmps/app-header';

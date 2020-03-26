@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-list">
+  <section class="wap-list card-grid">
     <div v-for="wap in waps" :key="wap._id">
       <wap-preview :wap="wap"></wap-preview>
     </div>

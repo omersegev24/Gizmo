@@ -5,19 +5,21 @@
     :class="cmp.subClass"
     :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
   >
-    <component
-      v-for="child in cmp.children"
-      :key="child.id"
-      ref="txt"
-      :is="child.type"
-      :style="child.style"
-      :contenteditable="true"
-      :src="child.imgUrl"
-      :class="{'title':child.type === 'p',
+    <draggable v-model="myList" @start="dragging = true" @end="dragging = false" :disabled="!enabled">
+      <component
+        v-for="child in cmp.children"
+        :key="child.id"
+        ref="txt"
+        :is="child.type"
+        :style="child.style"
+        :contenteditable="true"
+        :src="child.imgUrl"
+        :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-      @input="editTxt($event,child)"
-      @click.stop="openEdit(child)"
-    >{{child.txt}}</component>
+        @input="editTxt($event,child)"
+        @click.stop="openEdit(child)"
+      >{{child.txt}}</component>
+    </draggable>
   </header>
 </template>
 
@@ -30,8 +32,10 @@ export default {
   },
   data() {
     return {
-      cmpCopy: JSON.parse(JSON.stringify(this.selectedCmp))
-    }
+      cmpCopy: JSON.parse(JSON.stringify(this.selectedCmp)),
+      enabled: true,
+      dragging: false
+    };
   },
   methods: {
     editTxt(ev, cmp) {
@@ -41,13 +45,24 @@ export default {
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
-    },
+    }
+  },
+  computed: {
+    myList: {
+      get() {
+        return this.cmp.children;
+      },
+      set(value) {
+        console.log(value);
+        // this.$store.commit("updateList", value);
+      }
+    }
   },
 
   watch: {
     selectedCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
     }
-  },
+  }
 };
 </script>

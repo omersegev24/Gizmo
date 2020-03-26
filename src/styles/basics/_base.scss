@@ -9,16 +9,15 @@ img {
 html {
     color: $clr2;
     text-align: center;
-    // line-height: 1.9;
 }
 
 body {
     margin: 0 auto;
-    // max-width: $max-width;
+    font-family: Lato;
 }
 
 h1, h2 {
-    font-family: GreatVibes, serif;
+    // font-family: GreatVibes, serif;
     font-size: rem(70px);
     margin: 0 0 rem(20px);
     font-weight: normal;
