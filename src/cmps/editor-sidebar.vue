@@ -40,10 +40,9 @@
                   :list="filteredCmps"
                   :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
-                  class="list-group"
                   ghost-class="ghost"
                   @start="dragging = true"
-                  @end="dragging = false"
+                  @end="dragging = false, cloneCmp"
                 >
                   <div
                     class="cmp-btn"
@@ -132,7 +131,6 @@ export default {
     this.items[0].cmps = this.cmps;
   },
   computed: {
-
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
@@ -148,6 +146,9 @@ export default {
     }
   },
   methods: {
+    cloneCmp(cmp) {
+      console.log(cmp)
+    },
     saveWap() {
       eventBus.$emit("saveWap");
     },
