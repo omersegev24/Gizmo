@@ -8,7 +8,7 @@
       @start="dragging = true"
       @end="dragging = false"
     >
-      <wap-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></wap-preview>
+      <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
     </draggable>
   </section>
 </template>
@@ -26,7 +26,7 @@ export default {
     };
   },
   components: {
-    wapPreview
+    cmpPreview
   },
   computed: {
     wapCmp: {
