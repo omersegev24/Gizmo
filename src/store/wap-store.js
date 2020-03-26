@@ -1,5 +1,6 @@
 import { wapService } from '../services/wap.service.js'
 import cloudinaryService from "../services/cloudinary.service.js";
+import Vue from 'vue'
 
 export default ({
 	state: {
@@ -8,13 +9,16 @@ export default ({
 		selectedCmp: {},
 	},
 	getters: {
-		getWap(state) {
+		waps(state){
+			return state.waps;
+		},
+		wap(state) {
 			return state.wap;
 		},
 		cmps(state) {
 			return state.wap.cmps;
 		},
-		getSelectedCmp(state) {
+		selectedCmp(state) {
 			return state.selectedCmp
 		},
 		wapTheme(state) {
@@ -43,8 +47,8 @@ export default ({
 			state.wap.theme = wapCopy.theme
 			state.wap.title = wapCopy.title
 		},
-		removeCmp(state, { cmp }) {
-			const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === cmp.id)
+		removeCmp(state, { cmpId }) {
+			const idx = state.wap.cmps.findIndex(currCmp => currCmp.id === cmpId)
 			state.wap.cmps.splice(idx, 1)
 		},
 		setSelectedCmp(state, { cmp }) {
@@ -74,12 +78,12 @@ export default ({
 		},
 		async loadWap(context, { wapId }) {
 			const wap = await wapService.getById(wapId)
+			Vue.delete(wap, '_id')
+			console.log(wap)
 			context.commit({ type: 'setWap', wap })
 			return wap
 		},
 		async updateCmp(context, { cmp }) {
-			// console.log('inside store updateCMp', cmp.txt)
-			console.log('cmp store', cmp.type)
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
 			const wap = await wapService.updateWap(wapCopy, cmpCopy)
@@ -112,8 +116,9 @@ export default ({
 
 		async saveWap(context) {
 			context.commit({ type: 'setInProgress', inProgress: true })
-			await wapService.update(context.state.wap)
+			const wap = await wapService.add(context.state.wap)
 			context.commit({ type: 'setInProgress', inProgress: false })
+			return wap._id
 		},
 	}
 })

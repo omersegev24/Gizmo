@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import wapPreview from './wap-preview.vue'
+import cmpPreview from "./cmp-preview.vue";
 export default {
   props: {
     wap: Object

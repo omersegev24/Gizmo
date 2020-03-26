@@ -62,7 +62,7 @@
 
     <div class="save-btns flex justify-center align-center">
       <button>Publish</button>
-      <button @click="saveWap">Save</button>
+      <button @click.stop="saveWap">Save</button>
     </div>
   </section>
 </template>
@@ -108,7 +108,7 @@ export default {
   },
   computed: {
     currCmp() {
-      return this.$store.getters.getSelectedCmp;
+      return this.$store.getters.selectedCmp;
     },
     filteredCmps() {
       return this.cmps.filter(cmp => 

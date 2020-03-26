@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     selectedCmp() {
-      return this.$store.getters.getSelectedCmp
+      return this.$store.getters.selectedCmp
     }
   },
   async created() {

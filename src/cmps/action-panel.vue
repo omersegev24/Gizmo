@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     remove() {
-      eventBus.$emit("remove", this.cmp);
+      eventBus.$emit("remove", this.cmp.id);
     },
     updatePos(diff) {
       eventBus.$emit("updatePos", { diff, cmp: this.cmp });
