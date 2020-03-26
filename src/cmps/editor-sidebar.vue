@@ -32,21 +32,19 @@
           </div>
           <transition name="fade">
             <div v-if="item.active" class="item-details">
-              <div
-                v-if="item.title === 'Sections'"
-                class="cmp-btns-container flex flex-wrap space-evenly"
-              >
+              <div v-if="item.title === 'Sections'" class="cmp-btns-container">
                 <draggable
                   :list="filteredCmps"
                   :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
-                  dragClass="sortable-drag"
+                  :sort="false"
+                  class="list-group flex flex-wrap space-evenly"
                   @start="dragStart"
                   @end="dragging = false"
                   :clone="cloneCmp"
                 >
                   <div
-                    class="cmp-btn"
+                    class="cmp-btn flex flex-column align-center justify-center"
                     @click="$emit('addCmp',cmp)"
                     v-for="cmp in filteredCmps"
                     :key="cmp.id"
@@ -64,17 +62,29 @@
                 v-else-if="item.title === 'Widgets'"
                 class="cmp-btns-container flex flex-wrap space-evenly"
               >
-                <div
-                  class="cmp-btn"
-                  @click="$emit('addCmp',cmp)"
-                  v-for="widget in widgets"
-                  :key="widget.id"
+                <draggable
+                  :list="widgets"
+                  :disabled="!enabled"
+                  :group="{ name: 'wap', pull: 'clone', put: false }" 
+                  :sort="false"
+                  class="list-group flex flex-wrap space-evenly"
+                  @start="dragStart"
+                  @end="dragging = false"
+                  :clone="cloneCmp"
+                  :move="checkMove"
                 >
-                  <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
-                    <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
-                    <p>{{widgetsCmps(widget.type).name}}</p>
+                  <div
+                    class="cmp-btn"
+                    @click="$emit('addCmp',cmp)"
+                    v-for="widget in widgets"
+                    :key="widget.id"
+                  >
+                    <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
+                      <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
+                      <p>{{widgetsCmps(widget.type).name}}</p>
+                    </div>
                   </div>
-                </div>
+                </draggable>
               </div>
             </div>
           </transition>
@@ -90,10 +100,10 @@
 </template>
 
 <script>
-import {wapService} from '../services/wap.service.js'
+import { wapService } from "../services/wap.service.js";
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
-import cmpPreview from './cmp-preview.vue'
+import cmpPreview from "./cmp-preview.vue";
 export default {
   props: {
     cmps: Array
@@ -133,27 +143,30 @@ export default {
     this.items[0].cmps = this.cmps;
   },
   computed: {
-
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
     filteredCmps() {
-      return this.cmps.filter(cmp =>
-        cmp.type !== 'app-youtube' && cmp.type !== 'app-map'
+      return this.cmps.filter(
+        cmp => cmp.type !== "app-youtube" && cmp.type !== "app-map"
       );
     },
     widgets() {
-      return this.cmps.filter(cmp =>
-        cmp.type === 'app-youtube' || cmp.type === 'app-map'
+      return this.cmps.filter(
+        cmp => cmp.type === "app-youtube" || cmp.type === "app-map"
       );
     }
   },
   methods: {
     cloneCmp(cmp) {
-      console.log('evenet clone', cmp)
-      var copy = JSON.parse(JSON.stringify(cmp))
-      copy.id = wapService.makeId()
-      return copy
+      console.log("evenet clone", cmp);
+      var copy = JSON.parse(JSON.stringify(cmp));
+      copy.id = wapService.makeId();
+      return copy;
+    },
+    checkMove(e) {
+      window.console.log("on move: " + e.relatedContext.list);
+      // window.console.log("on move: " + e.draggedContext.futureIndex);
     },
     dragStart(ev) {
       this.dragging = true
@@ -214,19 +227,28 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.cmp-btn {
-  width: 100px;
-  height: 100px;
-  /* overflow: hidden; */
-  .cmp-preview {
-    opacity: 0;
-  }
-  &.sortable-drag {
-    /* overflow: unset; */
-    width: 100%;
-    .cmp-preview {
-      opacity: 1;
-    }
-  }
-}
+// .cmp-btn {
+//   width: 75px;
+//   height: 75px;
+//   .cmp-preview {
+//     text-align: center;
+//     background-color: #ccc;
+//     border-radius: 0.5em;
+//     user-select: none;
+//     height: 0;
+//     padding: 0;
+//     overflow: hidden;
+//     &:focus {
+//       opacity: 1;
+//     }
+//   }
+//   &.sortable-drag {
+//     width: 100%;
+//     .cmp-preview {
+//       // overflow: unset;
+//       opacity: 1;
+//     }
+//   }
+// }
+//
 </style>
