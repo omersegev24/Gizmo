@@ -7,6 +7,7 @@
       ghost-class="ghost"
       @start="dragging = true"
       @end="dragging = false"
+      group="wap"
     >
       <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
     </draggable>
