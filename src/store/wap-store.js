@@ -9,7 +9,7 @@ export default ({
 		selectedCmp: {},
 	},
 	getters: {
-		waps(state){
+		waps(state) {
 			return state.waps;
 		},
 		wap(state) {
@@ -23,6 +23,9 @@ export default ({
 		},
 		wapTheme(state) {
 			return state.wap.theme;
+		},
+		makeId(){
+			return wapService.makeId()
 		}
 	},
 	mutations: {
@@ -33,7 +36,9 @@ export default ({
 			state.wap = wap
 		},
 		updateCmps(state, { cmps }) {
+			console.log('updateCmps', cmps)
 			state.wap.cmps = cmps
+			console.log('updateCmps', state.wap)
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
@@ -68,7 +73,7 @@ export default ({
 		},
 		updateImg(state, { url }) {
 			state.selectedCmp.imgUrl = url
-		}
+		},
 	},
 	actions: {
 		async loadWaps(context) {
@@ -105,15 +110,14 @@ export default ({
 			context.commit({ type: 'updateImg', url })
 			context.dispatch({ type: 'updateCmp', cmp: context.state.selectedCmp })
 		},
-		async addCmp(context, { cmp }) {
+		addCmp(context, { cmp }) {
 			var addedCmp = JSON.parse(JSON.stringify(cmp))
-			addedCmp.id = await wapService.makeId();
+			addedCmp.id = wapService.makeId();
 			context.commit({
 				type: 'addCmp',
 				addedCmp
 			})
 		},
-
 		async saveWap(context) {
 			context.commit({ type: 'setInProgress', inProgress: true })
 			const wap = await wapService.add(context.state.wap)
@@ -122,3 +126,4 @@ export default ({
 		},
 	}
 })
+

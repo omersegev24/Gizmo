@@ -36,11 +36,14 @@
                 v-if="item.title === 'Sections'"
                 class="cmp-btns-container flex flex-wrap space-evenly"
               >
-
                 <draggable
-                  class="dragArea list-group"
                   :list="filteredCmps"
+                  :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
+                  class="list-group"
+                  @start="dragStart"
+                  @end="dragging = false"
+                  :clone="cloneCmp"
                 >
                   <div
                     class="cmp-btn"
@@ -48,13 +51,14 @@
                     v-for="cmp in filteredCmps"
                     :key="cmp.id"
                   >
+                    <cmp-preview :cmp="cmp"></cmp-preview>
+
                     <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
                       <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
                       <p>{{cmpType(cmp.type).name}}</p>
                     </div>
                   </div>
                 </draggable>
-
               </div>
               <div
                 v-else-if="item.title === 'Widgets'"
@@ -86,14 +90,18 @@
 </template>
 
 <script>
+import {wapService} from '../services/wap.service.js'
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
+import cmpPreview from './cmp-preview.vue'
 export default {
   props: {
     cmps: Array
   },
   data() {
     return {
+      enabled: true,
+      dragging: false,
       items: [
         {
           id: 1,
@@ -125,21 +133,32 @@ export default {
     this.items[0].cmps = this.cmps;
   },
   computed: {
+
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
     filteredCmps() {
-      return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube" && cmp.type !== "app-map"
+      return this.cmps.filter(cmp =>
+        cmp.type !== 'app-youtube' && cmp.type !== 'app-map'
       );
     },
     widgets() {
-      return this.cmps.filter(
-        cmp => cmp.type === "app-youtube" || cmp.type === "app-map"
+      return this.cmps.filter(cmp =>
+        cmp.type === 'app-youtube' || cmp.type === 'app-map'
       );
     }
   },
   methods: {
+    cloneCmp(cmp) {
+      console.log('evenet clone', cmp)
+      var copy = JSON.parse(JSON.stringify(cmp))
+      copy.id = wapService.makeId()
+      return copy
+    },
+    dragStart(ev) {
+      this.dragging = true
+      console.log('ev', ev)
+    },
     saveWap() {
       eventBus.$emit("saveWap");
     },
@@ -187,7 +206,25 @@ export default {
     }
   },
   components: {
-    editPanel
+    editPanel,
+    cmpPreview
   }
 };
 </script>
+<style lang="scss" scoped>
+.cmp-btn {
+  width: 100px;
+  height: 100px;
+  /* overflow: hidden; */
+  .cmp-preview {
+    opacity: 0;
+  }
+  &.sortable-drag {
+    /* overflow: unset; */
+    width: 100%;
+    .cmp-preview {
+      opacity: 1;
+    }
+  }
+}
+</style>

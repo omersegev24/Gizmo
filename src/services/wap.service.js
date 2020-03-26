@@ -450,7 +450,7 @@ function makeId(length = 5) {
     for (let i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-    return Promise.resolve(txt);
+    return txt;
 }
 
 function _getYoutubeVidId(url) {
