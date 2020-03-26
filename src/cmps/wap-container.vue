@@ -1,26 +1,22 @@
 <template>
   <section class="wap-container" :class="wapTheme" v-if="wap">
-    <wap-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></wap-preview>
+    <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
   </section>
 </template>
 
 <script>
-import wapPreview from './wap-preview.vue'
+import cmpPreview from "./cmp-preview.vue";
 export default {
   props: {
     wap: Object
   },
-  components: {
-    wapPreview
-  },
   computed: {
-
     wapTheme() {
-      return this.$store.getters.wapTheme
+      return this.$store.getters.wapTheme;
     }
+  },
+  components: {
+    cmpPreview
   }
-}
+};
 </script>
-
-<style>
-</style>

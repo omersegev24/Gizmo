@@ -16,7 +16,7 @@
         <div class="accordion-item" :class="{'is-active': item.active}">
           <div class="accordion-item-title">
             <button @click="toggle(item)" class="accordion-row">
-              <h4>{{item.title}}</h4>
+              <p>{{item.title}}</p>
               <span class="accordion-row-icon"></span>
             </button>
           </div>
@@ -40,7 +40,7 @@
 
     <div class="save-btns flex justify-center align-center">
       <button>Publish</button>
-      <button @click="saveWap">Save</button>
+      <button @click.stop="saveWap">Save</button>
     </div>
   </section>
 </template>
@@ -89,7 +89,7 @@ export default {
   },
   computed: {
     currCmp() {
-      return this.$store.getters.getSelectedCmp;
+      return this.$store.getters.selectedCmp;
     }
   },
   methods: {

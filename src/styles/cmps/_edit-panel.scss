@@ -8,8 +8,14 @@
     font-size: 1rem;
     text-align: start;
     margin-bottom: rem(20px);
+    
+
+      
+    
+    
     div {
-      padding: rem(10px);
+      padding: 0.75rem 1.25rem;
+      // padding: rem(10px);
       p {
         width: fit-content;
         margin: 0;
@@ -97,19 +103,19 @@
       position: relative;
       transition: all 0.3s;
       vertical-align: middle;
-  
+
       &.btn-3 {
         @include for-light-button;
         overflow: hidden;
         margin-right: 10px;
-  
+
         span {
           display: inline-block;
           height: 100%;
           transition: all 0.3s;
           width: 100%;
         }
-  
+
         &::before {
           color: $clr2;
           content: "\f093";
@@ -123,10 +129,10 @@
           transition: all 0.3s;
           width: 100%;
         }
-  
+
         &:hover {
           background-color: $clr1;
-  
+
           span {
             transform: translateY(300%);
           }
@@ -135,9 +141,9 @@
           }
         }
       }
+    }
   }
-  }
-  .img-preview{
+  .img-preview {
     padding-bottom: 10px;
   }
 }

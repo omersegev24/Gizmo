@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import { eventBus } from '../services/eventBus.service.js';
-import { wapService } from '../services/wap.service.js';
-import { cmpService } from '../services/cmp.service.js';
-import editorSidebar from '../cmps/editor-sidebar.vue';
-import wapContainer from '../cmps/wap-container.vue';
+import { eventBus } from "../services/eventBus.service.js";
+import { wapService } from "../services/wap.service.js";
+import { cmpService } from "../services/cmp.service.js";
+import editorSidebar from "../cmps/editor-sidebar.vue";
+import wapContainer from "../cmps/wap-container.vue";
 export default {
   data() {
     return {
@@ -18,50 +18,53 @@ export default {
     };
   },
   async created() {
-    this.$store.dispatch({ type: 'loadWap', wapId: '5e7a76591c9d440000f4b6fb' });
+    const wapId = this.$route.params.id;
+    this.$store.dispatch({ type: "loadWap", wapId });
 
     let cmps = await cmpService.query();
     this.cmps = cmps;
 
-    eventBus.$on('updateCmp', cmp => {
+    eventBus.$on("updateCmp", cmp => {
       this.$store.dispatch({ type: "updateCmp", cmp });
     });
-    eventBus.$on('remove', cmp => {
-      this.$store.commit({ type: 'removeCmp', cmp }); // todo cmp id 
+    eventBus.$on("remove", cmpId => {
+      this.$store.commit({ type: "removeCmp", cmpId });
     });
-    eventBus.$on('updatePos', updatedPos => {
-      this.$store.commit({ type: 'updatePos', updatedPos });
+    eventBus.$on("updatePos", updatedPos => {
+      this.$store.commit({ type: "updatePos", updatedPos });
     });
-    eventBus.$on('edit', cmp => {
-      this.$store.commit({ type: 'setSelectedCmp', cmp });
+    eventBus.$on("edit", cmp => {
+      this.$store.commit({ type: "setSelectedCmp", cmp });
     });
-    eventBus.$on('uploadImg', ev => {
-      this.$store.dispatch({ type: 'uploadImg', ev });
-    })
-    eventBus.$on('saveWap', () => {
-      this.$store.dispatch({ type: 'saveWap' })
+    eventBus.$on("uploadImg", ev => {
+      this.$store.dispatch({ type: "uploadImg", ev });
     });
-    eventBus.$on('updateWapPrefs', wapPrefs => {
-      this.$store.commit({ type: 'updateWapPrefs', wapPrefs })
+    eventBus.$on("saveWap", () => this.saveWap());
+    eventBus.$on("updateWapPrefs", wapPrefs => {
+      this.$store.commit({ type: "updateWapPrefs", wapPrefs });
     });
-    eventBus.$on('changeWapTheme', theme => {
-      this.$store.commit({ type: 'changeWapTheme', theme });
+    eventBus.$on("changeWapTheme", theme => {
+      this.$store.commit({ type: "changeWapTheme", theme });
     });
-    eventBus.$on('changeWapTitle', title => {
-      this.$store.commit({ type: 'changeWapTitle', title });
+    eventBus.$on("changeWapTitle", title => {
+      this.$store.commit({ type: "changeWapTitle", title });
     });
   },
   computed: {
     wap() {
-      return this.$store.getters.getWap;
+      return this.$store.getters.wap;
     }
   },
   methods: {
     addCmp(cmp) {
-      this.$store.dispatch({ type: 'addCmp', cmp });
+      this.$store.dispatch({ type: "addCmp", cmp });
     },
     updateCmp(cmp) {
       this.$store.dispatch({ type: "updateCmp", cmp });
+    },
+    async saveWap() {
+      const id = await this.$store.dispatch({ type: "saveWap" });
+      console.log("link", window.location.origin + '/website/' + id);
     }
   },
   components: {

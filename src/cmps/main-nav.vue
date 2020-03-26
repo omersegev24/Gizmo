@@ -6,7 +6,6 @@
       <router-link to="/explore">Explore</router-link>
       <router-link to="/support">Support</router-link>
       </ul>
-      <router-link to="/editor">Editor</router-link>
       <router-link to="/signin">Sign in</router-link>
   </nav>
 </template>

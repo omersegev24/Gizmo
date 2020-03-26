@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     currWap() {
-      return this.$store.getters.getWap;
+      return this.$store.getters.wap;
     }
   },
   watch: {

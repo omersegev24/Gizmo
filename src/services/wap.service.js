@@ -391,7 +391,6 @@ function remove(id) {
 }
 
 function update(wap) {
-    console.log('sendme',wap)
     return HttpService.put(`wap/${wap._id}`, wap)
 }
 function add(wap) {

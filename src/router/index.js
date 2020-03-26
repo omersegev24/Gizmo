@@ -23,7 +23,7 @@ const routes = [
     component: aboutPage
   },
   {
-    path: '/editor',
+    path: '/editor/:id',
     name: 'Editor',
     component: editorPage
   },
