@@ -41,9 +41,9 @@
                   :disabled="!enabled"
                   :group="{ name: 'wap', pull: 'clone', put: false }"
                   class="list-group"
-                  ghost-class="ghost"
-                  @start="dragging = true"
+                  @start="dragStart"
                   @end="dragging = false"
+                  @clone="cloneCmp(cmp)"
                 >
                   <div
                     class="cmp-btn"
@@ -148,6 +148,13 @@ export default {
     }
   },
   methods: {
+    cloneCmp(cmp) {
+      console.log('evenet clone', cmp)
+    },
+    dragStart(ev) {
+      this.dragging = true
+      console.log('ev', ev)
+    },
     saveWap() {
       eventBus.$emit("saveWap");
     },
@@ -202,10 +209,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .cmp-btn {
-  &.static-cmp {
-    overflow: hidden;
+  width: 100px;
+  height: 100px;
+  /* overflow: hidden; */
+  .cmp-preview {
+    opacity: 0;
+  }
+  &.sortable-drag {
+    /* overflow: unset; */
+    width: 100%;
     .cmp-preview {
-      opacity: 0;
+      opacity: 1;
     }
   }
 }
