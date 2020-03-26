@@ -74,7 +74,7 @@
                   :move="checkMove"
                 >
                   <div
-                    class="cmp-btn"
+                    class="cmp-btn flex flex-column align-center justify-center"
                     @click="$emit('addCmp',cmp)"
                     v-for="widget in widgets"
                     :key="widget.id"
