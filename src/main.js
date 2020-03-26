@@ -11,7 +11,9 @@ import _ from 'lodash';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import vSelect from "vue-select";
- 
+import draggable from 'vuedraggable'
+
+Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);
 
 Vue.config.productionTip = false

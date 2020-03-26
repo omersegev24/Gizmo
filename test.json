@@ -1,0 +1,296 @@
+{
+    "title": "omer",
+    "theme": "light-and-shiny",
+    "style": {},
+    "cmps": [
+        {
+            "id": "cmp100",
+            "type": "app-nav",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "log1zxcv",
+                    "type": "h1",
+                    "txt": "Gizmo",
+                    "style": {}
+                },
+                {
+                    "id": "lin12az",
+                    "type": "a",
+                    "to": "app-header",
+                    "txt": "Home",
+                    "style": {}
+                },
+                {
+                    "id": "lin16aq",
+                    "type": "a",
+                    "to": "app-contact-us",
+                    "txt": "Contact",
+                    "style": {}
+                },
+                {
+                    "id": "lin1vraz",
+                    "type": "a",
+                    "to": "app-article",
+                    "txt": "About",
+                    "style": {}
+                }
+            ]
+        },
+        {
+            "id": "cmp10111",
+            "type": "app-header",
+            "imgUrl": "https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg",
+            "style": {},
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "saw21a",
+                    "type": "button",
+                    "txt": "Try me",
+                    "coords": {}
+                    "style": {}
+                },
+                {
+                    "id": "tre12",
+                    "type": "p",
+                    "txt": "תפתח זום",
+                    "style": {
+                        "color": "#CE93D8",
+                        "fontSize": "70px",
+                        "letterSpacing": "18px"
+                    }
+                }
+            ],
+            "txt": "daniel"
+        },
+        {
+            "id": "cmp106",
+            "type": "app-contact",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "t2r4pa2",
+                    "type": "p",
+                    "txt": "CONTACT",
+                    "style": {
+                        "fontSize": "25px"
+                    }
+                },
+                {
+                    "id": "trbxspa2",
+                    "type": "p",
+                    "txt": "Tel Aviv Bacher 4",
+                    "style": {}
+                },
+                {
+                    "id": "zr4v0a2",
+                    "type": "p",
+                    "txt": "123-456-7890",
+                    "style": {}
+                },
+                {
+                    "id": "sqwcpa2",
+                    "type": "p",
+                    "txt": "gizmo@gizmo.com",
+                    "style": {
+                        "fontSize": "12px",
+                        "letterSpacing": "0px"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "cmp102",
+            "type": "app-map",
+            "style": {
+                "width": {
+                    "$numberInt": "300"
+                },
+                "height": {
+                    "$numberInt": "300"
+                },
+                "backgroundColor": "#CE93D8"
+            },
+            "center": {
+                "\"lat\"": "32.519",
+                "\"lng\"": "34.9045"
+            },
+            "markers": [
+                {
+                    "position": {}
+                }
+            ]
+        },
+        {
+            "id": "cmp109",
+            "type": "layout-3-columns",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "cmp103",
+                    "type": "app-article",
+                    "style": {},
+                    "subClass": "light-and-shiny",
+                    "children": [
+                        {
+                            "id": "yldor1a",
+                            "type": "p",
+                            "txt": "Article titleee",
+                            "style": {
+                                "fontSize": "22px"
+                            }
+                        },
+                        {
+                            "id": "xr4g2e1p",
+                            "type": "p",
+                            "txt": "Article sub title",
+                            "style": {
+                                "fontSize": "16px"
+                            }
+                        },
+                        {
+                            "id": "q0aewg2a",
+                            "type": "p",
+                            "txt": "daniel keva hagevergever\n\n\ndsadsad\n\n\n\nsadasdsad\n\n\n\n\n\n\n\n\nasdsadsadas\n\n\n\n\nasdasdasdas\n\n\n\nsadasdasdsadas\n\n\n\nsadsadas",
+                            "style": {}
+                        }
+                    ]
+                },
+                {
+                    "id": "cmp1ope3",
+                    "type": "app-article",
+                    "style": {},
+                    "subClass": "light-and-shiny",
+                    "children": [
+                        {
+                            "id": "vgyvkvhc",
+                            "type": "p",
+                            "txt": "Article title",
+                            "style": {
+                                "fontSize": "21px"
+                            }
+                        },
+                        {
+                            "id": "ccgchkufu",
+                            "type": "p",
+                            "txt": "Article sub title",
+                            "style": {}
+                        },
+                        {
+                            "id": "q0ppewg2a",
+                            "type": "p",
+                            "txt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?",
+                            "style": {}
+                        }
+                    ]
+                },
+                {
+                    "id": "cmp13rt3",
+                    "type": "app-article",
+                    "style": {},
+                    "subClass": "light-and-shiny",
+                    "children": [
+                        {
+                            "id": "ylkkfa1a",
+                            "type": "p",
+                            "txt": "Article title",
+                            "style": {
+                                "fontSize": "23px"
+                            }
+                        },
+                        {
+                            "id": "xrzzlp",
+                            "type": "p",
+                            "txt": "Article sub title",
+                            "style": {}
+                        },
+                        {
+                            "id": "q0poq2a",
+                            "type": "p",
+                            "txt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?",
+                            "style": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cca29",
+            "type": "app-youtube",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "title": "B.B.King",
+            "url": "https://www.youtube.com/embed/Y57kLy1vV1c"
+        },
+        {
+            "id": "cmp105",
+            "type": "app-footer",
+            "style": {
+                "backgroundColor": "#CE93D8"
+            },
+            "subClass": "light-and-shiny",
+            "children": [
+                {
+                    "id": "zqers4",
+                    "type": "p",
+                    "txt": "Cofferights",
+                    "style": {}
+                },
+                {
+                    "id": "cmp11rzeq0",
+                    "type": "social-links",
+                    "style": {},
+                    "subClass": "light-and-shiny",
+                    "children": [
+                        {
+                            "id": "socpovdsaz",
+                            "social": "facebook",
+                            "url": "www.facebook.com",
+                            "style": {
+                                "color": "#80DEEA"
+                            }
+                        },
+                        {
+                            "id": "soc343jzo",
+                            "social": "github",
+                            "url": "www.github.com",
+                            "style": {
+                                "color": "#80DEEA"
+                            }
+                        },
+                        {
+                            "id": "svnv4q",
+                            "social": "instagram",
+                            "url": "www.instagram.com",
+                            "style": {
+                                "color": "#80DEEA"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cmp107",
+            "type": "app-chat",
+            "style": {
+                "backgroundColor": "#CE93D8",
+                "color": "#9FA8DA"
+            },
+            "subClass": "light-and-shiny",
+            "title": "Chat"
+        }
+    ]
+}

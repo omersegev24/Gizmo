@@ -11,6 +11,9 @@ export default ({
 		getWap(state) {
 			return state.wap;
 		},
+		cmps(state) {
+			return state.wap.cmps;
+		},
 		getSelectedCmp(state) {
 			return state.selectedCmp
 		},
@@ -24,6 +27,9 @@ export default ({
 		},
 		setWap(state, { wap }) {
 			state.wap = wap
+		},
+		updateCmps(state, { cmps }) {
+			state.wap.cmps = cmps
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
@@ -73,7 +79,7 @@ export default ({
 		},
 		async updateCmp(context, { cmp }) {
 			// console.log('inside store updateCMp', cmp.txt)
-			console.log('cmp store',cmp.type)
+			console.log('cmp store', cmp.type)
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
 			const wap = await wapService.updateWap(wapCopy, cmpCopy)

@@ -7,9 +7,9 @@
   >
     <component
       v-for="child in cmp.children"
+      :key="child.id"
       ref="txt"
       :is="child.type"
-      :key="child.id"
       :style="child.style"
       :contenteditable="true"
       :src="child.imgUrl"
@@ -28,30 +28,26 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
+  data() {
+    return {
+      cmpCopy: JSON.parse(JSON.stringify(this.selectedCmp))
+    }
+  },
   methods: {
-    // test(ev) {
-    //   console.log(this.$refs.txt[1]);
-
-    //   if (ev.keyCode === 13) {
-    //     this.$refs.txt[1] = document.execCommand('insertHTML', false, '<br/>');
-    //     return false
-    //   }
-
-    // },
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
-      console.log('cmp', cmp.type)
       eventBus.$emit("edit", cmp);
     },
-  }
+  },
+
+  watch: {
+    selectedCmp() {
+      this.cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
+    }
+  },
 };
 </script>
-<style >
-p {
-  display: block;
-}
-</style>
