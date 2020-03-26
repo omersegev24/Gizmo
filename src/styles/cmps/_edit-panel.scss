@@ -4,7 +4,6 @@
   font-size: 0.9rem;
 
   .wap-prefs-container {
-    background-color: rgba(220,220,220, 0.5);
     font-weight: bold;
     font-size: 1rem;
     text-align: start;
@@ -33,24 +32,18 @@
   }
 
   .wap-title-theme {
-    // font-size: 0.8rem;
-
     * {
       color: $clr2;
     }
-    
-    
     .themes {
-      margin: 0.3rem 0 1rem;
       p {
         padding-right: 0;
       }
       div {
+        padding: 0;
         button {
           @include for-light-button;
           margin: 2.5px;
-          margin-left: 5px;
-          // padding: 10px;
         }
         :last-child {
           @include for-dark-button;
@@ -96,7 +89,6 @@
       color: #fff;
       cursor: pointer;
       display: inline-block;
-      // font-family: "Poppins", sans-serif;
       font-size: inherit;
       font-weight: 600;
       margin-bottom: 1rem;
