@@ -114,16 +114,36 @@
           >
             <cmp-preview :cmp="cmp"></cmp-preview>
 
-            <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-              <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-              <p>{{cmpType(cmp.type).name}}</p>
-            </div>
+            <!-- <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'"> -->
+            <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+            <p>{{cmpType(cmp.type).name}}</p>
+            <!-- </div> -->
           </div>
         </draggable>
       </el-collapse-item>
       <el-collapse-item title="Elements" name="2">
-        <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
-        <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
+        <draggable
+          :list="elements"
+          :disabled="!enabled"
+          :group="{ name:'element', pull: 'clone', put: false }"
+          :sort="false"
+          ghostClass="sortable-ghost"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :move="onMoveCallback"
+          :clone="cloneCmp"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',element)"
+            v-for="element in elements"
+            :key="element.id"
+          >
+            <p :class="cmpType(element.type).class + ' fa-2x'"></p>
+            <p>{{cmpType(element.type).name}}</p>
+          </div>
+        </draggable>
       </el-collapse-item>
       <el-collapse-item title="Widget" name="3">
         <draggable
@@ -207,9 +227,31 @@ export default {
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
+    //         Text,
+    // Card,
+    // Button,
+    // Article,
+    // img
+    elements() {
+      const elementCmps = this.cmps.filter(cmp => {
+        return (
+          cmp.type === 'app-card' ||
+          cmp.type === 'app-article' ||
+          cmp.type === 'button' ||
+          cmp.type === 'img' ||
+          cmp.type === 'p')
+      })
+      console.log('elemeents', elementCmps);
+
+      return elementCmps
+    },
     filteredCmps() {
       return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube" && cmp.type !== "app-map"
+        cmp => cmp.type !== "app-youtube"
+          && cmp.type !== "app-map"
+          && cmp.type !== 'p'
+          && cmp.type !== 'img'
+          && cmp.type !== 'button'
       );
     },
     widgets() {
@@ -225,22 +267,38 @@ export default {
       // return false; — for cancel
     },
     cloneCmp(cmp) {
-      console.log("evenet clone", cmp);
+      console.log('element', cmp.type);
+
       var copy = JSON.parse(JSON.stringify(cmp));
       copy.id = wapService.makeId();
       return copy;
     },
     checkMove(e) {
       window.console.log("on move: " + e.relatedContext.list);
-      // window.console.log("on move: " + e.draggedContext.futureIndex);
     },
     dragStart(ev) {
-      console.log('ev', ev)
+      console.log('evvvvv', ev);
+
       this.dragging = true
-      // console.log('ev', ev.item.classList)
     },
-    saveWap() {
-      eventBus.$emit("saveWap");
+    async saveWap() {
+      try {
+        const id = await this.$store.dispatch({ type: "saveWap" });
+        this.$alert(
+          `<strong>This is your link to your <a style="color: #4eb7f5" href="${window.location.origin}/website/${id}" target="_blank" >website</a></strong>`,
+          "HTML String",
+          {
+            dangerouslyUseHTMLString: true
+          }
+        );
+        // this.$router.push(`/`)
+      } catch (err) {
+        this.$message({
+          showClose: true,
+          message: "Oops, this is a error message.",
+          type: "error"
+        });
+      }
     },
     toggle(currItem) {
       this.items.forEach((item, index) => {
@@ -272,6 +330,12 @@ export default {
           return { name: "Social Links", class: "fas fa-share-alt" };
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
+        case "p":
+          return { name: "Text", class: "fas fa-images" };
+        case "button":
+          return { name: "Button", class: "fas fa-images" };
+        case "img":
+          return { name: "Image", class: "fas fa-images" };
         case "app-gallery":
           return { name: "Gallery", class: "fas fa-images" };
       }
@@ -295,7 +359,7 @@ export default {
 </script>
 <style >
 .sortable-ghost {
-  background-color:rgba(78, 184, 245, 0.214);
+  background-color: rgba(78, 184, 245, 0.214);
 }
 </style>
 

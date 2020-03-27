@@ -1,45 +1,22 @@
 const cmps = [
-    // {
-    //     id: 'cmp100',
-    //     type: 'app-nav',
-    //     style: {},
-    //     subClass: 'light-and-shiny',
-    //     children: [
-    //         {
-    //             id: 'log1zxcv',
-    //             type: 'h1',
-    //             txt: 'Gizmo',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin12az',
-    //             type: 'a',
-    //             to: 'app-header',
-    //             txt: 'Home',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin16aq',
-    //             type: 'a',
-    //             to: 'app-contact-us',
-    //             txt: 'Contact',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin1vraz',
-    //             type: 'a',
-    //             to: 'app-article',
-    //             txt: 'About',
-    //             style: {}
-    //         }
-    //     ]
-    // },
-    // {
-    //     id: '12zs',
-    //     type: 'p',
-    //     txt: 'text text',
-    //     style: {}
-    // },
+    {
+        id: 'sbutto12a',
+        type: 'button',
+        txt: 'Try me',
+        style: {},
+    },
+    {
+        id: 'tx21tzp',
+        type: 'p',
+        txt: 'Your text here',
+        style: {},
+    },
+    {
+        id: 'tximg1zzxp',
+        type: 'img',
+        imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+        style: {},
+    },
     {
         id: 'cmp102',
         type: 'app-header',

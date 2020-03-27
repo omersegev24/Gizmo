@@ -5,9 +5,10 @@
       :cmp="cmp"
       :selectedCmp="selectedCmp"
       :style="cmp.style"
+      :src="cmp.imgUrl"
       :class="[getWapTheme,{'mark-selected':cmp.id === selectedCmp.id}]"
-      @click.native.stop="edit(cmp)"
-    ></component>
+      @click.stop="edit(cmp)"
+    >{{cmp.txt}}</component>
 
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>

@@ -6,7 +6,7 @@
       style="width:100%"
       @start="dragging = true"
       @end="dragging = false"
-      group="wap"
+      group="element"
     >
       <component
         v-for="child in cmp.children"
@@ -15,7 +15,7 @@
         :key="child.id"
         :style="child.style"
         :selectedCmp="selectedCmp"
-      ></component>
+      >{{child.txt}}</component>
     </draggable>
   </section>
 </template>
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     openEdit(cmp) {
-      console.log(cmp)
+      // console.log(cmp)
       eventBus.$emit('edit', cmp)
     },
   },

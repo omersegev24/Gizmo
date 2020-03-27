@@ -38,7 +38,6 @@ export default {
   computed: {
     imgs() {
       const images = this.cmp.children.map(child => child.imgUrl)
-      console.log('images', images)
       return images
     }
   }
