@@ -2,6 +2,7 @@
   <div id="app">
     <img v-if="inProgress" class="loading" src="./assets/img/loading.svg" />
     <main-nav></main-nav>
+    
     <router-view />
   </div>
 </template>
@@ -14,7 +15,7 @@ export default {
     }
   },
   components: {
-    mainNav
+    mainNav,
   }
 };
 </script>

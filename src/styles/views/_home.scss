@@ -1,6 +1,7 @@
 .home-page {
-    margin-top: rem(40px);
-    .title {
+  text-align: center;
+  margin-top: rem(40px);
+  .title {
     font-size: rem(96px);
     max-width: rem(740px);
     margin: 0 auto;
@@ -8,11 +9,11 @@
     margin-bottom: 10px;
   }
   .sub-title {
-   max-width: rem(620px);
-   margin: 0 auto;
-   font-size: rem(20px);
-   line-height: 1.5em;
-   margin-bottom: 10px;
+    max-width: rem(620px);
+    margin: 0 auto;
+    font-size: rem(20px);
+    line-height: 1.5em;
+    margin-bottom: 10px;
   }
 
   a {
