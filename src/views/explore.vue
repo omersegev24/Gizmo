@@ -20,8 +20,9 @@ export default {
   },
   methods: {
     openEditor(wapId){
+      // this.$router.push(`/editor/${wapId}`).catch(err => {})
       this.$router.push(`/editor/${wapId}`)
-    }
+      }
   },
   components:{
     wapList

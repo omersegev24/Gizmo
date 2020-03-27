@@ -36,7 +36,7 @@ export default {
       cmpCopy: JSON.parse(JSON.stringify(this.selectedCmp)),
       enabled: true,
       dragging: false
-    }
+    };
   },
   methods: {
     editTxt(ev, cmp) {

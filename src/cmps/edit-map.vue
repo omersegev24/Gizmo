@@ -6,7 +6,7 @@
     </div>
 
     <div class="map-config">
-      <hr class="divider" />
+      <!-- <hr class="divider" />
       <p>Width</p>
       <vue-slider
         v-model="mapData.style.width"
@@ -17,7 +17,7 @@
         @change="update"
       ></vue-slider>
 
-      <hr class="divider" />
+      <hr class="divider" /> -->
 
       <p>Height</p>
       <vue-slider
@@ -48,7 +48,7 @@ export default {
     return {
       mapData: {
         style: {
-          width: 500,
+          // width: 500,
           height: 500
         },
         pos: {}
@@ -70,7 +70,7 @@ export default {
       mapCopy.center = this.mapData.pos;
       mapCopy.markers[0].position = this.mapData.pos;
 
-      eventBus.$emit("updateCmp", mapCopy);
+      eventBus.$emit("updateCmp", JSON.parse(JSON.stringify(mapCopy)));
     }
   }
 };

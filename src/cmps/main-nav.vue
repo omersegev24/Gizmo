@@ -4,7 +4,6 @@
       <h1 class="logo"><router-link to="/">Gizmo</router-link></h1>
       <router-link to="/template">Templates</router-link>
       <router-link to="/explore">Explore</router-link>
-      <router-link to="/support">Support</router-link>
       </ul>
       <router-link to="/signin">Sign in</router-link>
   </nav>

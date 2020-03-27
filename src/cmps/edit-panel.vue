@@ -16,7 +16,7 @@
       </div>
       <transition name="prefs">
         <div v-show="isPrefsOpen">
-          <wap-prefs @updateWapPrefs="updateWapPref" :wap="currWap"></wap-prefs>
+          <wap-prefs :wap="currWap"></wap-prefs>
         </div>
       </transition>
     </section>
@@ -105,7 +105,6 @@ export default {
   methods: {
     // updateWapPref(wap) {},
     updateCmp(cmp) {
-      console.log("inside editpanel ", cmp.type);
       eventBus.$emit("updateCmp", cmp);
     },
     uploadImg(ev) {
