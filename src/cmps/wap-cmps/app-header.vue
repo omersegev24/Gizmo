@@ -6,6 +6,7 @@
       :class="cmp.subClass"
       :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
     >
+    
       <component
         v-for="child in cmp.children"
         :key="child.id"
