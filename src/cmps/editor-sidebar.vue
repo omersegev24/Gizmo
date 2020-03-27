@@ -99,9 +99,11 @@
           :disabled="!enabled"
           :group="{ name: 'wap', pull: 'clone', put: false }"
           :sort="false"
+          ghostClass="sortable-ghost"
           class="list-group flex flex-wrap space-evenly"
           @start="dragStart"
           @end="dragging = false"
+          :move="onMoveCallback"
           :clone="cloneCmp"
         >
           <div
@@ -112,16 +114,36 @@
           >
             <cmp-preview :cmp="cmp"></cmp-preview>
 
-            <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-              <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-              <p>{{cmpType(cmp.type).name}}</p>
-            </div>
+            <!-- <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'"> -->
+            <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+            <p>{{cmpType(cmp.type).name}}</p>
+            <!-- </div> -->
           </div>
         </draggable>
       </el-collapse-item>
       <el-collapse-item title="Elements" name="2">
-        <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
-        <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
+        <draggable
+          :list="elements"
+          :disabled="!enabled"
+          :group="{ name:'element', pull: 'clone', put: false }"
+          :sort="false"
+          ghostClass="sortable-ghost"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :move="onMoveCallback"
+          :clone="cloneCmp"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',element)"
+            v-for="element in elements"
+            :key="element.id"
+          >
+            <p :class="cmpType(element.type).class + ' fa-2x'"></p>
+            <p>{{cmpType(element.type).name}}</p>
+          </div>
+        </draggable>
       </el-collapse-item>
       <el-collapse-item title="Widget" name="3">
         <draggable
@@ -205,9 +227,31 @@ export default {
     currCmp() {
       return this.$store.getters.selectedCmp;
     },
+    //         Text,
+    // Card,
+    // Button,
+    // Article,
+    // img
+    elements() {
+      const elementCmps = this.cmps.filter(cmp => {
+        return (
+          cmp.type === 'app-card' ||
+          cmp.type === 'app-article' ||
+          cmp.type === 'button' ||
+          cmp.type === 'img' ||
+          cmp.type === 'p')
+      })
+      console.log('elemeents', elementCmps);
+
+      return elementCmps
+    },
     filteredCmps() {
       return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube" && cmp.type !== "app-map"
+        cmp => cmp.type !== "app-youtube"
+          && cmp.type !== "app-map"
+          && cmp.type !== 'p'
+          && cmp.type !== 'img'
+          && cmp.type !== 'button'
       );
     },
     widgets() {
@@ -217,7 +261,14 @@ export default {
     }
   },
   methods: {
+    onMoveCallback(evt, originalEvent) {
+      console.log('relatedContext', evt.relatedContext)
+      //  ...
+      // return false; — for cancel
+    },
     cloneCmp(cmp) {
+      console.log('element', cmp.type);
+
       var copy = JSON.parse(JSON.stringify(cmp));
       copy.id = wapService.makeId();
       return copy;
@@ -226,8 +277,9 @@ export default {
       window.console.log("on move: " + e.relatedContext.list);
     },
     dragStart(ev) {
-      this.dragging = true;
-      
+      console.log('evvvvv', ev);
+
+      this.dragging = true
     },
     async saveWap() {
       try {
@@ -279,7 +331,13 @@ export default {
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
         case "p":
-          return { name: "Text", class: "fas fa-map-marked-alt" };
+          return { name: "Text", class: "fas fa-images" };
+        case "button":
+          return { name: "Button", class: "fas fa-images" };
+        case "img":
+          return { name: "Image", class: "fas fa-images" };
+        case "app-gallery":
+          return { name: "Gallery", class: "fas fa-images" };
       }
     },
     widgetsCmps(type) {
@@ -299,29 +357,9 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-// .cmp-btn {
-//   width: 75px;
-//   height: 75px;
-//   .cmp-preview {
-//     text-align: center;
-//     background-color: #ccc;
-//     border-radius: 0.5em;
-//     user-select: none;
-//     height: 0;
-//     padding: 0;
-//     overflow: hidden;
-//     &:focus {
-//       opacity: 1;
-//     }
-//   }
-//   &.sortable-drag {
-//     width: 100%;
-//     .cmp-preview {
-//       // overflow: unset;
-//       opacity: 1;
-//     }
-//   }
-// }
-//
+<style >
+.sortable-ghost {
+  background-color: rgba(78, 184, 245, 0.214);
+}
 </style>
+

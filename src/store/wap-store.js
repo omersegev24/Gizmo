@@ -36,9 +36,7 @@ export default ({
 			state.wap = wap
 		},
 		updateCmps(state, { cmps }) {
-			console.log('updateCmps', cmps)
 			state.wap.cmps = cmps
-			console.log('updateCmps', state.wap)
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
@@ -84,7 +82,6 @@ export default ({
 		async loadWap(context, { wapId }) {
 			const wap = await wapService.getById(wapId)
 			Vue.delete(wap, '_id')
-			console.log(wap)
 			context.commit({ type: 'setWap', wap })
 			return wap
 		},

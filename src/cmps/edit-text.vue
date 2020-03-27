@@ -87,8 +87,10 @@ export default {
   },
   methods: {
     setTextSize() {
+      if (this.fontSize) {
       this.cmp.style.fontSize = this.fontSize + "px";
-      this.update();
+        this.update();
+      }
     },
     setLetterSpacing() {
       this.cmp.style.letterSpacing = this.letterSpacing + "px";

@@ -1,45 +1,22 @@
 const cmps = [
-    // {
-    //     id: 'cmp100',
-    //     type: 'app-nav',
-    //     style: {},
-    //     subClass: 'light-and-shiny',
-    //     children: [
-    //         {
-    //             id: 'log1zxcv',
-    //             type: 'h1',
-    //             txt: 'Gizmo',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin12az',
-    //             type: 'a',
-    //             to: 'app-header',
-    //             txt: 'Home',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin16aq',
-    //             type: 'a',
-    //             to: 'app-contact-us',
-    //             txt: 'Contact',
-    //             style: {}
-    //         },
-    //         {
-    //             id: 'lin1vraz',
-    //             type: 'a',
-    //             to: 'app-article',
-    //             txt: 'About',
-    //             style: {}
-    //         }
-    //     ]
-    // },
-    // {
-    //     id: '12zs',
-    //     type: 'p',
-    //     txt: 'text text',
-    //     style: {}
-    // },
+    {
+        id: 'sbutto12a',
+        type: 'button',
+        txt: 'Try me',
+        style: {},
+    },
+    {
+        id: 'tx21tzp',
+        type: 'p',
+        txt: 'Your text here',
+        style: {},
+    },
+    {
+        id: 'tximg1zzxp',
+        type: 'img',
+        imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+        style: {},
+    },
     {
         id: 'cmp102',
         type: 'app-header',
@@ -139,6 +116,51 @@ const cmps = [
                 style: {}
             }]
         }]
+    },
+    {
+        id: 'cmp214',
+        type: 'app-gallery',
+        style: {},
+        subClass: 'light-and-shiny',
+        children: [
+            {
+                id: 'img12xza',
+                type: 'img',
+                imgUrl: 'https://images.unsplash.com/photo-1558981420-87aa9dad1c89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+                style: {}
+            },
+            {
+                id: 'img15xza',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img13xza',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img01pa',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img0z1',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img009pq',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+
+        ]
     },
     {
         id: 'cmp105',
@@ -382,7 +404,7 @@ const cmps = [
     {
         id: 'cmp112',
         type: 'app-map',
-        style: { width: '500', height: '500' },
+        style: { width: '100%', height: '500' },
         center: { lat: 32.519, lng: 34.9045 },
         markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
     }

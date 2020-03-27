@@ -55,7 +55,7 @@ export default {
         return this.cmp.children;
       },
       set(value) {
-        console.log(value);
+        // console.log(value);
         // this.$store.commit("updateList", value);
       }
     }
