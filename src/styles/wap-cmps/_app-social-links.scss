@@ -6,6 +6,13 @@
       cursor: pointer;
     }
   }
+
+  &.buson-theme {
+    * {
+      background-color: $clr1;
+      color: $clr2;
+    }
+  }
 }
 
 .app-social-links.light-and-shiny {

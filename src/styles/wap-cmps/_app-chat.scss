@@ -66,35 +66,35 @@
       }
     }
   }
-}
-
-.app-chat.light-and-shiny {
-  background-color: $clr1;
-  color: $clr2;
-  filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
-
-  .unopened-chat-container {
-    background-color: $clr2;
-    color: $clr1;
-  }
-
-  .msgs-container {
+  &.buson-theme {
     background-color: $clr1;
     color: $clr2;
-    li {
-      background-color: lighten($clr1, $amount: 50%);
+    filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
+  
+    .unopened-chat-container {
+      background-color: $clr2;
+      color: $clr1;
     }
-    .support {
-      background-color: lighten($clr1, $amount: 65%);
-    }
-  }
-  .msg-send-container {
-    background-color: $clr1;
-    .msg-send {
+  
+    .msgs-container {
+      background-color: $clr1;
       color: $clr2;
+      li {
+        background-color: lighten($clr1, $amount: 50%);
+      }
+      .support {
+        background-color: lighten($clr1, $amount: 65%);
+      }
+    }
+    .msg-send-container {
+      background-color: $clr1;
+      .msg-send {
+        color: $clr2;
+      }
     }
   }
 }
+
 
 .app-chat.dark-theme {
   background-color: $clr6;

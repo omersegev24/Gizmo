@@ -8,4 +8,8 @@
   @include for-narrow-layout {
     flex-direction: column;
   }
+
+  &.buson-theme {
+    height: 60vh;
+  }
 }

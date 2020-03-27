@@ -22,6 +22,36 @@
     position: absolute;
     visibility: hidden;
   }
+
+  &.buson-theme {
+    box-shadow: inset 0 -2px 6px #e2e2e2;
+    height: rem(100px);
+    > * {
+      font-family: Poppins, "sans-serif";
+      color: $clr3;
+    }
+    .logo {
+      margin-bottom: 0;
+      font-size: rem(42px);
+      font-family: PoppinsBold, "sans-serif";
+      &::after {
+        content: ".";
+        font-family: PoppinsBold, "sans-serif";
+        color: $clr4;
+      }
+    }
+    li {
+      a {
+        color: $clr3;
+        font-size: rem(14px);
+        transition: .3s;
+        text-transform: uppercase;
+        &:hover {
+          color: $clr4;
+        }
+      }
+    }
+  }
 }
 
 //MEDIA QUERIES
@@ -128,58 +158,67 @@
   }
 }
 
-.app-nav.light-and-shiny {
-  > * {
-    color: $clr2;
-  }
-  li {
-    a {
-      color: $clr2;
-    }
-  }
-}
+// @include for-normal-layout {
+//   .app-nav.light-and-shiny {
+//     .nav-links {
+//       color: $clr2;
+//       background-color: $clr1;
+//       li a {
+//         transition: 0.3s;
+//         &:hover {
+//           color: darken($clr2, 20%);
+//         }
+//       }
+//     }
+//     .hamburger-menu {
+//       color: $clr2;
+//     }
+//   }
+//   .app-nav.dark-theme {
+//     .nav-links {
+//       color: $clr5;
+//       background-color: $clr6;
+//       a {
+//         transition: 0.3s;
+//         &:hover {
+//           color: darken($clr5, 20%);
+//         }
+//       }
+//     }
+//     .hamburger-menu {
+//       color: $clr5;
+//     }
+//   }
+// }
 
-.app-nav.dark-theme {
-  background-color: $clr6;
-  .logo {
-    color: $clr5;
-  }
-  li {
-    a {
-      color: $clr5;
-    }
-  }
-}
-
-@include for-normal-layout {
-  .app-nav.light-and-shiny {
-    .nav-links {
-      color: $clr2;
-      background-color: $clr1;
-      li a {
-        transition: 0.3s;
-        &:hover {
-          color: darken($clr2, 20%);
-        }
-      }
-    }
-    .hamburger-menu {
-      color: $clr2;
-    }
-  }
-  .app-nav.dark-theme {
-    .nav-links {
-      color: $clr5;
-      background-color: $clr6;
-      a {
-        transition: 0.3s;
-        &:hover {
-          color: darken($clr5, 20%);
-        }
-      }
-    }
-    .hamburger-menu {
-      color: $clr5;
-    }
-  }
-}
+// .app-nav {
+//   &.buson-theme {
+//     box-shadow: inset 0 -2px 6px #e2e2e2;
+//     height: rem(100px);
+//     > * {
+//       font-family: Poppins, "sans-serif";
+//       color: $clr3;
+//     }
+//     .logo {
+//       margin-bottom: 0;
+//       font-size: rem(42px);
+//       font-family: PoppinsBold, "sans-serif";
+//       &::after {
+//         content: ".";
+//         font-family: PoppinsBold, "sans-serif";
+//         color: $clr4;
+//       }
+//     }
+//     li {
+//       a {
+//         color: $clr3;
+//         font-size: rem(14px);
+//         transition: .3s;
+//         text-transform: uppercase;
+//         &:hover {
+//           color: $clr4;
+//         }
+//       }
+//     }
+//   }
+// }

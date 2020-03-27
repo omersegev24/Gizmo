@@ -43,7 +43,7 @@
       div {
         padding: 0;
         button {
-          @include for-light-button;
+          // @include for-light-button;
           margin: 2.5px;
         }
         :last-child {
@@ -59,7 +59,7 @@
       }
 
       button {
-        @include for-light-button;
+        // @include for-light-button;
         font-weight: bold;
         background-color: $clr4;
         color: $clr2;
@@ -100,7 +100,7 @@
       vertical-align: middle;
 
       &.btn-3 {
-        @include for-light-button;
+        // @include for-light-button;
         overflow: hidden;
         margin-right: 10px;
 

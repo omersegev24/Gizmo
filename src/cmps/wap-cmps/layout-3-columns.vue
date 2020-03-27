@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-3-columns flex justify-center" :class="cmp.subClass">
+  <section class="layout-3-columns buson-theme flex justify-center align-center" :class="cmp.subClass">
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"

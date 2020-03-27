@@ -8,12 +8,11 @@
   background-position: center;
   background-repeat: no-repeat;
   min-width: 460px;
-
+  
   * {
-    font-family: AlegreyaSans;
     position: absolute;
   }
-
+  
   .title {
     font-weight: bold;
     font-size: 6rem;
@@ -25,41 +24,28 @@
       white-space: nowrap;
     }
   }
-
+  
   .sub-title {
     margin: 0;
   }
-
+  
   button {
     position: absolute;
     top: 50%;
-    @include for-light-button;
     width: rem(200px);
     font-size: 1.5rem;
   }
-}
-
-.app-header.light-and-shiny {
-  color: #fff;
-}
-
-.app-header.dark-theme {
-  color: darken($clr5, 30%);
-  button {
-    @include for-dark-button;
-    font-weight: bold;
-    color: $clr5;
-    background-color: $clr6;
-    border: 2px solid $clr5;
-    &:hover {
-      color: $clr5;
-      background-color: lighten($clr6, 5%);
-      border: 2px solid $clr5;
+  &.buson-theme {
+    min-height: 75vh;
+    font-family: PoppinsBold, "sans-serif";
+    button {
+      @include for-buson-btn;
     }
   }
 }
 
 @include for-wide-layout {
+  
 }
 @include for-normal-layout {
   .app-header {

@@ -84,7 +84,7 @@
 
   .themes-btn-container {
     button {
-      @include for-light-button;
+      // @include for-light-button;
       margin: 5px;
     }
   }
@@ -107,7 +107,7 @@
     border-top: 1px solid rgba(10, 10, 10, 0.1);
   }
   .save-btns > * {
-    @include for-light-button;
+    // @include for-light-button;
     margin: 2.5px;
     padding: 10px 50px;
   }
@@ -220,6 +220,7 @@
    display: flex 
   }
   .cmp-btn {
+
     width: 75px;
     height: 75px;
     background-color: #fff;
