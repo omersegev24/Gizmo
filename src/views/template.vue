@@ -1,6 +1,6 @@
 <template>
   <section class="template-page main-layout">
-    <h1>Pick the website template you love</h1>
+    <h3 class="title">Pick the website template you love</h3>
     
   </section>
 </template>
