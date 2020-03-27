@@ -382,7 +382,7 @@ const cmps = [
     {
         id: 'cmp112',
         type: 'app-map',
-        style: { width: '500', height: '500' },
+        style: { width: '100%', height: '500' },
         center: { lat: 32.519, lng: 34.9045 },
         markers: [{ position: { lat: 32.519, lng: 34.9045 } }]
     }
