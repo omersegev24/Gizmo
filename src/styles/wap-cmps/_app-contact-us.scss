@@ -59,7 +59,6 @@
   }
 
   button {
-    // @include for-light-button;
     margin-left: auto;
     width: fit-content;
     padding: 5px 20px;
@@ -68,7 +67,7 @@
   &.buson-theme {
     background-color: $clr3;
     color: $clr1;
-    height: 60vh;
+    height: 70vh;
     align-items: center;
     * {
       font-family: Poppins, sans-serif;
@@ -86,22 +85,8 @@
         @include for-buson-btn;
       }
     }
-    @include for-theme-wide-layout {
-      height: auto;
-      div {
-        align-items: center;
-        flex-direction: column;
-      }
-    }
-    @include for-theme-normal-layout {
-      height: auto;
-      div {
-        align-items: center;
-        flex-direction: column;
-      }
-    }
-    @include for-theme-narrow-layout {
-      height: auto;
+    @media only screen and (max-width: $buson-break-wide) {
+      height: 90vh;
       div {
         align-items: center;
         flex-direction: column;

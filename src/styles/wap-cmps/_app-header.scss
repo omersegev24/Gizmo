@@ -9,20 +9,12 @@
   background-repeat: no-repeat;
   min-width: 460px;
 
-  // * {
-  //   position: absolute;
-  // }
-
   .title {
     font-weight: bold;
     font-size: 6rem;
     margin-bottom: 10px;
     position: absolute;
     top: 20%;
-    // @include for-narrow-layout {
-    //   font-size: 4rem;
-    //   white-space: nowrap;
-    // }
   }
 
   .sub-title {
@@ -30,14 +22,12 @@
   }
 
   button {
-    // position: absolute;
-    // top: 50%;
     width: rem(200px);
     font-size: 1.5rem;
   }
 
   &.buson-theme {
-    min-height: 75vh;
+    min-height: 78vh;
     align-items: flex-start;
     color: $clr3;
     .title,
@@ -60,37 +50,13 @@
         padding: 10px;
       }
     }
-    @include for-theme-normal-layout {
-      .title {
-        font-size: 3rem;
-      }
-    }
-    @include for-theme-narrow-layout {
+    @media only screen and (max-width: $buson-break-normal) {
       .title {
         font-size: 3rem;
       }
       button {
         padding: 10px;
       }
-    }
-  }
-}
-
-@include for-normal-layout {
-  .app-header {
-    .title {
-      font-size: 6rem;
-    }
-  }
-}
-@include for-narrow-layout {
-  .app-header {
-    .title {
-      font-size: 2.5rem;
-      top: 35%;
-    }
-    button {
-      @include for-responsive-btn;
     }
   }
 }
