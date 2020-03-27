@@ -6,6 +6,7 @@
       style="width:100%"
       @start="dragging = true"
       @end="dragging = false"
+      group="wap"
     >
       <component
         v-for="child in cmp.children"
@@ -23,7 +24,7 @@
 import { eventBus } from '../../services/eventBus.service.js'
 import appCard from "./app-card.vue";
 import appArticle from './app-article.vue';
-
+import appContact from './app-contact-us.vue'
 export default {
   props: {
     cmp: Object,
@@ -64,7 +65,8 @@ export default {
   },
   components: {
     appCard,
-    appArticle
+    appArticle,
+    appContact
   }
 };
 </script>

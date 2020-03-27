@@ -12,6 +12,8 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import vSelect from "vue-select";
 import draggable from 'vuedraggable'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+
 
 Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);

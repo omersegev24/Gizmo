@@ -290,35 +290,52 @@ const cmps = [
         ]
     },
     {
-        id: 'cmp108',
-        type: 'app-contact',
-        style: {},
-        subClass: 'light-and-shiny',
+        id: "cmp10016",
+        type: "app-contact",
+        style: {
+            "backgroundColor": "#CE93D8"
+        },
+        subClass: "light-and-shiny",
         children: [
             {
-                id: 't2r4pa2',
-                type: 'p',
-                txt: 'CONTACT',
-                style: {}
+                id: "c123123az",
+                type: "app-article",
+                style: {},
+                subClass: "light-and-shiny",
+                children: [
+                    {
+                        id: "pm1223123a",
+                        type: "p",
+                        txt: "Contact",
+                        style: {}
+                    },
+                    {
+                        id: "121321321aaap",
+                        type: "p",
+                        txt: "Tel Aviv Bacher 4",
+                        style: {}
+                    },
+                    {
+                        id: "pzzqz2a",
+                        type: "p",
+                        txt: "123-456-7890",
+                        style: {}
+                    },
+                    {
+                        id: "ppmz2a",
+                        type: "p",
+                        txt: "gizmo@gizmo.com",
+                        style: {}
+                    }
+                ]
             },
             {
-                id: 'trbxspa2',
-                type: 'p',
-                txt: 'Tel Aviv Bacher 4',
-                style: {}
-            },
-            {
-                id: 'zr4v0a2',
-                type: 'p',
-                txt: '123-456-7890',
-                style: {}
-            },
-            {
-                id: 'sqwcpa2',
-                type: 'p',
-                txt: 'gizmo@gizmo.com',
-                style: {}
-            }]
+                id: "fzqzzzf",
+                type: "app-form",
+                style: {},
+                txt: ""
+            }
+        ]
     },
     {
         id: 'cmp109',
