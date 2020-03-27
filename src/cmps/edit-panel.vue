@@ -103,7 +103,7 @@ export default {
     }
   },
   methods: {
-    updateWapPref(wap) { },
+    // updateWapPref(wap) {},
     updateCmp(cmp) {
       console.log("inside editpanel ", cmp.type);
       eventBus.$emit("updateCmp", cmp);

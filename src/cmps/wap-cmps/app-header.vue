@@ -46,13 +46,24 @@ export default {
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
-    },
+    }
+  },
+  computed: {
+    myList: {
+      get() {
+        return this.cmp.children;
+      },
+      set(value) {
+        console.log(value);
+        // this.$store.commit("updateList", value);
+      }
+    }
   },
 
   watch: {
     selectedCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
     }
-  },
+  }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-preview">
+  <section class="wap-preview ratio-16-9">
     <div @click="openEditor(wap._id)">{{wap.title}}</div>
   </section>
 </template>

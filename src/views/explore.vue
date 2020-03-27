@@ -1,44 +1,30 @@
 <template>
-  <section class="explore-page">
-    <h1>Get Inspired by These Website Examples Designed on Wix</h1>//list of websites//
-      <vue-draggable-resizable
-        :w="100"
-        :h="100"
-        @dragging="onDrag"
-        @resizing="onResize"
-        :parent="true"
-      >
-        <p>
-          Hello! I'm a flexible component. You can drag me around and you can resize me.
-          <br />
-          X: {{ x }} / Y: {{ y }} - Width: {{ width }} / Height: {{ height }}
-        </p>
-      </vue-draggable-resizable>
+  <section class="explore-page main-layout">
+    <h2 class="title">Get Inspired by These Website Examples Designed on Gizmo</h2>
+      <wap-list :waps="waps"></wap-list>
   </section>
 </template>
 
 <script>
-
+import {eventBus} from '../services/eventBus.service.js'
+import wapList from '../cmps/wap-list.vue'
 export default {
-  data: function () {
-    return {
-      width: 0,
-      height: 0,
-      x: 0,
-      y: 0
+  created() {
+    this.$store.dispatch({type: 'loadWaps'})
+    eventBus.$on('openEditor', this.openEditor)
+  },
+  computed: {
+    waps() {
+      return this.$store.getters.waps;
     }
   },
   methods: {
-    onResize: function (x, y, width, height) {
-      this.x = x
-      this.y = y
-      this.width = width
-      this.height = height
-    },
-    onDrag: function (x, y) {
-      this.x = x
-      this.y = y
+    openEditor(wapId){
+      this.$router.push(`/editor/${wapId}`)
     }
+  },
+  components:{
+    wapList
   }
-}
+};
 </script>

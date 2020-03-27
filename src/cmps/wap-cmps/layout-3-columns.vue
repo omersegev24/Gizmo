@@ -49,6 +49,10 @@ export default {
   components: {
     appCard,
     appArticle
+  },
+  created() {
+    console.log(this.selectedCmp)
+    console.log(this.cmp)
   }
 };
 </script>
