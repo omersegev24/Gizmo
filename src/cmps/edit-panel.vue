@@ -1,6 +1,6 @@
 <template>
   <section class="edit-panel flex flex-column">
-    <section class="wap-prefs-container">
+   <!-- <section class="wap-prefs-container">
       <div class="flex space-between align-center" @click="toggleWapPrefs">
         <p>Website Preferences</p>
         <template v-if="!isPrefsOpen">
@@ -19,34 +19,20 @@
           <wap-prefs :wap="currWap"></wap-prefs>
         </div>
       </transition>
-    </section>
+    </section>  -->
 
-    <hr v-if="currCmp.id" class="divider" />
+<el-collapse v-model="activeName" accordion>
+  <el-collapse-item title="Consistency" name="1">
+    <wap-prefs :wap="currWap"></wap-prefs>
+  </el-collapse-item>
+</el-collapse>
 
+    
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-      <!-- <div v-if="currCmp.txt">
-        <textarea
-          v-if="currCmp.txt.length > 100"
-          v-model="cmpCopy.txt"
-          :style="{resize:'none'}"
-          cols="30"
-          rows="6"
-          @input="updateCmp(cmpCopy)"
-        ></textarea>
-        <input v-else type="text" v-model="cmpCopy.txt" @input="updateCmp(cmpCopy)" placeholder="Enter text" />
-      </div>-->
-      <!-- <input
-          v-else
-          type="text"
-          v-model="cmpCopy.txt"
-          @input="updateCmp(cmpCopy)"
-          placeholder="Enter text"
-        />
-      </div>-->
 
       <div v-if="currCmp.to" class="flex align-center space-between">
         <p>Link to:</p>
@@ -68,7 +54,7 @@
 
       <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
-    <hr class="divider" />
+    <hr v-if="currCmp.id" class="divider" />
   </section>
 </template>
 
@@ -84,6 +70,7 @@ export default {
   },
   data() {
     return {
+      activeName: 1,
       cmpCopy: JSON.parse(JSON.stringify(this.currCmp)),
       isPrefsOpen: false,
       // wapPrefs: {
