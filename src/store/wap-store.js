@@ -108,8 +108,8 @@ export default ({
 			context.dispatch({ type: 'updateCmp', cmp: context.state.selectedCmp })
 		},
 		addCmp(context, { cmp }) {
-			var addedCmp = JSON.parse(JSON.stringify(cmp))
-			addedCmp.id = wapService.makeId();
+			var cmpCopy = JSON.parse(JSON.stringify(cmp))
+			var addedCmp = wapService.replaceIds(cmpCopy);
 			context.commit({
 				type: 'addCmp',
 				addedCmp

@@ -27,7 +27,7 @@ export default {
   methods: {
     remove() {
       this.$confirm(
-        "This will permanently delete the file. Continue?",
+        "This will permanently delete the section. Continue?",
         "Warning",
         {
           confirmButtonText: "OK",

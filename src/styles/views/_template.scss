@@ -1,6 +1,9 @@
 .template-page {
   text-align: center;
   .title {
+    margin: 50px auto;
+    width: fit-content;
     font-size: 3.5rem;
+    border-bottom: 1px solid #e0e3e5;
   }
 }

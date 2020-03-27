@@ -14,14 +14,15 @@ import vSelect from "vue-select";
 import draggable from 'vuedraggable'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import locale from 'element-ui/lib/locale/lang/en'
-Vue.use(ElementUI, { locale })
+import locale from 'element-ui/lib/locale/lang/en';
+
 
 Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);
 
 Vue.config.productionTip = false
 
+Vue.use(ElementUI, { locale })
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyCa_A7Pfp8VgZoZsDddRtPEL-tW_MFT7iY',
