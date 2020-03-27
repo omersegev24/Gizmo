@@ -4,8 +4,9 @@
   padding-bottom: 10px;
   text-align: left;
 
-  #vs1__combobox,#vs2__combobox {
-      width: 160px;
+  #vs1__combobox,
+  #vs2__combobox {
+    width: 160px;
     &:hover {
       cursor: pointer;
     }
@@ -14,20 +15,15 @@
   .color-picker {
     > * {
       margin-bottom: 10px;
-    }
-    > * {
       text-align: left;
       padding: 10px 0;
       border: 1px solid #e0e3e5;
-      cursor: pointer;
-      &:hover {
-        color: $clr3;
-      }
     }
-
-    .divider {
-      width: 80%;
-      margin: 10px auto;
+  }
+  .el-input, .el-input--small {
+    text-align: center;
+    .el-input__inner {
+      margin: 0;
     }
   }
 }

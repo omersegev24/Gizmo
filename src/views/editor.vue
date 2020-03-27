@@ -39,7 +39,7 @@ export default {
     eventBus.$on("uploadImg", ev => {
       this.$store.dispatch({ type: "uploadImg", ev });
     });
-    eventBus.$on("saveWap", () => this.saveWap());
+    // eventBus.$on("saveWap", () => this.saveWap());
     eventBus.$on("updateWapPrefs", wapPrefs => {
       this.$store.commit({ type: "updateWapPrefs", wapPrefs });
     });
@@ -58,14 +58,30 @@ export default {
   methods: {
     addCmp(cmp) {
       this.$store.dispatch({ type: "addCmp", cmp });
+      this.$message({
+            type: "success",
+            showClose: true,
+            message: "Add completed"
+          });
     },
     updateCmp(cmp) {
       this.$store.dispatch({ type: "updateCmp", cmp });
     },
-    async saveWap() {
-      const id = await this.$store.dispatch({ type: "saveWap" });
-      console.log("link", window.location.origin + "/website/" + id);
-    }
+    // async saveWap() {
+    //   try{
+    //     const id = await this.$store.dispatch({ type: "saveWap" });
+    //     console.log("link", window.location.origin + "/website/" + id);
+    //     this.$alert(`<strong>This is your link to your <a href="${window.location.origin}/website/${id}">website</a></strong>`, 'HTML String', {
+    //       dangerouslyUseHTMLString: true
+    //     });
+    //   }catch(err){
+    //      this.$message({
+    //       showClose: true,
+    //       message: 'Oops, this is a error message.',
+    //       type: 'error'
+    //     });
+    //   }
+    // }
   },
   components: {
     editorSidebar,

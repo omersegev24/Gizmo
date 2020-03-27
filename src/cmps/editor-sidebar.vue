@@ -90,65 +90,65 @@
           </transition>
         </div>
       </div>
-    </div> -->
+    </div>-->
 
-    <el-collapse  v-if="!editMode" v-model="activeName" accordion>
-  <el-collapse-item title="Sections" name="1">
-   <draggable
-                  :list="filteredCmps"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }"
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="cmp in filteredCmps"
-                    :key="cmp.id"
-                  >
-                    <cmp-preview :cmp="cmp"></cmp-preview>
+    <el-collapse v-if="!editMode" v-model="activeName" accordion>
+      <el-collapse-item title="Sections" name="1">
+        <draggable
+          :list="filteredCmps"
+          :disabled="!enabled"
+          :group="{ name: 'wap', pull: 'clone', put: false }"
+          :sort="false"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :clone="cloneCmp"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',cmp)"
+            v-for="cmp in filteredCmps"
+            :key="cmp.id"
+          >
+            <cmp-preview :cmp="cmp"></cmp-preview>
 
-                    <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-                      <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-                      <p>{{cmpType(cmp.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-    </el-collapse-item>
-  <el-collapse-item title="Elements" name="2">
-    <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
-    <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
-  </el-collapse-item>
-  <el-collapse-item title="Widget" name="3">
-    <draggable
-                  :list="widgets"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }" 
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                  :move="checkMove"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="widget in widgets"
-                    :key="widget.id"
-                  >
-                    <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
-                      <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
-                      <p>{{widgetsCmps(widget.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-    </el-collapse-item>
-</el-collapse>
+            <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
+              <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+              <p>{{cmpType(cmp.type).name}}</p>
+            </div>
+          </div>
+        </draggable>
+      </el-collapse-item>
+      <el-collapse-item title="Elements" name="2">
+        <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
+        <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
+      </el-collapse-item>
+      <el-collapse-item title="Widget" name="3">
+        <draggable
+          :list="widgets"
+          :disabled="!enabled"
+          :group="{ name: 'wap', pull: 'clone', put: false }"
+          :sort="false"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :clone="cloneCmp"
+          :move="checkMove"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',cmp)"
+            v-for="widget in widgets"
+            :key="widget.id"
+          >
+            <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
+              <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
+              <p>{{widgetsCmps(widget.type).name}}</p>
+            </div>
+          </div>
+        </draggable>
+      </el-collapse-item>
+    </el-collapse>
 
     <div class="save-btns flex justify-center align-center">
       <button>Publish</button>
@@ -218,21 +218,35 @@ export default {
   },
   methods: {
     cloneCmp(cmp) {
-      console.log("evenet clone", cmp);
       var copy = JSON.parse(JSON.stringify(cmp));
       copy.id = wapService.makeId();
       return copy;
     },
     checkMove(e) {
       window.console.log("on move: " + e.relatedContext.list);
-      // window.console.log("on move: " + e.draggedContext.futureIndex);
     },
     dragStart(ev) {
-      this.dragging = true
-      // console.log('ev', ev.item.classList)
+      this.dragging = true;
+      
     },
-    saveWap() {
-      eventBus.$emit("saveWap");
+    async saveWap() {
+      try {
+        const id = await this.$store.dispatch({ type: "saveWap" });
+        this.$alert(
+          `<strong>This is your link to your <a style="color: #4eb7f5" href="${window.location.origin}/website/${id}" target="_blank" >website</a></strong>`,
+          "HTML String",
+          {
+            dangerouslyUseHTMLString: true
+          }
+        );
+        // this.$router.push(`/`)
+      } catch (err) {
+        this.$message({
+          showClose: true,
+          message: "Oops, this is a error message.",
+          type: "error"
+        });
+      }
     },
     toggle(currItem) {
       this.items.forEach((item, index) => {
