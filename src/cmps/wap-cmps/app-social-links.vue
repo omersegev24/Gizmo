@@ -1,5 +1,5 @@
 <template>
-  <div class="app-social-links" :contenteditable="false">
+  <div class="app-social-links buson-theme" :contenteditable="false">
     <a
       :class="{'mark-selected':link.id === selectedCmp.id}"
       v-for="link in cmp.children"

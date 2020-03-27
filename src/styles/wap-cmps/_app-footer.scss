@@ -1,5 +1,5 @@
 .app-footer {
-  height: 100px;
+  // height: 100px;
   text-transform: lowercase;
   div {
     span {
@@ -8,39 +8,52 @@
     }
   }
 
-  .social-links {
-    * {
-      margin: 5px;
-      font-size: 1.3rem;
-      &:hover {
-        cursor: pointer;
+  // .social-links {
+  //   * {
+  //     margin: 5px;
+  //     font-size: 1.3rem;
+  //     &:hover {
+  //       cursor: pointer;
+  //     }
+  //   }
+  // }
+
+  &.buson-theme {
+    height: 30vh;
+    background-color: $clr1;
+    p {
+      margin: 0;
+    }
+    .social-links {
+      * {
+        color: $clr1;
       }
     }
   }
 }
 
-.app-footer.light-and-shiny {
-  background-color: $clr2;
+// .app-footer.light-and-shiny {
+//   background-color: $clr2;
 
-  > * {
-    color: $clr1;
-  }
+//   > * {
+//     color: $clr1;
+//   }
 
-  a {
-    :hover {
-      color: darken($clr1, 20%);
-    }
-  }
-}
+//   a {
+//     :hover {
+//       color: darken($clr1, 20%);
+//     }
+//   }
+// }
 
-.app-footer.dark-theme {
-  background-color: $clr6;
-  > * {
-    color: $clr5;
-  }
-  a {
-    :hover {
-      color: darken($clr5, 20%);
-    }
-  }
-}
+// .app-footer.dark-theme {
+//   background-color: $clr6;
+//   > * {
+//     color: $clr5;
+//   }
+//   a {
+//     :hover {
+//       color: darken($clr5, 20%);
+//     }
+//   }
+// }

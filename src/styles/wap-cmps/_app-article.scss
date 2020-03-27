@@ -1,44 +1,55 @@
 .app-article {
-    line-height: 1.9;
-    margin: 10px;
-    // font-family: Lato, sans-serif;
+  line-height: 1.9;
+  margin: 10px;
+  * {
+    font-family: Poppins, sans-serif;
+  }
+  // font-family: Lato, sans-serif;
+  p {
+    font-size: 0.8rem;
+    padding: 5px;
+    width: fit-content;
+    margin: 0;
+  }
 
-    h3,h4 {
-        margin: 0;
+  &.buson-theme {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 31px 32px 48px 52px;
+    text-align: start;
+    position: relative;
+    :first-child {
+      font-family: PoppinsBold, sans-serif;
+      margin: 0;
+      font-size: rem(40px);
+      background: #fff;
+      white-space: nowrap;
     }
-    p {
-        font-size: .8rem;
-        padding: 5px;
-    }
-}
-
-.app-article.light-and-shiny {
-    color: $clr1;
-    background-color: $clr2;
+  }
 }
 
 .app-article.dark-theme {
-    color: $clr5;
-    background-color: $clr6;
+  color: $clr5;
+  background-color: $clr6;
 }
 
 // MEDIA QUERIES
 
-@include for-wide-layout {
-    .app-article {
-        margin: 10px auto;
-    }
-}
+// @include for-wide-layout {
+//   .app-article {
+//     margin: 10px auto;
+//   }
+// }
 
-@include for-normal-layout {
-    .app-article {
-        margin: 10px auto;
-    }
-}
+// @include for-normal-layout {
+//   .app-article {
+//     margin: 10px auto;
+//   }
+// }
 
-@include for-narrow-layout {
-    .app-article {
-        margin: 10px auto;
-        width: 90%;
-    }
-}
+// @include for-narrow-layout {
+//   .app-article {
+//     margin: 10px auto;
+//     width: 90%;
+//   }
+// }

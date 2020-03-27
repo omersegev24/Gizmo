@@ -1,21 +1,21 @@
 <template>
-  <section class="app-article" id="app-article" :class="cmp.subClass">
-      <component
-        v-for="child in cmp.children"
-        :is="child.type"
-        :key="child.id"
-        :style="child.style"
-        :contenteditable="false"
-        :src="child.imgUrl"
-        :class="{ 'mark-selected':child.id === selectedCmp.id}"
-        @change="editTxt($event,child)"
-        @click.stop="openEdit(child)"
-      >{{child.txt}}</component>
+  <section class="app-article buson-theme" id="app-article" :class="cmp.subClass">
+    <component
+      v-for="child in cmp.children"
+      :is="child.type"
+      :key="child.id"
+      :style="child.style"
+      :contenteditable="false"
+      :src="child.imgUrl"
+      :class="{ 'mark-selected':child.id === selectedCmp.id}"
+      @change="editTxt($event,child)"
+      @click.stop="openEdit(child)"
+    >{{child.txt}}</component>
   </section>
 </template>
 
 <script>
-import { eventBus } from '../../services/eventBus.service.js';
+import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
     cmp: Object,
@@ -28,8 +28,8 @@ export default {
       eventBus.$emit("updateCmp", cmpCopy);
     },
     openEdit(cmp) {
-      eventBus.$emit('edit', cmp)
+      eventBus.$emit("edit", cmp);
     }
-  },
+  }
 };
 </script>
