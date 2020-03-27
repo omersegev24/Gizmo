@@ -17,46 +17,12 @@
       }
     }
   }
-
   .hamburger-menu {
     position: absolute;
     visibility: hidden;
   }
 
-  &.buson-theme {
-    box-shadow: inset 0 -2px 6px #e2e2e2;
-    height: rem(100px);
-    > * {
-      font-family: Poppins, "sans-serif";
-      color: $clr3;
-    }
-    .logo {
-      margin-bottom: 0;
-      font-size: rem(42px);
-      font-family: PoppinsBold, "sans-serif";
-      &::after {
-        content: ".";
-        font-family: PoppinsBold, "sans-serif";
-        color: $clr4;
-      }
-    }
-    li {
-      a {
-        color: $clr3;
-        font-size: rem(14px);
-        transition: .3s;
-        text-transform: uppercase;
-        &:hover {
-          color: $clr4;
-        }
-      }
-    }
-  }
-}
-
-//MEDIA QUERIES
-@include for-normal-layout {
-  .app-nav {
+  @media only screen and (max-width: $buson-break-wide) {
     .nav-links {
       z-index: 1;
       position: absolute;
@@ -79,7 +45,7 @@
         a {
           margin: 0;
           padding: 20px 0;
-          font-size: 2rem;
+          font-size: 3rem;
           font-weight: bold;
           transition: 0.3s;
         }
@@ -104,6 +70,51 @@
         transform: rotate(360deg);
       }
     }
+  }
+
+  &.buson-theme {
+    box-shadow: inset 0 -2px 6px #e2e2e2;
+    height: rem(100px);
+    > * {
+      font-family: Poppins, "sans-serif";
+      color: $clr3;
+    }
+    .logo {
+      margin-bottom: 0;
+      font-size: rem(42px);
+      font-family: PoppinsBold, "sans-serif";
+      &::after {
+        content: ".";
+        font-family: PoppinsBold, "sans-serif";
+        color: $clr4;
+      }
+    }
+    li {
+      a {
+        color: $clr3;
+        font-size: rem(14px);
+        transition: 0.3s;
+        text-transform: uppercase;
+        &:hover {
+          color: $clr4;
+        }
+      }
+    }
+    @media only screen and (max-width: $buson-break-wide) {
+      .nav-links {
+        background-color: $clr1;
+        li>a {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+}
+
+//MEDIA QUERIES
+@include for-normal-layout {
+  .app-nav {
   }
 }
 @include for-narrow-layout {
