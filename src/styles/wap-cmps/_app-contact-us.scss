@@ -75,7 +75,8 @@
     }
     form {
       width: fit-content;
-      input,textarea {
+      input,
+      textarea {
         border-radius: 5px;
       }
       input {
@@ -85,116 +86,39 @@
         @include for-buson-btn;
       }
     }
+    @include for-theme-wide-layout {
+      height: auto;
+      div {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+    @include for-theme-normal-layout {
+      height: auto;
+      div {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+    @include for-theme-narrow-layout {
+      height: auto;
+      div {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
   }
+
   //info section
   .app-article.buson-theme.info {
     margin: 0;
-    border:none;
+    border: none;
     :first-child {
       font-size: 2rem;
     }
     p {
       background-color: $clr3;
       text-align: center;
-    }
-  }
-}
-
-// .app-contact-us.light-and-shiny {
-//   background-color: $clr1;
-//   color: $clr2;
-//   form {
-//     label {
-//       color: $clr2;
-//     }
-//     input {
-//       color: $clr2;
-//       background-color: $clr1;
-//       border-bottom: 1px solid $clr2;
-//       &:hover {
-//         background-color: darken($clr1, 10%);
-//       }
-//     }
-//     textarea {
-//       color: $clr2;
-//       border: 1px solid $clr2;
-//       &:hover {
-//         background-color: darken($clr1, 10%);
-//       }
-//     }
-//   }
-// }
-
-// .app-contact-us.dark-theme {
-//   background-color: $clr6;
-//   color: $clr5;
-//   a {
-//     color: $clr5;
-//   }
-//   form {
-//     label {
-//       color: $clr5;
-//     }
-//     input {
-//       color: $clr5;
-//       background-color: $clr6;
-//       border-bottom: 1px solid $clr5;
-//       &:hover {
-//         background-color: darken($clr6, 10%);
-//       }
-//     }
-//     textarea {
-//       color: $clr5;
-//       border: 1px solid $clr2;
-//       &:hover {
-//         background-color: darken($clr6, 10%);
-//       }
-//     }
-//     button {
-//       @include for-dark-button;
-//       font-weight: bold;
-//     }
-//   }
-// }
-
-// MEDIA QUERIES
-
-@include for-narrow-layout {
-  .app-contact-us {
-    flex-direction: column;
-    .info {
-      margin-bottom: 20px;
-      .adress-info {
-        margin: rem(40px) 0;
-        p {
-          margin: 0 auto;
-        }
-      }
-
-      p {
-        margin: 0 auto;
-      }
-    }
-    form {
-      width: 90%;
-      margin: 0 auto;
-    }
-  }
-}
-
-@include for-normal-layout {
-  .app-contact-us {
-    flex-direction: column;
-    .info {
-      margin: 0 auto;
-      margin-bottom: 20px;
-      .adress-info {
-        margin: rem(40px) 0;
-      }
-    }
-    form {
-      width: 70%;
-      margin: 0 auto;
     }
   }
 }

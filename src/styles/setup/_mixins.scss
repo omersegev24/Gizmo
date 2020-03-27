@@ -57,6 +57,26 @@
   }
 }
 
+/*Media queries for THEMES*/
+  @mixin for-theme-narrow-layout {
+    @media (max-width: $buson-break-narrow) {
+      @content;
+    }
+  }
+  
+  @mixin for-theme-normal-layout {
+    @media (max-width: $buson-break-normal) {
+      @content;
+    }
+  }
+  
+  @mixin for-theme-wide-layout {
+    @media (min-width: $buson-break-normal) and (max-width: $buson-break-wide) {
+      @content;
+    }
+  }
+
+
 
 /* Media  Mixins */
 
