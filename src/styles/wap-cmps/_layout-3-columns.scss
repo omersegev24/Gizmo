@@ -1,15 +1,12 @@
 .layout-3-columns {
-  @include for-wide-layout {
-    flex-direction: column;
-  }
-  @include for-normal-layout {
-    flex-direction: column;
-  }
-  @include for-narrow-layout {
-    flex-direction: column;
-  }
-
   &.buson-theme {
-    height: 60vh;
+    height: 75vh;
+    @media only screen and (max-width: 1440px) {
+      height: auto;
+      div {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
   }
 }
