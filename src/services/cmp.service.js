@@ -141,6 +141,51 @@ const cmps = [
         }]
     },
     {
+        id: 'cmp214',
+        type: 'app-gallery',
+        style: {},
+        subClass: 'light-and-shiny',
+        children: [
+            {
+                id: 'img12xza',
+                type: 'img',
+                imgUrl: 'https://images.unsplash.com/photo-1558981420-87aa9dad1c89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+                style: {}
+            },
+            {
+                id: 'img15xza',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img13xza',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img01pa',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img0z1',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+            {
+                id: 'img009pq',
+                type: 'img',
+                imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                style: {}
+            },
+
+        ]
+    },
+    {
         id: 'cmp105',
         type: 'layout-3-columns',
         style: {},

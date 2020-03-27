@@ -90,65 +90,67 @@
           </transition>
         </div>
       </div>
-    </div> -->
+    </div>-->
 
-    <el-collapse  v-if="!editMode" v-model="activeName" accordion>
-  <el-collapse-item title="Sections" name="1">
-   <draggable
-                  :list="filteredCmps"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }"
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="cmp in filteredCmps"
-                    :key="cmp.id"
-                  >
-                    <cmp-preview :cmp="cmp"></cmp-preview>
+    <el-collapse v-if="!editMode" v-model="activeName" accordion>
+      <el-collapse-item title="Sections" name="1">
+        <draggable
+          :list="filteredCmps"
+          :disabled="!enabled"
+          :group="{ name: 'wap', pull: 'clone', put: false }"
+          :sort="false"
+          ghostClass="sortable-ghost"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :move="onMoveCallback"
+          :clone="cloneCmp"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',cmp)"
+            v-for="cmp in filteredCmps"
+            :key="cmp.id"
+          >
+            <cmp-preview :cmp="cmp"></cmp-preview>
 
-                    <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-                      <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-                      <p>{{cmpType(cmp.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-    </el-collapse-item>
-  <el-collapse-item title="Elements" name="2">
-    <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
-    <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
-  </el-collapse-item>
-  <el-collapse-item title="Widget" name="3">
-    <draggable
-                  :list="widgets"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }" 
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                  :move="checkMove"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="widget in widgets"
-                    :key="widget.id"
-                  >
-                    <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
-                      <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
-                      <p>{{widgetsCmps(widget.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-    </el-collapse-item>
-</el-collapse>
+            <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
+              <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
+              <p>{{cmpType(cmp.type).name}}</p>
+            </div>
+          </div>
+        </draggable>
+      </el-collapse-item>
+      <el-collapse-item title="Elements" name="2">
+        <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
+        <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
+      </el-collapse-item>
+      <el-collapse-item title="Widget" name="3">
+        <draggable
+          :list="widgets"
+          :disabled="!enabled"
+          :group="{ name: 'wap', pull: 'clone', put: false }"
+          :sort="false"
+          class="list-group flex flex-wrap space-evenly"
+          @start="dragStart"
+          @end="dragging = false"
+          :clone="cloneCmp"
+          :move="checkMove"
+        >
+          <div
+            class="cmp-btn flex flex-column align-center justify-center"
+            @click="$emit('addCmp',cmp)"
+            v-for="widget in widgets"
+            :key="widget.id"
+          >
+            <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
+              <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
+              <p>{{widgetsCmps(widget.type).name}}</p>
+            </div>
+          </div>
+        </draggable>
+      </el-collapse-item>
+    </el-collapse>
 
     <div class="save-btns flex justify-center align-center">
       <button>Publish</button>
@@ -217,6 +219,11 @@ export default {
     }
   },
   methods: {
+    onMoveCallback(evt, originalEvent) {
+      console.log('relatedContext', evt.relatedContext)
+      //  ...
+      // return false; — for cancel
+    },
     cloneCmp(cmp) {
       console.log("evenet clone", cmp);
       var copy = JSON.parse(JSON.stringify(cmp));
@@ -228,6 +235,7 @@ export default {
       // window.console.log("on move: " + e.draggedContext.futureIndex);
     },
     dragStart(ev) {
+      console.log('ev', ev)
       this.dragging = true
       // console.log('ev', ev.item.classList)
     },
@@ -264,8 +272,8 @@ export default {
           return { name: "Social Links", class: "fas fa-share-alt" };
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
-        case "p":
-          return { name: "Text", class: "fas fa-map-marked-alt" };
+        case "app-gallery":
+          return { name: "Gallery", class: "fas fa-images" };
       }
     },
     widgetsCmps(type) {
@@ -285,29 +293,9 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-// .cmp-btn {
-//   width: 75px;
-//   height: 75px;
-//   .cmp-preview {
-//     text-align: center;
-//     background-color: #ccc;
-//     border-radius: 0.5em;
-//     user-select: none;
-//     height: 0;
-//     padding: 0;
-//     overflow: hidden;
-//     &:focus {
-//       opacity: 1;
-//     }
-//   }
-//   &.sortable-drag {
-//     width: 100%;
-//     .cmp-preview {
-//       // overflow: unset;
-//       opacity: 1;
-//     }
-//   }
-// }
-//
+<style >
+.sortable-ghost {
+  background-color:rgba(78, 184, 245, 0.214);
+}
 </style>
+
