@@ -173,8 +173,7 @@
     </el-collapse>
 
     <div class="save-btns flex justify-center align-center">
-      <button>Publish</button>
-      <button @click.stop="saveWap">Save</button>
+      <button @click.stop="saveWap">Publish</button>
     </div>
   </section>
 </template>

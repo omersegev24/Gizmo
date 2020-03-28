@@ -1,5 +1,6 @@
 <template>
   <section class="wap-container" :class="wapTheme" v-if="wap">
+
     <draggable
       v-model="wapCmp"
       :disabled="!enabled"

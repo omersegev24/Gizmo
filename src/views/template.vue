@@ -1,6 +1,7 @@
 <template>
   <section class="template-page main-layout">
-    <h3 class="title">Pick the website template you love</h3>
+    <h3 class="title">Stunning Templates</h3>
+    <p class="sub-title">Start with free HTML website templates and bring your vision to life.</p>
     <wap-list :waps="waps"></wap-list>
   </section>
 </template>

@@ -423,16 +423,15 @@ function updateWap(wap, cmp) {
 }
 
 function _findNode(cmp, currentNode) {
-    var currentChild, result;
 
     if (cmp.id === currentNode.id) {
         return currentNode;
     } else if (currentNode.children) {
 
         for (var i = 0; i < currentNode.children.length; i++) {
-            currentChild = currentNode.children[i];
+            var currentChild = currentNode.children[i];
 
-            result = _findNode(cmp, currentChild);
+            var result = _findNode(cmp, currentChild);
             if (result) {
                 return currentChild;
             }
