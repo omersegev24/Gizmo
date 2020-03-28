@@ -30,6 +30,19 @@
       }
     }
   }
+  &.icy-theme {
+    height: 10vh;
+    color: $clr9;
+    background-color: $clr7;
+    p {
+      margin: 0;
+    }
+    // .social-links {
+      // * {
+      //   color: $clr9;
+      // }
+    // }
+  }
 }
 
 // .app-footer.light-and-shiny {

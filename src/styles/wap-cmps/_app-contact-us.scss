@@ -86,10 +86,31 @@
       }
     }
     @media only screen and (max-width: $buson-break-wide) {
-      height: 90vh;
+      height: auto;
       div {
         align-items: center;
         flex-direction: column;
+      }
+    }
+  }
+
+  &.icy-theme {
+    height: 60vh;
+    align-items: center;
+    background-color: $clr7;
+    color: $clr9;
+    button {
+      margin-bottom: 20px;
+      padding: 8px;
+      color: $clr9;
+      background-color: $clr10;
+      border: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      transition: .3s;
+      &:hover {
+        background-color: $clr9;
+        color: $clr10;
       }
     }
   }

@@ -1,9 +1,5 @@
 <template>
-  <section
-    class="app-contact-us buson-theme flex space-evenly"
-    id="app-contact-us"
-    :class="cmp.subClass"
-  >
+  <section class="app-contact-us icy-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"

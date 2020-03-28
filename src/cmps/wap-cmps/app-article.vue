@@ -1,5 +1,5 @@
 <template>
-  <section class="app-article buson-theme" id="app-article" :class="cmp.subClass">
+  <section class="app-article icy-theme" id="app-article" :class="cmp.subClass">
     <component
       v-for="child in cmp.children"
       :is="child.type"

@@ -1,10 +1,10 @@
 <template>
   <div>
     <header
-      class="app-header buson-theme flex justify-center align-center flex-column"
+      class="app-header icy-theme flex justify-center align-center flex-column"
       id="app-header"
       :class="cmp.subClass"
-      :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
+      :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
     >
       <draggable
         v-model="contactCmp"
@@ -59,6 +59,12 @@ export default {
   },
   computed: {
     //computed bg style for each template?
+
+    imgStyle() {
+      if (cmp.subClass === 'icy-theme') {
+        return { 'background-image': 'url(' + cmp.imgUrl + ')' }
+      }
+    },
     contactCmp: {
       get() {
         return JSON.parse(JSON.stringify(this.cmp.children));

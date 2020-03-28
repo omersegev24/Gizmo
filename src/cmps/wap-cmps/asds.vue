@@ -1,14 +1,14 @@
 <template>
   <section class="wap-container" :class="wapTheme" v-if="wap">
-
     <draggable
       v-model="wapCmp"
       :disabled="!enabled"
       class="list-group"
       ghost-class="ghost"
-      @start="dragging=true"
+      @start="dragging = true"
       @end="dragging = false"
-      :group="{ name: 'wap' }"
+      
+      group="wap"
     >
       <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
     </draggable>
@@ -31,18 +31,14 @@ export default {
   components: {
     cmpPreview
   },
- 
   computed: {
     wapCmp: {
       get() {
-        return this.wap.cmps
+        return this.$store.getters.cmps;
       },
       set(cmps) {
-        console.log('wap-conatainer set', cmps);
-
-        const wapCopy = JSON.parse(JSON.stringify(this.wap))
-        wapCopy.cmps = cmps
-        this.$store.commit({ type: "setWap", wap: wapCopy });
+        // const cmps =  JSON.parse(JSON.stringify(value))
+        this.$store.commit({ type: "updateCmps", cmps });
       }
     },
 

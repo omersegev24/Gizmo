@@ -52,10 +52,6 @@
 </template>
 
 <script>
-import swatches from "vue-swatches";
-import "vue-swatches/dist/vue-swatches.min.css";
-import vueSlider from "vue-slider-component";
-
 export default {
   props: {
     currCmp: Object
@@ -111,9 +107,5 @@ export default {
       this.letterSpacing = parseInt(this.currCmp.style.letterSpacing, 10);
     }
   },
-  components: {
-    swatches,
-    vueSlider
-  }
 };
 </script>
