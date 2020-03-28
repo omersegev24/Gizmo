@@ -13,13 +13,17 @@
     height: 75px;
     background-color: #fff;
     padding: 0.5rem;
-    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    border: 1px solid rgba(10, 10, 10, 0.1);
     margin: 5px;
     font-size: 0.8rem;
     min-width: 100px;
-    border-radius: rem(5px);
+    border-radius: 0.3125rem;
+    text-align: center;
+    cursor: grab;
+    &:active{
+      cursor: grabbing;
+    }
     &:hover {
-      cursor: pointer;
       opacity: 0.8;
     }
     .cmp-preview {

@@ -173,8 +173,7 @@
     </el-collapse>
 
     <div class="save-btns flex justify-center align-center">
-      <button>Publish</button>
-      <button @click.stop="saveWap">Save</button>
+      <button @click.stop="saveWap">Publish</button>
     </div>
   </section>
 </template>
@@ -263,22 +262,17 @@ export default {
   methods: {
     onMoveCallback(evt, originalEvent) {
       console.log('relatedContext', evt.relatedContext)
-      //  ...
       // return false; — for cancel
     },
     cloneCmp(cmp) {
-      console.log('element', cmp.type);
-
       var copy = JSON.parse(JSON.stringify(cmp));
-      copy.id = wapService.makeId();
+      var cmpCopy = wapService.replaceIds(copy)
       return copy;
     },
     checkMove(e) {
       window.console.log("on move: " + e.relatedContext.list);
     },
     dragStart(ev) {
-      console.log('evvvvv', ev);
-
       this.dragging = true
     },
     async saveWap() {
