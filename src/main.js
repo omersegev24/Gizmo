@@ -15,7 +15,7 @@ import draggable from 'vuedraggable'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
-
+import './globalCmps.js'
 
 Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);

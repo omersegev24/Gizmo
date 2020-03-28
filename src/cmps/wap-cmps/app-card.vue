@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card" :style="cmp.style" :class="cmp.subClass">
+  <div class="app-card" style="min-width:300px;" :style="cmp.style" >
     <component
       v-for="child in cmp.children"
       :is="child.type"

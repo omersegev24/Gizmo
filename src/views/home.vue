@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     async openEditor(wapId) {
-      this.$router.push(`/editor/${wapId}`).catch(err => {});
+      this.$router.push(`/editor/${wapId}`).catch(err => { });
       // this.$router.push(`/editor/${wapId}`);
     }
   },

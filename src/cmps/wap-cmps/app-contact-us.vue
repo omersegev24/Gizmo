@@ -1,11 +1,16 @@
 <template>
-  <section class="app-contact-us buson-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
+  <section
+    class="app-contact-us buson-theme flex space-evenly"
+    id="app-contact-us"
+    :class="cmp.subClass"
+  >
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"
       style="width:100%"
       @start="dragging = true"
       @end="dragging = false"
+      group="wap"
     >
       <component
         class="info"
@@ -20,14 +25,13 @@
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
     </draggable>
-
   </section>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 import appForm from './app-form.vue'
-import appArticle from './app-article.vue'
+// import appArticle from './app-article.vue'
 export default {
   props: {
     cmp: Object,
@@ -57,7 +61,7 @@ export default {
   },
   components: {
     appForm,
-    appArticle
+    // appArticle
   }
 };
 </script>
