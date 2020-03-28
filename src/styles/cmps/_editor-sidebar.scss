@@ -20,7 +20,7 @@
     border-radius: 0.3125rem;
     text-align: center;
     cursor: grab;
-    &:active{
+    &:active {
       cursor: grabbing;
     }
     &:hover {
@@ -115,11 +115,17 @@
     margin-top: auto;
     background-color: #fff;
     border-top: 1px solid rgba(10, 10, 10, 0.1);
-  }
-  .save-btns > * {
-    // @include for-light-button;
-    margin: 2.5px;
-    padding: 10px 50px;
+    * {
+      background-color: $clr2;
+      color: #fff;
+      border: none;
+      &:hover {
+        transition: 0.2s;
+        background-color: lighten($clr2, 10%);
+      }
+      margin: 2.5px;
+      padding: 10px 50px;
+    }
   }
 }
 
@@ -227,10 +233,9 @@
   }
 
   .list-group {
-   display: flex 
+    display: flex;
   }
   .cmp-btn {
-
     width: 75px;
     height: 75px;
     background-color: #fff;
@@ -278,5 +283,3 @@
   //   }
   // }
 }
-
-
