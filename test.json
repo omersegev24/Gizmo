@@ -1,5 +1,5 @@
 {
-  "title": "OR new test",
+  "title": "Travel Tips",
   "theme": {
     "isTrusted": true
   },
@@ -14,7 +14,7 @@
         {
           "id": "log1zxcv",
           "type": "h1",
-          "txt": "Gizmo",
+          "txt": "JAMES CONSULTING",
           "style": {}
         },
         {
@@ -43,106 +43,21 @@
     {
       "id": "cmp10111",
       "type": "app-header",
-      "imgUrl": "https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg",
+      "imgUrl": "https://s2.best-wallpaper.net/wallpaper/1920x1200/1712/Ice-cave-man-adventure_1920x1200.jpg",
       "style": {},
       "subClass": "",
       "children": [
         {
           "id": "saw21a",
-          "type": "button",
-          "txt": "Try me",
-          "coords": {
-            "x": {
-              "$numberInt": "153"
-            },
-            "y": {
-              "$numberInt": "65"
-            }
-          },
+          "type": "p",
+          "txt": "DEVELOPING INNOVATIVE STRATEGIES",
           "style": {}
         },
         {
           "id": "tre12",
-          "type": "p",
-          "txt": "WE SELL IT ALL",
-          "coords": {
-            "x": {
-              "$numberInt": "429"
-            },
-            "y": {
-              "$numberInt": "59"
-            }
-          },
+          "type": "h1",
+          "txt": "ACHIEVING GROWTH",
           "style": {}
-        }
-      ],
-      "txt": "daniel"
-    },
-    {
-      "id": "cmp102",
-      "type": "app-map",
-      "style": {
-        "width": {
-          "$numberInt": "300"
-        },
-        "height": {
-          "$numberInt": "300"
-        },
-        "backgroundColor": "#CE93D8"
-      },
-      "center": {
-        "\"lat\"": "32.519",
-        "\"lng\"": "34.9045"
-      },
-      "markers": [
-        {
-          "position": {}
-        }
-      ]
-    },
-    {
-      "id": "cmp106",
-      "type": "app-contact",
-      "style": {},
-      "subClass": "",
-      "children": [
-        {
-          "id": "cmp1zdasz3",
-          "type": "app-article",
-          "style": {},
-          "subClass": "",
-          "children": [
-            {
-              "id": "pmr1a",
-              "type": "p",
-              "txt": "Contact",
-              "style": {}
-            },
-            {
-              "id": "12m0lp",
-              "type": "p",
-              "txt": "Tel Aviv Bacher 4",
-              "style": {}
-            },
-            {
-              "id": "pxxppqz2a",
-              "type": "p",
-              "txt": "123-456-7890",
-              "style": {}
-            },
-            {
-              "id": "qmhjz2a",
-              "type": "p",
-              "txt": "gizmo@gizmo.com",
-              "style": {}
-            }
-          ]
-        },
-        {
-          "id": "form12zdf",
-          "type": "app-form",
-          "style": {},
-          "txt": ""
         }
       ]
     },
@@ -152,93 +67,134 @@
       "style": {},
       "subClass": "",
       "children": [
+    {
+      "id": "qaszxcv",
+      "type": "app-card",
+      "style": {
+      },
+      "subClass": "light-and-shiny",
+      "children": [{
+          "id": "saoo5r1a",
+          "type": "img",
+          "imgUrl": "https://cdn.getyourguide.com/img/tour_img-492016-146.jpg",
+          "style": {}
+      }, {
+          "id": "tr567312",
+          "type": "p",
+          "txt": "I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.",
+          "style": {}
+      }, {
+          "id": "sa571a",
+          "type": "button",
+          "txt": "More Info",
+          "style": {}
+      }]
+  },
+    {
+      "id": "qazxcv",
+      "type": "app-card",
+      "style": {
+      },
+      "subClass": "light-and-shiny",
+      "children": [{
+          "id": "sa5673a",
+          "type": "img",
+          "imgUrl": "https://cdn.getyourguide.com/img/tour_img-492016-146.jpg",
+          "style": {}
+      }, {
+          "id": "tr68712",
+          "type": "p",
+          "txt": "I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.",
+          "style": {}
+      }, {
+          "id": "sa671a",
+          "type": "button",
+          "txt": "More Info",
+          "style": {}
+      }]
+  },
+    {
+      "id": "qa78cv",
+      "type": "app-card",
+      "style": {
+      },
+      "subClass": "",
+      "children": [{
+          "id": "s24511a",
+          "type": "img",
+          "imgUrl": "https://cdn.getyourguide.com/img/tour_img-492016-146.jpg",
+          "style": {}
+      }, {
+          "id": "tr542",
+          "type": "p",
+          "txt": "I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.",
+          "style": {}
+      }, {
+          "id": "sa854",
+          "type": "button",
+          "txt": "More Info",
+          "style": {}
+      }]
+  }]},
+  {
+    "id": "cmp103",
+    "type": "app-article",
+    "style": {},
+    "subClass": "",
+    "children": [
+      {
+        "id": "yldor1a",
+        "type": "p",
+        "txt": "About Us",
+        "style": {}
+      },
+      {
+        "id": "xr4g2e1p",
+        "type": "p",
+        "txt": "Article sub title",
+        "style": {}
+      },
+      {
+        "id": "q0aewg2a",
+        "type": "p",
+        "txt": "I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors.",
+        "style": {}
+      },
+      {
+        "id": "sa854",
+        "type": "button",
+        "txt": "More Info",
+        "style": {}
+      }
+    ]
+  },
+
+    {
+      "id": "cmp106",
+      "type": "app-contact",
+      "style": {},
+      "subClass": "",
+      "children": [
         {
-          "id": "cmp103",
-          "type": "app-article",
+          "id": "form12zdf",
+          "type": "app-form",
           "style": {},
-          "subClass": "",
-          "children": [
-            {
-              "id": "yldor1a",
-              "type": "p",
-              "txt": "Article titleee",
-              "style": {}
-            },
-            {
-              "id": "xr4g2e1p",
-              "type": "p",
-              "txt": "Article sub title",
-              "style": {}
-            },
-            {
-              "id": "q0aewg2a",
-              "type": "p",
-              "txt": "",
-              "style": {}
-            }
-          ]
-        },
-        {
-          "id": "cmp1ope3",
-          "type": "app-article",
-          "style": {},
-          "subClass": "",
-          "children": [
-            {
-              "id": "vgyvkvhc",
-              "type": "p",
-              "txt": "Article title",
-              "style": {}
-            },
-            {
-              "id": "ccgchkufu",
-              "type": "p",
-              "txt": "Article sub title",
-              "style": {}
-            },
-            {
-              "id": "q0ppewg2a",
-              "type": "p",
-              "txt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?",
-              "style": {}
-            }
-          ]
-        },
-        {
-          "id": "cmp13rt3",
-          "type": "app-article",
-          "style": {},
-          "subClass": "",
-          "children": [
-            {
-              "id": "ylkkfa1a",
-              "type": "p",
-              "txt": "Article title",
-              "style": {}
-            },
-            {
-              "id": "xrzzlp",
-              "type": "p",
-              "txt": "Article sub title",
-              "style": {}
-            },
-            {
-              "id": "q0poq2a",
-              "type": "p",
-              "txt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos earum? Suscipit, dicta sunt quia pariatur laborum sed tempore qui vero, dignissimos, modi iure quae quos at repellat mollitia. Numquam?",
-              "style": {}
-            }
-          ]
+          "txt": ""
         }
       ]
     },
     {
-      "id": "cca29",
-      "type": "app-youtube",
-      "style": {},
-      "subClass": "",
-      "title": "B.B.King",
-      "url": "https://www.youtube.com/embed/Y57kLy1vV1c"
+      "id": "cmp102",
+      "type": "app-map",
+      "center": {
+        "\"lat\"": "32.519",
+        "\"lng\"": "34.9045"
+      },
+      "markers": [
+        {
+          "position": {}
+        }
+      ]
     },
     {
       "id": "cmp105",
@@ -286,43 +242,6 @@
       "style": {},
       "subClass": "",
       "title": "Chat"
-    },
-    {
-      "id": "Ues7I",
-      "type": "app-header",
-      "style": {},
-      "subClass": "",
-      "imgUrl": "https://i.pinimg.com/originals/a0/c7/c8/a0c7c89aa08d5a04ed5c81d724399411.jpg",
-      "children": [
-        {
-          "id": "saw21a",
-          "type": "button",
-          "txt": "Try me",
-          "coords": {
-            "x": {
-              "$numberInt": "153"
-            },
-            "y": {
-              "$numberInt": "65"
-            }
-          },
-          "style": {}
-        },
-        {
-          "id": "tre12",
-          "type": "p",
-          "txt": "גשדגשד",
-          "coords": {
-            "x": {
-              "$numberInt": "429"
-            },
-            "y": {
-              "$numberInt": "59"
-            }
-          },
-          "style": {}
-        }
-      ]
     }
   ]
 }

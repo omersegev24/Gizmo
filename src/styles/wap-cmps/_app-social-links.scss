@@ -13,11 +13,17 @@
       color: $clr2;
     }
   }
+  &.icy-theme {
+    * {
+      background-color: $clr7;
+      color: $clr9;
+    }
+  }
 }
 
 .app-social-links.light-and-shiny {
   > * {
-    color: $clr2;
+    color: $clr9;
   }
 }
 .app-social-links.dark-theme {

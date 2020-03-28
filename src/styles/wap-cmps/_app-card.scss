@@ -18,47 +18,90 @@
 
   button {
     margin-top: 10px;
-    // @include for-light-button;
+  }
+
+  //THEMES
+
+  &.icy-theme {
+    background-color: $clr7;
+    color: $clr9;
+    width: 25%;
+    text-align: center;
+    
+    p {
+      font-family: Raleway, sans-serif;
+      font-weight: 500;
+      max-width: 30ch;
+      padding: 8px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    
+    button {
+      margin-bottom: 20px;
+      padding: 8px;
+      color: $clr9;
+      background-color: $clr10;
+      border: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      transition: .3s;
+      &:hover {
+        background-color: $clr9;
+        color: $clr10;
+      }
+    }
+    @media only screen and (max-width: 1300px) {
+      width: 50%;
+    }
+    @media only screen and (max-width: 950px) {
+      width: 60%;
+    }
+    @media only screen and (max-width: 810px) {
+      width: 80%;
+    }
   }
 }
+  // @media only screen and (max-width: )
+// }
 
-.app-card.light-and-shiny {
-  filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
-  background-color: $clr1;
-  color: $clr2;
-}
+// .app-card.light-and-shiny {
+//   filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
+//   background-color: $clr1;
+//   color: $clr2;
+// }
 
-.app-card.dark-theme {
-  color: $clr5;
-  background-color: darken($clr6, 10%);
-  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
-  button {
-    @include for-dark-button;
-    font-weight: bold;
-  }
-}
+// .app-card.dark-theme {
+//   color: $clr5;
+//   background-color: darken($clr6, 10%);
+//   filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+//   button {
+//     @include for-dark-button;
+//     font-weight: bold;
+//   }
+// }
 
 // MEDIA QUERIES
 
-@include for-wide-layout {
-  .app-card {
-    width: 33%;
-  }
-}
-@include for-normal-layout {
-  .app-card {
-    width: 60%;
-    button {
-      @include for-responsive-btn;
-    }
-  }
-}
-@include for-narrow-layout {
-  .app-card {
-    margin-top: rem(15px);
-    width: 90%;
-    button {
-      @include for-responsive-btn;
-    }
-  }
-}
+// @include for-wide-layout {
+//   .app-card {
+//     width: 33%;
+//   }
+// }
+// @include for-normal-layout {
+//   .app-card {
+//     width: 60%;
+//     button {
+//       @include for-responsive-btn;
+//     }
+//   }
+// }
+// @include for-narrow-layout {
+//   .app-card {
+//     margin-top: rem(15px);
+//     width: 90%;
+//     button {
+//       @include for-responsive-btn;
+//     }
+//   }
+// }

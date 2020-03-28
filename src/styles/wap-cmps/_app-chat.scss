@@ -70,12 +70,12 @@
     background-color: $clr1;
     color: $clr2;
     filter: drop-shadow(0 0 0.75rem rgb(138, 138, 138));
-  
+
     .unopened-chat-container {
       background-color: $clr2;
       color: $clr1;
     }
-  
+
     .msgs-container {
       background-color: $clr1;
       color: $clr2;
@@ -93,8 +93,33 @@
       }
     }
   }
-}
+  &.icy-theme {
+    background-color: $clr7;
+    color: $clr9;
 
+    .unopened-chat-container {
+      background-color: $clr7;
+      color: $clr9;
+    }
+
+    .msgs-container {
+      background-color: $clr9;
+      color: $clr7;
+      li {
+        background-color: lighten($clr10, $amount: 50%);
+      }
+      .support {
+        background-color: lighten($clr10, $amount: 65%);
+      }
+    }
+    .msg-send-container {
+      background-color: $clr1;
+      .msg-send {
+        color: $clr2;
+      }
+    }
+  }
+}
 
 .app-chat.dark-theme {
   background-color: $clr6;
@@ -127,19 +152,19 @@
 
 //MEDIA QUEREIS
 @include for-wide-layout {
-	.app-chat {
-		width: 50%;
-	}
+  .app-chat {
+    width: 50%;
+  }
 }
 
 @include for-normal-layout {
-	.app-chat {
-		width: 60%;
-	}
+  .app-chat {
+    width: 60%;
+  }
 }
 
 @include for-narrow-layout {
-	.app-chat {
-		width: 80%;
-	}
+  .app-chat {
+    width: 80%;
+  }
 }
