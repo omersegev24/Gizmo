@@ -1,5 +1,5 @@
 <template>
-  <section class="app-chat buson-theme" :class="cmp.subClass">
+  <section class="app-chat icy-theme" :class="cmp.subClass">
     <div class="unopened-chat-container flex space-between" @click.prevent="toggleChat" v-if="!chatOpen">
       <section class="unopened-chat-titles">
         <p>Let's Chat!</p>

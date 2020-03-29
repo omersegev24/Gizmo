@@ -1,24 +1,27 @@
 <template>
   <div>
     <header
-      class="app-header buson-theme flex justify-center align-center flex-column"
+      class="app-header icy-theme flex justify-center align-center flex-column"
       id="app-header"
       :class="cmp.subClass"
-      :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]"
+      :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
     >
-      <component
-        v-for="child in cmp.children"
-        :key="child.id"
-        ref="txt"
-        :is="child.type"
-        :style="child.style"
-        :contenteditable="false"
-        :src="child.imgUrl"
-        :class="{'title':child.type === 'p',
-               'mark-selected':child.id === selectedCmp.id}"
-        @input="editTxt($event,child)"
-        @click.stop="openEdit(child)"
-      >{{child.txt}}</component>
+      <!-- :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]" -->
+      <div class='txt-container'>
+        <component
+          v-for="child in cmp.children"
+          :key="child.id"
+          ref="txt"
+          :is="child.type"
+          :style="child.style"
+          :contenteditable="false"
+          :src="child.imgUrl"
+          :class="{'title':child.type === 'p',
+            'mark-selected':child.id === selectedCmp.id}"
+          @input="editTxt($event,child)"
+          @click.stop="openEdit(child)"
+        >{{child.txt}}</component>
+      </div>
     </header>
   </div>
 </template>
@@ -49,7 +52,11 @@ export default {
     }
   },
   computed: {
-    //computed bg style for each template?
+    imgStyle() {
+      if (cmp.subClass === 'icy-theme') {
+          return {'background-image': 'url(' + cmp.imgUrl + ')'}
+      }
+    },
     myList: {
       get() {
         return this.cmp.children;

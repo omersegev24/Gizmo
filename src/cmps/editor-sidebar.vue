@@ -93,7 +93,7 @@
     </div>-->
 
     <el-collapse v-if="!editMode" v-model="activeName" accordion>
-      <el-collapse-item title="Sections" name="1">
+      <el-collapse-item class="collapse-item" title="Sections" name="1">
         <draggable
           :list="filteredCmps"
           :disabled="!enabled"
@@ -121,7 +121,7 @@
           </div>
         </draggable>
       </el-collapse-item>
-      <el-collapse-item title="Elements" name="2">
+      <el-collapse-item class="collapse-item" title="Elements" name="2">
         <draggable
           :list="elements"
           :disabled="!enabled"
@@ -145,7 +145,7 @@
           </div>
         </draggable>
       </el-collapse-item>
-      <el-collapse-item title="Widget" name="3">
+      <el-collapse-item class="collapse-item" title="Widget" name="3">
         <draggable
           :list="widgets"
           :disabled="!enabled"

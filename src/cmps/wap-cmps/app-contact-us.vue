@@ -1,5 +1,5 @@
 <template>
-  <section class="app-contact-us buson-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
+  <section class="app-contact-us icy-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"
@@ -28,6 +28,7 @@
 import { eventBus } from "../../services/eventBus.service.js";
 import appForm from './app-form.vue'
 import appArticle from './app-article.vue'
+import appMap from './app-map.vue'
 export default {
   props: {
     cmp: Object,
@@ -57,7 +58,8 @@ export default {
   },
   components: {
     appForm,
-    appArticle
+    appArticle,
+    appMap
   }
 };
 </script>
