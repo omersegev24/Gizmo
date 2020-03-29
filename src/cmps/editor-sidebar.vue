@@ -94,7 +94,7 @@
 
     <el-dialog title="Publish" :visible.sync="centerDialogVisible" width="30%" center>
       <span>Check It Out</span>
-      <a :href="url">HERE</a>
+      <a :href="url"> HERE</a>
       <span slot="footer" class="dialog-footer">
         <social-sharing></social-sharing>
         <el-button type="primary" @click="centerDialogVisible = false">Confirm</el-button>
@@ -280,6 +280,12 @@ export default {
 <style >
 .sortable-ghost {
   background-color: rgba(78, 184, 245, 0.214);
+  color: rgba(78, 184, 245, 0);
+  padding: 10px;
+}
+
+.sortable-fallback  {
+  border-radius: 50%;
 }
 </style>
 

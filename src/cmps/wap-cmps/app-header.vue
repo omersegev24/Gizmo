@@ -7,7 +7,7 @@
       :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
     >
       <draggable
-        v-model="contactCmp"
+        v-model="currCmp"
         class="txt-container flex space-evenly align-center"
         @start="dragging = true"
         @end="dragging = false"
@@ -33,10 +33,8 @@
     </header>
   </div>
 </template>
-
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
-
 export default {
   props: {
     cmp: Object,
@@ -58,7 +56,6 @@ export default {
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
     },
-  
   },
   computed: {
     imgStyle() {
@@ -66,25 +63,24 @@ export default {
         return { "background-image": "url(" + cmp.imgUrl + ")" };
       }
     },
-    contactCmp: {
+    currCmp: {
       get() {
         return JSON.parse(JSON.stringify(this.cmp.children));
       },
       set(children) {
         const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
         cmpCopy.children = children;
-          eventBus.$emit('updateCmp', cmpCopy);
+        eventBus.$emit("updateCmp", cmpCopy);
         if (this.cmp.children.length !== children.length) {
-        // } else {
+          // } else {
           eventBus.$on('afterWapUpdated', () => {
-            eventBus.$emit("updateCmp", cmpCopy);
+            eventBus.$emit('updateCmp', cmpCopy);
             eventBus.$off('afterWapUpdated')
           })
         }
       }
     }
   },
-
   watch: {
     selectedCmp() {
       this.cmpCopy = JSON.parse(JSON.stringify(this.selectedCmp));
