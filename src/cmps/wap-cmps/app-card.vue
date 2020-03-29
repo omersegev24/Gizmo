@@ -5,7 +5,7 @@
       :is="child.type"
       :key="child.id"
       :style="child.style"
-      :contenteditable="true"
+      :contenteditable="false"
       @change="editTxt($event,child)"
       :src="child.imgUrl"
       :class="{ 'mark-selected':child.id === selectedCmp.id}"

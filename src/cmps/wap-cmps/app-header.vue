@@ -8,27 +8,28 @@
     >
       <draggable
         v-model="contactCmp"
-        class="txt-container flex space-evenly align-center"
+        class="txt-container flex space-evenly"
         @start="dragging = true"
         @end="dragging = false"
         group="wap"
+        :emptyInsertThreshold="1"
       >
         <!-- <div class="txt-container"> -->
-        <component
-          v-for="child in cmp.children"
-          :key="child.id"
-          :is="child.type"
-          :style="child.style"
-          :cmp="child"
-          :contenteditable="false"
-          :selectedCmp="selectedCmp"
-          :src="child.imgUrl"
-          :class="{'title':child.type === 'p',
+          <component
+            v-for="child in cmp.children"
+            :key="child.id"
+            :is="child.type"
+            :style="child.style"
+            :cmp="child"
+            :contenteditable="false"
+            :selectedCmp="selectedCmp"
+            :src="child.imgUrl"
+            :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-          @input="editTxt($event,child)"
-          @click.stop="openEdit(child)"
-        >{{child.txt}}</component>
-        <!-- </div> -->
+            @input="editTxt($event,child)"
+            @click.stop="openEdit(child)"
+          >{{child.txt}}</component>
+          <!-- </div> -->
       </draggable>
     </header>
   </div>
@@ -50,6 +51,9 @@ export default {
     };
   },
   methods: {
+    test(ev) {
+      console.log('appheader test', ev)
+    },
     editTxt(ev, cmp) {
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
@@ -58,7 +62,7 @@ export default {
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
     },
-  
+
   },
   computed: {
     //computed bg style for each template?
@@ -75,7 +79,7 @@ export default {
       set(children) {
         const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
         cmpCopy.children = children;
-          eventBus.$emit('updateCmp', cmpCopy);
+        eventBus.$emit('updateCmp', cmpCopy);
         if (this.cmp.children.length === children.length) {
         } else {
           eventBus.$on('afterWapUpdated', () => {

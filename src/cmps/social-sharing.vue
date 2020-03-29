@@ -25,8 +25,12 @@
 
 <script>
 export default {
-  props: ["url"]
+  props: ["url"],
+  mounted() {
+    console.log(window.location.pathname)
+  }
 };
+
 </script>
 <style lang="scss">
 .social-sharing {

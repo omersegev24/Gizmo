@@ -209,7 +209,7 @@ export default {
 
       this.$msgbox({
         title: "Publish your Website",
-        message: h(socialSharing, { key: 'urlId' })
+        message: h(socialSharing)
       }).then(action => {
         this.$message({
           type: "info",
@@ -277,6 +277,12 @@ export default {
 <style >
 .sortable-ghost {
   background-color: rgba(78, 184, 245, 0.214);
+  color: rgba(78, 184, 245, 0);
+  padding: 10px;
+}
+
+.sortable-fallback  {
+  border-radius: 50%;
 }
 </style>
 

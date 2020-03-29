@@ -31,7 +31,7 @@ export default {
   components: {
     cmpPreview
   },
- 
+
   computed: {
     wapCmp: {
       get() {
