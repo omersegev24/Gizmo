@@ -214,7 +214,7 @@ export default {
         center: true,
         message: h('p', null, [
           h('span', null, 'Check It Out '),
-          h('a',  {class:"samak" , href:'/'} , 'HERE', false),
+          h('a',  {  href:'/'} , 'HERE', false),
           h(socialSharing)
         ]),
       })
@@ -279,6 +279,12 @@ export default {
 <style >
 .sortable-ghost {
   background-color: rgba(78, 184, 245, 0.214);
+  color: rgba(78, 184, 245, 0);
+  padding: 10px;
+}
+
+.sortable-fallback  {
+  border-radius: 50%;
 }
 </style>
 

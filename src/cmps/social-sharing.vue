@@ -32,6 +32,7 @@ export default {
     this.url = window.location.href.replace('editor', 'website')
   }
 };
+
 </script>
 <style lang="scss">
 .social-sharing {

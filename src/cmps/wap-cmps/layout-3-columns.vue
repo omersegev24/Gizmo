@@ -1,7 +1,10 @@
 <template>
-  <section class="layout-3-columns icy-theme flex justify-center align-center" :class="cmp.subClass">
+  <section
+    class="layout-3-columns icy-theme flex justify-center align-center"
+    :class="cmp.subClass"
+  >
     <draggable
-      v-model="contactCmp"
+      v-model="currCmp"
       class="flex space-evenly align-center"
       @start="dragging = true"
       @end="dragging = false"
@@ -24,9 +27,6 @@
 
 <script>
 import { eventBus } from '../../services/eventBus.service.js'
-// import appCard from "./app-card.vue";
-// import appArticle from './app-article.vue';
-
 export default {
   props: {
     cmp: Object,
@@ -38,17 +38,23 @@ export default {
     }
   },
   computed: {
-    contactCmp: {
+    currCmp: {
       get() {
-        return this.cmp.children
+        return JSON.parse(JSON.stringify(this.cmp.children));
       },
-      set(cmps) {
-        console.log('layout3 set', cmps)
-        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
-        cmpCopy.children = cmps
-        eventBus.$emit('updateCmp', cmpCopy);
+      set(children) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
+        cmpCopy.children = children;
+        eventBus.$emit("updateCmp", cmpCopy);
+        if (this.cmp.children.length !== children.length) {
+          // } else {
+          eventBus.$on('afterWapUpdated', () => {
+            eventBus.$emit('updateCmp', cmpCopy);
+            eventBus.$off('afterWapUpdated')
+          })
+        }
       }
-    },
+    }
   },
 };
 </script>
