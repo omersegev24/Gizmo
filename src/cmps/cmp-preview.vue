@@ -18,6 +18,8 @@
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
+import actionPanel from './action-panel.vue';
+// import { eventBus } from "../services/eventBus.service.js";
 // import appNav from "./wap-cmps/app-nav.vue";
 // import appCard from "./wap-cmps/app-card.vue";
 // import appGallery from "./wap-cmps/app-gallery.vue";
@@ -30,7 +32,6 @@ import { eventBus } from "../services/eventBus.service.js";
 // import appChat from './wap-cmps/app-chat.vue';
 // import appSocialLinks from './wap-cmps/app-social-links.vue';
 // import appArticle from './wap-cmps/app-article.vue';
-import actionPanel from './action-panel.vue';
 // import appYoutube from './wap-cmps/app-youtube.vue';
 export default {
 
@@ -49,7 +50,7 @@ export default {
     },
     selectedCmp() {
       return this.$store.getters.selectedCmp
-    }
+    },
   },
   components: {
     // appNav,

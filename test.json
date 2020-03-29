@@ -240,8 +240,47 @@
       "id": "cmp107",
       "type": "app-chat",
       "style": {},
+      "subClass": ""
+    },
+    {
+      "id": "cmp111",
+      "type": "app-contact-us-v2",
+      "style": {},
       "subClass": "",
-      "title": "Chat"
+      "children": [
+        {
+          "id": "zqer22221s4",
+          "type": "p",
+          "txt": "Our Store",
+          "style": {},
+          "children": [
+            {
+              "id": "ascq2221s4",
+              "type": "span",
+              "txt": "Address: 500 Terry Francois",
+              "style": {}
+            },
+            {
+              "id": "ascq2121s4",
+              "type": "span",
+              "txt": "Street San Francisco, CA 94158",
+              "style": {}
+            },
+            {
+              "id": "ascq1221s4",
+              "type": "span",
+              "txt": "Phone: 123-456-7890",
+              "style": {}
+            },
+            {
+              "id": "a0cq2221s4",
+              "type": "span",
+              "txt": "Email: info@my-domain.com",
+              "style": {}
+            }
+          ]
+        }
+      ]
     }
   ]
 }

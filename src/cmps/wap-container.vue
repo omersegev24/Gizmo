@@ -16,6 +16,7 @@
 
 <script>
 import cmpPreview from "./cmp-preview.vue";
+import { eventBus } from '../services/eventBus.service';
 export default {
   name: "wap-container",
   props: {
@@ -38,10 +39,10 @@ export default {
       },
       set(cmps) {
         console.log('wap-conatainer set', cmps);
-
         const wapCopy = JSON.parse(JSON.stringify(this.wap))
         wapCopy.cmps = cmps
         this.$store.commit({ type: "setWap", wap: wapCopy });
+        eventBus.$emit('afterWapUpdated')
       }
     },
 

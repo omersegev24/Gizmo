@@ -97,6 +97,7 @@ export default {
       this.update();
     },
     update() {
+      console.log('update TEXTEDIT')
       this.$emit("updateCmp", this.cmp);
     }
   },

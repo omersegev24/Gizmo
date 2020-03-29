@@ -8,11 +8,12 @@
     >
       <draggable
         v-model="contactCmp"
-        class="flex space-evenly align-center"
+        class="txt-container flex space-evenly align-center"
         @start="dragging = true"
         @end="dragging = false"
         group="wap"
       >
+        <!-- <div class="txt-container"> -->
         <component
           v-for="child in cmp.children"
           :key="child.id"
@@ -27,6 +28,7 @@
           @input="editTxt($event,child)"
           @click.stop="openEdit(child)"
         >{{child.txt}}</component>
+        <!-- </div> -->
       </draggable>
     </header>
   </div>
@@ -55,26 +57,35 @@ export default {
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
-    }
+    },
+  
   },
   computed: {
     //computed bg style for each template?
 
     imgStyle() {
-      if (cmp.subClass === 'icy-theme') {
-        return { 'background-image': 'url(' + cmp.imgUrl + ')' }
+      if (cmp.subClass === "icy-theme") {
+        return { "background-image": "url(" + cmp.imgUrl + ")" };
       }
     },
     contactCmp: {
       get() {
         return JSON.parse(JSON.stringify(this.cmp.children));
       },
-      set(cmps) {
-        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
-        cmpCopy.children = cmps
-        eventBus.$emit('updateCmp', cmpCopy);
+      set(children) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
+        cmpCopy.children = children;
+          eventBus.$emit('updateCmp', cmpCopy);
+        if (this.cmp.children.length === children.length) {
+        } else {
+          eventBus.$on('afterWapUpdated', () => {
+            eventBus.$emit("updateCmp", cmpCopy);
+            eventBus.$off('afterWapUpdated')
+          })
+        }
+
       }
-    },
+    }
   },
 
   watch: {
