@@ -9,13 +9,19 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 import _ from 'lodash';
 
 import '@fortawesome/fontawesome-free/css/all.css'
+import 'element-ui/lib/theme-chalk/index.css';
 import '@fortawesome/fontawesome-free/js/all.js'
 import vSelect from "vue-select";
 import draggable from 'vuedraggable'
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
+import VueSweetalert2 from 'vue-sweetalert2';
 
+var SocialSharing = require('vue-social-sharing');
+
+
+Vue.use(SocialSharing);
+Vue.use(VueSweetalert2);
 
 Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);

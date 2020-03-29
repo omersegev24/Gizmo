@@ -22,7 +22,9 @@
     "vue-router": "^3.1.5",
     "vue-select": "^3.9.4",
     "vue-slider-component": "^3.1.1",
+    "vue-social-sharing": "^2.4.7",
     "vue-swatches": "^1.0.4",
+    "vue-sweetalert2": "^3.0.3",
     "vue2-google-maps": "^0.10.7",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.2"

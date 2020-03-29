@@ -2,7 +2,7 @@
   <div class="edit-text flex flex-column">
     <div class="color-picker">
       <div v-if="!currCmp.children" class="flex space-between align-center">
-        <p>Font Color</p>
+        <p>Font Color:</p>
         <el-color-picker
           v-model="cmp.style.color"
           @input="update"
@@ -12,7 +12,7 @@
       </div>
 
       <div v-if="!currCmp.social" class="flex space-between align-center">
-        <p>Background Color</p>
+        <p>Background Color:</p>
         <el-color-picker
           v-model="cmp.style.backgroundColor"
           @input="update"
@@ -23,14 +23,14 @@
     </div>
 
     <div>
-      <p>Text Size</p>
+      <p>Text Size:</p>
       <div class="block">
         <el-slider v-model="fontSize" @input="setTextSize" show-input></el-slider>
       </div>
 
       <hr class="divider" />
 
-      <p>Letter Spacing</p>
+      <p>Letter Spacing:</p>
       <div class="block">
         <el-slider v-model="letterSpacing" @input="setLetterSpacing" show-input></el-slider>
       </div>
