@@ -97,12 +97,13 @@ export default {
       this.update();
     },
     update() {
+      console.log('update TEXTEDIT')
       this.$emit("updateCmp", this.cmp);
     }
   },
   watch: {
     currCmp() {
-      this.cmp = JSON.parse(JSON.stringify(this.currCmp));
+      // this.cmp = JSON.parse(JSON.stringify(this.currCmp));
       this.fontSize = parseInt(this.currCmp.style.fontSize, 10);
       this.letterSpacing = parseInt(this.currCmp.style.letterSpacing, 10);
     }
