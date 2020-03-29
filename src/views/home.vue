@@ -19,7 +19,7 @@
     <section class="explore">
       <h2 class="templates-title">Get Inspired by These Website Examples Designed on Gizmo</h2>
       <hr>
-      <wap-list :waps="waps"></wap-list>
+      <wap-list class="templates-list" :waps="waps"></wap-list>
     </section>
     <!-- <h1 class="title">Create a Website You’re Proud Of</h1>
     <div>
