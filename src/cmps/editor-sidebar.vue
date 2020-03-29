@@ -32,7 +32,6 @@
             :key="cmp.id"
           >
             <cmp-preview :cmp="cmp"></cmp-preview>
-
             <!-- <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'"> -->
             <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
             <p>{{cmpType(cmp.type).name}}</p>
@@ -207,7 +206,7 @@ export default {
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
       var url = `${window.location.origin}/website/id`;
-      console.log("Your website: ", url);
+      console.log("Your created: ", this.$createElement);
       const h = this.$createElement;
 
       this.$msgbox({
@@ -215,7 +214,7 @@ export default {
         center: true,
         message: h('p', null, [
           h('span', null, 'Check It Out '),
-          h('a', {href: '`${window.location.origin}/website/id`'} , 'HERE'),
+          h('a',  {class:"samak" , href:'/'} , 'HERE', false),
           h(socialSharing)
         ]),
       })
