@@ -1,16 +1,26 @@
 <template>
-  <section class="app-article icy-theme" id="app-article" :class="cmp.subClass">
-    <component
-      v-for="child in cmp.children"
-      :is="child.type"
-      :key="child.id"
-      :style="child.style"
-      :contenteditable="true"
-      :src="child.imgUrl"
-      :class="{ 'mark-selected':child.id === selectedCmp.id}"
-      @change="editTxt($event,child)"
-      @click.stop="openEdit(child)"
-    >{{child.txt}}</component>
+  <section class="icy-theme" id="app-article" :class="cmp.subClass">
+    <draggable
+      v-model="currCmp"
+      class="flex flex-column space-evenly align-center"
+      @start="dragging = true"
+      @end="dragging = false"
+      group="wap"
+    >
+      <component
+        v-for="child in cmp.children"
+        :is="child.type"
+        :key="child.id"
+        :style="child.style"
+        :cmp="child"
+        :selectedCmp="selectedCmp"
+        :contenteditable="false"
+        :src="child.imgUrl"
+        :class="{ 'mark-selected':child.id === selectedCmp.id}"
+        @change="editTxt($event,child)"
+        @click.stop="openEdit(child)"
+      >{{child.txt}}</component>
+    </draggable>
   </section>
 </template>
 
@@ -20,6 +30,31 @@ export default {
   props: {
     cmp: Object,
     selectedCmp: Object
+  },
+  data() {
+    return {
+      enabled: true,
+      dragging: false
+    }
+  },
+  computed: {
+    currCmp: {
+      get() {
+        return JSON.parse(JSON.stringify(this.cmp.children));
+      },
+      set(children) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
+        cmpCopy.children = children;
+        eventBus.$emit("updateCmp", cmpCopy);
+        if (this.cmp.children.length !== children.length) {
+          // } else {
+          eventBus.$on('afterWapUpdated', () => {
+            eventBus.$emit('updateCmp', cmpCopy);
+            eventBus.$off('afterWapUpdated')
+          })
+        }
+      }
+    }
   },
   methods: {
     editTxt(ev, cmp) {

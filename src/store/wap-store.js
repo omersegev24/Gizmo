@@ -38,8 +38,6 @@ export default ({
 		updateCmps(state, { cmps }) {
 			state.wap.cmps = cmps
 			state.wap = updatedWap
-			console.log('updateCmps', state.wap.cmps)
-
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
@@ -89,7 +87,6 @@ export default ({
 			return wap
 		},
 		updateCmp(context, { cmp }) {
-			console.log('updateCmp store')
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
 			const wap = wapService.updateWap(wapCopy, cmpCopy)

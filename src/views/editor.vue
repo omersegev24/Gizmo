@@ -53,7 +53,6 @@ export default {
   },
   computed: {
     wap() {
-      console.log('loading', this.$store.getters.wap)
       return this.$store.getters.wap;
     }
   },
