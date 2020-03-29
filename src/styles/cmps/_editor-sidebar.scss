@@ -138,6 +138,14 @@
       }
     }
   }
+  .el-dialog__footer{
+    .links > * {
+      &:hover{
+        color: #409eff;
+        transition: .2s;
+      }
+    }
+  }
 }
 // .accordion {
 //   padding: 0;
