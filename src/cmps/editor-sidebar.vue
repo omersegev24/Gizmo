@@ -191,7 +191,7 @@ export default {
     cloneCmp(cmp) {
       var copy = JSON.parse(JSON.stringify(cmp));
       var cmpCopy = wapService.replaceIds(copy);
-      this.$store.commit({ type: 'setSelectedCmp', cmp: cmpCopy })
+      this.$store.commit({ type: "setSelectedCmp", cmp: cmpCopy });
       return copy;
     },
     checkMove(e) {
@@ -201,24 +201,24 @@ export default {
       this.dragging = true;
     },
     draggingEnd() {
-      this.dragging = false
-      this.editMode = true
+      this.dragging = false;
+      this.editMode = true;
     },
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
       var url = `${window.location.origin}/website/id`;
-      console.log("publish your website", url);
+      console.log("Your website: ", url);
       const h = this.$createElement;
 
       this.$msgbox({
         title: "Publish your Website",
-        message: h(socialSharing, {url: `${window.location.origin}/website/id`})
-      }).then(action => {
-        this.$message({
-          type: "info",
-          message: "action: " + action
-        });
-      });
+        center: true,
+        message: h('p', null, [
+          h('span', null, 'Check It Out '),
+          h('a', {href: '`${window.location.origin}/website/id`'} , 'HERE'),
+          h(socialSharing)
+        ]),
+      })
       // this.$router.push(`/`)
     },
     toggle(currItem) {
