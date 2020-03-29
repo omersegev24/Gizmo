@@ -155,24 +155,26 @@ export default {
     elements() {
       const elementCmps = this.cmps.filter(cmp => {
         return (
-          cmp.type === 'app-card' ||
-          cmp.type === 'app-article' ||
-          cmp.type === 'img' ||
-          cmp.type === 'p' ||
-          cmp.type === 'layout-3-columns' ||
-          cmp.type === 'layout-2-columns' ||
-          cmp.type === 'app-header')
-      })
+          cmp.type === "app-card" ||
+          cmp.type === "app-article" ||
+          cmp.type === "img" ||
+          cmp.type === "p" ||
+          cmp.type === "layout-3-columns" ||
+          cmp.type === "layout-2-columns" ||
+          cmp.type === "app-header"
+        );
+      });
       // console.log('elemeents', elementCmps);
 
       return elementCmps;
     },
     filteredCmps() {
       return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube"
-          && cmp.type !== "app-map"
-          && cmp.type !== 'p'
-          && cmp.type !== 'img'
+        cmp =>
+          cmp.type !== "app-youtube" &&
+          cmp.type !== "app-map" &&
+          cmp.type !== "p" &&
+          cmp.type !== "img"
       );
     },
     widgets() {
@@ -199,12 +201,13 @@ export default {
     },
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
-      console.log("publish your website");
+      var url = `${window.location.origin}/website/id`;
+      console.log("publish your website", url);
       const h = this.$createElement;
 
       this.$msgbox({
         title: "Publish your Website",
-        message: h(socialSharing, {key: 'urlId'})
+        message: h(socialSharing, {key: `${window.location.origin}/website/id`})
       }).then(action => {
         this.$message({
           type: "info",
