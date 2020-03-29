@@ -199,8 +199,18 @@ export default {
     },
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
-      console.log('publish your website');
-      
+      console.log("publish your website");
+      const h = this.$createElement;
+
+      this.$msgbox({
+        title: "Publish your Website",
+        message: h(socialSharing, {key: 'urlId'})
+      }).then(action => {
+        this.$message({
+          type: "info",
+          message: "action: " + action
+        });
+      });
       // this.$router.push(`/`)
     },
     toggle(currItem) {
