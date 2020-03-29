@@ -23,6 +23,7 @@
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 import socialLinks from './app-social-links.vue'
+import appChat from './app-chat.vue'
 export default {
   props: {
     cmp: Object,
@@ -39,7 +40,8 @@ export default {
     }
   },
   components: {
-    socialLinks
+    socialLinks,
+    appChat
   }
 };
 </script>

@@ -18,6 +18,7 @@
 
 <script>
 import { eventBus } from "../services/eventBus.service.js";
+// import { eventBus } from "../services/eventBus.service.js";
 // import appNav from "./wap-cmps/app-nav.vue";
 // import appCard from "./wap-cmps/app-card.vue";
 // import appGallery from "./wap-cmps/app-gallery.vue";
@@ -49,7 +50,7 @@ export default {
     },
     selectedCmp() {
       return this.$store.getters.selectedCmp
-    }
+    },
   },
   components: {
     // appNav,

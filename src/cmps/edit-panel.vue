@@ -1,11 +1,18 @@
 <template>
   <section class="edit-panel flex flex-column">
-    <el-collapse v-model="activeName" accordion>
+    <!-- <el-collapse v-model="activeName" accordion>
       <el-collapse-item title="Consistency" name="1">
         <wap-prefs :wap="currWap"></wap-prefs>
       </el-collapse-item>
-    </el-collapse>
+    </el-collapse> -->
 
+<el-collapse v-model="activeName" accordion>
+  <el-collapse-item class="collapse-item" title="Wap Preferences" name="1">
+    <wap-prefs :wap="currWap"></wap-prefs>
+  </el-collapse-item>
+</el-collapse>
+
+    
     <div v-if="currCmp.id">
       <section v-if="currCmp.type === 'app-map'" class="map-edit-panel">
         <edit-map :mapCmp="cmpCopy"></edit-map>

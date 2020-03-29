@@ -1,5 +1,5 @@
 .app-chat {
-  width: 30%;
+  max-width: 300px;
   text-align: start;
 
   .unopened-chat-container {
@@ -96,6 +96,7 @@
   &.icy-theme {
     background-color: $clr7;
     color: $clr9;
+    border: 1px solid $clr6;
 
     .unopened-chat-container {
       background-color: $clr7;
@@ -103,7 +104,7 @@
     }
 
     .msgs-container {
-      background-color: $clr9;
+      background-color: $clr8;
       color: $clr7;
       li {
         background-color: lighten($clr10, $amount: 50%);
@@ -117,35 +118,6 @@
       .msg-send {
         color: $clr2;
       }
-    }
-  }
-}
-
-.app-chat.dark-theme {
-  background-color: $clr6;
-  color: $clr5;
-  filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
-
-  .unopened-chat-container {
-    background-color: $clr6;
-    color: $clr5;
-  }
-
-  .msgs-container {
-    background-color: lighten($clr6, 5%);
-    color: $clr5;
-    li {
-      background-color: lighten($clr6, $amount: 10%);
-    }
-    .support {
-      background-color: lighten($clr6, $amount: 15%);
-    }
-  }
-  .msg-send-container {
-    background-color: $clr6;
-    .msg-send {
-      color: $clr5;
-      margin-left: 5px;
     }
   }
 }

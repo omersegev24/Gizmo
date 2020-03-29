@@ -87,14 +87,12 @@
   }
 
   .collapse-item {
-    // width: 90%;
     padding: 0 20px;
     font-size: 1rem;
   }
 
   .themes-btn-container {
     button {
-      // @include for-light-button;
       margin: 5px;
     }
   }
@@ -119,8 +117,8 @@
       background-color: $clr2;
       color: #fff;
       border: none;
+      transition: 0.3s;
       &:hover {
-        transition: 0.2s;
         background-color: lighten($clr2, 10%);
       }
       margin: 2.5px;

@@ -105,7 +105,7 @@
     @media only screen and (max-width: $buson-break-wide) {
       .nav-links {
         background-color: $clr1;
-        li>a {
+        li > a {
           font-size: 2rem;
         }
       }
@@ -124,7 +124,7 @@
       font-size: rem(22px);
       margin-bottom: 0;
       &:after {
-        content: ' Consulting';
+        content: " Consulting";
         color: $clr8;
       }
     }
@@ -132,6 +132,15 @@
       a {
         font-weight: 400;
         font-size: rem(13px);
+      }
+    }
+    @media only screen and (max-width: $buson-break-wide) {
+      .nav-links {
+        background-color: $clr7;
+        li > a {
+          font-family: Raleway, sans-serif;
+          font-size: 2rem;
+        }
       }
     }
   }
