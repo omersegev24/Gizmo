@@ -8,25 +8,27 @@
     >
       <draggable
         v-model="contactCmp"
-        class="flex space-evenly align-center"
+        class="txt-container flex space-evenly align-center"
         @start="dragging = true"
         @end="dragging = false"
         group="wap"
       >
-        <component
-          v-for="child in cmp.children"
-          :key="child.id"
-          :is="child.type"
-          :style="child.style"
-          :cmp="child"
-          :contenteditable="false"
-          :selectedCmp="selectedCmp"
-          :src="child.imgUrl"
-          :class="{'title':child.type === 'p',
+      <!-- <div class="txt-container"> -->
+          <component
+            v-for="child in cmp.children"
+            :key="child.id"
+            :is="child.type"
+            :style="child.style"
+            :cmp="child"
+            :contenteditable="false"
+            :selectedCmp="selectedCmp"
+            :src="child.imgUrl"
+            :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-          @input="editTxt($event,child)"
-          @click.stop="openEdit(child)"
-        >{{child.txt}}</component>
+            @input="editTxt($event,child)"
+            @click.stop="openEdit(child)"
+          >{{child.txt}}</component>
+        <!-- </div> -->
       </draggable>
     </header>
   </div>
@@ -61,8 +63,8 @@ export default {
     //computed bg style for each template?
 
     imgStyle() {
-      if (cmp.subClass === 'icy-theme') {
-        return { 'background-image': 'url(' + cmp.imgUrl + ')' }
+      if (cmp.subClass === "icy-theme") {
+        return { "background-image": "url(" + cmp.imgUrl + ")" };
       }
     },
     contactCmp: {
@@ -70,11 +72,11 @@ export default {
         return JSON.parse(JSON.stringify(this.cmp.children));
       },
       set(cmps) {
-        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
-        cmpCopy.children = cmps
-        eventBus.$emit('updateCmp', cmpCopy);
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
+        cmpCopy.children = cmps;
+        eventBus.$emit("updateCmp", cmpCopy);
       }
-    },
+    }
   },
 
   watch: {
