@@ -1,11 +1,5 @@
 const cmps = [
     {
-        id: 'sbutto12a',
-        type: 'button',
-        txt: 'Try me',
-        style: {},
-    },
-    {
         id: 'tx21tzp',
         type: 'p',
         txt: 'Your text here',
@@ -15,7 +9,7 @@ const cmps = [
         id: 'tximg1zzxp',
         type: 'img',
         imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
-        style: {},
+        style: { width: '250px' },
     },
     {
         id: 'cmp102',

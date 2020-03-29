@@ -2,17 +2,18 @@
   <section class="layout-2-columns flex justify-center" :style="cmp.style">
     <draggable
       v-model="contactCmp"
-      class="flex space-evenly"
+      class="flex space-evenly align-center"
       style="width:100%"
       @start="dragging = true"
       @end="dragging = false"
-      group="element"
+      group="wap"
     >
       <component
         v-for="child in cmp.children"
         :is="child.type"
         :cmp="child"
         :key="child.id"
+        :src="child.imgUrl"
         :style="child.style"
         :selectedCmp="selectedCmp"
       >{{child.txt}}</component>
@@ -66,7 +67,7 @@ export default {
   components: {
     appCard,
     appArticle,
-    appContact
+    appContact,
   }
 };
 </script>

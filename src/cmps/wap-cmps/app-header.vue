@@ -6,22 +6,28 @@
       :class="cmp.subClass"
       :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
     >
-      <!-- :style=" [cmp.style, {'background-image': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.53)), url(' + cmp.imgUrl + ')' }]" -->
-      <div class='txt-container'>
+      <draggable
+        v-model="contactCmp"
+        class="flex space-evenly align-center"
+        @start="dragging = true"
+        @end="dragging = false"
+        group="wap"
+      >
         <component
           v-for="child in cmp.children"
           :key="child.id"
-          ref="txt"
           :is="child.type"
           :style="child.style"
+          :cmp="child"
           :contenteditable="false"
+          :selectedCmp="selectedCmp"
           :src="child.imgUrl"
           :class="{'title':child.type === 'p',
-            'mark-selected':child.id === selectedCmp.id}"
+               'mark-selected':child.id === selectedCmp.id}"
           @input="editTxt($event,child)"
           @click.stop="openEdit(child)"
         >{{child.txt}}</component>
-      </div>
+      </draggable>
     </header>
   </div>
 </template>
@@ -52,20 +58,23 @@ export default {
     }
   },
   computed: {
+    //computed bg style for each template?
+
     imgStyle() {
       if (cmp.subClass === 'icy-theme') {
-          return {'background-image': 'url(' + cmp.imgUrl + ')'}
+        return { 'background-image': 'url(' + cmp.imgUrl + ')' }
       }
     },
-    myList: {
+    contactCmp: {
       get() {
-        return this.cmp.children;
+        return JSON.parse(JSON.stringify(this.cmp.children));
       },
-      set(value) {
-        // console.log(value);
-        // this.$store.commit("updateList", value);
+      set(cmps) {
+        const cmpCopy = JSON.parse(JSON.stringify(this.cmp))
+        cmpCopy.children = cmps
+        eventBus.$emit('updateCmp', cmpCopy);
       }
-    }
+    },
   },
 
   watch: {

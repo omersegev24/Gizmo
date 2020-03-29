@@ -91,7 +91,7 @@ export default {
   methods: {
     // updateWapPref(wap) {},
     updateCmp(cmp) {
-      eventBus.$emit("updateCmp", cmp);
+      eventBus.$emit("updateCmp", cmp); 
     },
     uploadImg(ev) {
       eventBus.$emit("uploadImg", ev);

@@ -24,7 +24,7 @@ export default ({
 		wapTheme(state) {
 			return state.wap.theme;
 		},
-		makeId(){
+		makeId() {
 			return wapService.makeId()
 		}
 	},
@@ -37,6 +37,9 @@ export default ({
 		},
 		updateCmps(state, { cmps }) {
 			state.wap.cmps = cmps
+			state.wap = updatedWap
+			console.log('updateCmps', state.wap.cmps)
+
 		},
 		addCmp(state, { addedCmp }) {
 			state.wap.cmps.push(addedCmp)
@@ -85,10 +88,11 @@ export default ({
 			context.commit({ type: 'setWap', wap })
 			return wap
 		},
-		async updateCmp(context, { cmp }) {
+		updateCmp(context, { cmp }) {
+			console.log('updateCmp store')
 			const cmpCopy = JSON.parse(JSON.stringify(cmp))
 			const wapCopy = JSON.parse(JSON.stringify(context.state.wap))
-			const wap = await wapService.updateWap(wapCopy, cmpCopy)
+			const wap = wapService.updateWap(wapCopy, cmpCopy)
 			context.commit({
 				type: 'setWap',
 				wap

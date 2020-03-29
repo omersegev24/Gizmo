@@ -5,7 +5,7 @@
       :disabled="!enabled"
       class="list-group"
       ghost-class="ghost"
-      @start="dragging = true"
+      @start="dragging=true"
       @end="dragging = false"
       group="wap"
     >
@@ -30,14 +30,18 @@ export default {
   components: {
     cmpPreview
   },
+ 
   computed: {
     wapCmp: {
       get() {
-        return this.$store.getters.cmps;
+        return this.wap.cmps
       },
       set(cmps) {
-        // const cmps =  JSON.parse(JSON.stringify(value))
-        this.$store.commit({ type: "updateCmps", cmps });
+        console.log('wap-conatainer set', cmps);
+
+        const wapCopy = JSON.parse(JSON.stringify(this.wap))
+        wapCopy.cmps = cmps
+        this.$store.commit({ type: "setWap", wap: wapCopy });
       }
     },
 

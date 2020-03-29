@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-for="cmp in wap.cmps" :key="cmp.id">
-      <component :is="cmp.type" :cmp="cmp" :selectedCmp="selectedCmp" :style="cmp.style"></component>
+      <component :is="cmp.type" :cmp="cmp"  :style="cmp.style"></component>
     </div>
   </section>
 </template>
@@ -28,9 +28,7 @@ export default {
     };
   },
   computed: {
-    selectedCmp() {
-      return this.$store.getters.selectedCmp
-    }
+  
   },
   async created() {
     const wapId = this.$route.params.id;

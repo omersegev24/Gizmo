@@ -15,6 +15,7 @@ import vSelect from "vue-select";
 import draggable from 'vuedraggable'
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
+import './globalCmps.js'
 import VueSweetalert2 from 'vue-sweetalert2';
 
 var SocialSharing = require('vue-social-sharing');
@@ -34,7 +35,7 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyCa_A7Pfp8VgZoZsDddRtPEL-tW_MFT7iY',
     libraries: 'places',
     region: 'IL',
-  language: 'en',
+    language: 'en',
   },
 });
 
