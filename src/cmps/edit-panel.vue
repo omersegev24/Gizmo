@@ -75,7 +75,7 @@ export default {
   methods: {
     // updateWapPref(wap) {},
     updateCmp(cmp) {
-      // console.log('IAM A SON OF A BITCH', cmp)
+      console.log('IAM A SON OF A BITCH', cmp)
       eventBus.$emit("updateCmp", cmp); 
     },
     uploadImg(ev) {

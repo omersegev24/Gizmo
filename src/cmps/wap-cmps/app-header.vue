@@ -13,21 +13,21 @@
         @end="dragging = false"
         group="wap"
       >
-      <!-- <div class="txt-container"> -->
-          <component
-            v-for="child in cmp.children"
-            :key="child.id"
-            :is="child.type"
-            :style="child.style"
-            :cmp="child"
-            :contenteditable="false"
-            :selectedCmp="selectedCmp"
-            :src="child.imgUrl"
-            :class="{'title':child.type === 'p',
+        <!-- <div class="txt-container"> -->
+        <component
+          v-for="child in cmp.children"
+          :key="child.id"
+          :is="child.type"
+          :style="child.style"
+          :cmp="child"
+          :contenteditable="false"
+          :selectedCmp="selectedCmp"
+          :src="child.imgUrl"
+          :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-            @input="editTxt($event,child)"
-            @click.stop="openEdit(child)"
-          >{{child.txt}}</component>
+          @input="editTxt($event,child)"
+          @click.stop="openEdit(child)"
+        >{{child.txt}}</component>
         <!-- </div> -->
       </draggable>
     </header>
@@ -57,7 +57,8 @@ export default {
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
-    }
+    },
+  
   },
   computed: {
     //computed bg style for each template?
@@ -71,10 +72,18 @@ export default {
       get() {
         return JSON.parse(JSON.stringify(this.cmp.children));
       },
-      set(cmps) {
+      set(children) {
         const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
-        cmpCopy.children = cmps;
-        eventBus.$emit("updateCmp", cmpCopy);
+        cmpCopy.children = children;
+          eventBus.$emit('updateCmp', cmpCopy);
+        if (this.cmp.children.length === children.length) {
+        } else {
+          eventBus.$on('afterWapUpdated', () => {
+            eventBus.$emit("updateCmp", cmpCopy);
+            eventBus.$off('afterWapUpdated')
+          })
+        }
+
       }
     }
   },

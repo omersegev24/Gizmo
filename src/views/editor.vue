@@ -25,6 +25,7 @@ export default {
     this.cmps = cmps;
 
     eventBus.$on("updateCmp", cmp => {
+      
       this.$store.dispatch({ type: "updateCmp", cmp });
     });
     eventBus.$on("remove", cmpId => {

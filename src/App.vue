@@ -15,16 +15,19 @@ export default {
   },
   components: {
     mainNav,
+  },
+  created() {
+    console.log('path', this.$route.path)
   }
 };
 </script>
 <style lang="scss" scoped>
-  .loading{
-    width: 100px;
-    height: 100px;
+.loading {
+  width: 100px;
+  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 999999;
-  }
+}
 </style>
