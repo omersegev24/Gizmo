@@ -1,10 +1,16 @@
-.wap-list{
-    margin-bottom: 25px;
-    .wap-preview{
-        border: 1px solid black;
-        cursor: pointer;
-        :hover{
-            opacity: 0.6;
-        }
+.wap-list {
+//   .template-action {
+//     visibility: hidden;
+//   }
+  margin-bottom: 25px;
+  .wap-preview {
+    border: 1px solid black;
+    cursor: pointer;
+    &:hover {
+    //   .template-action{
+    //       visibility: visible;
+    //   }  
+      opacity: 0.6;
     }
+  }
 }

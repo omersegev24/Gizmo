@@ -21,7 +21,7 @@ import wapList from "../cmps/wap-list.vue";
 export default {
   created() {
     this.$store.dispatch({ type: "loadWaps" });
-    eventBus.$on("openEditor", this.openEditor);
+    
   },
   computed: {
     waps() {
@@ -30,10 +30,6 @@ export default {
     }
   },
   methods: {
-    async openEditor(wapId) {
-      this.$router.push(`/editor/${wapId}`).catch(err => { });
-      // this.$router.push(`/editor/${wapId}`);
-    },
     showMore(){
       this.$router.push('/template')
     }
