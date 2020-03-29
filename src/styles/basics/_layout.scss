@@ -23,16 +23,15 @@
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 80px;
-
+  grid-gap: 30px;
 }
 
 @media only screen and (max-width: 1240px) {
-    .main-layout{
-        grid-template-columns: minmax(0.6rem, auto) auto minmax(0.6rem, auto);
-    }
-    .card-grid{
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-        grid-gap: 50px;
-    }
+  .main-layout {
+    grid-template-columns: minmax(0.6rem, auto) auto minmax(0.6rem, auto);
+  }
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 50px;
+  }
 }
