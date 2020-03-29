@@ -33,7 +33,6 @@
         <edit-map :mapCmp="cmpCopy"></edit-map>
       </section>
 
-
       <div v-if="currCmp.to" class="flex align-center space-between">
         <p>Link to:</p>
         <input type="text" v-model="cmpCopy.to" placeholder="Enter text..." />

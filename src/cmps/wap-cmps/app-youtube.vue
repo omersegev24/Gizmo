@@ -1,6 +1,6 @@
 <template>
   <div class="video-container" @click.stop="openEdit(cmp)">
-    <h3 class="title" :contenteditable="true" @blur="editTxt($event,cmp)">{{cmp.title}}</h3>
+    <!-- <h3 class="title" :contenteditable="true" @blur="editTxt($event,cmp)">{{cmp.title}}</h3> -->
     <iframe :src="cmp.url"></iframe>
   </div>
 </template>

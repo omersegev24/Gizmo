@@ -102,6 +102,8 @@ import { wapService } from "../services/wap.service.js";
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
 import cmpPreview from "./cmp-preview.vue";
+import socialSharing from "./social-sharing.vue";
+
 export default {
   props: {
     cmps: Array
@@ -163,7 +165,7 @@ export default {
       })
       // console.log('elemeents', elementCmps);
 
-      return elementCmps
+      return elementCmps;
     },
     filteredCmps() {
       return this.cmps.filter(
@@ -186,33 +188,20 @@ export default {
     },
     cloneCmp(cmp) {
       var copy = JSON.parse(JSON.stringify(cmp));
-      var cmpCopy = wapService.replaceIds(copy)
+      var cmpCopy = wapService.replaceIds(copy);
       return copy;
     },
     checkMove(e) {
       window.console.log("on move: " + e.relatedContext.list);
     },
     dragStart(ev) {
-      this.dragging = true
+      this.dragging = true;
     },
     async saveWap() {
-      try {
-        const id = await this.$store.dispatch({ type: "saveWap" });
-        this.$alert(
-          `<strong>This is your link to your <a style="color: #4eb7f5" href="${window.location.origin}/website/${id}" target="_blank" >website</a></strong>`,
-          "HTML String",
-          {
-            dangerouslyUseHTMLString: true
-          }
-        );
-        // this.$router.push(`/`)
-      } catch (err) {
-        this.$message({
-          showClose: true,
-          message: "Oops, this is a error message.",
-          type: "error"
-        });
-      }
+      // const id = await this.$store.dispatch({ type: "saveWap" });
+      console.log('publish your website');
+      
+      // this.$router.push(`/`)
     },
     toggle(currItem) {
       this.items.forEach((item, index) => {
@@ -265,7 +254,8 @@ export default {
   },
   components: {
     editPanel,
-    cmpPreview
+    cmpPreview,
+    socialSharing
   }
 };
 </script>
