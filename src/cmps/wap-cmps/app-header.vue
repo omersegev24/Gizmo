@@ -58,7 +58,6 @@ export default {
     },
   },
   computed: {
-    //computed bg style for each template?
     imgStyle() {
       if (cmp.subClass === "icy-theme") {
         return { "background-image": "url(" + cmp.imgUrl + ")" };
