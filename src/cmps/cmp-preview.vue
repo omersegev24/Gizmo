@@ -26,6 +26,7 @@ import layout2Columns from './wap-cmps/layout-2-columns.vue';
 import layout3Columns from './wap-cmps/layout-3-columns.vue';
 import appMap from './wap-cmps/app-map.vue';
 import appContact from './wap-cmps/app-contact-us.vue';
+import appContactV2 from './wap-cmps/app-contact-us-v2.vue';
 import appChat from './wap-cmps/app-chat.vue';
 import appSocialLinks from './wap-cmps/app-social-links.vue';
 import appArticle from './wap-cmps/app-article.vue';
@@ -56,7 +57,7 @@ export default {
     },
     selectedCmp() {
       return this.$store.getters.selectedCmp
-    }
+    },
   },
   components: {
     appNav,
@@ -67,6 +68,7 @@ export default {
     appMap,
     appYoutube,
     appContact,
+    appContactV2,
     layout2Columns,
     layout3Columns,
     appChat,

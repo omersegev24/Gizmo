@@ -22,7 +22,7 @@
     </section>  -->
 
 <el-collapse v-model="activeName" accordion>
-  <el-collapse-item title="Consistency" name="1">
+  <el-collapse-item class="collapse-item" title="Wap Preferences" name="1">
     <wap-prefs :wap="currWap"></wap-prefs>
   </el-collapse-item>
 </el-collapse>

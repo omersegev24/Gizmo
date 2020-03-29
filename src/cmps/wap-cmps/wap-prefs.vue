@@ -1,12 +1,12 @@
 <template>
   <section class="wap-title-theme">
-    <div class="themes flex align-center space-between">
+    <!-- <div class="themes flex align-center space-between">
       <p>Themes:</p>
       <div>
         <button @click="updateWapPrefs('light-and-shiny')">Light and Shiny</button>
         <button @click="updateWapPrefs('dark-theme')">Dark</button>
       </div>
-    </div>
+    </div> -->
     <hr class="divider"/>
     <div class="title flex align-center space-between">
       <p>Title:</p>
