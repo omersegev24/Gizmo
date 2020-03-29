@@ -174,7 +174,6 @@
 
     <div class="save-btns flex justify-center align-center">
       <button @click.stop="saveWap">Publish</button>
-      <social-sharing></social-sharing>
     </div>
   </section>
 </template>
