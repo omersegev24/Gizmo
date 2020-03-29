@@ -61,8 +61,6 @@ export default {
   
   },
   computed: {
-    //computed bg style for each template?
-
     imgStyle() {
       if (cmp.subClass === "icy-theme") {
         return { "background-image": "url(" + cmp.imgUrl + ")" };
@@ -76,14 +74,13 @@ export default {
         const cmpCopy = JSON.parse(JSON.stringify(this.cmp));
         cmpCopy.children = children;
           eventBus.$emit('updateCmp', cmpCopy);
-        if (this.cmp.children.length === children.length) {
-        } else {
+        if (this.cmp.children.length !== children.length) {
+        // } else {
           eventBus.$on('afterWapUpdated', () => {
             eventBus.$emit("updateCmp", cmpCopy);
             eventBus.$off('afterWapUpdated')
           })
         }
-
       }
     }
   },

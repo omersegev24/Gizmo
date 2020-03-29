@@ -19,6 +19,7 @@
   }
   .hamburger-menu {
     // position: absolute;
+    margin: 0 30px;
     position: relative;
     visibility: hidden;
   }
@@ -62,7 +63,7 @@
       // position: absolute;
       // top: 15%;
       // left: 86%;
-      margin-top: 1rem;
+      // margin-top: 1rem;
       visibility: visible;
       font-size: 2rem;
       transition: 0.5s;

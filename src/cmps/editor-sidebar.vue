@@ -90,6 +90,17 @@
       </el-collapse-item>
     </el-collapse>
 
+    <el-button type="text" @click="centerDialogVisible = true">Click to open the Dialog</el-button>
+
+    <el-dialog title="Publish" :visible.sync="centerDialogVisible" width="30%" center>
+      <span>Check It Out</span>
+      <a :href="url">HERE</a>
+      <span slot="footer" class="dialog-footer">
+        <social-sharing></social-sharing>
+        <el-button type="primary" @click="centerDialogVisible = false">Confirm</el-button>
+      </span>
+    </el-dialog>
+
     <div class="save-btns flex justify-center align-center">
       <button @click.stop="saveWap">Publish</button>
     </div>
@@ -109,6 +120,8 @@ export default {
   },
   data() {
     return {
+      url: '',
+      centerDialogVisible: false,
       enabled: true,
       dragging: false,
       activeName: 1,
@@ -205,20 +218,8 @@ export default {
     },
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
-      var url = `${window.location.origin}/website/id`;
-      console.log("Your created: ", this.$createElement);
-      const h = this.$createElement;
-
-      this.$msgbox({
-        title: "Publish your Website",
-        center: true,
-        message: h('p', null, [
-          h('span', null, 'Check It Out '),
-          h('a',  {class:"samak" , href:'/'} , 'HERE', false),
-          h(socialSharing)
-        ]),
-      })
-      // this.$router.push(`/`)
+      this.url = `${window.location.origin}/website/id`;
+      this.centerDialogVisible = true
     },
     toggle(currItem) {
       this.items.forEach((item, index) => {
