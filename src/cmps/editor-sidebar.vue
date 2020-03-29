@@ -174,6 +174,7 @@
 
     <div class="save-btns flex justify-center align-center">
       <button @click.stop="saveWap">Publish</button>
+      <social-sharing></social-sharing>
     </div>
   </section>
 </template>
@@ -183,6 +184,8 @@ import { wapService } from "../services/wap.service.js";
 import { eventBus } from "../services/eventBus.service.js";
 import editPanel from "../cmps/edit-panel.vue";
 import cmpPreview from "./cmp-preview.vue";
+import socialSharing from "./social-sharing.vue";
+
 export default {
   props: {
     cmps: Array
@@ -234,23 +237,25 @@ export default {
     elements() {
       const elementCmps = this.cmps.filter(cmp => {
         return (
-          cmp.type === 'app-card' ||
-          cmp.type === 'app-article' ||
-          cmp.type === 'button' ||
-          cmp.type === 'img' ||
-          cmp.type === 'p')
-      })
-      console.log('elemeents', elementCmps);
+          cmp.type === "app-card" ||
+          cmp.type === "app-article" ||
+          cmp.type === "button" ||
+          cmp.type === "img" ||
+          cmp.type === "p"
+        );
+      });
+      console.log("elemeents", elementCmps);
 
-      return elementCmps
+      return elementCmps;
     },
     filteredCmps() {
       return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube"
-          && cmp.type !== "app-map"
-          && cmp.type !== 'p'
-          && cmp.type !== 'img'
-          && cmp.type !== 'button'
+        cmp =>
+          cmp.type !== "app-youtube" &&
+          cmp.type !== "app-map" &&
+          cmp.type !== "p" &&
+          cmp.type !== "img" &&
+          cmp.type !== "button"
       );
     },
     widgets() {
@@ -261,38 +266,25 @@ export default {
   },
   methods: {
     onMoveCallback(evt, originalEvent) {
-      console.log('relatedContext', evt.relatedContext)
+      console.log("relatedContext", evt.relatedContext);
       // return false; — for cancel
     },
     cloneCmp(cmp) {
       var copy = JSON.parse(JSON.stringify(cmp));
-      var cmpCopy = wapService.replaceIds(copy)
+      var cmpCopy = wapService.replaceIds(copy);
       return copy;
     },
     checkMove(e) {
       window.console.log("on move: " + e.relatedContext.list);
     },
     dragStart(ev) {
-      this.dragging = true
+      this.dragging = true;
     },
     async saveWap() {
-      try {
-        const id = await this.$store.dispatch({ type: "saveWap" });
-        this.$alert(
-          `<strong>This is your link to your <a style="color: #4eb7f5" href="${window.location.origin}/website/${id}" target="_blank" >website</a></strong>`,
-          "HTML String",
-          {
-            dangerouslyUseHTMLString: true
-          }
-        );
-        // this.$router.push(`/`)
-      } catch (err) {
-        this.$message({
-          showClose: true,
-          message: "Oops, this is a error message.",
-          type: "error"
-        });
-      }
+      // const id = await this.$store.dispatch({ type: "saveWap" });
+      console.log('publish your website');
+      
+      // this.$router.push(`/`)
     },
     toggle(currItem) {
       this.items.forEach((item, index) => {
@@ -347,7 +339,8 @@ export default {
   },
   components: {
     editPanel,
-    cmpPreview
+    cmpPreview,
+    socialSharing
   }
 };
 </script>

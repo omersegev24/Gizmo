@@ -12,7 +12,7 @@
       <h2 class="title">Get Inspired by These Website Examples Designed on Gizmo</h2>
       <wap-list :waps="waps"></wap-list>
     </section>
-    <button class="show-more-btn">Show More...</button>
+    <button class="show-more-btn" @click="showMore">Show More...</button>
   </div>
 </template>
 <script>
@@ -33,6 +33,9 @@ export default {
     async openEditor(wapId) {
       this.$router.push(`/editor/${wapId}`).catch(err => {});
       // this.$router.push(`/editor/${wapId}`);
+    },
+    showMore(){
+      this.$router.push('/template')
     }
   },
   components: {

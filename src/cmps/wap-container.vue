@@ -1,6 +1,5 @@
 <template>
   <section class="wap-container" :class="wapTheme" v-if="wap">
-
     <draggable
       v-model="wapCmp"
       :disabled="!enabled"
@@ -8,7 +7,6 @@
       ghost-class="ghost"
       @start="dragging = true"
       @end="dragging = false"
-      
       group="wap"
     >
       <cmp-preview v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp" :class="wapTheme"></cmp-preview>
@@ -19,7 +17,7 @@
 <script>
 import cmpPreview from "./cmp-preview.vue";
 export default {
-  display: "Nested",
+  name: "wap-container",
   props: {
     wap: Object
   },

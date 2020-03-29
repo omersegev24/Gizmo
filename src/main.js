@@ -17,6 +17,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
 
 
+var SocialSharing = require('vue-social-sharing');
+Vue.use(SocialSharing);
+
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
+
 Vue.component("draggable", draggable);
 Vue.component("v-select", vSelect);
 

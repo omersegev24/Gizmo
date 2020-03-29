@@ -6,28 +6,8 @@
     </div>
 
     <div class="map-config">
-      <!-- <hr class="divider" />
-      <p>Width</p>
-      <vue-slider
-        v-model="mapData.style.width"
-        :min="300"
-        :max="1500"
-        :contained="true"
-        :tooltip="'active'"
-        @change="update"
-      ></vue-slider>
-
-      <hr class="divider" /> -->
-
-      <p>Height</p>
-      <vue-slider
-        v-model="mapData.style.height"
-        :min="300"
-        :max="1500"
-        :contained="true"
-        :tooltip="'active'"
-        @change="update"
-      ></vue-slider>
+      <p>Height:</p>
+      <el-slider v-model="mapData.style.height" :min="300" :max="1000" @input="update" show-input></el-slider>
     </div>
     <hr class="divider" />
   </section>
