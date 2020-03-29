@@ -52,6 +52,7 @@ export default {
   },
   computed: {
     wap() {
+      console.log('loading', this.$store.getters.wap)
       return this.$store.getters.wap;
     }
   },
@@ -59,10 +60,10 @@ export default {
     addCmp(cmp) {
       this.$store.dispatch({ type: "addCmp", cmp });
       this.$message({
-            type: "success",
-            showClose: true,
-            message: "Add completed"
-          });
+        type: "success",
+        showClose: true,
+        message: "Add completed"
+      });
     },
     updateCmp(cmp) {
       this.$store.dispatch({ type: "updateCmp", cmp });

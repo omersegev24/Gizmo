@@ -11,7 +11,7 @@
         class="logo"
         :is="logo.type"
         :style="logo.style"
-        :contenteditable="true"
+        :contenteditable="false"
         @input="editTxt($event,logo)"
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
@@ -22,7 +22,7 @@
         <component
           :is="link.type"
           :style="link.style"
-          :contenteditable="true"
+          :contenteditable="false"
           :href="'#' + link.to"
           @input="editTxt($event,link)"
           :src="link.imgUrl"

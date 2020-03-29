@@ -11,87 +11,6 @@
 
     <edit-panel v-if="editMode" :currCmp="currCmp"></edit-panel>
 
-    <!-- <div v-if="!editMode" class="add-cmp accordion" role="presentation">
-      <div v-for="item in items" :item="item" :key="item.id">
-        <div class="accordion-item" :class="{'is-active': item.active}">
-          <div class="accordion-item-title">
-            <button @click="toggle(item)" class="accordion-row flex space-between align-center">
-              <h4>{{item.title}}</h4>
-              <template v-if="!item.active" class="accordion-row-icon">
-                <span>
-                  <i class="fas fa-angle-down"></i>
-                </span>
-              </template>
-              <template v-else>
-                <span>
-                  <i class="fas fa-angle-up"></i>
-                </span>
-              </template>
-              <span class="accordion-row-icon"></span> 
-            </button>
-          </div>
-          <transition name="fade">
-            <div v-if="item.active" class="item-details">
-              <div v-if="item.title === 'Sections'" class="cmp-btns-container">
-                <draggable
-                  :list="filteredCmps"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }"
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="cmp in filteredCmps"
-                    :key="cmp.id"
-                  >
-                    <cmp-preview :cmp="cmp"></cmp-preview>
-
-                    <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'">
-                      <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
-                      <p>{{cmpType(cmp.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-              </div>
-              <div
-                v-else-if="item.title === 'Widgets'"
-                class="cmp-btns-container flex flex-wrap space-evenly"
-              >
-                <draggable
-                  :list="widgets"
-                  :disabled="!enabled"
-                  :group="{ name: 'wap', pull: 'clone', put: false }" 
-                  :sort="false"
-                  class="list-group flex flex-wrap space-evenly"
-                  @start="dragStart"
-                  @end="dragging = false"
-                  :clone="cloneCmp"
-                  :move="checkMove"
-                >
-                  <div
-                    class="cmp-btn flex flex-column align-center justify-center"
-                    @click="$emit('addCmp',cmp)"
-                    v-for="widget in widgets"
-                    :key="widget.id"
-                  >
-                    <div v-if="widget.type === 'app-youtube' || widget.type === 'app-map'">
-                      <p :class="widgetsCmps(widget.type).class + ' fa-2x'"></p>
-                      <p>{{widgetsCmps(widget.type).name}}</p>
-                    </div>
-                  </div>
-                </draggable>
-              </div>
-            </div>
-          </transition>
-        </div>
-      </div>
-    </div>-->
-
     <el-collapse v-if="!editMode" v-model="activeName" accordion>
       <el-collapse-item class="collapse-item" title="Sections" name="1">
         <draggable
@@ -125,7 +44,7 @@
         <draggable
           :list="elements"
           :disabled="!enabled"
-          :group="{ name:'element', pull: 'clone', put: false }"
+          :group="{ name:'wap', pull: 'clone', put: false }"
           :sort="false"
           ghostClass="sortable-ghost"
           class="list-group flex flex-wrap space-evenly"
@@ -236,25 +155,24 @@ export default {
     elements() {
       const elementCmps = this.cmps.filter(cmp => {
         return (
-          cmp.type === "app-card" ||
-          cmp.type === "app-article" ||
-          cmp.type === "button" ||
-          cmp.type === "img" ||
-          cmp.type === "p"
-        );
-      });
-      console.log("elemeents", elementCmps);
+          cmp.type === 'app-card' ||
+          cmp.type === 'app-article' ||
+          cmp.type === 'img' ||
+          cmp.type === 'p' ||
+          cmp.type === 'layout-3-columns' ||
+          cmp.type === 'layout-2-columns' ||
+          cmp.type === 'app-header')
+      })
+      // console.log('elemeents', elementCmps);
 
       return elementCmps;
     },
     filteredCmps() {
       return this.cmps.filter(
-        cmp =>
-          cmp.type !== "app-youtube" &&
-          cmp.type !== "app-map" &&
-          cmp.type !== "p" &&
-          cmp.type !== "img" &&
-          cmp.type !== "button"
+        cmp => cmp.type !== "app-youtube"
+          && cmp.type !== "app-map"
+          && cmp.type !== 'p'
+          && cmp.type !== 'img'
       );
     },
     widgets() {
@@ -265,7 +183,7 @@ export default {
   },
   methods: {
     onMoveCallback(evt, originalEvent) {
-      console.log("relatedContext", evt.relatedContext);
+      // console.log('relatedContext', evt.relatedContext)
       // return false; — for cancel
     },
     cloneCmp(cmp) {
@@ -327,8 +245,6 @@ export default {
           return { name: "Map", class: "fas fa-map-marked-alt" };
         case "p":
           return { name: "Text", class: "fas fa-images" };
-        case "button":
-          return { name: "Button", class: "fas fa-images" };
         case "img":
           return { name: "Image", class: "fas fa-images" };
         case "app-gallery":

@@ -6,6 +6,7 @@
       style="width:100%"
       @start="dragging = true"
       @end="dragging = false"
+      group="wap"
     >
       <component
         class="info"
@@ -20,15 +21,13 @@
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
     </draggable>
-
   </section>
 </template>
 
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 import appForm from './app-form.vue'
-import appArticle from './app-article.vue'
-import appMap from './app-map.vue'
+// import appArticle from './app-article.vue'
 export default {
   props: {
     cmp: Object,
@@ -58,8 +57,7 @@ export default {
   },
   components: {
     appForm,
-    appArticle,
-    appMap
+    // appArticle
   }
 };
 </script>
