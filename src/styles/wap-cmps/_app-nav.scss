@@ -18,7 +18,8 @@
     }
   }
   .hamburger-menu {
-    position: absolute;
+    // position: absolute;
+    position: relative;
     visibility: hidden;
   }
 
@@ -58,9 +59,9 @@
     .hamburger-menu {
       background-color: transparent;
       z-index: 2;
-      position: absolute;
-      top: 15%;
-      left: 86%;
+      // position: absolute;
+      // top: 15%;
+      // left: 86%;
       margin-top: 1rem;
       visibility: visible;
       font-size: 2rem;

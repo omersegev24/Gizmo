@@ -1,8 +1,8 @@
 <template>
   <div class="social-sharing">
+    
     <social-sharing
-      :url="url"
-      title="The best toys Framework"
+      :title="url"
       description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
       quote="Vue is a progressive framework for building user interfaces."
       hashtags="website,websiteBuilder,framework"
@@ -25,7 +25,12 @@
 
 <script>
 export default {
-  props: ["url"]
+  props: {
+    url: String
+  },
+  created() {
+    console.log('social' ,this.url)
+  },
 };
 </script>
 <style lang="scss">

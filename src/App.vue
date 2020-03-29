@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img v-if="inProgress" class="loading" src="./assets/img/loading.svg" />
-    <main-nav></main-nav>
+    <main-nav v-if="!websitePage"></main-nav>
     <router-view />
   </div>
 </template>
@@ -11,20 +11,27 @@ export default {
   computed: {
     inProgress() {
       return this.$store.getters.inProgress;
+    },
+    websitePage(){
+      console.log()
+      return (this.$route.path.includes('/website'))
     }
   },
   components: {
     mainNav,
+  },
+  created() {
+    console.log('path', this.$route.path)
   }
 };
 </script>
 <style lang="scss" scoped>
-  .loading{
-    width: 100px;
-    height: 100px;
+.loading {
+  width: 100px;
+  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 999999;
-  }
+}
 </style>
