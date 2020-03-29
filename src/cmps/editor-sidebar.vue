@@ -32,7 +32,6 @@
             :key="cmp.id"
           >
             <cmp-preview :cmp="cmp"></cmp-preview>
-
             <!-- <div v-if="cmp.type !== 'app-youtube' && cmp.type !== 'app-map'"> -->
             <p :class="cmpType(cmp.type).class + ' fa-2x'"></p>
             <p>{{cmpType(cmp.type).name}}</p>
@@ -155,24 +154,26 @@ export default {
     elements() {
       const elementCmps = this.cmps.filter(cmp => {
         return (
-          cmp.type === 'app-card' ||
-          cmp.type === 'app-article' ||
-          cmp.type === 'img' ||
-          cmp.type === 'p' ||
-          cmp.type === 'layout-3-columns' ||
-          cmp.type === 'layout-2-columns' ||
-          cmp.type === 'app-header')
-      })
+          cmp.type === "app-card" ||
+          cmp.type === "app-article" ||
+          cmp.type === "img" ||
+          cmp.type === "p" ||
+          cmp.type === "layout-3-columns" ||
+          cmp.type === "layout-2-columns" ||
+          cmp.type === "app-header"
+        );
+      });
       // console.log('elemeents', elementCmps);
 
       return elementCmps;
     },
     filteredCmps() {
       return this.cmps.filter(
-        cmp => cmp.type !== "app-youtube"
-          && cmp.type !== "app-map"
-          && cmp.type !== 'p'
-          && cmp.type !== 'img'
+        cmp =>
+          cmp.type !== "app-youtube" &&
+          cmp.type !== "app-map" &&
+          cmp.type !== "p" &&
+          cmp.type !== "img"
       );
     },
     widgets() {
@@ -189,7 +190,7 @@ export default {
     cloneCmp(cmp) {
       var copy = JSON.parse(JSON.stringify(cmp));
       var cmpCopy = wapService.replaceIds(copy);
-      this.$store.commit({ type: 'setSelectedCmp', cmp: cmpCopy })
+      this.$store.commit({ type: "setSelectedCmp", cmp: cmpCopy });
       return copy;
     },
     checkMove(e) {
@@ -199,23 +200,24 @@ export default {
       this.dragging = true;
     },
     draggingEnd() {
-      this.dragging = false
-      this.editMode = true
+      this.dragging = false;
+      this.editMode = true;
     },
     async saveWap() {
       // const id = await this.$store.dispatch({ type: "saveWap" });
-      console.log("publish your website");
+      var url = `${window.location.origin}/website/id`;
+      console.log("Your created: ", this.$createElement);
       const h = this.$createElement;
 
       this.$msgbox({
         title: "Publish your Website",
-        message: h(socialSharing)
-      }).then(action => {
-        this.$message({
-          type: "info",
-          message: "action: " + action
-        });
-      });
+        center: true,
+        message: h('p', null, [
+          h('span', null, 'Check It Out '),
+          h('a',  {  href:'/'} , 'HERE', false),
+          h(socialSharing)
+        ]),
+      })
       // this.$router.push(`/`)
     },
     toggle(currItem) {
