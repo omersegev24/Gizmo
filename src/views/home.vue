@@ -1,6 +1,10 @@
 <template>
-  <div class="home-page main-layout">
-    <h1 class="title">Create a Website You’re Proud Of</h1>
+  <div class="home-page">
+    <header>
+      <h1 class="logo"><router-link to="/">Gizmo</router-link></h1>
+      <!-- <img src="@/assets/img/homepage-header.png" alt="Header Image"> -->
+    </header>
+    <!-- <h1 class="title">Create a Website You’re Proud Of</h1>
     <div>
       <p class="sub-title">
         Discover the platform that gives you the freedom to create, design,
@@ -12,7 +16,7 @@
       <h2 class="title">Get Inspired by These Website Examples Designed on Gizmo</h2>
       <wap-list :waps="waps"></wap-list>
     </section>
-    <button class="show-more-btn" @click="showMore">Show More...</button>
+    <button class="show-more-btn" @click="showMore">Show More...</button>-->
   </div>
 </template>
 <script>
@@ -31,11 +35,11 @@ export default {
   },
   methods: {
     async openEditor(wapId) {
-      this.$router.push(`/editor/${wapId}`).catch(err => { });
+      this.$router.push(`/editor/${wapId}`).catch(err => {});
       // this.$router.push(`/editor/${wapId}`);
     },
-    showMore(){
-      this.$router.push('/template')
+    showMore() {
+      this.$router.push("/template");
     }
   },
   components: {

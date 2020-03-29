@@ -1,46 +1,73 @@
 .home-page {
-  text-align: center;
-  margin-top: rem(40px);
-  .title {
-    font-size: rem(96px);
-    max-width: rem(740px);
-    margin: 0 auto;
-    line-height: 1.2em;
-    margin-bottom: 10px;
-  }
-  .sub-title {
-    max-width: rem(620px);
-    margin: 0 auto;
-    font-size: rem(20px);
-    line-height: 1.5em;
-    margin-bottom: 10px;
-  }
-
-  a {
-    background-color: rgba(17, 109, 255, 1);
-    cursor: pointer;
-    padding: rem(15px) rem(40px);
-    border-radius: rem(38px);
-    font-size: rem(24px);
-    color: #fff;
-    position: relative;
-    top: rem(45px);
-    &:hover {
-      opacity: 0.9;
+  header {
+    height: 75vh;
+    width: 100%;
+    background-color: #b4d0e7;
+    img {
+      margin-left: auto;
+      width: 40%;
     }
-  }
-  .show-more-btn{
-    margin: 0 auto 20px;
-    height: 50px;
-    width: 65%;
-    background: none;
-    border: 3px solid #dddada;
-    color: #dddada;
-    font-size: 1.2rem;
-    outline: none;
-    &:hover{
-      border: 3px solid $clr3;
-      color: $clr3;
+    // div {
+    //   border-bottom: 40vw solid;
+    //   border-left: 80vw solid transparent;
+    //   border-bottom-color: #142d8a;
+    //   position: absolute;
+    //   width: 100%;
+    // }
+    .title {
+      font-size: rem(96px);
+      max-width: rem(740px);
+      margin-left: 50px;
+      padding-top: 50px;
+      line-height: 1.2em;
+      margin-bottom: 10px;
     }
   }
 }
+
+// .home-page {
+//   text-align: center;
+//   margin-top: rem(40px);
+//   .title {
+//     font-size: rem(96px);
+//     max-width: rem(740px);
+//     margin: 0 auto;
+//     line-height: 1.2em;
+//     margin-bottom: 10px;
+//   }
+//   .sub-title {
+//     max-width: rem(620px);
+//     margin: 0 auto;
+//     font-size: rem(20px);
+//     line-height: 1.5em;
+//     margin-bottom: 10px;
+//   }
+
+//   a {
+//     background-color: rgba(17, 109, 255, 1);
+//     cursor: pointer;
+//     padding: rem(15px) rem(40px);
+//     border-radius: rem(38px);
+//     font-size: rem(24px);
+//     color: #fff;
+//     position: relative;
+//     top: rem(45px);
+//     &:hover {
+//       opacity: 0.9;
+//     }
+//   }
+//   .show-more-btn{
+//     margin: 0 auto 20px;
+//     height: 50px;
+//     width: 65%;
+//     background: none;
+//     border: 3px solid #dddada;
+//     color: #dddada;
+//     font-size: 1.2rem;
+//     outline: none;
+//     &:hover{
+//       border: 3px solid $clr3;
+//       color: $clr3;
+//     }
+//   }
+// }
