@@ -17,6 +17,7 @@
         :style="child.style"
         :published="published"
         :selectedCmp="selectedCmp"
+        @click.stop="openEdit(child)"
       >{{child.txt}}</component>
     </draggable>
   </section>

@@ -1,26 +1,17 @@
 <template>
   <div class="app-gallery pet-theme" :style="cmp.style" :class="cmp.subClass">
-    <!-- <div  > -->
-    <el-image
+    <component
       v-for="child in cmp.children"
-      :key="child.id"
       class="gallery-img"
-
+      :key="child.id"
+      :is="child.type"
+      :style="child.style"
       :src="child.imgUrl"
-      :preview-src-list="imgs"
-    >
-      <!-- <component
-          :is="child.type"
-          :style="child.style"
-          :src="child.imgUrl"
-          :class="{ 'mark-selected':child.id === selectedCmp.id}"
-          @click.stop="openEdit(child)"
-      ></component>-->
-    </el-image>
+      :class="{ 'mark-selected':child.id === selectedCmp.id}"
+      @click.stop="openEdit(child)"
+    ></component>
   </div>
-  <!-- </div> -->
 </template>
-
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 export default {
