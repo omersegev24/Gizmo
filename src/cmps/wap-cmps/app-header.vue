@@ -9,7 +9,7 @@
       <draggable
         v-model="currCmp"
         class="txt-container flex space-evenly align-center"
-        @start.prevent.stop="startDrag"
+        @start="startDrag"
         @end="stopDrag"
         group="wap"
       >
@@ -24,7 +24,7 @@
           :src="child.imgUrl"
           :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-          @dblclick="isEditing=true"
+          @dblclick="editMode"
           @blur="editTxt($event,child)"
           @click.stop="openEdit(child)"
         >{{child.txt}}</component>
@@ -37,7 +37,8 @@ import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
@@ -45,31 +46,35 @@ export default {
       enabled: true,
       dragging: false,
       isEditing: false
-    };
+    }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   methods: {
     startDrag() {
       console.log('yes')
       this.dragging = true
     },
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     stopDrag() {
       this.dragging = false
     },
     editTxt(ev, cmp) {
       this.isEditing = false
-      console.log('TEXT', cmp.txt)
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
-      eventBus.$emit("updateCmp", cmpCopy);
+      eventBus.$emit('updateCmp', cmpCopy);
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
     },
   },
   computed: {
-    editMode() {
-      return !this.dragging
-    },
     imgStyle() {
       if (cmp.subClass === "icy-theme") {
         return { "background-image": "url(" + cmp.imgUrl + ")" };

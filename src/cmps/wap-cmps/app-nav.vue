@@ -12,7 +12,7 @@
         :is="logo.type"
         :style="logo.style"
         :contenteditable="isEditing"
-        @dblclick="isEditing=true"
+        @dblclick="editMode"
         @blur="editTxt($event,logo)"
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
@@ -25,7 +25,7 @@
           :style="link.style"
           :contenteditable="isEditing"
           :href="'#' + link.to"
-          @dblclick="isEditing=true"
+          @dblclick="editMode"
           @blur="editTxt($event,link)"
           :src="link.imgUrl"
           :class="{'mark-selected':link.id === selectedCmp.id}"
@@ -44,13 +44,17 @@ import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
       isMenuOpen: false,
       isEditing: false
     }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   computed: {
     links() {
@@ -68,6 +72,11 @@ export default {
     }
   },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     edit(cmp) {
       eventBus.$emit('edit', cmp)
     },

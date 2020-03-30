@@ -7,6 +7,7 @@
         :src="cmp.imgUrl"
         :selectedCmp="selectedCmp"
         :style="cmp.style"
+        :published="true"
       ></component>
     </div>
   </section>

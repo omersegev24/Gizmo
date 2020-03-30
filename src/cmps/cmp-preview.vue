@@ -1,6 +1,5 @@
 <template>
   <div class="cmp-preview">
-    
     <component
       :is="cmp.type"
       :cmp="cmp"
@@ -9,6 +8,7 @@
       :src="cmp.imgUrl"
       :class="[getWapTheme,{'mark-selected':cmp.id === selectedCmp.id}]"
       @click.native.stop="edit(cmp)"
+      :published="false"
     >{{cmp.txt}}</component>
 
     <action-panel :cmp="cmp"></action-panel>
@@ -30,7 +30,7 @@ export default {
     },
   },
   computed: {
-  
+
     getWapTheme() {
       return this.$store.getters.wapTheme
     },
