@@ -2,7 +2,7 @@
   <section class="app-article pet-theme" id="app-article" :class="cmp.subClass">
     <draggable
       v-model="currCmp"
-      class="flex flex-column space-evenly align-center"
+      class="flex flex-column justify-center align-center"
       @start="dragging = true"
       @end="dragging = false"
       group="wap"

@@ -79,6 +79,16 @@
      }
     }
   }
+  &.pet-theme {
+    div {
+      height: auto;
+    }
+    @media only screen and (max-width: 1130px) {
+      p {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 // .app-article.dark-theme {
