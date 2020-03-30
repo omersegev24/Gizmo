@@ -61,7 +61,7 @@ export default {
       cmp: JSON.parse(JSON.stringify(this.currCmp)),
       fontSize: parseInt(this.currCmp.style.fontSize, 10),
       letterSpacing: parseInt(this.currCmp.style.letterSpacing, 10),
-      padding: 0,
+      
       fontFamily: ["Lato", "AlegreyaSans", "Lobster"],
       predefineColors: [
         "#ff4500",
@@ -90,10 +90,6 @@ export default {
     },
     setLetterSpacing() {
       this.cmp.style.letterSpacing = this.letterSpacing + "px";
-      this.update();
-    },
-    setSectionHeigth() {
-      this.cmp.style.padding = this.padding + "px";
       this.update();
     },
     update() {

@@ -20,7 +20,7 @@
           :is="child.type"
           :style="child.style"
           :cmp="child"
-          :contenteditable="false"
+          :contenteditable="true"
           :selectedCmp="selectedCmp"
           :src="child.imgUrl"
           :class="{'title':child.type === 'p',

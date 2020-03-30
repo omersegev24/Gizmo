@@ -91,7 +91,7 @@
     </el-collapse>
 
     <el-dialog :title="websiteName" :visible.sync="centerDialogVisible" width="30%" center>
-      <a :href="url" @click="goToWebsite">Click here to visit your website!</a>
+      <a :href="url">Click here to visit your website!</a>
       <span slot="footer" class="dialog-footer">
         <social-sharing></social-sharing>
         <el-button type="primary" @click="centerDialogVisible = false">Confirm</el-button>
