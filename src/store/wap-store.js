@@ -120,7 +120,7 @@ export default ({
 			context.commit({ type: 'setInProgress', inProgress: true })
 			const wap = await wapService.add(context.state.wap)
 			context.commit({ type: 'setInProgress', inProgress: false })
-			return wap._id
+			return wap
 		},
 	}
 })
