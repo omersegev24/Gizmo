@@ -18,7 +18,6 @@
     }
   }
   .hamburger-menu {
-    // position: absolute;
     margin: 0 30px;
     position: relative;
     visibility: hidden;
@@ -26,6 +25,7 @@
 
   @media only screen and (max-width: $buson-break-wide) {
     .nav-links {
+      display: none;
       z-index: 1;
       position: absolute;
       top: 0;
@@ -54,16 +54,14 @@
       }
     }
     .menu-open {
+      display: inherit;
+      position: fixed;
       transform: translate(0, 0);
       box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.7);
     }
     .hamburger-menu {
       background-color: transparent;
       z-index: 2;
-      // position: absolute;
-      // top: 15%;
-      // left: 86%;
-      // margin-top: 1rem;
       visibility: visible;
       font-size: 2rem;
       transition: 0.5s;
