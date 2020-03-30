@@ -90,11 +90,8 @@
       </el-collapse-item>
     </el-collapse>
 
-    <el-button type="text" @click="centerDialogVisible = true">Click to open the Dialog</el-button>
-
-    <el-dialog title="Publish" :visible.sync="centerDialogVisible" width="30%" center>
-      <span>Check It Out</span>
-      <a :href="url"> HERE</a>
+    <el-dialog :title="websiteName" :visible.sync="centerDialogVisible" width="30%" center>
+      <a :href="url">Click here to visit your website!</a>
       <span slot="footer" class="dialog-footer">
         <social-sharing></social-sharing>
         <el-button type="primary" @click="centerDialogVisible = false">Confirm</el-button>
@@ -121,6 +118,7 @@ export default {
   data() {
     return {
       url: '',
+      websiteName: '',
       centerDialogVisible: false,
       enabled: true,
       dragging: false,
@@ -217,8 +215,9 @@ export default {
       this.editMode = true;
     },
     async saveWap() {
-      // const id = await this.$store.dispatch({ type: "saveWap" });
-      this.url = `${window.location.origin}/website/id`;
+      const wap = await this.$store.dispatch({ type: "saveWap" });
+      this.websiteName = wap.title
+      this.url = `${window.location.origin}/#/website/${wap._id}`;
       this.centerDialogVisible = true
     },
     toggle(currItem) {

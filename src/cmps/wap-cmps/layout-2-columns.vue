@@ -15,6 +15,7 @@
         :key="child.id"
         :src="child.imgUrl"
         :style="child.style"
+        :published="published"
         :selectedCmp="selectedCmp"
       >{{child.txt}}</component>
     </draggable>
@@ -29,7 +30,8 @@ import appContact from './app-contact-us.vue'
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {

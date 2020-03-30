@@ -5,8 +5,9 @@
       :is="child.type"
       :key="child.id"
       :style="child.style"
-      :contenteditable="false"
-      @change="editTxt($event,child)"
+      :contenteditable="isEditing"
+      @dblclick="editMode"
+      @blur="editTxt($event,child)"
       :src="child.imgUrl"
       :class="{ 'mark-selected':child.id === selectedCmp.id}"
       @click.stop="openEdit(child)"
@@ -20,10 +21,25 @@ export default {
   name: "app-card",
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
+  },
+  data() {
+    return {
+      isEditing: false
+    }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);

@@ -38,6 +38,7 @@
       <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
     <hr v-if="currCmp.id" class="divider" />
+
   </section>
 </template>
 

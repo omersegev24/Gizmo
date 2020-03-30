@@ -18,6 +18,7 @@
         :src="child.imgUrl"
         :style="child.style"
         :selectedCmp="selectedCmp"
+        :published="published"
         :class="{'mark-selected':child.id === selectedCmp.id}"
         @click.stop="openEdit(child)"
       ></component>
@@ -30,7 +31,8 @@ import { eventBus } from '../../services/eventBus.service.js'
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   methods: {
     openEdit(cmp) {

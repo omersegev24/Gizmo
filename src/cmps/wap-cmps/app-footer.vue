@@ -9,12 +9,13 @@
       :is="child.type"
       :key="child.id"
       :cmp="child"
-      :contenteditable="true"
+      :contenteditable="isEditing"
+      @dblclick="editMode"
+      @blur="editTxt($event,child)"
       :selectedCmp="selectedCmp"
       :class="{'mark-selected':child.id === selectedCmp.id}"
       :src="child.imgUrl"
       :style="child.style"
-      @change="editTxt($event,child)"
       @click.stop="openEdit(child)"
     >{{child.txt}}</component>
   </footer>
@@ -27,10 +28,25 @@ import appChat from './app-chat.vue'
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
+  },
+  data() {
+    return {
+      isEditing: false
+    }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(this.cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);

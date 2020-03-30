@@ -9,26 +9,25 @@
       <draggable
         v-model="currCmp"
         class="txt-container flex space-evenly align-center"
-        @start="dragging = true"
-        @end="dragging = false"
+        @start="startDrag"
+        @end="stopDrag"
         group="wap"
       >
-        <!-- <div class="txt-container"> -->
         <component
           v-for="child in cmp.children"
           :key="child.id"
           :is="child.type"
           :style="child.style"
           :cmp="child"
-          :contenteditable="false"
+          :contenteditable="isEditing"
           :selectedCmp="selectedCmp"
           :src="child.imgUrl"
           :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-          @input="editTxt($event,child)"
+          @dblclick="editMode"
+          @blur="editTxt($event,child)"
           @click.stop="openEdit(child)"
         >{{child.txt}}</component>
-        <!-- </div> -->
       </draggable>
     </header>
   </div>
@@ -38,20 +37,38 @@ import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
       cmpCopy: JSON.parse(JSON.stringify(this.selectedCmp)),
       enabled: true,
-      dragging: false
-    };
+      dragging: false,
+      isEditing: false
+    }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   methods: {
+    startDrag() {
+      console.log('yes')
+      this.dragging = true
+    },
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
+    stopDrag() {
+      this.dragging = false
+    },
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
-      eventBus.$emit("updateCmp", cmpCopy);
+      eventBus.$emit('updateCmp', cmpCopy);
     },
     openEdit(cmp) {
       eventBus.$emit("edit", cmp);
@@ -88,3 +105,5 @@ export default {
   }
 };
 </script>
+<style>
+</style>
