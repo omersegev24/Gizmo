@@ -15,7 +15,7 @@
         :cmp="child"
         :selectedCmp="selectedCmp"
         :contenteditable="isEditing"
-        @dblclick="isEditing=true"
+        @dblclick="editMode"
         @blur="editTxt($event,child)"
         :src="child.imgUrl"
         :class="{ 'mark-selected':child.id === selectedCmp.id}"
@@ -30,13 +30,17 @@ import { eventBus } from "../../services/eventBus.service.js";
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
       dragging: false,
-      isEditing:false
+      isEditing: false
     }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   computed: {
     currCmp: {
@@ -58,8 +62,13 @@ export default {
     }
   },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     editTxt(ev, cmp) {
-      this.isEditing=false
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);

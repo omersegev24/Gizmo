@@ -21,7 +21,7 @@
         :is="child.type"
         :cmp="child"
         :key="child.id"
-        @dblclick="isEditing=true"
+        @dblclick="editMode"
         @blur="editTxt($event,child)"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
@@ -36,12 +36,16 @@ import appForm from './app-form.vue'
 export default {
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
       isEditing: false
     }
+  },
+  created() {
+    if (this.published) this.isEditing = false
   },
   computed: {
     contactCmp: {
@@ -56,6 +60,11 @@ export default {
     },
   },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     editTxt(ev, cmp) {
       this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));

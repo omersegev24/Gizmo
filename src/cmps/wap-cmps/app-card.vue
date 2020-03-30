@@ -6,7 +6,7 @@
       :key="child.id"
       :style="child.style"
       :contenteditable="isEditing"
-      @dblclick="isEditing=true"
+      @dblclick="editMode"
       @blur="editTxt($event,child)"
       :src="child.imgUrl"
       :class="{ 'mark-selected':child.id === selectedCmp.id}"
@@ -21,14 +21,23 @@ export default {
   name: "app-card",
   props: {
     cmp: Object,
-    selectedCmp: Object
+    selectedCmp: Object,
+    published: Boolean
   },
   data() {
     return {
       isEditing: false
     }
   },
+  created() {
+    if (this.published) this.isEditing = false
+  },
   methods: {
+    editMode() {
+      if (!this.published) {
+        this.isEditing = true;
+      }
+    },
     editTxt(ev, cmp) {
       this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
