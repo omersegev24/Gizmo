@@ -11,8 +11,9 @@
         class="logo"
         :is="logo.type"
         :style="logo.style"
-        :contenteditable="false"
-        @input="editTxt($event,logo)"
+        :contenteditable="isEditing"
+        @dblclick="isEditing=true"
+        @blur="editTxt($event,logo)"
         :class="{'mark-selected':logo.id === selectedCmp.id}"
         @click.stop="edit(logo)"
       >{{logo.txt}}</component>
@@ -22,9 +23,10 @@
         <component
           :is="link.type"
           :style="link.style"
-          :contenteditable="false"
+          :contenteditable="isEditing"
           :href="'#' + link.to"
-          @input="editTxt($event,link)"
+          @dblclick="isEditing=true"
+          @blur="editTxt($event,link)"
           :src="link.imgUrl"
           :class="{'mark-selected':link.id === selectedCmp.id}"
           @click.stop="edit(link)"
@@ -46,7 +48,8 @@ export default {
   },
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+      isEditing: false
     }
   },
   computed: {
@@ -69,6 +72,7 @@ export default {
       eventBus.$emit('edit', cmp)
     },
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       this.editMode = false

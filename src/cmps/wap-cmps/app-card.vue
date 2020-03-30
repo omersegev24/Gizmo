@@ -5,8 +5,9 @@
       :is="child.type"
       :key="child.id"
       :style="child.style"
-      :contenteditable="false"
-      @change="editTxt($event,child)"
+      :contenteditable="isEditing"
+      @dblclick="isEditing=true"
+      @blur="editTxt($event,child)"
       :src="child.imgUrl"
       :class="{ 'mark-selected':child.id === selectedCmp.id}"
       @click.stop="openEdit(child)"
@@ -22,8 +23,14 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
+  data() {
+    return {
+      isEditing: false
+    }
+  },
   methods: {
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);

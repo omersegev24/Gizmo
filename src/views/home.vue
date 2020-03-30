@@ -42,7 +42,7 @@ export default {
   computed: {
     waps() {
       let waps = this.$store.getters.waps;
-      return waps.slice(0, 6);
+      return waps.slice(0, 3);
     }
   },
   methods: {

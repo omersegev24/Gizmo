@@ -1,5 +1,5 @@
 <template>
-  <section class="icy-theme" id="app-article" :class="cmp.subClass">
+  <section class="app-article icy-theme" id="app-article" :class="cmp.subClass">
     <draggable
       v-model="currCmp"
       class="flex flex-column space-evenly align-center"
@@ -14,10 +14,11 @@
         :style="child.style"
         :cmp="child"
         :selectedCmp="selectedCmp"
-        :contenteditable="false"
+        :contenteditable="isEditing"
+        @dblclick="isEditing=true"
+        @blur="editTxt($event,child)"
         :src="child.imgUrl"
         :class="{ 'mark-selected':child.id === selectedCmp.id}"
-        @change="editTxt($event,child)"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
     </draggable>
@@ -33,8 +34,8 @@ export default {
   },
   data() {
     return {
-      enabled: true,
-      dragging: false
+      dragging: false,
+      isEditing:false
     }
   },
   computed: {
@@ -58,6 +59,7 @@ export default {
   },
   methods: {
     editTxt(ev, cmp) {
+      this.isEditing=false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit("updateCmp", cmpCopy);
