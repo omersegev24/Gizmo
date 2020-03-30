@@ -1,11 +1,11 @@
 <template>
-  <div class="app-gallery" :style="cmp.style" :class="cmp.subClass">
+  <div class="app-gallery pet-theme" :style="cmp.style" :class="cmp.subClass">
     <!-- <div  > -->
     <el-image
       v-for="child in cmp.children"
       :key="child.id"
-      class="ratio-square"
-      style="width: 100%; height: 100%;"
+      class="gallery-img"
+
       :src="child.imgUrl"
       :preview-src-list="imgs"
     >

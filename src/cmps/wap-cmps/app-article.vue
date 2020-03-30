@@ -1,5 +1,5 @@
 <template>
-  <section class="icy-theme" id="app-article" :class="cmp.subClass">
+  <section class="app-article pet-theme" id="app-article" :class="cmp.subClass">
     <draggable
       v-model="currCmp"
       class="flex flex-column space-evenly align-center"

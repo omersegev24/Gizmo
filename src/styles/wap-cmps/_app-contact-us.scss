@@ -107,11 +107,61 @@
       border: none;
       font-size: 1rem;
       padding: 10px 20px;
-      transition: .3s;
+      transition: 0.3s;
       &:hover {
         background-color: $clr9;
         color: $clr10;
       }
+    }
+  }
+
+  &.pet-theme {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $clr12;
+    height: 60vh;
+    color: $clr11;
+    div {
+      flex-direction: column;
+    }
+    form {
+      margin: 0 auto;
+      width: 50%;
+      * {
+        border: none;
+      }
+      label {
+        margin: 2.5px;
+        padding: 5px;
+        input,textarea {
+          font-family: WorkSansExtraLight, sans-serif;
+          font-weight: bold;
+          letter-spacing: 0.04em;
+          color: #fff;
+          background-color: $clr12;
+          border-bottom: 1px solid #fff;
+          &::placeholder {
+            text-align: center;
+            color: $clr11;
+          }
+        }
+      }
+      button {
+        margin: 10px auto;
+        width: 100%;
+        background-color: $clr12;
+        color: $clr11;
+        transition: 0.3s;
+        &:hover {
+          background-color: $clr11;
+          color: $clr12;
+        }
+      }
+      // background-color: red;
+      // label {
+      //   width: 60%;
+      // }
     }
   }
 

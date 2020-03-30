@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="app-nav icy-theme flex space-between align-center"
+    class="app-nav pet-theme flex space-between align-center"
     :class="cmp.subClass"
     @click.stop="edit(cmp)"
     role="navv"

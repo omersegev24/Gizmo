@@ -4,7 +4,7 @@
       class="app-header icy-theme flex justify-center align-center flex-column"
       id="app-header"
       :class="cmp.subClass"
-      :style=" [cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
+      :style="[cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
     >
       <draggable
         v-model="currCmp"

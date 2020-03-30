@@ -62,6 +62,38 @@
       width: 80%;
     }
   }
+
+  &.pet-theme {
+    color: $clr12;
+    width: 25%;
+    margin-bottom: 20px;
+    text-align: center;
+    * {
+      font-family: WorkSansExtraLight, sans-serif;
+      font-weight: bold;
+      line-height: 1.5;
+      font-size: 1rem;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    img {
+      border-radius: 999px;
+      margin-bottom: 25px;
+    }
+    button {
+      font-size: rem(14px);
+      background-color: $clr12;
+      padding: 10px 20px;
+      color: $clr11;
+      border: none;
+      text-transform: uppercase;
+      transition: .3s;
+      &:hover {
+        background-color: lighten($clr12, 10%);
+        cursor: pointer;
+      }
+    }
+  }
 }
   // @media only screen and (max-width: )
 // }

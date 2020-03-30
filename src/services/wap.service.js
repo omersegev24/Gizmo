@@ -80,7 +80,7 @@ const gWap = {
                         {
                             id: 'saoomor1a',
                             type: 'img',
-                            imgUrl: 'https://image.freepik.com/free-vector/vintage-photography-badge_23-2147504323.jpg?1',
+                            imgUrl: 'https://static.wixstatic.com/media/84770f_346b425b1fe54554a98a4425fa8333cb~mv2_d_3760_3760_s_4_2.jpg/v1/fill/w_479,h_479,al_c,q_80,usm_0.66_1.00_0.01/84770f_346b425b1fe54554a98a4425fa8333cb~mv2_d_3760_3760_s_4_2.webp',
                             style: {},
                         },
                         {

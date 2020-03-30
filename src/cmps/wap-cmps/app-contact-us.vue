@@ -1,5 +1,5 @@
 <template>
-  <section class="app-contact-us icy-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
+  <section class="app-contact-us pet-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"
@@ -20,6 +20,8 @@
         @input="editTxt($event,child)"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
+
+      <app-form></app-form>
     </draggable>
   </section>
 </template>
@@ -56,7 +58,7 @@ export default {
     },
   },
   components: {
-    appForm,
+    appForm
     // appArticle
   }
 };
