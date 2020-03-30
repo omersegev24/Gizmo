@@ -1,5 +1,9 @@
 <template>
-  <section class="app-contact-us icy-theme flex space-evenly" id="app-contact-us" :class="cmp.subClass">
+  <section
+    class="app-contact-us icy-theme flex space-evenly"
+    id="app-contact-us"
+    :class="cmp.subClass"
+  >
     <draggable
       v-model="contactCmp"
       class="flex space-evenly"
@@ -12,12 +16,13 @@
         class="info"
         :style="child.style"
         v-for="child in cmp.children"
-        :contenteditable="false"
+        :contenteditable="isEditing"
         :selectedCmp="selectedCmp"
         :is="child.type"
         :cmp="child"
         :key="child.id"
-        @input="editTxt($event,child)"
+        @dblclick="isEditing=true"
+        @blur="editTxt($event,child)"
         @click.stop="openEdit(child)"
       >{{child.txt}}</component>
     </draggable>
@@ -33,6 +38,11 @@ export default {
     cmp: Object,
     selectedCmp: Object
   },
+  data() {
+    return {
+      isEditing: false
+    }
+  },
   computed: {
     contactCmp: {
       get() {
@@ -47,6 +57,7 @@ export default {
   },
   methods: {
     editTxt(ev, cmp) {
+      this.isEditing = false
       var cmpCopy = JSON.parse(JSON.stringify(cmp));
       cmpCopy.txt = ev.target.innerText;
       eventBus.$emit('updateCmp', cmpCopy);
