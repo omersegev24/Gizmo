@@ -30,11 +30,10 @@ const routes = [
     name: 'Website',
     component: website
   }
-
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes,
   scrollBehavior (to, from, savedPosition) {

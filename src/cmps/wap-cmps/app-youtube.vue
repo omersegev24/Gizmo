@@ -1,7 +1,7 @@
 <template>
-  <div class="video-container" @click.stop="openEdit(cmp)">
+  <div class="video-container" @click.stop="openEdit(cmp)" :style="cmp.style">
     <!-- <h3 class="title" :contenteditable="true" @blur="editTxt($event,cmp)">{{cmp.title}}</h3> -->
-    <iframe :src="cmp.url"></iframe>
+    <iframe :style="cmp.style" :src="cmp.url"></iframe>
   </div>
 </template>
 
@@ -23,3 +23,8 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+  iframe{
+    padding: 20px;
+  }
+</style>

@@ -217,7 +217,7 @@ export default {
     async saveWap() {
       const wap = await this.$store.dispatch({ type: "saveWap" });
       this.websiteName = wap.title
-      this.url = `${window.location.origin}/website/${wap._id}`;
+      this.url = `${window.location.origin}/#/website/${wap._id}`;
       this.centerDialogVisible = true
     },
     toggle(currItem) {
