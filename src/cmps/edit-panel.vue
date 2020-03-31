@@ -34,6 +34,7 @@
         </div>
         <img class="img-preview" :src="currCmp.imgUrl" style="max-width: 250px" />
         <hr class="divider" />
+        
       </div>
       <edit-text v-if="currCmp.type!=='img'" :currCmp="currCmp" @updateCmp="updateCmp"></edit-text>
     </div>
