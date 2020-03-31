@@ -20,13 +20,16 @@
   .hamburger-menu {
     margin: 0 30px;
     position: relative;
+    top: 0;
+
+    transform: translate(-100%, 0);
     // visibility: hidden;
-    display:none;
+    display: none;
   }
 
   @media only screen and (max-width: $buson-break-wide) {
     .nav-links {
-      display: none;
+      // display: none;
       z-index: 1;
       position: absolute;
       top: 0;
@@ -56,20 +59,18 @@
     }
     .menu-open {
       display: inherit;
-      position: fixed;
+      // position: fixed;
       transform: translate(0, 0);
       box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.7);
     }
     .hamburger-menu {
       background-color: transparent;
       z-index: 2;
-      // visibility: visible;
       display: block;
       font-size: 2rem;
       transition: 0.5s;
       &:hover {
         cursor: pointer;
-        transform: rotate(360deg);
       }
     }
   }
@@ -165,7 +166,10 @@
       font-family: WorkSansSemiBold, sans-serif;
       margin-bottom: 0;
       &:before {
-        font-family: "Font Awesome 5 Free"; margin-right: 5px; font-weight: 900; content: " \f1b0 ";
+        font-family: "Font Awesome 5 Free";
+        margin-right: 5px;
+        font-weight: 900;
+        content: " \f1b0 ";
       }
     }
     li {
@@ -175,7 +179,7 @@
     }
     @media only screen and (max-width: $buson-break-wide) {
       .nav-links {
-        background-color: $clr7;
+        background-color: $clr11;
         li > a {
           font-family: Raleway, sans-serif;
           font-size: 2rem;
