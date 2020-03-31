@@ -1,36 +1,36 @@
 <template>
-  <div>
-    <header
-      class="app-header icy-theme flex justify-center align-center flex-column"
-      id="app-header"
-      :class="cmp.subClass"
-      :style="[cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
-    >
-      <draggable
-        v-model="currCmp"
-        class="txt-container flex space-evenly align-center"
-        @start="startDrag"
-        @end="stopDrag"
-        group="wap"
+  <!-- <div> -->
+  <header
+    class="app-header icy-theme flex justify-center align-center flex-column"
+    id="app-header"
+    :class="cmp.subClass"
+    :style="[cmp.style, {'background-image': 'url(' + cmp.imgUrl + ')' }]"
+  >
+    <draggable
+      v-model="currCmp"
+      class="txt-container flex space-evenly align-center"
+      @start="startDrag"
+      @end="stopDrag"
+      group="wap"
       >
-        <component
-          v-for="child in cmp.children"
-          :key="child.id"
-          :is="child.type"
-          :style="child.style"
-          :cmp="child"
-          :contenteditable="isEditing"
-          :selectedCmp="selectedCmp"
-          :src="child.imgUrl"
-          :class="{'title':child.type === 'p',
+      <component
+        v-for="child in cmp.children"
+        :key="child.id"
+        :is="child.type"
+        :style="child.style"
+        :cmp="child"
+        :contenteditable="isEditing"
+        :selectedCmp="selectedCmp"
+        :src="child.imgUrl"
+        :class="{'title':child.type === 'p',
                'mark-selected':child.id === selectedCmp.id}"
-          @dblclick="editMode"
-          @blur="editTxt($event,child)"
-          @click.stop="openEdit(child)"
-        >{{child.txt}}</component>
-      </draggable>
-    </header>
-  </div>
+        @dblclick="editMode"
+        @blur="editTxt($event,child)"
+        @click.stop="openEdit(child)"
+      >{{child.txt}}</component>
+    </draggable>
+  </header>
+  <!-- </div> -->
 </template>
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
@@ -106,4 +106,7 @@ export default {
 };
 </script>
 <style>
+.test {
+  background: red;
+}
 </style>
