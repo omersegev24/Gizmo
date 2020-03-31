@@ -27,3 +27,4 @@ Vue.component('app-chat', appChat);
 Vue.component('app-social-links', appSocialLinks);
 Vue.component('app-article', appArticle);
 Vue.component('app-youtube', appYoutube);
+

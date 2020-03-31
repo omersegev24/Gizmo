@@ -10,7 +10,6 @@
       @click.native.stop="edit(cmp)"
       :published="false"
     >{{cmp.txt}}</component>
-
     <action-panel :cmp="cmp"></action-panel>
     <div class="screen"></div>
   </div>
