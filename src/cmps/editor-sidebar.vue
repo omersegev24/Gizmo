@@ -171,7 +171,8 @@ export default {
           cmp.type === "p" ||
           cmp.type === "layout-3-columns" ||
           cmp.type === "layout-2-columns" ||
-          cmp.type === "app-header"
+          cmp.type === "app-header" ||
+          cmp.type === 'button'
         );
       });
       // console.log('elemeents', elementCmps);
@@ -251,9 +252,9 @@ export default {
         case "app-map":
           return { name: "Map", class: "fas fa-map-marked-alt" };
         case "p":
-          return { name: "Text", class: "fas fa-images" };
+          return { name: "Text", class: "fas fa-font" };
         case "img":
-          return { name: "Image", class: "fas fa-images" };
+          return { name: "Image", class: "fas fa-image" };
         case "app-gallery":
           return { name: "Gallery", class: "fas fa-images" };
       }
@@ -276,14 +277,14 @@ export default {
   }
 };
 </script>
-<style >
+<style lang="scss">
 .sortable-ghost {
   background-color: rgba(78, 184, 245, 0.214);
   color: rgba(78, 184, 245, 0);
   padding: 10px;
 }
 
-.sortable-fallback  {
+.sortable-fallback {
   border-radius: 50%;
 }
 </style>
