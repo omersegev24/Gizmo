@@ -1,14 +1,17 @@
 .app-card {
   margin: 0 auto;
   margin-top: rem(20px);
+  text-align: center;
+  flex-wrap: wrap;
   width: 25%;
   font-size: 0.9rem;
 
   h3 {
-    margin: 0; 
+    margin: 0;
   }
 
   p {
+    margin: 0;
     margin-bottom: rem(10px);
   }
 
@@ -28,7 +31,7 @@
     width: 25%;
     margin-bottom: 20px;
     text-align: center;
-    
+
     p {
       font-family: Raleway, sans-serif;
       font-weight: 500;
@@ -37,7 +40,7 @@
       text-align: center;
       margin-bottom: 0;
     }
-    
+
     button {
       margin-bottom: 20px;
       padding: 8px;
@@ -46,7 +49,7 @@
       border: none;
       font-size: 1rem;
       padding: 10px 20px;
-      transition: .3s;
+      transition: 0.3s;
       &:hover {
         background-color: $clr9;
         color: $clr10;
@@ -87,15 +90,20 @@
       color: $clr11;
       border: none;
       text-transform: uppercase;
-      transition: .3s;
+      transition: 0.3s;
       &:hover {
         background-color: lighten($clr12, 10%);
         cursor: pointer;
       }
     }
+    @media only screen and (max-width: 1130px) {
+      p {
+        margin-top: 0;
+      }
+    }
   }
 }
-  // @media only screen and (max-width: )
+// @media only screen and (max-width: )
 // }
 
 // .app-card.light-and-shiny {
