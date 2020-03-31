@@ -5,7 +5,7 @@
       <p>Our innoviate system and beautiful templates allow you to build any type of website.</p>
       <button @click="showMore">Get Started</button>
     </header>
-    <section class="infos flex flex-wrap">
+    <section class="infos flex flex-wrap justify-center">
       <section class="info-1 flex flex-column space-between align-center">
         <div>
           <h1>Drag and Drop</h1>
