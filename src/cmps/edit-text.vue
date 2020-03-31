@@ -61,8 +61,17 @@ export default {
       cmp: JSON.parse(JSON.stringify(this.currCmp)),
       fontSize: parseInt(this.currCmp.style.fontSize, 10),
       letterSpacing: parseInt(this.currCmp.style.letterSpacing, 10),
-      
-      fontFamily: ["Lato", "AlegreyaSans", "Lobster"],
+
+      fontFamily: [
+        "Lato",
+        "AlegreyaSans",
+        "Lobster",
+        "Poppins",
+        "PoppinsBold",
+        "Raleway",
+        "WorkSansExtraLight",
+        "WorkSansSemiBold"
+      ],
       predefineColors: [
         "#ff4500",
         "#ff8c00",
@@ -84,7 +93,7 @@ export default {
   methods: {
     setTextSize() {
       if (this.fontSize) {
-      this.cmp.style.fontSize = this.fontSize + "px";
+        this.cmp.style.fontSize = this.fontSize + "px";
         this.update();
       }
     },
@@ -93,7 +102,7 @@ export default {
       this.update();
     },
     update() {
-      console.log('update TEXTEDIT')
+      console.log("update TEXTEDIT");
       this.$emit("updateCmp", this.cmp);
     }
   },
@@ -103,6 +112,6 @@ export default {
       this.fontSize = parseInt(this.currCmp.style.fontSize, 10);
       this.letterSpacing = parseInt(this.currCmp.style.letterSpacing, 10);
     }
-  },
+  }
 };
 </script>

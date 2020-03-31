@@ -1,10 +1,7 @@
 <template>
   <div class="template-action">
     <el-link :underline="false" @click="openEditor" class="edit-btn" icon="el-icon-edit">Edit</el-link>
-    <el-link :underline="false" @click="openWebsite" class="check-btn">
-      Check
-      <i class="el-icon-view el-icon--right"></i>
-    </el-link>
+    <el-link :underline="false" @click="openWebsite" class="check-btn" icon="el-icon-view">Check</el-link>
   </div>
 </template>
 
@@ -18,10 +15,9 @@ export default {
       this.$router.push(`/editor/${this.wapId}`).catch(err => {});
       // this.$router.push(`/editor/${wapId}`);
     },
-    openWebsite(){
-        this.$router.push(`/website/${this.wapId}`).catch(err => {});
+    openWebsite() {
+      this.$router.push(`/website/${this.wapId}`).catch(err => {});
     }
-    
   }
 };
 </script>
