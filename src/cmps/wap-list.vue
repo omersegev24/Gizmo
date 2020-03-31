@@ -1,8 +1,8 @@
 <template>
   <section class="wap-list card-grid">
-    <div v-for="wap in waps" :key="wap._id">
+    <div class="wap-card" v-for="wap in waps" :key="wap._id">
       <wap-preview :wap="wap"></wap-preview>
-      <template-action class="template-actions" :wapId="wap._id"></template-action>
+      <template-action :wapId="wap._id"></template-action>
     </div>
   </section>
 </template>

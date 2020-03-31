@@ -1,16 +1,22 @@
 .wap-list {
-//   .template-action {
-//     visibility: hidden;
-//   }
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+
   .wap-preview {
-    border: 1px solid black;
+    border-radius: 4px 4px 0 0;
+    background-color: pink;
     cursor: pointer;
+  }
+  .wap-card {
+    position: relative;
     &:hover {
-    //   .template-action{
-    //       visibility: visible;
-    //   }  
-      opacity: 0.6;
+      .template-action {
+        background-color: hsla(0, 0%, 100%, 0.86);
+        border-left: 1px solid hsla(0, 0%, 100%, 0.86);
+        border-right: 1px solid hsla(0, 0%, 100%, 0.86);
+        transition: .2s ease-out;
+        border-radius: 4px 4px 0 0;
+        visibility: visible;
+      }
     }
   }
 }

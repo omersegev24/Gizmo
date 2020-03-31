@@ -9,27 +9,10 @@
             manage and develop your web presence exactly the way you want.
           </p>
           <router-link to="/template">Get Started</router-link>
-          <!-- <span>
-            <i class="fas fa-arrow-down"></i>
-          </span> -->
         </div>
       </div>
       <img src="@/assets/img/homepage-header.png" alt="Header Image" />
     </header>
-    <section class="explore">
-      <h2 class="templates-title">Get Inspired by These Website Examples Designed on Gizmo</h2>
-      <hr>
-      <wap-list class="templates-list" :waps="waps"></wap-list>
-    </section>
-    <!-- <h1 class="title">Create a Website You’re Proud Of</h1>
-    <div>
-      <p class="sub-title">
-        Discover the platform that gives you the freedom to create, design,
-        manage and develop your web presence exactly the way you want.
-      </p>
-      <router-link to="/template">Get Started</router-link>
-    </div>
-    <button class="show-more-btn" @click="showMore">Show More...</button>-->
   </div>
 </template>
 <script>
