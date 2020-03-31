@@ -3,7 +3,7 @@
     <header class="hero flex flex-column justify-center align-center">
       <section class="hero-title">Build your new responsive website in minutes</section>
       <p>Our innoviate system and beautiful templates allow you to build any type of website.</p>
-      <button>Get Started</button>
+      <button @click="showMore">Get Started</button>
     </header>
     <section class="infos flex flex-wrap">
       <section class="info-1 flex flex-column space-between align-center">
