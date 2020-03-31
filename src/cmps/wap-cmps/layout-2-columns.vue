@@ -7,6 +7,7 @@
       @start="dragging = true"
       @end="dragging = false"
       group="wap"
+      :disabled="!enabled"
     >
       <component
         v-for="child in cmp.children"
@@ -36,8 +37,15 @@ export default {
   },
   data() {
     return {
+      enabled: true,
       cmpCopy: JSON.parse(JSON.stringify(this.cmp))
     }
+  },
+  created() {
+    if (this.published){
+      this.enabled = false
+      } 
+      
   },
   computed: {
     contactCmp: {

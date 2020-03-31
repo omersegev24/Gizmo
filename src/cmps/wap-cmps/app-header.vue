@@ -12,6 +12,7 @@
       @start="startDrag"
       @end="stopDrag"
       group="wap"
+      :disabled="!enabled"
       >
       <component
         v-for="child in cmp.children"
@@ -49,11 +50,15 @@ export default {
     }
   },
   created() {
-    if (this.published) this.isEditing = false
+    if (this.published){
+      this.isEditing = false
+      this.enabled = false
+      } 
+      
   },
   methods: {
     startDrag() {
-      console.log('yes')
+      
       this.dragging = true
     },
     editMode() {
