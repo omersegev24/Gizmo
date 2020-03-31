@@ -1,6 +1,6 @@
 <template>
   <section
-    class="layout-3-columns pet-theme flex justify-center align-center"
+    class="layout-3-columns icy-theme flex justify-center align-center"
     :class="cmp.subClass"
   >
     <draggable

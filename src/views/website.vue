@@ -36,7 +36,8 @@ export default {
   },
   computed: {
     selectedCmp() {
-      return this.$store.getters.selectedCmp
+      // return this.$store.getters.selectedCmp
+      return {}
     },
   },
   async created() {
