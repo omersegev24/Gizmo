@@ -34,7 +34,6 @@
 <script>
 import { eventBus } from "../../services/eventBus.service.js";
 import appForm from "./app-form.vue";
-// import appArticle from './app-article.vue'
 export default {
   props: {
     cmp: Object,
@@ -79,7 +78,6 @@ export default {
   },
   components: {
     appForm
-    // appArticle
   }
 };
 </script>

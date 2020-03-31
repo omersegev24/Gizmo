@@ -28,10 +28,11 @@ export default {
 <style lang="scss" scoped>
 .loading {
   width: 100px;
-  height: 100px;
+  height: 70px;
   position: absolute;
+  background: none;
   top: 0;
-  left: 0;
+  left: 50%;
   z-index: 999999;
 }
 </style>

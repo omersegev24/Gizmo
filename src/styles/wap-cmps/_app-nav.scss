@@ -63,7 +63,8 @@
     .hamburger-menu {
       background-color: transparent;
       z-index: 2;
-      visibility: visible;
+      // visibility: visible;
+      display: block;
       font-size: 2rem;
       transition: 0.5s;
       &:hover {
