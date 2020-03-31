@@ -6,6 +6,7 @@
       @start="dragging = true"
       @end="dragging = false"
       group="wap"
+      :disabled="!enabled"
     >
       <component
         v-for="child in cmp.children"
@@ -36,11 +37,15 @@ export default {
   data() {
     return {
       dragging: false,
-      isEditing: false
+      isEditing: false,
+      enabled: true,
     }
   },
   created() {
-    if (this.published) this.isEditing = false
+    if (this.published) {
+      this.isEditing = false
+      this.enabled = false
+    }
   },
   computed: {
     currCmp: {

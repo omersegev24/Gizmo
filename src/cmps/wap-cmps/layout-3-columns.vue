@@ -9,6 +9,7 @@
       @start="dragging = true"
       @end="dragging = false"
       :group="{name:'wap'}"
+      :disabled="!enabled"
     >
       <component
         v-for="child in cmp.children"
@@ -33,6 +34,17 @@ export default {
     cmp: Object,
     selectedCmp: Object,
     published: Boolean
+  },
+  data() {
+    return {
+      enabled: true
+    }
+  },
+  created() {
+    if (this.published) {
+      this.enabled = false
+    }
+
   },
   methods: {
     openEdit(cmp) {
